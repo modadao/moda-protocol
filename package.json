@@ -6,7 +6,7 @@
     "contracts/"
   ],
   "scripts": {
-    "build": "pnpm --filter moda-client build",
+    "build": "pnpm --filter moda-sdk build",
     "format": "rome format . --write",
     "lint": "rome check .",
     "lint:fix": "pnpm lint --apply-unsafe",
