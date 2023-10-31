@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "lib": ["dom", "ES2015"]
+  },
+  "include": ["."],
+  "exclude": ["dist", "build", "node_modules"],
+  "target": "es2020",
+  "module": "commonjs",
+  "noUncheckedIndexedAccess": true,
+  "noEmit": true,
+  "allowImportingTsExtensions": true,
+}
