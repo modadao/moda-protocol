@@ -1,0 +1,21 @@
+{
+  "name": "root",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "contracts/"
+  ],
+  "scripts": {
+    "build": "pnpm --filter moda-client build",
+    "format": "rome format . --write",
+    "lint": "rome check .",
+    "lint:fix": "pnpm lint --apply-unsafe",
+    "lint:ci": "pnpm update --apply-unsafe",
+    "update": "pnpm update --latest --recursive --interactive",
+    "test": " run test"
+  },
+  "devDependencies": {
+    "rome": "12.1.3"
+  },
+  "packageManager": "pnpm@8.10.1"
+}
