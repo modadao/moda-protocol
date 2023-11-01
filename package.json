@@ -7,15 +7,15 @@
   ],
   "scripts": {
     "build": "pnpm --filter moda-sdk build",
-    "format": "rome format . --write",
-    "lint": "rome check .",
+    "dev": "pnpm --filter moda-sdk watch",
+    "format": "biome format . --write",
+    "lint": "biome check .",
     "lint:fix": "pnpm lint --apply-unsafe",
-    "lint:ci": "pnpm update --apply-unsafe",
-    "update": "pnpm update --latest --recursive --interactive",
-    "test": " run test"
+    "lint:ci": "biome ci .",
+    "update": "pnpm update --latest --recursive --interactive"
   },
   "devDependencies": {
-    "rome": "12.1.3"
+    "@biomejs/biome": "1.3.3"
   },
   "packageManager": "pnpm@8.10.1"
 }
