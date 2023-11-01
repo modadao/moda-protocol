@@ -8,8 +8,8 @@
     "Royalties",
     "NFTs",
     "Polygon",
-    "Web3",
-    "Ethereum"
+    "Ethereum",
+    "Web3"
   ],
   "version": "0.0.1",
   "main": "dist/index.js",
@@ -40,14 +40,34 @@
         "default": "./dist/index.js"
       }
     },
-    "./core": {
+    "./metadata": {
       "import": {
-        "types": "./dist/core.d.ts",
-        "default": "./dist/core.mjs"
+        "types": "./dist/metadata.d.ts",
+        "default": "./dist/metadata.mjs"
       },
       "require": {
-        "types": "./dist/core.d.ts",
-        "default": "./dist/core.js"
+        "types": "./dist/metadata.d.ts",
+        "default": "./dist/metadata.js"
+      }
+    },
+    "./react": {
+      "import": {
+        "types": "./dist/react.d.ts",
+        "default": "./dist/react.mjs"
+      },
+      "require": {
+        "types": "./dist/react.d.ts",
+        "default": "./dist/react.js"
+      }
+    },
+    "./utils": {
+      "import": {
+        "types": "./dist/utils.d.ts",
+        "default": "./dist/utils.mjs"
+      },
+      "require": {
+        "types": "./dist/utils.d.ts",
+        "default": "./dist/utils.js"
       }
     }
   }
