@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.21;
 
-interface IMemberShip {
+interface IMembership {
     /**
      * @dev Updates the merkle root
      * @param merkleRoot The new merkle root
