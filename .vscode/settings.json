@@ -10,6 +10,11 @@
     },
     "[typescriptreact]": {
       "editor.defaultFormatter": "biomejs.biome"
-    }
+    },
+    "[solidity]": {
+      "editor.defaultFormatter": "JuanBlanco.solidity" 
+    },
+    "solidity.formatter": "forge",
+    "solidity.compileUsingRemoteVersion": "v0.8.21+commit.d9974bed"
 }
   
