@@ -6,3 +6,9 @@ modadao
 quickfix
 tsup
 web3
+merkle
+inheritdoc
+keccak
+concat
+remappings
+unregisters
