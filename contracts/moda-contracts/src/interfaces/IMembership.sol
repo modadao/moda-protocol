@@ -11,7 +11,6 @@ interface IMembership {
 
     /**
      * @dev Checks if an address is whitelisted using a merkle proof
-     * @param user The address to be checked
      */
     function isMember(address user) external view returns (bool);
 }

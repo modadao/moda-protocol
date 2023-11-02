@@ -10,10 +10,11 @@ interface IModaRegistry {
     /// Membership
 
     /**
-     * @dev Checks the msg.sender is registered to a particular catalog
+     * @dev Checks the user is registered to a particular catalog
      * @param catalogName The name of the catalog
+     * @param user The address of the user to check 
      */
-    function isMember(string calldata catalogName) external returns (bool);
+    function isMember(string calldata catalogName, address user) external returns (bool);
 
     /// Catalogs
 
