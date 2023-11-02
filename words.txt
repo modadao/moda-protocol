@@ -12,3 +12,5 @@ keccak
 concat
 remappings
 unregisters
+blanco
+struct
