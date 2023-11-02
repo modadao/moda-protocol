@@ -3,7 +3,7 @@ pragma solidity 0.8.21;
 
 import "@openzeppelin/contracts-upgradeable/access/manager/AccessManagedUpgradeable.sol";
 import "@openzeppelin/contracts/utils/cryptography/MerkleProof.sol";
-import "./interfaces/IMemberShip.sol";
+import "./interfaces/IMembership.sol";
 
 contract Membership is IMembership {
     /// State Variables
@@ -12,26 +12,24 @@ contract Membership is IMembership {
 
     /// External Functions
 
-    function initialize(
-        address modaAccess,
+    constructor(
+    
         bytes32 merkleRoot
-    ) external initializer {
-        __AccessManaged_init(modaAccess);
+    ){
         _merkleRoot = merkleRoot;
     }
 
     /**
-     * @inheritdoc IAccessGate
+     * @inheritdoc IMembership
      */
-    function updateMerkleRoot(bytes32 merkleRoot) external restricted {
+    function updateMerkleRoot(bytes32 merkleRoot) external  {
         _merkleRoot = merkleRoot;
     }
 
     /**
-     * @inheritdoc IAccessGate
+     * @inheritdoc IMembership
      */
-    function verifyUser(
-        bytes32[] memory proof,
+    function isMember(
         address user
     ) external view returns (bool) {
         bytes32 leaf = keccak256(bytes.concat(keccak256(abi.encode(user))));
