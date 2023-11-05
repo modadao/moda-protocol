@@ -2,128 +2,153 @@
 pragma solidity 0.8.21;
 
 interface IModaRegistry {
+    /**
+     * @dev Emitted when a catalog owner changes the membership contract
+     */
+    event CatalogMembershipChanged(string name, address indexed membership);
+
+    /**
+     * @dev Emitted when a catalog is registered by an organization
+     */
+    event CatalogRegistered(string name, address indexed catalog);
+
+    /**
+     * @dev Emitted when a catalog is unregistered by an organization
+     */
+    event CatalogUnregistered(string name, address indexed catalog);
+
+    /**
+     * @dev Emitted when a manager is added by an artist
+     */
+    event ManagerAdded(address indexed artist, address indexed manager);
+
+    /**
+     * @dev Emitted when a manager is removed by an artist
+     */
+    event ManagerRemoved(address indexed artist, address indexed manager);
+
+    /**
+     * @dev Emitted when the treasury fee is changed by a default admin
+     */
+    event TreasuryFeeChanged(uint256 oldFee, uint256 newFee);
+
+    /**
+     * @dev Emitted when the treasury address is changed by a default admin
+     */
+    event TreasuryChanged(address oldTreasury, address newTreasury);
+
+    /**
+     * @dev Represents a registered catalog
+     * name - The name of the catalog
+     * catalog - The address of the catalog
+     * membership - The address of the membership contract
+     */
     struct Catalog {
         string name;
-        address catalogAddress;
+        address catalog;
+        address membership;
     }
 
     /// Membership
 
     /**
-     * @dev Checks the user is registered to a particular catalog
-     * @param catalogName The name of the catalog
-     * @param user The address of the user to check 
+     * @dev Checks if the user is a member of a particular catalog.
+     * This is a proxy to the Membership contract instance deployed by the catalog owner.
+     * @param index - The index of the catalog
+     * @param user - The address of the user to check
      */
-    function isMember(string calldata catalogName, address user) external returns (bool);
+    function isMember(uint256 index, address user) external returns (bool);
+
+    /**
+     * @dev Sets a membership contract for a particular catalog
+     * @notice The caller must be a default admin
+     * @param index - The index of the catalog
+     * @param membership - The address of the membership contract
+     */
+    function setCatalogMembership(uint256 index, address membership) external;
 
     /// Catalogs
 
     /**
      * @dev Registers a new catalog
-     * @notice only a default admin can call this
-     * @param catalogName the name of the catalog
-     * @param catalogAddress the address of the catalog
+     * @notice Only a default admin can call this
+     * @param name - The name of the catalog
+     * @param catalog - The address of the catalog
+     * @param membership - The address of the membership contract
      */
-    function registerCatalog(string calldata catalogName, address catalogAddress) external;
+    function registerCatalog(string calldata name, address catalog, address membership) external;
 
     /**
      * @dev Unregisters a deprecated or malicious catalog
-     * @notice only a default admin can call this
-     * @param catalogName the name of the catalog
+     * @notice Only a default admin can call this
+     * @param index - The index of the catalog
      */
-    function unregisterCatalog(string calldata catalogName) external;
+    function unregisterCatalog(uint256 index) external;
 
     /**
-     * @dev Returns a catalog at a particular index
-     * @param index the index of the catalog
+     * @dev Returns a info about a particular catalog
+     * @param index - The index of the catalog
      */
-    function catalogAt(uint256 index) external view returns (Catalog memory);
+    function getCatalogInfo(uint256 index) external view returns (Catalog memory);
 
     /**
      * @dev Returns the total number of catalogs
      */
-    function catalogCount() external view returns (uint256);
+    function getCatalogCount() external view returns (uint256);
 
     /// Artist Management
 
     /**
-     * @dev grants a manager role to a list of addresses for a particular artist caller
-     * @param managers the addresses of the managers
+     * @dev Grants a manager role to a list of addresses for a particular artist caller
+     * @param managers - The addresses of the managers
      */
     function addManagers(address[] calldata managers) external;
 
     /**
-     * @dev revokes a manager role to a list of addresses for a particular artist caller
-     * @param managers the addresses of the managers
+     * @dev Revokes a manager role to a list of addresses for a particular artist caller
+     * @param managers - The addresses of the managers
      */
     function removeManagers(address[] calldata managers) external;
 
     /**
      * @dev Returns the total number of managers for a particular artist
-     * @param artist the address of the artist
+     * @param artist - The address of the artist
      */
-    function managerCount(address artist) external view returns (uint256);
+    function getManagerCount(address artist) external view returns (uint256);
 
     /**
      * @dev Returns a manager at a particular index for a particular artist
-     * @param artist the address of the artist
-     * @param index the index of the manager
+     * @param artist - The address of the artist
+     * @param index - The index of the manager
      */
-    function managerAt(address artist, uint256 index) external view returns (address);
+    function getManager(address artist, uint256 index) external view returns (address);
 
     /**
      * @dev Returns true if the address is a manager for a particular artist
-     * @param artist the address of the artist
-     * @param who the address of the manager
+     * @param artist - The address of the artist
+     * @param who - The address of the manager
      */
     function isManager(address artist, address who) external view returns (bool);
 
-    /// Moda Treasury
+    /// Treasury
 
     /**
      * @dev Sets the numerator for calculating the percentage of fees to be sent to the Moda Treasury
-     * @notice treasuryFee is based on a denominator of 10,000 (e.g. 1000 is 10.0%). Max of 10%
-     * @notice the caller must be a default admin
-     * @param percentage the percentage of fees to be sent to the Moda Treasury
+     * @notice TreasuryFee is based on a denominator of 10,000 (e.g. 1000 is 10.0%). Max of 10%
+     * @notice The caller must be a default admin
+     * @param fee - The percentage of fees to be sent to the Moda Treasury
      */
-    function setModaTreasuryFee(uint256 percentage) external;
+    function setTreasuryFee(uint256 fee) external;
 
     /**
      * @dev Sets the address of the Moda Treasury
-     * @notice the caller must be a default admin
-     * @param modaTreasury the address of the Moda Treasury
+     * @notice The caller must be a default admin
+     * @param treasury - The address of the Treasury
      */
-    function setModaTreasury(address modaTreasury) external;
+    function setTreasury(address treasury) external;
 
     /**
-     * @dev Returns the moda treasury fee percentage and address
+     * @dev Returns the Moda treasury fee percentage and address
      */
-    function modaFeeInfo() external view returns (uint256, address);
-
-    /// Moda Admin
-
-    /**
-     * @dev grants a role to an address
-     * @notice the caller must be a default admin
-     * @param role the role to grant
-     * @param account the address to grant the role to
-     */
-    function grantRole(bytes32 role, address account) external;
-
-    /**
-     * @dev Takes in a role, an artist address and a user addresses and returns true/false
-     * if the user has the role for the artist
-     * @param role the role to check
-     * @param artist the address of the artist
-     * @param user the address of the user to check
-     */
-    function hasRole(bytes32 role, address artist, address user) external view returns (bool);
-
-    /**
-     * @dev sets a membership contract for a particular catalog
-     * @notice the caller must be a default admin
-     * @param catalogName the name of the catalog
-     * @param membership the address of the membership contract
-     */
-    function setCatalogMembership(string calldata catalogName, address membership) external;
+    function getTreasury() external view returns (address treasury, uint256 fee);
 }
