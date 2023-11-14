@@ -1,0 +1,13 @@
+{
+  "name": "moda-contracts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "forge clean && forge build && forge test --ffi",
+    "coverage": "forge coverage --report lcov --ffi && genhtml lcov.info --branch-coverage --output-dir coverage "
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

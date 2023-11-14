@@ -1,0 +1,23 @@
+# Compiler files
+cache/
+out/
+
+# Ignores development broadcast logs
+!/broadcast
+/broadcast/*/31337/
+/broadcast/**/dry-run/
+
+# Docs
+docs/
+
+# Dotenv file
+.env
+
+<<<<<<< HEAD:contracts/moda-contracts/.gitignore
+# test coverage
+coverage/
+lcov.info
+=======
+# Node modules
+node_modules/
+>>>>>>> ad43f9b (feat: Add Catalog):moda-contracts/lib/openzeppelin-foundry-upgrades/.gitignore
