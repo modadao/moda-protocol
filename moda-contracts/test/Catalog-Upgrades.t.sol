@@ -3,7 +3,7 @@ pragma solidity 0.8.21;
 
 import {Test, console2} from "forge-std/Test.sol";
 import "../src/Catalog.sol";
-import "../testing-mocks/CatalogV2Mock.sol";
+import "../test/mocks/CatalogV2Mock.sol";
 import {Upgrades} from "openzeppelin-foundry-upgrades/Upgrades.sol";
 import {IBeacon} from "@openzeppelin/contracts/proxy/beacon/IBeacon.sol";
 
@@ -14,7 +14,7 @@ contract CatalogUpgradesTest is Test {
     address public beacon;
 
     string public catalogName = "Test";
-    string public chainId = "0";
+    uint256 public chainId = 0;
     string public catalogVersion = "0";
     address public modaRegistry = address(0x0);
     address public splitsFactory = address(0x1);
@@ -28,27 +28,14 @@ contract CatalogUpgradesTest is Test {
         catalogImplementation = IBeacon(beacon).implementation();
 
         catalogProxy = Upgrades.deployBeaconProxy(
-            beacon,
-            abi.encodeCall(
-                Catalog.initialize,
-                (
-                    catalogName,
-                    chainId,
-                    catalogVersion,
-                    modaRegistry,
-                    splitsFactory,
-                    modaBeneficiary,
-                    catalogDeployer
-                )
-            )
+            beacon, abi.encodeCall(Catalog.initialize, (catalogName, catalogVersion, modaRegistry))
         );
     }
 
     function test_catalogProxy() public {
-        (string memory name_, string memory chainId_, string memory version_) =
-            ICatalog(catalogProxy).getCatalogInfo();
+        vm.chainId(chainId);
+        (string memory name_, string memory version_) = IVersionInfo(catalogProxy).versionInfo();
         assertEq(name_, catalogName);
-        assertEq(chainId_, chainId);
         assertEq(version_, catalogVersion);
     }
 

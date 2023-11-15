@@ -1,18 +1,19 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.21;
 
-import {IVersionInfo} from "./interfaces/IVersionInfo.sol";
-import {ITrackRegistration} from "./interfaces/ITrackRegistration.sol";
-import {IReleasesRegistration} from "./interfaces/IReleasesRegistration.sol";
-import {IReleaseRegistration} from "./interfaces/IReleaseRegistration.sol";
-import {IReleasesApproval} from "./interfaces/IReleasesApproval.sol";
-import {IModaRegistry} from "./interfaces/IModaRegistry.sol";
-import {IOfficialModaContracts} from "./interfaces/IOfficialModaContracts.sol";
-import {IReleases} from "./interfaces/IReleases.sol";
+import {IVersionInfo} from "../../src/interfaces/IVersionInfo.sol";
+import {ITrackRegistration} from "../../src/interfaces/ITrackRegistration.sol";
+import {IReleasesRegistration} from "../../src/interfaces/IReleasesRegistration.sol";
+import {IReleaseRegistration} from "../../src/interfaces/IReleaseRegistration.sol";
+import {IReleasesApproval} from "../../src/interfaces/IReleasesApproval.sol";
+import {IModaRegistry} from "../../src/interfaces/IModaRegistry.sol";
+import {IOfficialModaContracts} from "../../src/interfaces/IOfficialModaContracts.sol";
+import {IReleases} from "../../src/interfaces/IReleases.sol";
 import "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol";
 import {Strings} from "@openzeppelin/contracts/utils/Strings.sol";
 
-contract Catalog is
+/// @custom:oz-upgrades-from Catalog
+contract CatalogV2Mock is
     IVersionInfo,
     ITrackRegistration,
     IReleasesRegistration,
@@ -50,6 +51,12 @@ contract Catalog is
         mapping(address => mapping(uint256 => string)) _releaseUris;
     }
 
+    /// @custom:storage-location erc7201:moda.storage.CatalogV2
+    struct CatalogV2Storage {
+        /// @dev additional variable to test upgradeability
+        string _testingUpgradeVariable;
+    }
+
     /// Errors
 
     error TrackIsNotRegistered();
@@ -70,9 +77,19 @@ contract Catalog is
     bytes32 private constant CatalogStorageLocation =
         0x29716ba11260d206d72844135e3b7e5c7c3a8e39cde3c7b2b654f553db068900;
 
+    // keccak256(abi.encode(uint256(keccak256("moda.storage.CatalogV2")) - 1)) & ~bytes32(uint256(0xff))
+    bytes32 private constant CatalogV2StorageLocation =
+        0xb8760629ab51d65b8fdd44998b12236c513908a4a393c4bcf5d9b3c642fa5700;
+
     function _getCatalogStorage() private pure returns (CatalogStorage storage $) {
         assembly {
             $.slot := CatalogStorageLocation
+        }
+    }
+
+    function _getCatalogV2Storage() private pure returns (CatalogV2Storage storage $Version2) {
+        assembly {
+            $Version2.slot := CatalogV2StorageLocation
         }
     }
 
@@ -84,13 +101,30 @@ contract Catalog is
     function initialize(
         string calldata name,
         string calldata version,
-        address modaRegistry
+        address modaRegistry,
+        address deployer
     ) external initializer {
         CatalogStorage storage $ = _getCatalogStorage();
         $._name = name;
         $._version = version;
         $._modaRegistry = modaRegistry;
-        _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
+        _grantRole(DEFAULT_ADMIN_ROLE, deployer);
+    }
+
+    /**
+     * @dev For testing upgradeability
+     */
+    function setTestingUpgradeVariable(string calldata testingUpgradeVariable) external {
+        CatalogV2Storage storage $Version2 = _getCatalogV2Storage();
+        $Version2._testingUpgradeVariable = testingUpgradeVariable;
+    }
+
+    /**
+     * @dev For testing upgradeability
+     */
+    function getTestingUpgradeVariable() external view returns (string memory) {
+        CatalogV2Storage storage $Version2 = _getCatalogV2Storage();
+        return $Version2._testingUpgradeVariable;
     }
 
     /**
@@ -384,7 +418,7 @@ contract Catalog is
             _requireTrackIsRegistered(trackIds[i]);
             _requireTrackIsValid(trackIds[i]);
 
-            if (!hasFullPermission && !releasesOpen) {
+            if (!hasFullPermission || !releasesOpen) {
                 _requireReleasesContractHasPermission(trackIds[i]);
             }
 

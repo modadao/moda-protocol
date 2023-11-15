@@ -2,10 +2,11 @@
 pragma solidity 0.8.21;
 
 import {IModaRegistry} from "./interfaces/IModaRegistry.sol";
+import {IOfficialModaContracts} from "./interfaces/IOfficialModaContracts.sol";
 import {IMembership} from "./interfaces/IMembership.sol";
 import "@openzeppelin/contracts/access/extensions/AccessControlEnumerable.sol";
 
-contract ModaRegistry is IModaRegistry, AccessControlEnumerable {
+contract ModaRegistry is IModaRegistry, IOfficialModaContracts, AccessControlEnumerable {
     using EnumerableSet for EnumerableSet.AddressSet;
 
     /// State Variables
@@ -16,11 +17,12 @@ contract ModaRegistry is IModaRegistry, AccessControlEnumerable {
     /// @dev only an address with a releases registrar role can register a releases contract
     bytes32 public constant RELEASES_REGISTRAR_ROLE = keccak256("RELEASES_REGISTRAR_ROLE");
 
-    /// @dev an address with a gold role will have their tracks verified on registration
-    bytes32 public constant GOLD_ROLE = keccak256("GOLD_ROLE");
+    /// @dev an address with a auto verified will have their tracks verified on registration
+    bytes32 public constant AUTO_VERIFIED_ROLE = keccak256("AUTO_VERIFIED_ROLE");
 
     address payable _treasury;
     uint256 _treasuryFee;
+    address _splitsFactory;
 
     Catalog[] _catalogs;
     mapping(address => bool) _isCatalogRegistered;
@@ -31,7 +33,7 @@ contract ModaRegistry is IModaRegistry, AccessControlEnumerable {
     error CatalogAlreadyRegistered();
     error CatalogNotRegistered();
     error AddressCannotBeZero();
-    error DuplicateAddress();
+    error ContractMustSupportIMembership();
 
     constructor() {
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
@@ -51,13 +53,14 @@ contract ModaRegistry is IModaRegistry, AccessControlEnumerable {
      */
     function setCatalogMembership(
         uint256 index,
-        address membership
+        IMembership membership
     ) external onlyRole(DEFAULT_ADMIN_ROLE) {
-        if (membership == address(0)) {
-            revert AddressCannotBeZero();
+        if (!membership.supportsInterface(type(IMembership).interfaceId)) {
+            revert ContractMustSupportIMembership();
         }
-        _catalogs[index].membership = membership;
-        emit CatalogMembershipChanged(_catalogs[index].name, membership);
+
+        _catalogs[index].membership = address(membership);
+        emit CatalogMembershipChanged(_catalogs[index].name, address(membership));
     }
 
     /**
@@ -113,12 +116,6 @@ contract ModaRegistry is IModaRegistry, AccessControlEnumerable {
      */
     function addManagers(address[] calldata managers) external {
         for (uint256 i = 0; i < managers.length; i++) {
-            if (_managers[msg.sender].contains(managers[i])) {
-                revert DuplicateAddress();
-            }
-            if (managers[i] == address(0)) {
-                revert AddressCannotBeZero();
-            }
             bool added = _managers[msg.sender].add(managers[i]);
             if (added) emit ManagerAdded(msg.sender, managers[i]);
         }
@@ -129,9 +126,6 @@ contract ModaRegistry is IModaRegistry, AccessControlEnumerable {
      */
     function removeManagers(address[] calldata managers) external {
         for (uint256 i = 0; i < managers.length; i++) {
-            if (managers[i] == address(0)) {
-                revert AddressCannotBeZero();
-            }
             bool removed = _managers[msg.sender].remove(managers[i]);
             if (removed) emit ManagerRemoved(msg.sender, managers[i]);
         }
@@ -178,9 +172,30 @@ contract ModaRegistry is IModaRegistry, AccessControlEnumerable {
     }
 
     /**
+     * @inheritdoc IOfficialModaContracts
+     */
+    function getTreasury() external view returns (address) {
+        return _treasury;
+    }
+
+    /**
      * @inheritdoc IModaRegistry
      */
-    function getTreasury() external view returns (address, uint256) {
-        return (_treasury, _treasuryFee);
+    function getTreasuryFee() external view returns (uint256) {
+        return _treasuryFee;
+    }
+
+    /**
+     * @inheritdoc IModaRegistry
+     */
+    function setSplitsFactory(address splitsFactory) external onlyRole(DEFAULT_ADMIN_ROLE) {
+        _splitsFactory = splitsFactory;
+    }
+
+    /**
+     * @inheritdoc IOfficialModaContracts
+     */
+    function getSplitsFactory() external view returns (address) {
+        return _splitsFactory;
     }
 }

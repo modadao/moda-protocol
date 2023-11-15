@@ -4,12 +4,15 @@ pragma solidity ^0.8.13;
 import {Test, console2} from "forge-std/Test.sol";
 import "../src/Catalog.sol";
 import {ModaRegistry} from "../src/ModaRegistry.sol";
-import {Membership} from "../src/Membership.sol";
+import {Membership} from "../test/mocks/MembershipMock.sol";
+import {ITrackRegistration} from "../src/interfaces/ITrackRegistration.sol";
+import "../test/mocks/ReleasesMock.sol";
 
 contract CatalogTest is Test {
     Catalog public catalog;
     Membership public membership;
     ModaRegistry public modaRegistry;
+    ReleasesMock public releasesMock;
 
     address public catalogDeployer = address(0x1);
     string public catalogName = "Drop";
@@ -26,15 +29,10 @@ contract CatalogTest is Test {
         modaRegistry = new ModaRegistry();
         membership = new Membership();
         catalog = new Catalog();
-        catalog.initialize(
-            catalogName,
-            chainId,
-            catalogVersion,
-            address(modaRegistry),
-            splitsFactory,
-            modaBeneficiary,
-            catalogDeployer
-        );
+        releasesMock = new ReleasesMock();
+        vm.startPrank(catalogDeployer);
+        catalog.initialize(catalogName, catalogVersion, address(modaRegistry));
+        vm.stopPrank();
         membership.addMember(artist);
         modaRegistry.registerCatalog(catalogName, address(catalog), address(membership));
     }
@@ -44,15 +42,9 @@ contract CatalogTest is Test {
     function test_RevertWhen_isInitializedMoreThanOnce() public {
         setUp();
         vm.expectRevert(InvalidInitialization.selector);
-        catalog.initialize(
-            catalogName,
-            chainId,
-            catalogVersion,
-            address(modaRegistry),
-            splitsFactory,
-            modaBeneficiary,
-            catalogDeployer
-        );
+        vm.startPrank(catalogDeployer);
+        catalog.initialize(catalogName, catalogVersion, address(modaRegistry));
+        vm.stopPrank();
     }
 
     /// Track Registration
@@ -84,8 +76,8 @@ contract CatalogTest is Test {
     function test_trackRegistration() public {
         trackRegistrationSetUp();
         Catalog.RegisteredTrack memory track = catalog.getTrack(trackRegistrationData.trackId);
-        assertEq(uint256(track.trackStatus), uint256(ICatalog.TrackStatus.PENDING));
-        assertEq(track.artist, artist);
+        assertEq(uint256(track.trackStatus), uint256(ITrackRegistration.TrackStatus.PENDING));
+        assertEq(track.trackArtist, artist);
         assertEq(track.trackBeneficiary, trackRegistrationData.trackBeneficiary);
         assertEq(track.trackRegistrationHash, trackRegistrationData.trackRegistrationHash);
         assertEq(track.fingerprintHash, "");
@@ -121,8 +113,8 @@ contract CatalogTest is Test {
     function test_trackRegistrationAsManager() public {
         test_trackRegistrationAsManagerSetUp();
         Catalog.RegisteredTrack memory track = catalog.getTrack(trackRegistrationDataManager.trackId);
-        assertEq(uint256(track.trackStatus), uint256(ICatalog.TrackStatus.PENDING));
-        assertEq(track.artist, artist);
+        assertEq(uint256(track.trackStatus), uint256(ITrackRegistration.TrackStatus.PENDING));
+        assertEq(track.trackArtist, artist);
         assertEq(track.trackBeneficiary, trackRegistrationDataManager.trackBeneficiary);
         assertEq(track.trackRegistrationHash, trackRegistrationDataManager.trackRegistrationHash);
         assertEq(track.fingerprintHash, "");
@@ -163,8 +155,8 @@ contract CatalogTest is Test {
     function test_trackRegistrationWithAGoldRole() public {
         test_trackRegistrationWithAGoldRoleSetUp();
         Catalog.RegisteredTrack memory track = catalog.getTrack(trackRegistrationDataGoldRole.trackId);
-        assertEq(uint256(track.trackStatus), uint256(ICatalog.TrackStatus.VALIDATED));
-        assertEq(track.artist, trackRegistrationDataGoldRole.goldArtist);
+        assertEq(uint256(track.trackStatus), uint256(ITrackRegistration.TrackStatus.VALIDATED));
+        assertEq(track.trackArtist, trackRegistrationDataGoldRole.goldArtist);
         assertEq(track.trackBeneficiary, trackRegistrationDataGoldRole.trackBeneficiary);
         assertEq(track.trackRegistrationHash, trackRegistrationDataGoldRole.trackRegistrationHash);
         assertEq(track.fingerprintHash, "");
@@ -218,14 +210,14 @@ contract CatalogTest is Test {
     function setTrackStatusSetUp() public {
         trackRegistrationSetUp();
         modaRegistry.grantRole(keccak256("VERIFIER_ROLE"), address(this));
-        catalog.setTrackStatus(trackRegistrationData.trackId, ICatalog.TrackStatus.VALIDATED);
+        catalog.setTrackStatus(trackRegistrationData.trackId, ITrackRegistration.TrackStatus.VALIDATED);
     }
 
     function test_setTrackStatus() public {
         setTrackStatusSetUp();
         assertEq(
             uint256(catalog.getTrack(trackRegistrationData.trackId).trackStatus),
-            uint256(ICatalog.TrackStatus.VALIDATED)
+            uint256(ITrackRegistration.TrackStatus.VALIDATED)
         );
     }
 
@@ -236,7 +228,7 @@ contract CatalogTest is Test {
         address nonVerifier = address(0x9);
         vm.expectRevert(Catalog.VerifierRoleRequired.selector);
         vm.startPrank(nonVerifier);
-        catalog.setTrackStatus(trackRegistrationData.trackId, ICatalog.TrackStatus.VALIDATED);
+        catalog.setTrackStatus(trackRegistrationData.trackId, ITrackRegistration.TrackStatus.VALIDATED);
         vm.stopPrank();
     }
 
@@ -244,7 +236,7 @@ contract CatalogTest is Test {
         modaRegistry.grantRole(keccak256("VERIFIER_ROLE"), address(this));
         string memory unregisteredId = "unregisteredId";
         vm.expectRevert(Catalog.TrackIsNotRegistered.selector);
-        catalog.setTrackStatus(unregisteredId, ICatalog.TrackStatus.VALIDATED);
+        catalog.setTrackStatus(unregisteredId, ITrackRegistration.TrackStatus.VALIDATED);
     }
 
     /// Update other track data
@@ -287,15 +279,11 @@ contract CatalogTest is Test {
 
     struct RegisterReleasesContractData {
         address releasesRegistrar;
-        address releasesContract;
         address releasesOwner;
     }
 
-    RegisterReleasesContractData registerReleasesContractData = RegisterReleasesContractData({
-        releasesRegistrar: address(0x6),
-        releasesContract: address(0x7),
-        releasesOwner: address(0x8)
-    });
+    RegisterReleasesContractData registerReleasesContractData =
+        RegisterReleasesContractData({releasesRegistrar: address(0x6), releasesOwner: address(0x8)});
 
     function registerReleasesContractSetup() public {
         modaRegistry.grantRole(
@@ -303,7 +291,7 @@ contract CatalogTest is Test {
         );
         vm.startPrank(registerReleasesContractData.releasesRegistrar);
         catalog.registerReleasesContract(
-            registerReleasesContractData.releasesContract, registerReleasesContractData.releasesOwner
+            address(releasesMock), registerReleasesContractData.releasesOwner
         );
         vm.stopPrank();
     }
@@ -311,16 +299,15 @@ contract CatalogTest is Test {
     function test_registerReleasesContract() public {
         registerReleasesContractSetup();
         assertEq(
-            catalog.getReleasesOwner(registerReleasesContractData.releasesContract),
-            registerReleasesContractData.releasesOwner
+            catalog.getReleasesOwner(address(releasesMock)), registerReleasesContractData.releasesOwner
         );
     }
 
     function test_unregisterReleasesContract() public {
         registerReleasesContractSetup();
         vm.startPrank(catalogDeployer);
-        catalog.unregisterReleasesContract(registerReleasesContractData.releasesContract);
-        assertEq(catalog.getReleasesOwner(registerReleasesContractData.releasesContract), address(0));
+        catalog.unregisterReleasesContract(address(releasesMock));
+        assertEq(catalog.getReleasesOwner(address(releasesMock)), address(0));
         vm.stopPrank();
     }
 
@@ -331,7 +318,7 @@ contract CatalogTest is Test {
         vm.expectRevert(Catalog.ReleasesRegistrarRoleRequired.selector);
         vm.startPrank(nonReleasesRegistrar);
         catalog.registerReleasesContract(
-            registerReleasesContractData.releasesContract, registerReleasesContractData.releasesOwner
+            address(releasesMock), registerReleasesContractData.releasesOwner
         );
         vm.stopPrank();
     }
@@ -341,7 +328,7 @@ contract CatalogTest is Test {
         vm.expectRevert(Catalog.ReleasesContractIsAlreadyRegistered.selector);
         vm.startPrank(registerReleasesContractData.releasesRegistrar);
         catalog.registerReleasesContract(
-            registerReleasesContractData.releasesContract, registerReleasesContractData.releasesOwner
+            address(releasesMock), registerReleasesContractData.releasesOwner
         );
         vm.stopPrank();
     }
@@ -349,7 +336,7 @@ contract CatalogTest is Test {
     function test_RevertWhen_UnregisteringAnUnregisteredReleasesContract() public {
         vm.expectRevert(Catalog.ReleasesContractIsNotRegistered.selector);
         vm.startPrank(catalogDeployer);
-        catalog.unregisterReleasesContract(registerReleasesContractData.releasesContract);
+        catalog.unregisterReleasesContract(address(releasesMock));
         vm.stopPrank();
     }
 
@@ -360,46 +347,30 @@ contract CatalogTest is Test {
         registerReleasesContractSetup();
     }
 
-    function test_grantReleasesAccessSingle() public {
+    function test_setReleasesApproval() public {
         releasesTrackAccessSetup();
         vm.startPrank(artist);
-        catalog.grantReleasesAccessSingle(
-            trackRegistrationData.trackId, registerReleasesContractData.releasesContract, true
-        );
+        catalog.setReleasesApproval(trackRegistrationData.trackId, address(releasesMock), true);
         vm.stopPrank();
-        assertEq(
-            catalog.getReleasesAccessSingle(
-                trackRegistrationData.trackId, registerReleasesContractData.releasesContract
-            ),
-            true
-        );
+        assertEq(catalog.getReleasesApproval(trackRegistrationData.trackId, address(releasesMock)), true);
     }
 
-    function test_grantReleasesAccessAll() public {
+    function test_setReleasesApprovalForAll() public {
         releasesTrackAccessSetup();
         vm.startPrank(artist);
-        catalog.grantReleasesAccessAll(artist, registerReleasesContractData.releasesContract, true);
+        catalog.setReleasesApprovalForAll(artist, address(releasesMock), true);
         vm.stopPrank();
-        assertEq(
-            catalog.getReleasesAccessAll(artist, registerReleasesContractData.releasesContract), true
-        );
+        assertEq(catalog.getReleasesApprovalForAll(artist, address(releasesMock)), true);
     }
 
     function test_removeReleasesAccessSingle() public {
         releasesTrackAccessSetup();
         vm.startPrank(artist);
-        catalog.grantReleasesAccessSingle(
-            trackRegistrationData.trackId, registerReleasesContractData.releasesContract, true
-        );
-        catalog.grantReleasesAccessSingle(
-            trackRegistrationData.trackId, registerReleasesContractData.releasesContract, false
-        );
+        catalog.setReleasesApproval(trackRegistrationData.trackId, address(releasesMock), true);
+        catalog.setReleasesApproval(trackRegistrationData.trackId, address(releasesMock), false);
         vm.stopPrank();
         assertEq(
-            catalog.getReleasesAccessSingle(
-                trackRegistrationData.trackId, registerReleasesContractData.releasesContract
-            ),
-            false
+            catalog.getReleasesApproval(trackRegistrationData.trackId, address(releasesMock)), false
         );
     }
 
@@ -410,9 +381,7 @@ contract CatalogTest is Test {
         address nonArtist = address(0x9);
         vm.expectRevert(Catalog.MustBeArtistOrManager.selector);
         vm.startPrank(nonArtist);
-        catalog.grantReleasesAccessSingle(
-            trackRegistrationData.trackId, registerReleasesContractData.releasesContract, true
-        );
+        catalog.setReleasesApproval(trackRegistrationData.trackId, address(releasesMock), true);
         vm.stopPrank();
     }
 
@@ -421,9 +390,7 @@ contract CatalogTest is Test {
         address nonRegisteredReleasesContract = address(0x9);
         vm.expectRevert(Catalog.ReleasesContractIsNotRegistered.selector);
         vm.startPrank(artist);
-        catalog.grantReleasesAccessSingle(
-            trackRegistrationData.trackId, nonRegisteredReleasesContract, true
-        );
+        catalog.setReleasesApproval(trackRegistrationData.trackId, nonRegisteredReleasesContract, true);
         vm.stopPrank();
     }
 
@@ -432,7 +399,7 @@ contract CatalogTest is Test {
         address nonArtist = address(0x9);
         vm.expectRevert(Catalog.MustBeArtistOrManager.selector);
         vm.startPrank(nonArtist);
-        catalog.grantReleasesAccessAll(artist, registerReleasesContractData.releasesContract, true);
+        catalog.setReleasesApprovalForAll(artist, address(releasesMock), true);
         vm.stopPrank();
     }
 
@@ -441,7 +408,7 @@ contract CatalogTest is Test {
         address nonRegisteredReleasesContract = address(0x9);
         vm.expectRevert(Catalog.ReleasesContractIsNotRegistered.selector);
         vm.startPrank(artist);
-        catalog.grantReleasesAccessAll(artist, nonRegisteredReleasesContract, true);
+        catalog.setReleasesApprovalForAll(artist, nonRegisteredReleasesContract, true);
         vm.stopPrank();
     }
 
@@ -477,50 +444,44 @@ contract CatalogTest is Test {
         registeringReleaseData = RegisteringReleaseData({trackIds: trackIds, uri: "uri", tokenId: 1});
     }
 
-    function test_registerReleaseWithAccessAll() public {
+    function test_registerReleaseWithApprovalAll() public {
         registeringReleaseSetup();
         vm.startPrank(artist);
-        catalog.grantReleasesAccessAll(artist, registerReleasesContractData.releasesContract, true);
+        catalog.setReleasesApprovalForAll(artist, address(releasesMock), true);
         vm.stopPrank();
-        vm.startPrank(registerReleasesContractData.releasesContract);
+        vm.startPrank(address(releasesMock));
+        console2.logAddress(address(releasesMock));
+
         catalog.registerRelease(
             registeringReleaseData.trackIds, registeringReleaseData.uri, registeringReleaseData.tokenId
         );
         vm.stopPrank();
 
-        bytes32 releaseHash = catalog.getReleaseHash(
-            registerReleasesContractData.releasesContract, registeringReleaseData.tokenId
-        );
+        bytes32 releaseHash =
+            catalog.getReleaseHash(address(releasesMock), registeringReleaseData.tokenId);
         Catalog.RegisteredRelease memory registeredRelease = catalog.getRegisteredRelease(releaseHash);
-        assertEq(registeredRelease.releases, registerReleasesContractData.releasesContract);
+        assertEq(registeredRelease.releases, address(releasesMock));
         assertEq(registeredRelease.tokenId, registeringReleaseData.tokenId);
         assertEq(registeredRelease.trackIds[0], registeringReleaseData.trackIds[0]);
         assertEq(registeredRelease.trackIds[1], registeringReleaseData.trackIds[1]);
     }
 
-    function test_registerReleaseWithAccessSingle() public {
+    function test_registerReleaseWithApprovalSingle() public {
         registeringReleaseSetup();
         vm.startPrank(artist);
-        catalog.grantReleasesAccessSingle(
-            registeringReleaseData.trackIds[0], registerReleasesContractData.releasesContract, true
-        );
-        catalog.grantReleasesAccessSingle(
-            registeringReleaseData.trackIds[1], registerReleasesContractData.releasesContract, true
-        );
+        catalog.setReleasesApproval(registeringReleaseData.trackIds[0], address(releasesMock), true);
+        catalog.setReleasesApproval(registeringReleaseData.trackIds[1], address(releasesMock), true);
         vm.stopPrank();
-        assertEq(
-            catalog.getReleasesAccessAll(artist, registerReleasesContractData.releasesContract), false
-        );
-        vm.startPrank(registerReleasesContractData.releasesContract);
+        assertEq(catalog.getReleasesApprovalForAll(artist, address(releasesMock)), false);
+        vm.startPrank(address(releasesMock));
         catalog.registerRelease(
             registeringReleaseData.trackIds, registeringReleaseData.uri, registeringReleaseData.tokenId
         );
         vm.stopPrank();
-        bytes32 releaseHash = catalog.getReleaseHash(
-            registerReleasesContractData.releasesContract, registeringReleaseData.tokenId
-        );
+        bytes32 releaseHash =
+            catalog.getReleaseHash(address(releasesMock), registeringReleaseData.tokenId);
         Catalog.RegisteredRelease memory registeredRelease = catalog.getRegisteredRelease(releaseHash);
-        assertEq(registeredRelease.releases, registerReleasesContractData.releasesContract);
+        assertEq(registeredRelease.releases, address(releasesMock));
         assertEq(registeredRelease.tokenId, registeringReleaseData.tokenId);
         assertEq(registeredRelease.trackIds[0], registeringReleaseData.trackIds[0]);
         assertEq(registeredRelease.trackIds[1], registeringReleaseData.trackIds[1]);
@@ -529,17 +490,16 @@ contract CatalogTest is Test {
     function test_unregisteringRelease() public {
         registeringReleaseSetup();
         vm.startPrank(artist);
-        catalog.grantReleasesAccessAll(artist, registerReleasesContractData.releasesContract, true);
+        catalog.setReleasesApprovalForAll(artist, address(releasesMock), true);
         vm.stopPrank();
-        vm.startPrank(registerReleasesContractData.releasesContract);
+        vm.startPrank(address(releasesMock));
         catalog.registerRelease(
             registeringReleaseData.trackIds, registeringReleaseData.uri, registeringReleaseData.tokenId
         );
         vm.stopPrank();
 
-        bytes32 releaseHash = catalog.getReleaseHash(
-            registerReleasesContractData.releasesContract, registeringReleaseData.tokenId
-        );
+        bytes32 releaseHash =
+            catalog.getReleaseHash(address(releasesMock), registeringReleaseData.tokenId);
         vm.startPrank(catalogDeployer);
         catalog.unregisterRelease(releaseHash);
         assertEq(catalog.getRegisteredRelease(releaseHash).releases, address(0));
@@ -566,7 +526,7 @@ contract CatalogTest is Test {
         unregisteredTrackIds[0] = unregisteredTrackId;
         unregisteredTrackIds[1] = unregisteredTrackId;
         vm.expectRevert(Catalog.TrackIsNotRegistered.selector);
-        vm.startPrank(registerReleasesContractData.releasesContract);
+        vm.startPrank(address(releasesMock));
         catalog.registerRelease(
             unregisteredTrackIds, registeringReleaseData.uri, registeringReleaseData.tokenId
         );
@@ -576,10 +536,12 @@ contract CatalogTest is Test {
     function test_RevertWhen_TrackIsNotValidated() public {
         registeringReleaseSetup();
         modaRegistry.grantRole(keccak256("VERIFIER_ROLE"), address(this));
-        catalog.setTrackStatus(registeringReleaseData.trackIds[0], ICatalog.TrackStatus.INVALIDATED);
+        catalog.setTrackStatus(
+            registeringReleaseData.trackIds[0], ITrackRegistration.TrackStatus.INVALIDATED
+        );
 
         vm.expectRevert(Catalog.TrackIsInvalid.selector);
-        vm.startPrank(registerReleasesContractData.releasesContract);
+        vm.startPrank(address(releasesMock));
         catalog.registerRelease(
             registeringReleaseData.trackIds, registeringReleaseData.uri, registeringReleaseData.tokenId
         );
@@ -589,10 +551,10 @@ contract CatalogTest is Test {
     function test_RevertWhen_ReleasesContractDoesNotHavePermission() public {
         registeringReleaseSetup();
         vm.startPrank(artist);
-        catalog.grantReleasesAccessAll(artist, registerReleasesContractData.releasesContract, false);
+        catalog.setReleasesApprovalForAll(artist, address(releasesMock), false);
         vm.stopPrank();
         vm.expectRevert(Catalog.ReleasesContractDoesNotHavePermission.selector);
-        vm.startPrank(registerReleasesContractData.releasesContract);
+        vm.startPrank(address(releasesMock));
         catalog.registerRelease(
             registeringReleaseData.trackIds, registeringReleaseData.uri, registeringReleaseData.tokenId
         );
@@ -602,15 +564,15 @@ contract CatalogTest is Test {
     function test_RevertWhen_ReleaseIsADuplicate() public {
         registeringReleaseSetup();
         vm.startPrank(artist);
-        catalog.grantReleasesAccessAll(artist, registerReleasesContractData.releasesContract, true);
+        catalog.setReleasesApprovalForAll(artist, address(releasesMock), true);
         vm.stopPrank();
-        vm.startPrank(registerReleasesContractData.releasesContract);
+        vm.startPrank(address(releasesMock));
         catalog.registerRelease(
             registeringReleaseData.trackIds, registeringReleaseData.uri, registeringReleaseData.tokenId
         );
         vm.stopPrank();
         vm.expectRevert(Catalog.ReleaseAlreadyCreated.selector);
-        vm.startPrank(registerReleasesContractData.releasesContract);
+        vm.startPrank(address(releasesMock));
         catalog.registerRelease(
             registeringReleaseData.trackIds, registeringReleaseData.uri, registeringReleaseData.tokenId
         );
@@ -622,16 +584,15 @@ contract CatalogTest is Test {
     function test_getTracksFromRelease() public {
         registeringReleaseSetup();
         vm.startPrank(artist);
-        catalog.grantReleasesAccessAll(artist, registerReleasesContractData.releasesContract, true);
+        catalog.setReleasesApprovalForAll(artist, address(releasesMock), true);
         vm.stopPrank();
-        vm.startPrank(registerReleasesContractData.releasesContract);
+        vm.startPrank(address(releasesMock));
         catalog.registerRelease(
             registeringReleaseData.trackIds, registeringReleaseData.uri, registeringReleaseData.tokenId
         );
         vm.stopPrank();
-        string[] memory trackIds = catalog.getReleaseTracks(
-            registerReleasesContractData.releasesContract, registeringReleaseData.tokenId
-        );
+        string[] memory trackIds =
+            catalog.getReleaseTracks(address(releasesMock), registeringReleaseData.tokenId);
         assertEq(trackIds[0], registeringReleaseData.trackIds[0]);
         assertEq(trackIds[1], registeringReleaseData.trackIds[1]);
     }
