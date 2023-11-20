@@ -5,10 +5,13 @@ import "forge-std/Test.sol";
 import {Profile} from "../src/Profile.sol";
 import {IProfile} from "../src/interfaces/IProfile.sol";
 import {IERC4906} from "../src/interfaces/IERC4906.sol";
+import {ISimpleOwnership} from "../src/interfaces/ISimpleOwnership.sol";
 import {IERC165, ERC165} from "@openzeppelin/contracts/utils/introspection/ERC165.sol";
 import {IERC721Metadata} from "@openzeppelin/contracts/interfaces/IERC721Metadata.sol";
 import {IERC721} from "@openzeppelin/contracts/interfaces/IERC721.sol";
 import {IERC2981} from "@openzeppelin/contracts/interfaces/IERC2981.sol";
+import {MockOwnedContract} from "./mocks/MockOwnedContract.sol";
+import {MockAccessControlled} from "./mocks/MockAccessControlled.sol";
 
 contract ProfileTest is Test {
     Profile public profile;
@@ -21,6 +24,8 @@ contract ProfileTest is Test {
 
     string public firstUri = "ipfs://<CID-1>";
     string public secondUri = "ipfs://<CID-2>";
+
+    bytes32 public constant DEFAULT_ADMIN_ROLE = 0x00;
 
     event Transfer(address indexed from, address indexed to, uint256 indexed amount);
     event MetadataUpdate(uint256 _tokenId);
@@ -80,6 +85,93 @@ contract ProfileTest is Test {
         assertEq(profile.totalSupply(), 2);
     }
 
+    // mintFor
+
+    function test_mintFor_as_owner() public {
+        uint256 tokenId = 1;
+        address kontract = address(new MockOwnedContract(artist));
+
+        vm.startPrank(artist);
+        profile.mintFor(kontract, firstUri);
+        vm.stopPrank();
+
+        assertEq(profile.accountUri(kontract), firstUri);
+        assertEq(profile.tokenURI(tokenId), firstUri);
+        assertEq(profile.ownerOf(tokenId), kontract);
+        assertEq(profile.totalSupply(), tokenId);
+    }
+
+    function test_mintFor_as_IAccessControl_DEFAULT_ADMIN_ROLE() public {
+        uint256 tokenId = 1;
+        address kontract = address(new MockAccessControlled(artist));
+
+        vm.startPrank(artist);
+        profile.mintFor(kontract, firstUri);
+        vm.stopPrank();
+
+        assertEq(profile.accountUri(kontract), firstUri);
+        assertEq(profile.tokenURI(tokenId), firstUri);
+        assertEq(profile.ownerOf(tokenId), kontract);
+        assertEq(profile.totalSupply(), tokenId);
+    }
+
+    function test_mintFor_without_DEFAULT_ADMIN_ROLE() public {
+        address labelControlledContract = address(new MockAccessControlled(label));
+
+        vm.startPrank(artist);
+        vm.expectRevert(Profile.CallerNotAuthorized.selector);
+        profile.mintFor(labelControlledContract, firstUri);
+        vm.stopPrank();
+    }
+
+    function test_mintFor_without_ownership() public {
+        address labelControlledContract = address(new MockOwnedContract(label));
+
+        vm.startPrank(artist);
+        vm.expectRevert(Profile.CallerNotAuthorized.selector);
+        profile.mintFor(labelControlledContract, firstUri);
+        vm.stopPrank();
+    }
+
+    function test_mintFor_reverts_for_duplicates() public {
+        address kontract = address(new MockOwnedContract(artist));
+
+        vm.startPrank(artist);
+        profile.mintFor(kontract, firstUri);
+        assertEq(profile.accountUri(kontract), firstUri);
+
+        vm.expectRevert(Profile.ProfileAlreadyMinted.selector);
+        profile.mintFor(kontract, firstUri);
+
+        vm.stopPrank();
+    }
+
+    function test_mintFor_emits_event() public {
+        address kontract = address(new MockOwnedContract(artist));
+
+        vm.startPrank(artist);
+        uint256 tokenId = 1;
+
+        vm.expectEmit(true, true, true, false);
+        emit Transfer(address(profile), kontract, tokenId);
+        profile.mintFor(kontract, firstUri);
+
+        vm.stopPrank();
+    }
+
+    function test_mintFor_increments_total_supply() public {
+        address kontract = address(new MockOwnedContract(artist));
+
+        vm.startPrank(artist);
+
+        profile.mint(firstUri);
+        assertEq(profile.totalSupply(), 1);
+        profile.mintFor(kontract, secondUri);
+        assertEq(profile.totalSupply(), 2);
+
+        vm.stopPrank();
+    }
+
     // totalSupply
 
     function test_totalSupply_returns_the_token_count() public {
@@ -120,6 +212,82 @@ contract ProfileTest is Test {
         vm.expectEmit(true, true, true, false);
         emit MetadataUpdate(tokenId);
         profile.updateProfile(secondUri);
+    }
+
+    // updateProfileFor
+
+    function test_updateProfileFor_with_ownership_sets_new_uri() public {
+        address kontract = address(new MockOwnedContract(artist));
+        uint256 tokenId = 1;
+
+        vm.startPrank(artist);
+
+        profile.mintFor(kontract, firstUri);
+        assertEq(profile.tokenURI(tokenId), firstUri);
+        assertEq(profile.accountUri(kontract), firstUri);
+
+        profile.updateProfileFor(kontract, secondUri);
+        assertEq(profile.tokenURI(tokenId), secondUri);
+        assertEq(profile.accountUri(kontract), secondUri);
+
+        vm.stopPrank();
+    }
+
+    function test_updateProfileFor_with_AccessControl_DEFAULT_ADMIN_ROLE() public {
+        address kontract = address(new MockAccessControlled(artist));
+        uint256 tokenId = 1;
+
+        vm.startPrank(artist);
+
+        profile.mintFor(kontract, firstUri);
+        assertEq(profile.tokenURI(tokenId), firstUri);
+        assertEq(profile.accountUri(kontract), firstUri);
+
+        profile.updateProfileFor(kontract, secondUri);
+        assertEq(profile.tokenURI(tokenId), secondUri);
+        assertEq(profile.accountUri(kontract), secondUri);
+
+        vm.stopPrank();
+    }
+
+    function test_updateProfileFor_reverts_when_unauthorized() public {
+        address kontract = address(new MockAccessControlled(artist));
+
+        vm.startPrank(artist);
+        profile.mintFor(kontract, firstUri);
+        assertEq(profile.accountUri(kontract), firstUri);
+        vm.stopPrank();
+
+        vm.startPrank(label);
+        vm.expectRevert(Profile.CallerNotAuthorized.selector);
+        profile.updateProfileFor(kontract, secondUri);
+
+        vm.stopPrank();
+    }
+
+    function test_updateProfileFor_reverts_for_nonexisting_profile() public {
+        address kontract = address(new MockAccessControlled(artist));
+
+        vm.startPrank(artist);
+        vm.expectRevert(Profile.ProfileDoesNotExist.selector);
+        profile.updateProfileFor(kontract, firstUri);
+
+        vm.stopPrank();
+    }
+
+    function test_updateProfileFor_emits_MetadataUpdate() public {
+        address kontract = address(new MockAccessControlled(artist));
+        uint256 tokenId = 1;
+
+        vm.startPrank(artist);
+
+        profile.mintFor(kontract, firstUri);
+        assertEq(profile.accountUri(kontract), firstUri);
+        vm.expectEmit(true, true, true, false);
+        emit MetadataUpdate(tokenId);
+        profile.updateProfileFor(kontract, firstUri);
+
+        vm.stopPrank();
     }
 
     // accountUri

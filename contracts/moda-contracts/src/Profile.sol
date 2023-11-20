@@ -5,21 +5,50 @@ import {IERC165, ERC165} from "@openzeppelin/contracts/utils/introspection/ERC16
 import {IERC4906} from "./interfaces/IERC4906.sol";
 import {IERC721Metadata} from "@openzeppelin/contracts/interfaces/IERC721Metadata.sol";
 import {IERC721} from "@openzeppelin/contracts/interfaces/IERC721.sol";
+import {IAccessControl} from "@openzeppelin/contracts/access/IAccessControl.sol";
 import {IProfile} from "./interfaces/IProfile.sol";
+import {ISimpleOwnership} from "./interfaces/ISimpleOwnership.sol";
 
 contract Profile is IProfile, IERC721, IERC721Metadata, IERC4906, ERC165 {
     string private _name;
     string private _symbol;
-
     uint256 public totalSupply = 0;
 
     mapping(uint256 => address) private _tokenToAccount;
     mapping(address => uint256) private _accountToToken;
     mapping(uint256 => string) private _tokenToUri;
 
+    bytes32 private constant _DEFAULT_ADMIN_ROLE = 0x00;
+
     error ProfileAlreadyMinted();
     error ProfileDoesNotExist();
     error ProfilesAreSoulBound();
+    error CallerNotAuthorized();
+
+    /// @dev Check if the caller is an owner or admin of a contract.
+    /// @param kontract The address of a contract that may or may not use OpenZeppelin's Ownership
+    /// or AccessControl contracts.
+    modifier requireAuthority(address kontract) {
+        bool hasAuthority;
+
+        try ISimpleOwnership(kontract).owner() returns (address actualOwner) {
+            if (actualOwner == msg.sender) {
+                hasAuthority = true;
+            }
+        } catch {}
+
+        if (!hasAuthority) {
+            try IAccessControl(kontract).hasRole(_DEFAULT_ADMIN_ROLE, msg.sender) returns (bool isAdmin) {
+                if (isAdmin) {
+                    hasAuthority = true;
+                }
+            } catch {}
+        }
+
+        if (!hasAuthority) revert CallerNotAuthorized();
+
+        _;
+    }
 
     constructor(string memory name_, string memory symbol_) {
         _name = name_;
@@ -41,10 +70,36 @@ contract Profile is IProfile, IERC721, IERC721Metadata, IERC4906, ERC165 {
     }
 
     /**
+     * @dev See {IProfile-mintFor}.
+     */
+    function mintFor(address kontract, string memory uri) external requireAuthority(kontract) {
+        if (_accountToToken[kontract] != 0) revert ProfileAlreadyMinted();
+
+        totalSupply++;
+        _accountToToken[kontract] = totalSupply;
+        _tokenToAccount[totalSupply] = kontract;
+        _tokenToUri[totalSupply] = uri;
+
+        emit Transfer(address(this), kontract, totalSupply);
+    }
+
+    /**
      * @dev See {IProfile-updateProfile}.
      */
     function updateProfile(string memory uri) external {
         uint256 tokenId = _accountToToken[msg.sender];
+        if (tokenId == 0) revert ProfileDoesNotExist();
+
+        _tokenToUri[tokenId] = uri;
+
+        emit MetadataUpdate(tokenId);
+    }
+
+    /**
+     * @dev See {IProfile-updateProfileFor}.
+     */
+    function updateProfileFor(address kontract, string memory uri) external requireAuthority(kontract) {
+        uint256 tokenId = _accountToToken[kontract];
         if (tokenId == 0) revert ProfileDoesNotExist();
 
         _tokenToUri[tokenId] = uri;
