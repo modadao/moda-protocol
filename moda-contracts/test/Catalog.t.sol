@@ -34,7 +34,7 @@ contract CatalogTest is Test {
         catalog.initialize(catalogName, catalogVersion, address(modaRegistry));
         vm.stopPrank();
         membership.addMember(artist);
-        modaRegistry.registerCatalog(catalogName, address(catalog), address(membership));
+        modaRegistry.registerCatalog(catalogName, address(catalog), membership);
     }
 
     /// Initialization revert

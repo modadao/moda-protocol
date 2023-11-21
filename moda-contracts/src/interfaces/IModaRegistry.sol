@@ -63,9 +63,9 @@ interface IModaRegistry is IAccessControl {
      * @notice Only a default admin can call this
      * @param name - The name of the catalog
      * @param catalog - The address of the catalog
-     * @param membership - The address of the membership contract
+     * @param membership - A contract address that implements IMembership
      */
-    function registerCatalog(string calldata name, address catalog, address membership) external;
+    function registerCatalog(string calldata name, address catalog, IMembership membership) external;
 
     /**
      * @dev Unregisters a deprecated or malicious catalog

@@ -51,9 +51,7 @@ contract ModaRegistry is IModaRegistry, IOfficialModaContracts, AccessControlEnu
         uint256 index,
         IMembership membership
     ) external onlyRole(DEFAULT_ADMIN_ROLE) {
-        if (!membership.supportsInterface(type(IMembership).interfaceId)) {
-            revert ContractMustSupportIMembership();
-        }
+        _requireValidMembership(membership);
 
         _catalogs[index].membership = address(membership);
         emit CatalogMembershipChanged(_catalogs[index].name, address(membership));
@@ -63,17 +61,17 @@ contract ModaRegistry is IModaRegistry, IOfficialModaContracts, AccessControlEnu
     function registerCatalog(
         string calldata name,
         address catalog,
-        address membership
+        IMembership membership
     ) external onlyRole(DEFAULT_ADMIN_ROLE) {
         if (catalog == address(0)) revert AddressCannotBeZero();
-        if (_isCatalogRegistered[catalog]) {
-            revert CatalogAlreadyRegistered();
-        }
-        _catalogs.push(Catalog({name: name, catalog: catalog, membership: membership}));
+        if (_isCatalogRegistered[catalog]) revert CatalogAlreadyRegistered();
+        _requireValidMembership(membership);
+
+        _catalogs.push(Catalog({name: name, catalog: catalog, membership: address(membership)}));
         _isCatalogRegistered[catalog] = true;
 
         emit CatalogRegistered(name, catalog);
-        emit CatalogMembershipChanged(name, membership);
+        emit CatalogMembershipChanged(name, address(membership));
     }
 
     /// @inheritdoc IModaRegistry
@@ -163,5 +161,11 @@ contract ModaRegistry is IModaRegistry, IOfficialModaContracts, AccessControlEnu
     /// @inheritdoc IOfficialModaContracts
     function getSplitsFactory() external view returns (address) {
         return _splitsFactory;
+    }
+
+    function _requireValidMembership(IMembership membership) private view {
+        if (!membership.supportsInterface(type(IMembership).interfaceId)) {
+            revert ContractMustSupportIMembership();
+        }
     }
 }
