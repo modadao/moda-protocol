@@ -58,7 +58,7 @@ contract Profile is IProfile, IERC721, IERC721Metadata, IERC4906, ERC165 {
     /**
      * @dev See {IProfile-mint}.
      */
-    function mint(string memory uri) external {
+    function mint(string calldata uri) external {
         if (_accountToToken[msg.sender] != 0) revert ProfileAlreadyMinted();
 
         totalSupply++;
@@ -72,7 +72,7 @@ contract Profile is IProfile, IERC721, IERC721Metadata, IERC4906, ERC165 {
     /**
      * @dev See {IProfile-mintFor}.
      */
-    function mintFor(address kontract, string memory uri) external requireAuthority(kontract) {
+    function mintFor(address kontract, string calldata uri) external requireAuthority(kontract) {
         if (_accountToToken[kontract] != 0) revert ProfileAlreadyMinted();
 
         totalSupply++;
@@ -86,7 +86,7 @@ contract Profile is IProfile, IERC721, IERC721Metadata, IERC4906, ERC165 {
     /**
      * @dev See {IProfile-updateProfile}.
      */
-    function updateProfile(string memory uri) external {
+    function updateProfile(string calldata uri) external {
         uint256 tokenId = _accountToToken[msg.sender];
         if (tokenId == 0) revert ProfileDoesNotExist();
 
@@ -98,7 +98,7 @@ contract Profile is IProfile, IERC721, IERC721Metadata, IERC4906, ERC165 {
     /**
      * @dev See {IProfile-updateProfileFor}.
      */
-    function updateProfileFor(address kontract, string memory uri) external requireAuthority(kontract) {
+    function updateProfileFor(address kontract, string calldata uri) external requireAuthority(kontract) {
         uint256 tokenId = _accountToToken[kontract];
         if (tokenId == 0) revert ProfileDoesNotExist();
 
