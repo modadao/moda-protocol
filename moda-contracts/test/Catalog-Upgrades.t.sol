@@ -44,20 +44,20 @@ contract CatalogUpgradesTest is Test {
         assertEq(proxyBeaconAddress, beacon);
     }
 
-    function upgradingBeaconWithCatalogV2Setup() public {
+    function upgrading_Beacon_With_CatalogV2_setUp() public {
         vm.startPrank(modaAdmin);
         Upgrades.upgradeBeacon(beacon, "CatalogV2Mock.sol");
         vm.stopPrank();
     }
 
-    function test_implementationAddressUpdated() public {
-        upgradingBeaconWithCatalogV2Setup();
+    function test_implementation_Address_Updated() public {
+        upgrading_Beacon_With_CatalogV2_setUp();
         catalogImplementationV2 = IBeacon(beacon).implementation();
         assertFalse(catalogImplementation == catalogImplementationV2);
     }
 
-    function test_proxyCanCallUpdatedCatalog() public {
-        upgradingBeaconWithCatalogV2Setup();
+    function test_proxy_Calling_Updated_Catalog() public {
+        upgrading_Beacon_With_CatalogV2_setUp();
         CatalogV2Mock(catalogProxy).setTestingUpgradeVariable("upgradeTest");
         string memory upgradeTest = CatalogV2Mock(catalogProxy).getTestingUpgradeVariable();
         assertEq(upgradeTest, "upgradeTest");

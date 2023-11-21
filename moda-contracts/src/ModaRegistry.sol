@@ -89,6 +89,10 @@ contract ModaRegistry is IModaRegistry, IOfficialModaContracts, AccessControlEnu
         catalog.membership = address(0);
     }
 
+    function isCatalogRegistered(address catalog) external view returns (bool) {
+        return _isCatalogRegistered[catalog];
+    }
+
     /// @inheritdoc IModaRegistry
     function getCatalogInfo(uint256 index) external view returns (Catalog memory) {
         return _catalogs[index];

@@ -113,9 +113,10 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
         );
         $._trackIds[trackRegistrationHash] = id;
 
-        bool isGoldRole = IModaRegistry($._modaRegistry).hasRole(keccak256("GOLD_ROLE"), msg.sender);
+        bool hasAutoVerifiedRole =
+            IModaRegistry($._modaRegistry).hasRole(keccak256("AUTO_VERIFIED_ROLE"), msg.sender);
 
-        TrackStatus status = isGoldRole ? TrackStatus.VALIDATED : TrackStatus.PENDING;
+        TrackStatus status = hasAutoVerifiedRole ? TrackStatus.VALIDATED : TrackStatus.PENDING;
 
         $._registeredTracks[id] =
             RegisteredTrack(status, artist, trackBeneficiary, trackRegistrationHash, "", "", address(0));
@@ -338,7 +339,7 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
             _requireTrackIsValid(trackIds[i]);
 
             if (!hasFullPermission && !releasesOpen) {
-                _requireReleasesContractHasPermission(trackIds[i]);
+                _requireReleasesContractHasApproval(trackIds[i]);
             }
 
             $._releaseTracks[msg.sender][tokenId].push(trackIds[i]);
@@ -480,7 +481,7 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
      * @dev Checks the track has been added to a Releases contract
      * @param trackId The id of the track
      */
-    function _requireReleasesContractHasPermission(string calldata trackId) internal view {
+    function _requireReleasesContractHasApproval(string calldata trackId) internal view {
         CatalogStorage storage $ = _getCatalogStorage();
 
         if (!$._singleTrackReleasesPermission[trackId][msg.sender]) {
