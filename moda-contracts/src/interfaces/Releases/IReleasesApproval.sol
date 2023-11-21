@@ -28,7 +28,7 @@ interface IReleasesApproval {
 
     /**
      * @dev Add or revoke approval for a Releases contract to release a track
-     * @param trackId - The track id of the track
+     * @param trackId - The ID of the track
      * @param releases - The address of the Releases contract
      * @param hasApproval - The approval to set true/false
      */

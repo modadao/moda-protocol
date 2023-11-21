@@ -2,9 +2,7 @@
 pragma solidity 0.8.21;
 
 interface ITrackRegistration {
-    /**
-     * @dev Emitted when a track is registered
-     */
+    ///  @dev Emitted when a track is registered
     event TrackRegistered(string trackRegistrationHash, string trackId, address indexed trackOwner);
 
     /**
@@ -16,9 +14,7 @@ interface ITrackRegistration {
         string trackId, string newTrackRegistrationHash, address indexed trackOwner
     );
 
-    /**
-     * @dev Emitted whenever a field in RegisterTrack is updated
-     */
+    /// @dev Emitted whenever a field in RegisterTrack is updated
     event TrackUpdated(
         TrackStatus indexed trackStatus,
         address indexed trackArtist,
@@ -28,10 +24,8 @@ interface ITrackRegistration {
         string validationHash,
         address trackVerifier
     );
-    /**
-     * @dev The registration state of the track (pending, validated, invalidated)
-     */
 
+    /// @dev The registration state of the track (pending, validated, invalidated)
     enum TrackStatus {
         PENDING,
         VALIDATED,

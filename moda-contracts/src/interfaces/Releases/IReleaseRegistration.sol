@@ -3,14 +3,12 @@ pragma solidity 0.8.21;
 
 interface IReleaseRegistration {
     /**
-     * @dev Emitted when a release is registered, intitiated by the Releases contract
+     * @dev Emitted when a release is registered, initiated by the Releases contract
      * when a release is successfully created
      */
     event ReleaseRegistered(string[] trackIds, address releases, uint256 tokenId);
 
-    /**
-     * @dev Emitted when a release is unregistered
-     */
+    /// @dev Emitted when a release is unregistered
     event ReleaseUnregistered(bytes32 releaseHash);
 
     /**

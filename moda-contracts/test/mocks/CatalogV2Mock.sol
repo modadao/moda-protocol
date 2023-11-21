@@ -1,26 +1,20 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.21;
 
+import {ICatalog} from "../../src/interfaces/ICatalog.sol";
 import {IVersionInfo} from "../../src/interfaces/IVersionInfo.sol";
 import {ITrackRegistration} from "../../src/interfaces/ITrackRegistration.sol";
-import {IReleasesRegistration} from "../../src/interfaces/IReleasesRegistration.sol";
-import {IReleaseRegistration} from "../../src/interfaces/IReleaseRegistration.sol";
-import {IReleasesApproval} from "../../src/interfaces/IReleasesApproval.sol";
+import {IReleasesRegistration} from "../../src/interfaces/Releases/IReleasesRegistration.sol";
+import {IReleaseRegistration} from "../../src/interfaces/Releases/IReleaseRegistration.sol";
+import {IReleasesApproval} from "../../src/interfaces/Releases/IReleasesApproval.sol";
 import {IModaRegistry} from "../../src/interfaces/IModaRegistry.sol";
 import {IOfficialModaContracts} from "../../src/interfaces/IOfficialModaContracts.sol";
-import {IReleases} from "../../src/interfaces/IReleases.sol";
+import {IReleases} from "../../src/interfaces/Releases/IReleases.sol";
 import "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol";
 import {Strings} from "@openzeppelin/contracts/utils/Strings.sol";
 
 /// @custom:oz-upgrades-from Catalog
-contract CatalogV2Mock is
-    IVersionInfo,
-    ITrackRegistration,
-    IReleasesRegistration,
-    IReleaseRegistration,
-    IReleasesApproval,
-    AccessControlUpgradeable
-{
+contract CatalogV2Mock is ICatalog, AccessControlUpgradeable {
     /// State Variables
 
     /// @custom:storage-location erc7201:moda.storage.Catalog

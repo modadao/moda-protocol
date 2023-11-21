@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.21;
 
-import {IReleases} from "../../src/interfaces/IReleases.sol";
+import {IReleases} from "../../src/interfaces/Releases/IReleases.sol";
 
 contract ReleasesMock is IReleases {
     bool public isOpen = false;

@@ -5,11 +5,11 @@ import {Test, console2} from "forge-std/Test.sol";
 import {IModaRegistry} from "../src/interfaces/IModaRegistry.sol";
 import {ModaRegistry} from "../src/ModaRegistry.sol";
 import {Membership} from "../test/mocks/MembershipMock.sol";
-import {FaultyMembership} from "../test/mocks/FaultyMembership.sol";
+import {FaultyMembershipMock} from "../test/mocks/FaultyMembershipMock.sol";
 
 contract ModaRegistryTest is Test {
     Membership public membership;
-    FaultyMembership public faultyMembership;
+    FaultyMembershipMock public faultyMembership;
     ModaRegistry public modaRegistry;
 
     address public user = address(0x1);
@@ -22,7 +22,7 @@ contract ModaRegistryTest is Test {
     function setUp() public {
         membership = new Membership();
         modaRegistry = new ModaRegistry();
-        faultyMembership = new FaultyMembership();
+        faultyMembership = new FaultyMembershipMock();
     }
 
     /// Membership
@@ -125,14 +125,16 @@ contract ModaRegistryTest is Test {
 
     function test_addManagers() public {
         artistManagementSetUp();
+
         bool isManagerOne = modaRegistry.isManager(user, artistManagementData.managerOne);
         bool isManagerTwo = modaRegistry.isManager(user, artistManagementData.managerTwo);
-        assertTrue(isManagerOne);
-        assertTrue(isManagerTwo);
         uint256 managerCount = modaRegistry.getManagerCount(user);
-        assertEq(managerCount, 2);
         address managerOneAddress = modaRegistry.getManager(user, 0);
         address managerTwoAddress = modaRegistry.getManager(user, 1);
+
+        assertTrue(isManagerOne);
+        assertTrue(isManagerTwo);
+        assertEq(managerCount, 2);
         assertEq(managerOneAddress, artistManagementData.managerOne);
         assertEq(managerTwoAddress, artistManagementData.managerTwo);
     }

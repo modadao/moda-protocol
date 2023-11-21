@@ -2,15 +2,12 @@
 pragma solidity 0.8.21;
 
 interface IReleasesRegistration {
-    /**
-     * @dev Emitted when a Releases contract is registered
-     */
+    /// @dev Emitted when a Releases contract is registered
     event ReleasesRegistered(address releases, address indexed releasesOwner);
 
-    /**
-     * @dev Emitted when a Releases contract is unregistered
-     */
+    /// @dev Emitted when a Releases contract is unregistered
     event ReleasesUnregistered(address releases, address indexed releasesOwner);
+
     /**
      * @dev Registers a Releases contract, a release can only be created from registered
      * Releases contract and only tokens from registered Releases contract can be
@@ -19,7 +16,6 @@ interface IReleasesRegistration {
      * @param releases - The address of the Releases contract
      * @param releasesOwner - The owner of the Releases contract
      */
-
     function registerReleasesContract(address releases, address releasesOwner) external;
 
     /**

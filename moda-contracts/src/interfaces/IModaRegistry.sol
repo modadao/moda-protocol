@@ -5,39 +5,25 @@ import {IAccessControl} from "@openzeppelin/contracts/access/IAccessControl.sol"
 import {IMembership} from "./IMembership.sol";
 
 interface IModaRegistry is IAccessControl {
-    /**
-     * @dev Emitted when a catalog owner changes the membership contract
-     */
+    /// @dev Emitted when a catalog owner changes the membership contract
     event CatalogMembershipChanged(string name, address indexed membership);
 
-    /**
-     * @dev Emitted when a catalog is registered by an organization
-     */
+    /// @dev Emitted when a catalog is registered by an organization
     event CatalogRegistered(string name, address indexed catalog);
 
-    /**
-     * @dev Emitted when a catalog is unregistered by an organization
-     */
+    /// @dev Emitted when a catalog is unregistered by an organization or MODA
     event CatalogUnregistered(string name, address indexed catalog);
 
-    /**
-     * @dev Emitted when a manager is added by an artist
-     */
+    /// @dev Emitted when a manager is added by an artist
     event ManagerAdded(address indexed artist, address indexed manager);
 
-    /**
-     * @dev Emitted when a manager is removed by an artist
-     */
+    /// @dev Emitted when a manager is removed by an artist
     event ManagerRemoved(address indexed artist, address indexed manager);
 
-    /**
-     * @dev Emitted when the treasury fee is changed by a default admin
-     */
+    /// @dev Emitted when the treasury fee is changed by a default admin
     event TreasuryFeeChanged(uint256 oldFee, uint256 newFee);
 
-    /**
-     * @dev Emitted when the treasury address is changed by a default admin
-     */
+    /// @dev Emitted when the treasury address is changed by a default admin
     event TreasuryChanged(address oldTreasury, address newTreasury);
 
     /**
@@ -52,7 +38,7 @@ interface IModaRegistry is IAccessControl {
         address membership;
     }
 
-    /// Membership
+    // Membership
 
     /**
      * @dev Checks if the user is a member of a particular catalog.
@@ -70,7 +56,7 @@ interface IModaRegistry is IAccessControl {
      */
     function setCatalogMembership(uint256 index, IMembership membership) external;
 
-    /// Catalogs
+    // Catalogs
 
     /**
      * @dev Registers a new catalog
@@ -94,12 +80,10 @@ interface IModaRegistry is IAccessControl {
      */
     function getCatalogInfo(uint256 index) external view returns (Catalog memory);
 
-    /**
-     * @dev Returns the total number of catalogs
-     */
+    /// @dev Returns the total number of catalogs
     function getCatalogCount() external view returns (uint256);
 
-    /// Artist Management
+    // Artist Management
 
     /**
      * @dev Grants a manager role to a list of addresses for a particular artist caller
@@ -133,7 +117,7 @@ interface IModaRegistry is IAccessControl {
      */
     function isManager(address artist, address who) external view returns (bool);
 
-    /// Treasury
+    // Treasury
 
     /**
      * @dev Sets the numerator for calculating the percentage of fees to be sent to the Moda Treasury
@@ -150,9 +134,7 @@ interface IModaRegistry is IAccessControl {
      */
     function setTreasury(address treasury) external;
 
-    /**
-     * @dev Returns the Treasury fee percentage
-     */
+    /// @dev Returns the Treasury fee percentage
     function getTreasuryFee() external view returns (uint256);
 
     /**
