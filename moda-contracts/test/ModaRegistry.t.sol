@@ -3,8 +3,10 @@ pragma solidity ^0.8.13;
 
 import {Test, console2} from "forge-std/Test.sol";
 import {IModaRegistry} from "../src/interfaces/IModaRegistry.sol";
+import {IMembership} from "../src/interfaces/IMembership.sol";
 import {ModaRegistry} from "../src/ModaRegistry.sol";
 import {Membership} from "../test/mocks/MembershipMock.sol";
+import {ERC165Mock} from "../test/mocks/ERC165Mock.sol";
 import {FaultyMembershipMock} from "../test/mocks/FaultyMembershipMock.sol";
 
 contract ModaRegistryTest is Test {
@@ -25,7 +27,7 @@ contract ModaRegistryTest is Test {
         faultyMembership = new FaultyMembershipMock();
     }
 
-    /// Membership
+    // Membership
 
     function membershipSetUp() public {
         membership.addMember(user);
@@ -45,15 +47,25 @@ contract ModaRegistryTest is Test {
         assertFalse(isMember);
     }
 
-    function test_changeCatalogMembership() public {
+    function test_setCatalogMembership() public {
         membershipSetUp();
         Membership newMembership = new Membership();
-        modaRegistry.setCatalogMembership(dropIndex, (newMembership));
+
+        modaRegistry.setCatalogMembership(dropIndex, newMembership);
         IModaRegistry.Catalog memory catalog = modaRegistry.getCatalogInfo(dropIndex);
+
         assertEq(catalog.membership, address(newMembership));
     }
 
-    /// Catalog registration
+    function test_setCatalogMembership_reverts_with_unsupported_IMembership() public {
+        membershipSetUp();
+        ERC165Mock erc165 = new ERC165Mock(new bytes4[](0));
+
+        vm.expectRevert(ModaRegistry.ContractMustSupportIMembership.selector);
+        modaRegistry.setCatalogMembership(dropIndex, IMembership(address(erc165)));
+    }
+
+    // Catalog registration
 
     function registerCatalogSetUp() public {
         modaRegistry.registerCatalog(catalogName, catalogAddress, address(membership));
@@ -82,7 +94,7 @@ contract ModaRegistryTest is Test {
         assertEq(count, 1);
     }
 
-    /// Catalog reverts
+    // Catalog reverts
 
     function test_RevertWhen_registerCatalogWithZeroAddress() public {
         vm.expectRevert(ModaRegistry.AddressCannotBeZero.selector);
@@ -102,7 +114,7 @@ contract ModaRegistryTest is Test {
         modaRegistry.unregisterCatalog(dropIndex);
     }
 
-    /// Artist Management
+    // Artist Management
 
     struct ArtistManagementData {
         address[] managers;
@@ -152,7 +164,7 @@ contract ModaRegistryTest is Test {
         assertEq(managerCount, 0);
     }
 
-    /// Artist Management reverts
+    // Artist Management reverts
 
     function test_addManagersWithDuplicateAddress() public {
         address[] memory managers = new address[](2);
@@ -165,7 +177,7 @@ contract ModaRegistryTest is Test {
         assertEq(managerCount, 1);
     }
 
-    /// Treasury
+    // Treasury
 
     function modaTreasurySetUp() public {
         modaRegistry.setTreasury(treasuryAddress);
