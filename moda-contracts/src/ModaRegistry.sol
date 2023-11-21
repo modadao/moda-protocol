@@ -9,6 +9,9 @@ import "@openzeppelin/contracts/access/extensions/AccessControlEnumerable.sol";
 contract ModaRegistry is IModaRegistry, IOfficialModaContracts, AccessControlEnumerable {
     using EnumerableSet for EnumerableSet.AddressSet;
 
+    /// @dev The max fee MODA can set. This is calculated as the numerator. e.g. 1_000 / 10_000 = 10%
+    uint256 constant MAX_TREASURY_FEE = 1_000;
+
     // State Variables
 
     /// @dev only an address with a verifier role can verify a track
@@ -77,9 +80,8 @@ contract ModaRegistry is IModaRegistry, IOfficialModaContracts, AccessControlEnu
     /// @inheritdoc IModaRegistry
     function unregisterCatalog(uint256 index) external onlyRole(DEFAULT_ADMIN_ROLE) {
         Catalog storage catalog = _catalogs[index];
-        if (catalog.catalog == address(0)) {
-            revert CatalogNotRegistered();
-        }
+        if (catalog.catalog == address(0)) revert CatalogNotRegistered();
+
         _isCatalogRegistered[catalog.catalog] = false;
         emit CatalogUnregistered(catalog.name, catalog.catalog);
         catalog.name = "";
@@ -130,8 +132,11 @@ contract ModaRegistry is IModaRegistry, IOfficialModaContracts, AccessControlEnu
 
     /// @inheritdoc IModaRegistry
     function setTreasuryFee(uint256 newFee) external onlyRole(DEFAULT_ADMIN_ROLE) {
+        require(newFee <= MAX_TREASURY_FEE, "Fee too high");
+
         uint256 oldFee = _treasuryFee;
         _treasuryFee = newFee;
+
         emit TreasuryFeeChanged(oldFee, newFee);
     }
 

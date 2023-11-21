@@ -192,6 +192,13 @@ contract ModaRegistryTest is Test {
         assertEq(fee, 1000);
     }
 
+    function test_setTreasuryFee_reverts_with_invalid_amount() public {
+        modaTreasurySetUp();
+
+        vm.expectRevert("Fee too high");
+        modaRegistry.setTreasuryFee(1_001);
+    }
+
     //Treasury reverts
 
     function test_RevertWhen_setTreasuryWithZeroAddress() public {
