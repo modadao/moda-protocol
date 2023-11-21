@@ -3,34 +3,25 @@ pragma solidity 0.8.21;
 
 import {IVersionInfo} from "./interfaces/IVersionInfo.sol";
 import {ITrackRegistration} from "./interfaces/ITrackRegistration.sol";
-import {IReleasesRegistration} from "./interfaces/IReleasesRegistration.sol";
-import {IReleaseRegistration} from "./interfaces/IReleaseRegistration.sol";
-import {IReleasesApproval} from "./interfaces/IReleasesApproval.sol";
+import {IReleaseRegistration} from "./interfaces/Releases/IReleaseRegistration.sol";
+import {IReleasesApproval} from "./interfaces/Releases/IReleasesApproval.sol";
+import {IReleasesRegistration} from "./interfaces/Releases/IReleasesRegistration.sol";
+import {IReleases} from "./interfaces/Releases/IReleases.sol";
+import {ICatalog} from "./interfaces/ICatalog.sol";
 import {IModaRegistry} from "./interfaces/IModaRegistry.sol";
 import {IOfficialModaContracts} from "./interfaces/IOfficialModaContracts.sol";
-import {IReleases} from "./interfaces/IReleases.sol";
-import "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol";
+import {AccessControlUpgradeable} from
+    "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol";
 import {Strings} from "@openzeppelin/contracts/utils/Strings.sol";
 
-contract Catalog is
-    IVersionInfo,
-    ITrackRegistration,
-    IReleasesRegistration,
-    IReleaseRegistration,
-    IReleasesApproval,
-    AccessControlUpgradeable
-{
-    /// State Variables
+contract Catalog is ICatalog, AccessControlUpgradeable {
+    // State Variables
 
     /// @custom:storage-location erc7201:moda.storage.Catalog
     struct CatalogStorage {
-        /// @dev Address of the Moda Registry
         address _modaRegistry;
-        /// @dev Name of the organization
         string _name;
-        /// @dev The version of the catalog
         string _version;
-        /// @dev The number of tracks registered
         uint256 _trackCount;
         /// @dev trackRegistrationHash => trackId
         mapping(string => string) _trackIds;
@@ -50,7 +41,7 @@ contract Catalog is
         mapping(address => mapping(uint256 => string)) _releaseUris;
     }
 
-    /// Errors
+    // Errors
 
     error TrackIsNotRegistered();
     error TrackAlreadyRegistered();
@@ -64,7 +55,7 @@ contract Catalog is
     error VerifierRoleRequired();
     error ReleasesRegistrarRoleRequired();
 
-    /// Storage location
+    // Storage location
 
     // keccak256(abi.encode(uint256(keccak256("moda.storage.Catalog")) - 1)) & ~bytes32(uint256(0xff))
     bytes32 private constant CatalogStorageLocation =
@@ -76,11 +67,9 @@ contract Catalog is
         }
     }
 
-    /// External Functions
+    // External Functions
 
-    /**
-     * @dev Initializes the contract
-     */
+    /// @dev Initializes the contract
     function initialize(
         string calldata name,
         string calldata version,
@@ -93,17 +82,13 @@ contract Catalog is
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
     }
 
-    /**
-     * @inheritdoc IVersionInfo
-     */
+    /// @inheritdoc IVersionInfo
     function versionInfo() external view returns (string memory name, string memory version) {
         CatalogStorage storage $ = _getCatalogStorage();
         return ($._name, $._version);
     }
 
-    /**
-     * @inheritdoc ITrackRegistration
-     */
+    /// @inheritdoc ITrackRegistration
     function registerTrack(
         address artist,
         address trackBeneficiary,
@@ -138,27 +123,21 @@ contract Catalog is
         emit TrackRegistered(trackRegistrationHash, id, msg.sender);
     }
 
-    /**
-     * @inheritdoc ITrackRegistration
-     */
+    /// @inheritdoc ITrackRegistration
     function getTrack(string calldata trackId) external view returns (RegisteredTrack memory) {
         CatalogStorage storage $ = _getCatalogStorage();
 
         return $._registeredTracks[trackId];
     }
 
-    /**
-     * @inheritdoc ITrackRegistration
-     */
+    /// @inheritdoc ITrackRegistration
     function getTrackId(string calldata trackRegistrationHash) external view returns (string memory) {
         CatalogStorage storage $ = _getCatalogStorage();
 
         return $._trackIds[trackRegistrationHash];
     }
 
-    /**
-     * @inheritdoc ITrackRegistration
-     */
+    /// @inheritdoc ITrackRegistration
     function setTrackStatus(string calldata trackId, TrackStatus status) external {
         CatalogStorage storage $ = _getCatalogStorage();
 
@@ -178,9 +157,7 @@ contract Catalog is
         );
     }
 
-    /**
-     * @inheritdoc ITrackRegistration
-     */
+    /// @inheritdoc ITrackRegistration
     function setTrackBeneficiary(string calldata trackId, address newTrackBeneficiary) external {
         CatalogStorage storage $ = _getCatalogStorage();
 
@@ -199,9 +176,7 @@ contract Catalog is
         );
     }
 
-    /**
-     * @inheritdoc ITrackRegistration
-     */
+    /// @inheritdoc ITrackRegistration
     function setTrackMetadata(
         string calldata trackId,
         string calldata newTrackRegistrationHash
@@ -223,9 +198,7 @@ contract Catalog is
         );
     }
 
-    /**
-     * @inheritdoc ITrackRegistration
-     */
+    /// @inheritdoc ITrackRegistration
     function setTrackFingerprintHash(
         string calldata trackId,
         string calldata fingerprintHash
@@ -247,9 +220,7 @@ contract Catalog is
         );
     }
 
-    /**
-     * @inheritdoc ITrackRegistration
-     */
+    /// @inheritdoc ITrackRegistration
     function setTrackValidationHash(string calldata trackId, string calldata validationHash) external {
         CatalogStorage storage $ = _getCatalogStorage();
 
@@ -268,9 +239,7 @@ contract Catalog is
         );
     }
 
-    /**
-     * @inheritdoc IReleasesRegistration
-     */
+    /// @inheritdoc IReleasesRegistration
     function registerReleasesContract(address releases, address releasesOwner) external {
         CatalogStorage storage $ = _getCatalogStorage();
 
@@ -281,9 +250,7 @@ contract Catalog is
         emit ReleasesRegistered(releases, releasesOwner);
     }
 
-    /**
-     * @inheritdoc IReleasesRegistration
-     */
+    /// @inheritdoc IReleasesRegistration
     function unregisterReleasesContract(address releases) external onlyRole(DEFAULT_ADMIN_ROLE) {
         CatalogStorage storage $ = _getCatalogStorage();
 
@@ -293,18 +260,14 @@ contract Catalog is
         emit ReleasesUnregistered(releases, releasesOwner);
     }
 
-    /**
-     * @inheritdoc IReleasesRegistration
-     */
+    /// @inheritdoc IReleasesRegistration
     function getReleasesOwner(address releases) external view returns (address owner) {
         CatalogStorage storage $ = _getCatalogStorage();
 
         return $._registeredReleasesContracts[releases];
     }
 
-    /**
-     * @inheritdoc IReleasesApproval
-     */
+    /// @inheritdoc IReleasesApproval
     function setReleasesApproval(string calldata trackId, address releases, bool hasApproval) external {
         CatalogStorage storage $ = _getCatalogStorage();
 
@@ -318,9 +281,7 @@ contract Catalog is
         }
     }
 
-    /**
-     * @inheritdoc IReleasesApproval
-     */
+    /// @inheritdoc IReleasesApproval
     function setReleasesApprovalForAll(address artist, address releases, bool hasApproval) external {
         CatalogStorage storage $ = _getCatalogStorage();
 
@@ -334,9 +295,7 @@ contract Catalog is
         }
     }
 
-    /**
-     * @inheritdoc IReleasesApproval
-     */
+    /// @inheritdoc IReleasesApproval
     function getReleasesApproval(
         string calldata trackId,
         address releases
@@ -346,18 +305,14 @@ contract Catalog is
         return $._singleTrackReleasesPermission[trackId][releases];
     }
 
-    /**
-     * @inheritdoc IReleasesApproval
-     */
+    /// @inheritdoc IReleasesApproval
     function getReleasesApprovalForAll(address artist, address releases) external view returns (bool) {
         CatalogStorage storage $ = _getCatalogStorage();
 
         return $._allTracksReleasesPermission[artist][releases];
     }
 
-    /**
-     * @inheritdoc IReleasesApproval
-     */
+    /// @inheritdoc IReleasesApproval
     function hasTrackAccess(string calldata trackId, address caller) external view returns (bool) {
         CatalogStorage storage $ = _getCatalogStorage();
 
@@ -365,9 +320,7 @@ contract Catalog is
             || IModaRegistry($._modaRegistry).isManager($._registeredTracks[trackId].trackArtist, caller);
     }
 
-    /**
-     * @inheritdoc IReleaseRegistration
-     */
+    /// @inheritdoc IReleaseRegistration
     function registerRelease(
         string[] calldata trackIds,
         string calldata uri,
@@ -397,9 +350,7 @@ contract Catalog is
         emit ReleaseRegistered(trackIds, msg.sender, tokenId);
     }
 
-    /**
-     * @inheritdoc IReleaseRegistration
-     */
+    /// @inheritdoc IReleaseRegistration
     function unregisterRelease(bytes32 releaseHash) external onlyRole(DEFAULT_ADMIN_ROLE) {
         CatalogStorage storage $ = _getCatalogStorage();
 
@@ -407,9 +358,7 @@ contract Catalog is
         emit ReleaseUnregistered(releaseHash);
     }
 
-    /**
-     * @inheritdoc IReleaseRegistration
-     */
+    /// @inheritdoc IReleaseRegistration
     function getReleaseTracks(
         address releases,
         uint256 tokenId
@@ -419,9 +368,7 @@ contract Catalog is
         return $._releaseTracks[releases][tokenId];
     }
 
-    /**
-     * @inheritdoc IReleaseRegistration
-     */
+    /// @inheritdoc IReleaseRegistration
     function getReleaseHash(address releases, uint256 tokenId) external view returns (bytes32) {
         CatalogStorage storage $ = _getCatalogStorage();
 
@@ -433,9 +380,7 @@ contract Catalog is
 
     /// Public Functions
 
-    /**
-     * @inheritdoc IReleaseRegistration
-     */
+    /// @inheritdoc IReleaseRegistration
     function getRegisteredRelease(bytes32 releaseHash) public view returns (RegisteredRelease memory) {
         CatalogStorage storage $ = _getCatalogStorage();
 

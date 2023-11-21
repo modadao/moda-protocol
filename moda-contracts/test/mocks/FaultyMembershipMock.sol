@@ -5,7 +5,7 @@ interface IFaultyMembership {
     function checkMember() external pure returns (bool);
 }
 
-contract FaultyMembership {
+contract FaultyMembershipMock {
     /// State Variables
 
     mapping(address => bool) private _members;
