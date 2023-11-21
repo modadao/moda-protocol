@@ -31,7 +31,7 @@ contract ModaRegistryTest is Test {
 
     function membershipSetUp() public {
         membership.addMember(user);
-        modaRegistry.registerCatalog(catalogName, catalogAddress, address(membership));
+        modaRegistry.registerCatalog(catalogName, catalogAddress, membership);
     }
 
     function test_isMember() public {
@@ -68,7 +68,7 @@ contract ModaRegistryTest is Test {
     // Catalog registration
 
     function registerCatalogSetUp() public {
-        modaRegistry.registerCatalog(catalogName, catalogAddress, address(membership));
+        modaRegistry.registerCatalog(catalogName, catalogAddress, membership);
     }
 
     function test_registerCatalog() public {
@@ -98,13 +98,13 @@ contract ModaRegistryTest is Test {
 
     function test_RevertWhen_registerCatalogWithZeroAddress() public {
         vm.expectRevert(ModaRegistry.AddressCannotBeZero.selector);
-        modaRegistry.registerCatalog(catalogName, address(0), address(membership));
+        modaRegistry.registerCatalog(catalogName, address(0), membership);
     }
 
     function test_RevertWhen_catalogAlreadyRegistered() public {
         registerCatalogSetUp();
         vm.expectRevert(ModaRegistry.CatalogAlreadyRegistered.selector);
-        modaRegistry.registerCatalog(catalogName, catalogAddress, address(membership));
+        modaRegistry.registerCatalog(catalogName, catalogAddress, membership);
     }
 
     function test_RevertWhen_unregisterAlreadyUnregisteredCatalog() public {
