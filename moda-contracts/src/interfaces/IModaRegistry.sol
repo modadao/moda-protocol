@@ -1,7 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.21;
 
-interface IModaRegistry {
+import {IAccessControl} from "@openzeppelin/contracts/access/IAccessControl.sol";
+import {IMembership} from "./IMembership.sol";
+
+interface IModaRegistry is IAccessControl {
     /**
      * @dev Emitted when a catalog owner changes the membership contract
      */
@@ -63,9 +66,9 @@ interface IModaRegistry {
      * @dev Sets a membership contract for a particular catalog
      * @notice The caller must be a default admin
      * @param index - The index of the catalog
-     * @param membership - The address of the membership contract
+     * @param membership - An instance of a membership contract that follows the IMembership interface
      */
-    function setCatalogMembership(uint256 index, address membership) external;
+    function setCatalogMembership(uint256 index, IMembership membership) external;
 
     /// Catalogs
 
@@ -148,7 +151,14 @@ interface IModaRegistry {
     function setTreasury(address treasury) external;
 
     /**
-     * @dev Returns the Moda treasury fee percentage and address
+     * @dev Returns the Treasury fee percentage
      */
-    function getTreasury() external view returns (address treasury, uint256 fee);
+    function getTreasuryFee() external view returns (uint256);
+
+    /**
+     * @dev Sets the address of the splits factory
+     * @notice The caller must be a default admin
+     * @param splitsFactory - The address of the splits factory
+     */
+    function setSplitsFactory(address splitsFactory) external;
 }

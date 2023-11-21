@@ -1,0 +1,17 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+build_info = true
+extra_output = ["storageLayout"]
+
+remappings = [
+'@openzeppelin/contracts/=lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/',
+'@openzeppelin/contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable/contracts/'
+]
+
+[fmt]
+multiline_func_header = "params_first"
+line_length = 105
+
+# See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options

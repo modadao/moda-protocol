@@ -21,6 +21,20 @@
 pnpm i
 ```
 
+## Smart Contract Testing
+
+Navigate to the moda-contracts directory and run
+
+```bash
+pnpm test
+```
+
+To generate a coverage report run
+
+```bash
+pnpm coverage
+```
+
 ## License
 
 `moda-protocol` is [Apache licensed](LICENSE).

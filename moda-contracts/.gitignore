@@ -16,3 +16,9 @@ docs/
 # test coverage
 coverage/
 lcov.info
+
+# slither
+slither_report.md
+
+# aderyn
+report.md

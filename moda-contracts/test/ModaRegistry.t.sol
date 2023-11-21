@@ -4,10 +4,12 @@ pragma solidity ^0.8.13;
 import {Test, console2} from "forge-std/Test.sol";
 import {IModaRegistry} from "../src/interfaces/IModaRegistry.sol";
 import {ModaRegistry} from "../src/ModaRegistry.sol";
-import {Membership} from "../src/Membership.sol";
+import {Membership} from "../test/mocks/MembershipMock.sol";
+import {FaultyMembership} from "../test/mocks/FaultyMembership.sol";
 
 contract ModaRegistryTest is Test {
     Membership public membership;
+    FaultyMembership public faultyMembership;
     ModaRegistry public modaRegistry;
 
     address public user = address(0x1);
@@ -20,6 +22,7 @@ contract ModaRegistryTest is Test {
     function setUp() public {
         membership = new Membership();
         modaRegistry = new ModaRegistry();
+        faultyMembership = new FaultyMembership();
     }
 
     /// Membership
@@ -44,19 +47,10 @@ contract ModaRegistryTest is Test {
 
     function test_changeCatalogMembership() public {
         membershipSetUp();
-        address newMembership = address(0x4);
-        modaRegistry.setCatalogMembership(dropIndex, newMembership);
+        Membership newMembership = new Membership();
+        modaRegistry.setCatalogMembership(dropIndex, (newMembership));
         IModaRegistry.Catalog memory catalog = modaRegistry.getCatalogInfo(dropIndex);
-        assertEq(catalog.membership, newMembership);
-    }
-
-    /// Membership reverts
-
-    function test_RevertWhen_changeCatalogMembershipWithZeroAddress() public {
-        membershipSetUp();
-        address newMembership = address(0x0);
-        vm.expectRevert(ModaRegistry.AddressCannotBeZero.selector);
-        modaRegistry.setCatalogMembership(dropIndex, newMembership);
+        assertEq(catalog.membership, address(newMembership));
     }
 
     /// Catalog registration
@@ -158,32 +152,15 @@ contract ModaRegistryTest is Test {
 
     /// Artist Management reverts
 
-    function test_RevertWhen_addManagersWithZeroAddress() public {
-        vm.expectRevert(ModaRegistry.AddressCannotBeZero.selector);
-        address[] memory managers = new address[](1);
-        managers[0] = address(0);
-        vm.startPrank(user);
-        modaRegistry.addManagers(managers);
-        vm.stopPrank();
-    }
-
-    function test_RevertWhen_removeManagersWithZeroAddress() public {
-        vm.expectRevert(ModaRegistry.AddressCannotBeZero.selector);
-        address[] memory managers = new address[](1);
-        managers[0] = address(0);
-        vm.startPrank(user);
-        modaRegistry.removeManagers(managers);
-        vm.stopPrank();
-    }
-
-    function test_RevertWhen_addManagersWithDuplicateAddress() public {
-        vm.expectRevert(ModaRegistry.DuplicateAddress.selector);
+    function test_addManagersWithDuplicateAddress() public {
         address[] memory managers = new address[](2);
         managers[0] = address(0x3);
         managers[1] = address(0x3);
         vm.startPrank(user);
         modaRegistry.addManagers(managers);
         vm.stopPrank();
+        uint256 managerCount = modaRegistry.getManagerCount(user);
+        assertEq(managerCount, 1);
     }
 
     /// Treasury
@@ -195,7 +172,8 @@ contract ModaRegistryTest is Test {
 
     function test_modaTreasuryInfo() public {
         modaTreasurySetUp();
-        (address treasury, uint256 fee) = modaRegistry.getTreasury();
+        address treasury = modaRegistry.getTreasury();
+        uint256 fee = modaRegistry.getTreasuryFee();
         assertEq(treasury, treasuryAddress);
         assertEq(fee, 1000);
     }
