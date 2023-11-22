@@ -92,13 +92,12 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
     function registerTrack(
         address artist,
         address trackBeneficiary,
-        string calldata trackRegistrationHash,
-        uint256 catalogIndex
+        string calldata trackRegistrationHash
     ) external {
         CatalogStorage storage $ = _getCatalogStorage();
 
         _requireTrackIsNotRegistered(trackRegistrationHash);
-        _requireMembership(catalogIndex, msg.sender);
+        _requireMembership(address(this), msg.sender);
         _requireTrackManagementPermissions(msg.sender, artist);
 
         string memory id = string(
@@ -392,10 +391,10 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
      * @dev Reverts if an account is not a member of the Catalog
      * @param account The address of the EOA or contract
      */
-    function _requireMembership(uint256 catalogIndex, address account) internal {
+    function _requireMembership(address catalog, address account) internal {
         CatalogStorage storage $ = _getCatalogStorage();
 
-        if (!IModaRegistry($._modaRegistry).isMember(catalogIndex, account)) {
+        if (!IModaRegistry($._modaRegistry).isMember(catalog, account)) {
             revert MembershipRequired();
         }
     }

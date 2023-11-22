@@ -27,8 +27,7 @@ contract ModaRegistry is IModaRegistry, IOfficialModaContracts, AccessControlEnu
     uint256 _treasuryFee;
     address _splitsFactory;
 
-    Catalog[] _catalogs;
-    mapping(address => bool) _isCatalogRegistered;
+    mapping(address => Catalog) _catalogs;
     mapping(address => EnumerableSet.AddressSet) _managers;
 
     // Errors
@@ -45,19 +44,23 @@ contract ModaRegistry is IModaRegistry, IOfficialModaContracts, AccessControlEnu
     // Membership
 
     /// @inheritdoc IModaRegistry
-    function isMember(uint256 index, address user) external view returns (bool) {
-        return IMembership(_catalogs[index].membership).isMember(user);
+    function isMember(address catalog, address user) external view returns (bool) {
+        if (address(0) == _catalogs[catalog].membership) revert CatalogNotRegistered();
+
+        return IMembership(_catalogs[catalog].membership).isMember(user);
     }
 
     /// @inheritdoc IModaRegistry
+    /// @notice Only a default admin can call this
     function setCatalogMembership(
-        uint256 index,
+        address _catalog,
         IMembership membership
     ) external onlyRole(DEFAULT_ADMIN_ROLE) {
         _requireValidMembership(membership);
 
-        _catalogs[index].membership = address(membership);
-        emit CatalogMembershipChanged(_catalogs[index].name, address(membership));
+        _catalogs[_catalog].membership = address(membership);
+
+        emit CatalogMembershipChanged(_catalogs[_catalog].name, address(membership));
     }
 
     /// @inheritdoc IModaRegistry
@@ -67,38 +70,30 @@ contract ModaRegistry is IModaRegistry, IOfficialModaContracts, AccessControlEnu
         IMembership membership
     ) external onlyRole(DEFAULT_ADMIN_ROLE) {
         if (catalog == address(0)) revert AddressCannotBeZero();
-        if (_isCatalogRegistered[catalog]) revert CatalogAlreadyRegistered();
+        if (address(0) != _catalogs[catalog].membership) revert CatalogAlreadyRegistered();
         _requireValidMembership(membership);
 
-        _catalogs.push(Catalog({name: name, catalog: catalog, membership: address(membership)}));
-        _isCatalogRegistered[catalog] = true;
+        _catalogs[catalog] = Catalog({name: name, membership: address(membership)});
 
         emit CatalogRegistered(name, catalog, msg.sender);
         emit CatalogMembershipChanged(name, address(membership));
     }
 
     /// @inheritdoc IModaRegistry
-    function unregisterCatalog(uint256 index) external onlyRole(DEFAULT_ADMIN_ROLE) {
-        Catalog storage catalog = _catalogs[index];
-        if (catalog.catalog == address(0)) revert CatalogNotRegistered();
+    /// @notice Only a default admin can call this
+    function unregisterCatalog(address _catalog) external onlyRole(DEFAULT_ADMIN_ROLE) {
+        Catalog storage catalog = _catalogs[_catalog];
+        if (catalog.membership == address(0)) revert CatalogNotRegistered();
 
-        _isCatalogRegistered[catalog.catalog] = false;
-
-        emit CatalogUnregistered(catalog.name, catalog.catalog, msg.sender);
+        emit CatalogUnregistered(catalog.name, _catalog, msg.sender);
 
         catalog.name = "";
-        catalog.catalog = address(0);
         catalog.membership = address(0);
     }
 
     /// @inheritdoc IModaRegistry
-    function getCatalogInfo(uint256 index) external view returns (Catalog memory) {
-        return _catalogs[index];
-    }
-
-    /// @inheritdoc IModaRegistry
-    function getCatalogCount() external view returns (uint256) {
-        return _catalogs.length;
+    function getCatalogInfo(address _catalog) external view returns (Catalog memory) {
+        return _catalogs[_catalog];
     }
 
     /// @inheritdoc IModaRegistry

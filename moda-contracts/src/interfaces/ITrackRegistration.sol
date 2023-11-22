@@ -59,13 +59,11 @@ interface ITrackRegistration {
      * @param artist - The address of the artist
      * @param trackRegistrationHash - The registration hash of the track
      * @param trackBeneficiary - The beneficiary of the track (could be single or an 0xSplit)
-     * @param catalogIndex - The index of the catalog
      */
     function registerTrack(
         address artist,
         address trackBeneficiary,
-        string calldata trackRegistrationHash,
-        uint256 catalogIndex
+        string calldata trackRegistrationHash
     ) external;
 
     /**
