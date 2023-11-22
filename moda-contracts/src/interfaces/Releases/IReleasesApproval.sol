@@ -3,28 +3,16 @@ pragma solidity 0.8.21;
 
 interface IReleasesApproval {
     /**
-     * @dev Emitted when a track owner has given permission to a
+     * @dev Emitted when a track owner has changed permissions for a
      * releases contract to be able to release their track
      */
-    event TrackApprovedToReleases(string trackId, address indexed releases);
-
-    /**
-     * @dev Emitted when a track owner has revoked permission to a
-     * releases contract to be able to release their track
-     */
-    event TrackRemovedFromReleases(string trackId, address indexed releases);
+    event TrackApprovalChanged(string trackId, address indexed releases, bool hasApproval);
 
     /**
      * @dev Emitted when a track owner has given permission to a
      * releases contract to be able to release all their tracks
      */
-    event AllTracksApprovedToReleases(address indexed artist, address indexed releases);
-
-    /**
-     * @dev Emitted when a track owner has removed permission from a
-     * releases contract to be able to release all their tracks
-     */
-    event AllTracksRemovedFromReleases(address indexed artist, address indexed releases);
+    event AllTracksApprovalChanged(address indexed artist, address indexed releases, bool hasApproval);
 
     /**
      * @dev Add or revoke approval for a Releases contract to release a track

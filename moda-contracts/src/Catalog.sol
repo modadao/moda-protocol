@@ -120,6 +120,7 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
         $._registeredTracks[id] =
             RegisteredTrack(status, artist, trackBeneficiary, trackRegistrationHash, "", "", address(0));
         $._trackCount++;
+
         emit TrackRegistered(trackRegistrationHash, id, msg.sender);
     }
 
@@ -274,25 +275,19 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
         _requireUserIsTrackArtistOrManager(trackId, msg.sender);
         _requireReleasesContractIsRegistered(releases);
         $._singleTrackReleasesPermission[trackId][releases] = hasApproval;
-        if (hasApproval) {
-            emit TrackApprovedToReleases(trackId, releases);
-        } else {
-            emit TrackRemovedFromReleases(trackId, releases);
-        }
+
+        emit TrackApprovalChanged(trackId, releases, hasApproval);
     }
 
     /// @inheritdoc IReleasesApproval
     function setReleasesApprovalForAll(address artist, address releases, bool hasApproval) external {
         CatalogStorage storage $ = _getCatalogStorage();
-
         _requireUserHasTrackAccess(msg.sender, artist);
         _requireReleasesContractIsRegistered(releases);
+
         $._allTracksReleasesPermission[artist][releases] = hasApproval;
-        if (hasApproval) {
-            emit AllTracksApprovedToReleases(artist, releases);
-        } else {
-            emit AllTracksRemovedFromReleases(artist, releases);
-        }
+
+        emit AllTracksApprovalChanged(artist, releases, hasApproval);
     }
 
     /// @inheritdoc IReleasesApproval
