@@ -339,11 +339,8 @@ contract CatalogV2Mock is ICatalog, AccessControlUpgradeable {
         _requireUserIsTrackArtistOrManager(trackId, msg.sender);
         _requireReleasesContractIsRegistered(releases);
         $._singleTrackReleasesPermission[trackId][releases] = hasApproval;
-        if (hasApproval) {
-            emit TrackApprovedToReleases(trackId, releases);
-        } else {
-            emit TrackRemovedFromReleases(trackId, releases);
-        }
+
+        emit TrackApprovalChanged(trackId, releases, hasApproval);
     }
 
     /**
@@ -355,11 +352,8 @@ contract CatalogV2Mock is ICatalog, AccessControlUpgradeable {
         _requireUserHasTrackAccess(msg.sender, artist);
         _requireReleasesContractIsRegistered(releases);
         $._allTracksReleasesPermission[artist][releases] = hasApproval;
-        if (hasApproval) {
-            emit AllTracksApprovedToReleases(artist, releases);
-        } else {
-            emit AllTracksRemovedFromReleases(artist, releases);
-        }
+
+        emit AllTracksApprovalChanged(artist, releases, hasApproval);
     }
 
     /**

@@ -16,7 +16,7 @@ contract CatalogTest is Test {
 
     address public catalogDeployer = address(0x1);
     string public catalogName = "Drop";
-    uint256 public dropIndex = 0;
+    uint256 public catalogIndex = 0;
     string public chainId = "80001";
     string public catalogVersion = "1";
     address public splitsFactory = address(0x2);
@@ -35,6 +35,11 @@ contract CatalogTest is Test {
         vm.stopPrank();
         membership.addMember(artist);
         modaRegistry.registerCatalog(catalogName, address(catalog), membership);
+    }
+
+    function setup_auto_verified(address account) public {
+        membership.addMember(account);
+        modaRegistry.grantRole(keccak256("AUTO_VERIFIED_ROLE"), account);
     }
 
     /// Initialization revert
@@ -67,7 +72,7 @@ contract CatalogTest is Test {
             artist,
             trackRegistrationData.trackBeneficiary,
             trackRegistrationData.trackRegistrationHash,
-            dropIndex
+            catalogIndex
         );
         vm.stopPrank();
         trackRegistrationData.trackId = catalog.getTrackId(trackRegistrationData.trackRegistrationHash);
@@ -103,7 +108,7 @@ contract CatalogTest is Test {
             artist,
             trackRegistrationDataManager.trackBeneficiary,
             trackRegistrationDataManager.trackRegistrationHash,
-            dropIndex
+            catalogIndex
         );
         vm.stopPrank();
         trackRegistrationDataManager.trackId =
@@ -121,44 +126,21 @@ contract CatalogTest is Test {
         assertEq(track.validationHash, "");
     }
 
-    struct TrackRegistrationDataGoldRole {
-        address trackBeneficiary;
-        string trackRegistrationHash;
-        string trackId;
-        address goldArtist;
-    }
+    function test_registerTrack_with_AUTO_VERIFIED_ROLE() public {
+        address beneficiary = address(0x5);
+        string memory trackHash = "track";
+        setup_auto_verified(artist);
 
-    TrackRegistrationDataGoldRole trackRegistrationDataGoldRole;
-
-    function test_trackRegistrationWithAGoldRoleSetUp() public {
-        address goldArtist = address(0x10);
-        TrackRegistrationDataGoldRole({
-            trackBeneficiary: address(0x5),
-            trackRegistrationHash: "trackHashGoldRole",
-            trackId: "",
-            goldArtist: goldArtist
-        });
-        membership.addMember(trackRegistrationDataGoldRole.goldArtist);
-        modaRegistry.grantRole(keccak256("GOLD_ROLE"), trackRegistrationDataGoldRole.goldArtist);
-        vm.startPrank(trackRegistrationDataGoldRole.goldArtist);
-        catalog.registerTrack(
-            trackRegistrationDataGoldRole.goldArtist,
-            trackRegistrationDataGoldRole.trackBeneficiary,
-            trackRegistrationDataGoldRole.trackRegistrationHash,
-            dropIndex
-        );
+        vm.startPrank(artist);
+        catalog.registerTrack(artist, beneficiary, trackHash, catalogIndex);
         vm.stopPrank();
-        trackRegistrationDataGoldRole.trackId =
-            catalog.getTrackId(trackRegistrationDataGoldRole.trackRegistrationHash);
-    }
+        string memory trackId = catalog.getTrackId(trackHash);
+        Catalog.RegisteredTrack memory track = catalog.getTrack(trackId);
 
-    function test_trackRegistrationWithAGoldRole() public {
-        test_trackRegistrationWithAGoldRoleSetUp();
-        Catalog.RegisteredTrack memory track = catalog.getTrack(trackRegistrationDataGoldRole.trackId);
         assertEq(uint256(track.trackStatus), uint256(ITrackRegistration.TrackStatus.VALIDATED));
-        assertEq(track.trackArtist, trackRegistrationDataGoldRole.goldArtist);
-        assertEq(track.trackBeneficiary, trackRegistrationDataGoldRole.trackBeneficiary);
-        assertEq(track.trackRegistrationHash, trackRegistrationDataGoldRole.trackRegistrationHash);
+        assertEq(track.trackArtist, artist);
+        assertEq(track.trackBeneficiary, beneficiary);
+        assertEq(track.trackRegistrationHash, trackHash);
         assertEq(track.fingerprintHash, "");
         assertEq(track.validationHash, "");
     }
@@ -173,20 +155,20 @@ contract CatalogTest is Test {
             artist,
             trackRegistrationData.trackBeneficiary,
             trackRegistrationData.trackRegistrationHash,
-            dropIndex
+            catalogIndex
         );
         vm.stopPrank();
     }
 
     function test_RevertWhen_UserIsNotMember() public {
-        vm.expectRevert(Catalog.UserMustBeMember.selector);
+        vm.expectRevert(Catalog.MembershipRequired.selector);
         address nonMember = address(0x9);
         vm.startPrank(nonMember);
         catalog.registerTrack(
             nonMember,
             trackRegistrationData.trackBeneficiary,
             trackRegistrationData.trackRegistrationHash,
-            dropIndex
+            catalogIndex
         );
         vm.stopPrank();
     }
@@ -200,7 +182,7 @@ contract CatalogTest is Test {
             artist,
             trackRegistrationData.trackBeneficiary,
             trackRegistrationData.trackRegistrationHash,
-            dropIndex
+            catalogIndex
         );
         vm.stopPrank();
     }
@@ -429,10 +411,10 @@ contract CatalogTest is Test {
         vm.startPrank(artist);
 
         catalog.registerTrack(
-            artist, trackRegistrationData.trackBeneficiary, trackRegistrationHashOne, dropIndex
+            artist, trackRegistrationData.trackBeneficiary, trackRegistrationHashOne, catalogIndex
         );
         catalog.registerTrack(
-            artist, trackRegistrationData.trackBeneficiary, trackRegistrationHashTwo, dropIndex
+            artist, trackRegistrationData.trackBeneficiary, trackRegistrationHashTwo, catalogIndex
         );
         vm.stopPrank();
 
