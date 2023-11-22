@@ -29,32 +29,29 @@ interface IModaRegistry is IAccessControl {
     /**
      * @dev Represents a registered catalog
      * name - The name of the catalog
-     * catalog - The address of the catalog
      * membership - The address of the membership contract
      */
     struct Catalog {
         string name;
-        address catalog;
         address membership;
     }
 
     // Membership
 
     /**
-     * @dev Checks if the user is a member of a particular catalog.
+     * @dev Checks if the user is a member of a particular catalog. Reverts if Catalog is not registered.
      * This is a proxy to the Membership contract instance deployed by the catalog owner.
-     * @param index - The index of the catalog
-     * @param user - The address of the user to check
+     * @param catalog - The index of the catalog
+     * @param account - The address of an EOA or a contract.
      */
-    function isMember(uint256 index, address user) external returns (bool);
+    function isMember(address catalog, address account) external returns (bool);
 
     /**
      * @dev Sets a membership contract for a particular catalog
-     * @notice The caller must be a default admin
-     * @param index - The index of the catalog
+     * @param catalog - The address of the catalog
      * @param membership - An instance of a membership contract that follows the IMembership interface
      */
-    function setCatalogMembership(uint256 index, IMembership membership) external;
+    function setCatalogMembership(address catalog, IMembership membership) external;
 
     // Catalogs
 
@@ -69,19 +66,15 @@ interface IModaRegistry is IAccessControl {
 
     /**
      * @dev Unregisters a deprecated or malicious catalog
-     * @notice Only a default admin can call this
-     * @param index - The index of the catalog
+     * @param catalog - The address of the catalog
      */
-    function unregisterCatalog(uint256 index) external;
+    function unregisterCatalog(address catalog) external;
 
     /**
      * @dev Returns a info about a particular catalog
-     * @param index - The index of the catalog
+     * @param catalog - The address of the catalog
      */
-    function getCatalogInfo(uint256 index) external view returns (Catalog memory);
-
-    /// @dev Returns the total number of catalogs
-    function getCatalogCount() external view returns (uint256);
+    function getCatalogInfo(address catalog) external view returns (Catalog memory);
 
     // Artist Management
 

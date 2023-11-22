@@ -135,14 +135,14 @@ contract CatalogV2Mock is ICatalog, AccessControlUpgradeable {
     function registerTrack(
         address artist,
         address trackBeneficiary,
-        string calldata trackRegistrationHash,
-        uint256 catalogIndex
+        string calldata trackRegistrationHash
     ) external {
         CatalogStorage storage $ = _getCatalogStorage();
 
         _requireTrackIsNotRegistered(trackRegistrationHash);
-        _requireUserIsMember(catalogIndex, msg.sender);
+        _requireUserIsMember(address(this), msg.sender);
         _requireUserHasTrackAccess(msg.sender, artist);
+
         string memory id = string(
             abi.encodePacked(
                 $._name,
@@ -470,10 +470,10 @@ contract CatalogV2Mock is ICatalog, AccessControlUpgradeable {
      * @dev Checks the user has a membership
      * @param user The address of the user
      */
-    function _requireUserIsMember(uint256 catalogIndex, address user) internal {
+    function _requireUserIsMember(address catalog, address user) internal {
         CatalogStorage storage $ = _getCatalogStorage();
 
-        if (!IModaRegistry($._modaRegistry).isMember(catalogIndex, user)) {
+        if (!IModaRegistry($._modaRegistry).isMember(catalog, user)) {
             revert UserMustBeMember();
         }
     }
