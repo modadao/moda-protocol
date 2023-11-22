@@ -36,7 +36,7 @@ contract ModaRegistry is IModaRegistry, IOfficialModaContracts, AccessControlEnu
     error CatalogAlreadyRegistered();
     error CatalogNotRegistered();
     error AddressCannotBeZero();
-    error ContractMustSupportIMembership();
+    error IMembershipNotImplemented();
 
     constructor() {
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
@@ -170,7 +170,7 @@ contract ModaRegistry is IModaRegistry, IOfficialModaContracts, AccessControlEnu
 
     function _requireValidMembership(IMembership membership) private view {
         if (!membership.supportsInterface(type(IMembership).interfaceId)) {
-            revert ContractMustSupportIMembership();
+            revert IMembershipNotImplemented();
         }
     }
 }

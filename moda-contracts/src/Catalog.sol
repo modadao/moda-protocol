@@ -50,7 +50,7 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
     error ReleasesContractIsAlreadyRegistered();
     error ReleasesContractDoesNotHavePermission();
     error ReleaseAlreadyCreated();
-    error UserMustBeMember();
+    error MembershipRequired();
     error MustBeArtistOrManager();
     error VerifierRoleRequired();
     error ReleasesRegistrarRoleRequired();
@@ -98,8 +98,9 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
         CatalogStorage storage $ = _getCatalogStorage();
 
         _requireTrackIsNotRegistered(trackRegistrationHash);
-        _requireUserIsMember(catalogIndex, msg.sender);
-        _requireUserHasTrackAccess(msg.sender, artist);
+        _requireMembership(catalogIndex, msg.sender);
+        _requireTrackManagementPermissions(msg.sender, artist);
+
         string memory id = string(
             abi.encodePacked(
                 $._name,
@@ -142,11 +143,13 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
     function setTrackStatus(string calldata trackId, TrackStatus status) external {
         CatalogStorage storage $ = _getCatalogStorage();
 
-        _requireUserHasVerifierRole(msg.sender);
+        _requireVerifierRole(msg.sender);
         _requireTrackIsRegistered(trackId);
+
         RegisteredTrack storage track = $._registeredTracks[trackId];
         track.trackStatus = status;
         track.trackVerifier = msg.sender;
+
         emit TrackUpdated(
             status,
             track.trackArtist,
@@ -244,7 +247,7 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
     function registerReleasesContract(address releases, address releasesOwner) external {
         CatalogStorage storage $ = _getCatalogStorage();
 
-        _requireCallerHasReleasesRegistrarRole(msg.sender);
+        _requireReleasesRegistrarRole(msg.sender);
         _requireReleasesContractNotRegistered(releases);
 
         $._registeredReleasesContracts[releases] = releasesOwner;
@@ -282,7 +285,7 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
     /// @inheritdoc IReleasesApproval
     function setReleasesApprovalForAll(address artist, address releases, bool hasApproval) external {
         CatalogStorage storage $ = _getCatalogStorage();
-        _requireUserHasTrackAccess(msg.sender, artist);
+        _requireTrackManagementPermissions(msg.sender, artist);
         _requireReleasesContractIsRegistered(releases);
 
         $._allTracksReleasesPermission[artist][releases] = hasApproval;
@@ -385,36 +388,37 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
     /// Internal Functions
 
     /**
-     * @dev Checks the user has a membership
-     * @param user The address of the user
+     * @dev Reverts if an account is not a member of the Catalog
+     * @param account The address of the EOA or contract
      */
-    function _requireUserIsMember(uint256 catalogIndex, address user) internal {
+    function _requireMembership(uint256 catalogIndex, address account) internal {
         CatalogStorage storage $ = _getCatalogStorage();
 
-        if (!IModaRegistry($._modaRegistry).isMember(catalogIndex, user)) {
-            revert UserMustBeMember();
+        if (!IModaRegistry($._modaRegistry).isMember(catalogIndex, account)) {
+            revert MembershipRequired();
         }
     }
 
-    function _requireUserHasTrackAccess(address user, address artist) internal view {
+    function _requireTrackManagementPermissions(address account, address artist) internal view {
         CatalogStorage storage $ = _getCatalogStorage();
 
-        if (user != artist && !IModaRegistry($._modaRegistry).isManager(artist, user)) {
+        if (account != artist && !IModaRegistry($._modaRegistry).isManager(artist, account)) {
             revert MustBeArtistOrManager();
         }
     }
 
-    function _requireUserHasVerifierRole(address user) internal view {
+    function _requireVerifierRole(address account) internal view {
         CatalogStorage storage $ = _getCatalogStorage();
 
-        if (!IModaRegistry($._modaRegistry).hasRole(keccak256("VERIFIER_ROLE"), user)) {
+        if (!IModaRegistry($._modaRegistry).hasRole(keccak256("VERIFIER_ROLE"), account)) {
             revert VerifierRoleRequired();
         }
     }
 
-    function _requireCallerHasReleasesRegistrarRole(address caller) internal view {
+    function _requireReleasesRegistrarRole(address account) internal view {
         CatalogStorage storage $ = _getCatalogStorage();
-        if (!IModaRegistry($._modaRegistry).hasRole(keccak256("RELEASES_REGISTRAR_ROLE"), caller)) {
+
+        if (!IModaRegistry($._modaRegistry).hasRole(keccak256("RELEASES_REGISTRAR_ROLE"), account)) {
             revert ReleasesRegistrarRoleRequired();
         }
     }

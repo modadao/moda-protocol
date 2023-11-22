@@ -61,7 +61,7 @@ contract ModaRegistryTest is Test {
         membershipSetUp();
         ERC165Mock erc165 = new ERC165Mock(new bytes4[](0));
 
-        vm.expectRevert(ModaRegistry.ContractMustSupportIMembership.selector);
+        vm.expectRevert(ModaRegistry.IMembershipNotImplemented.selector);
         modaRegistry.setCatalogMembership(dropIndex, IMembership(address(erc165)));
     }
 
