@@ -197,7 +197,7 @@ contract CatalogV2Mock is ICatalog, AccessControlUpgradeable {
         track.trackVerifier = msg.sender;
         emit TrackUpdated(
             status,
-            track.trackArtist,
+            track.trackOwner,
             track.trackBeneficiary,
             track.trackRegistrationHash,
             track.fingerprintHash,
@@ -218,7 +218,7 @@ contract CatalogV2Mock is ICatalog, AccessControlUpgradeable {
         track.trackBeneficiary = newTrackBeneficiary;
         emit TrackUpdated(
             track.trackStatus,
-            track.trackArtist,
+            track.trackOwner,
             newTrackBeneficiary,
             track.trackRegistrationHash,
             track.fingerprintHash,
@@ -242,7 +242,7 @@ contract CatalogV2Mock is ICatalog, AccessControlUpgradeable {
         track.trackRegistrationHash = newTrackRegistrationHash;
         emit TrackUpdated(
             track.trackStatus,
-            track.trackArtist,
+            track.trackOwner,
             track.trackBeneficiary,
             newTrackRegistrationHash,
             track.fingerprintHash,
@@ -266,7 +266,7 @@ contract CatalogV2Mock is ICatalog, AccessControlUpgradeable {
         track.fingerprintHash = fingerprintHash;
         emit TrackUpdated(
             track.trackStatus,
-            track.trackArtist,
+            track.trackOwner,
             track.trackBeneficiary,
             track.trackRegistrationHash,
             fingerprintHash,
@@ -287,7 +287,7 @@ contract CatalogV2Mock is ICatalog, AccessControlUpgradeable {
         track.validationHash = validationHash;
         emit TrackUpdated(
             track.trackStatus,
-            track.trackArtist,
+            track.trackOwner,
             track.trackBeneficiary,
             track.trackRegistrationHash,
             track.fingerprintHash,
@@ -383,8 +383,8 @@ contract CatalogV2Mock is ICatalog, AccessControlUpgradeable {
     function hasTrackAccess(string calldata trackId, address caller) external view returns (bool) {
         CatalogStorage storage $ = _getCatalogStorage();
 
-        return $._registeredTracks[trackId].trackArtist == caller
-            || IModaRegistry($._modaRegistry).isManager($._registeredTracks[trackId].trackArtist, caller);
+        return $._registeredTracks[trackId].trackOwner == caller
+            || IModaRegistry($._modaRegistry).isManager($._registeredTracks[trackId].trackOwner, caller);
     }
 
     /**
@@ -400,7 +400,7 @@ contract CatalogV2Mock is ICatalog, AccessControlUpgradeable {
         _requireReleasesContractIsRegistered(msg.sender);
         (, bool releasesOpen) = IReleases(msg.sender).info();
         for (uint256 i = 0; i < trackIds.length; i++) {
-            address artist = $._registeredTracks[trackIds[i]].trackArtist;
+            address artist = $._registeredTracks[trackIds[i]].trackOwner;
 
             bool hasFullPermission = $._allTracksReleasesPermission[artist][msg.sender];
             _requireTrackIsRegistered(trackIds[i]);
@@ -546,8 +546,8 @@ contract CatalogV2Mock is ICatalog, AccessControlUpgradeable {
         CatalogStorage storage $ = _getCatalogStorage();
 
         if (
-            $._registeredTracks[trackId].trackArtist != caller
-                && !IModaRegistry($._modaRegistry).isManager($._registeredTracks[trackId].trackArtist, caller)
+            $._registeredTracks[trackId].trackOwner != caller
+                && !IModaRegistry($._modaRegistry).isManager($._registeredTracks[trackId].trackOwner, caller)
         ) {
             revert MustBeArtistOrManager();
         }
