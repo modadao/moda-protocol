@@ -51,7 +51,7 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
     error ReleasesContractDoesNotHavePermission();
     error ReleaseAlreadyCreated();
     error MembershipRequired();
-    error MustBeArtistOrManager();
+    error MustBeTrackOwnerOrManager();
     error VerifierRoleRequired();
     error ReleasesRegistrarRoleRequired();
 
@@ -98,7 +98,7 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
 
         _requireTrackIsNotRegistered(trackRegistrationHash);
         _requireMembership(address(this), msg.sender);
-        _requireTrackWritePermissions(msg.sender, trackOwner);
+        _requireTrackWritePermissions(trackOwner, msg.sender);
 
         string memory id = string(
             abi.encodePacked(
@@ -153,7 +153,7 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
 
         emit TrackUpdated(
             status,
-            track.trackArtist,
+            track.trackOwner,
             track.trackBeneficiary,
             track.trackRegistrationHash,
             track.fingerprintHash,
@@ -172,7 +172,7 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
         track.trackBeneficiary = newTrackBeneficiary;
         emit TrackUpdated(
             track.trackStatus,
-            track.trackArtist,
+            track.trackOwner,
             newTrackBeneficiary,
             track.trackRegistrationHash,
             track.fingerprintHash,
@@ -195,7 +195,7 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
 
         emit TrackUpdated(
             track.trackStatus,
-            track.trackArtist,
+            track.trackOwner,
             track.trackBeneficiary,
             newTrackRegistrationHash,
             track.fingerprintHash,
@@ -217,7 +217,7 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
         track.fingerprintHash = fingerprintHash;
         emit TrackUpdated(
             track.trackStatus,
-            track.trackArtist,
+            track.trackOwner,
             track.trackBeneficiary,
             track.trackRegistrationHash,
             fingerprintHash,
@@ -236,7 +236,7 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
         track.validationHash = validationHash;
         emit TrackUpdated(
             track.trackStatus,
-            track.trackArtist,
+            track.trackOwner,
             track.trackBeneficiary,
             track.trackRegistrationHash,
             track.fingerprintHash,
@@ -285,14 +285,18 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
     }
 
     /// @inheritdoc IReleasesApproval
-    function setReleasesApprovalForAll(address artist, address releases, bool hasApproval) external {
+    function setReleasesApprovalForAll(
+        address trackOwner,
+        address releases,
+        bool hasApproval
+    ) external {
         CatalogStorage storage $ = _getCatalogStorage();
-        _requireTrackWritePermissions(msg.sender, artist);
+        _requireTrackWritePermissions(trackOwner, msg.sender);
         _requireReleasesContractIsRegistered(releases);
 
-        $._allTracksReleasesPermission[artist][releases] = hasApproval;
+        $._allTracksReleasesPermission[trackOwner][releases] = hasApproval;
 
-        emit AllTracksApprovalChanged(artist, releases, hasApproval);
+        emit AllTracksApprovalChanged(trackOwner, releases, hasApproval);
     }
 
     /// @inheritdoc IReleasesApproval
@@ -306,18 +310,21 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
     }
 
     /// @inheritdoc IReleasesApproval
-    function getReleasesApprovalForAll(address artist, address releases) external view returns (bool) {
+    function getReleasesApprovalForAll(
+        address trackOwner,
+        address releases
+    ) external view returns (bool) {
         CatalogStorage storage $ = _getCatalogStorage();
 
-        return $._allTracksReleasesPermission[artist][releases];
+        return $._allTracksReleasesPermission[trackOwner][releases];
     }
 
     /// @inheritdoc IReleasesApproval
     function hasTrackAccess(string calldata trackId, address caller) external view returns (bool) {
         CatalogStorage storage $ = _getCatalogStorage();
 
-        return $._registeredTracks[trackId].trackArtist == caller
-            || IModaRegistry($._modaRegistry).isManager($._registeredTracks[trackId].trackArtist, caller);
+        return $._registeredTracks[trackId].trackOwner == caller
+            || IModaRegistry($._modaRegistry).isManager($._registeredTracks[trackId].trackOwner, caller);
     }
 
     /// @inheritdoc IReleaseRegistration
@@ -331,9 +338,9 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
         _requireReleasesContractIsRegistered(msg.sender);
         (, bool releasesOpen) = IReleases(msg.sender).info();
         for (uint256 i = 0; i < trackIds.length; i++) {
-            address artist = $._registeredTracks[trackIds[i]].trackArtist;
+            address trackOwner = $._registeredTracks[trackIds[i]].trackOwner;
 
-            bool hasFullPermission = $._allTracksReleasesPermission[artist][msg.sender];
+            bool hasFullPermission = $._allTracksReleasesPermission[trackOwner][msg.sender];
             _requireTrackIsRegistered(trackIds[i]);
             _requireTrackIsValid(trackIds[i]);
 
@@ -389,26 +396,24 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
 
     /// Internal Functions
 
-    function _requireMembership(address catalog, address account) internal {
+    function _requireMembership(address catalog, address caller) internal {
         CatalogStorage storage $ = _getCatalogStorage();
 
-        if (!IModaRegistry($._modaRegistry).isMember(catalog, account)) {
+        if (!IModaRegistry($._modaRegistry).isMember(catalog, caller)) {
             revert MembershipRequired();
         }
     }
 
-    function _requireTrackWritePermissions(address caller, address artist) internal view {
+    function _requireTrackWritePermissions(address trackOwner, address caller) internal view {
         CatalogStorage storage $ = _getCatalogStorage();
 
-        if (caller != artist && !IModaRegistry($._modaRegistry).isManager(artist, caller)) {
-            revert MustBeArtistOrManager();
+        if (caller != trackOwner && !IModaRegistry($._modaRegistry).isManager(trackOwner, caller)) {
+            revert MustBeTrackOwnerOrManager();
         }
     }
 
     function _requireTrackWritePermissions(string calldata trackId, address caller) internal view {
-        _requireTrackWritePermissions(
-            caller, _getCatalogStorage()._registeredTracks[trackId].trackArtist
-        );
+        _requireTrackWritePermissions(caller, _getCatalogStorage()._registeredTracks[trackId].trackOwner);
     }
 
     function _requireVerifierRole(address account) internal view {

@@ -79,7 +79,7 @@ contract CatalogTest is Test {
         trackRegistrationSetUp();
         Catalog.RegisteredTrack memory track = catalog.getTrack(trackRegistrationData.trackId);
         assertEq(uint256(track.trackStatus), uint256(ITrackRegistration.TrackStatus.PENDING));
-        assertEq(track.trackArtist, artist);
+        assertEq(track.trackOwner, artist);
         assertEq(track.trackBeneficiary, trackRegistrationData.trackBeneficiary);
         assertEq(track.trackRegistrationHash, trackRegistrationData.trackRegistrationHash);
         assertEq(track.fingerprintHash, "");
@@ -115,7 +115,7 @@ contract CatalogTest is Test {
         test_trackRegistrationAsManagerSetUp();
         Catalog.RegisteredTrack memory track = catalog.getTrack(trackRegistrationDataManager.trackId);
         assertEq(uint256(track.trackStatus), uint256(ITrackRegistration.TrackStatus.PENDING));
-        assertEq(track.trackArtist, artist);
+        assertEq(track.trackOwner, artist);
         assertEq(track.trackBeneficiary, trackRegistrationDataManager.trackBeneficiary);
         assertEq(track.trackRegistrationHash, trackRegistrationDataManager.trackRegistrationHash);
         assertEq(track.fingerprintHash, "");
@@ -134,7 +134,7 @@ contract CatalogTest is Test {
         Catalog.RegisteredTrack memory track = catalog.getTrack(trackId);
 
         assertEq(uint256(track.trackStatus), uint256(ITrackRegistration.TrackStatus.VALIDATED));
-        assertEq(track.trackArtist, artist);
+        assertEq(track.trackOwner, artist);
         assertEq(track.trackBeneficiary, beneficiary);
         assertEq(track.trackRegistrationHash, trackHash);
         assertEq(track.fingerprintHash, "");
@@ -170,7 +170,7 @@ contract CatalogTest is Test {
         address nonArtist = address(0x9);
         membership.addMember(nonArtist);
         vm.startPrank(nonArtist);
-        vm.expectRevert(Catalog.MustBeArtistOrManager.selector);
+        vm.expectRevert(Catalog.MustBeTrackOwnerOrManager.selector);
         catalog.registerTrack(
             artist, trackRegistrationData.trackBeneficiary, trackRegistrationData.trackRegistrationHash
         );
@@ -351,7 +351,7 @@ contract CatalogTest is Test {
     function test_RevertWhen_GrantingAccessSingleAndNotArtist() public {
         releasesTrackAccessSetup();
         address nonArtist = address(0x9);
-        vm.expectRevert(Catalog.MustBeArtistOrManager.selector);
+        vm.expectRevert(Catalog.MustBeTrackOwnerOrManager.selector);
         vm.startPrank(nonArtist);
         catalog.setReleasesApproval(trackRegistrationData.trackId, address(releasesMock), true);
         vm.stopPrank();
@@ -369,7 +369,7 @@ contract CatalogTest is Test {
     function test_RevertWhen_GrantingAccessAllAndNotArtist() public {
         releasesTrackAccessSetup();
         address nonArtist = address(0x9);
-        vm.expectRevert(Catalog.MustBeArtistOrManager.selector);
+        vm.expectRevert(Catalog.MustBeTrackOwnerOrManager.selector);
         vm.startPrank(nonArtist);
         catalog.setReleasesApprovalForAll(artist, address(releasesMock), true);
         vm.stopPrank();
