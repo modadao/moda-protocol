@@ -7,19 +7,15 @@ import {IMembership} from "../src/interfaces/IMembership.sol";
 import {ModaRegistry} from "../src/ModaRegistry.sol";
 import {Membership} from "../test/mocks/MembershipMock.sol";
 import {ERC165Mock} from "../test/mocks/ERC165Mock.sol";
-import {FaultyMembershipMock} from "../test/mocks/FaultyMembershipMock.sol";
 
 contract ModaRegistryTest is Test {
     Membership public membership;
-    FaultyMembershipMock public faultyMembership;
     ModaRegistry public modaRegistry;
 
-    address public user = address(0x1);
+    address public artist = address(0x1);
     address public catalogAddress = address(0x2);
     address public treasuryAddress = address(0x5);
-
-    string public catalogName = "Drop";
-    uint256 public dropIndex = 0;
+    string public catalogName = "The ACME Catalog";
 
     struct ArtistManagementData {
         address[] managers;
@@ -40,71 +36,17 @@ contract ModaRegistryTest is Test {
     function setUp() public {
         membership = new Membership();
         modaRegistry = new ModaRegistry();
-        faultyMembership = new FaultyMembershipMock();
-    }
 
-    // Membership
-
-    function membership_setUp() public {
-        membership.addMember(user);
-        modaRegistry.registerCatalog(catalogName, catalogAddress, membership);
-    }
-
-    function test_isMember() public {
-        membership_setUp();
-        bool isMember = modaRegistry.isMember(dropIndex, user);
-
-        assertTrue(isMember);
-    }
-
-    function test_isMember_false() public {
-        membership_setUp();
-        address notMember = address(0x3);
-        bool isMember = modaRegistry.isMember(dropIndex, notMember);
-
-        assertFalse(isMember);
-    }
-
-    function test_setCatalogMembership() public {
-        membership_setUp();
-        Membership newMembership = new Membership();
-
-        modaRegistry.setCatalogMembership(dropIndex, newMembership);
-        IModaRegistry.Catalog memory catalog = modaRegistry.getCatalogInfo(dropIndex);
-
-        assertEq(catalog.membership, address(newMembership));
-    }
-
-    function test_setCatalogMembership_emits_event() public {
-        membership_setUp();
-        Membership newMembership = new Membership();
-        vm.expectEmit(true, true, true, true);
-        emit CatalogMembershipChanged(catalogName, address(newMembership));
-
-        modaRegistry.setCatalogMembership(dropIndex, newMembership);
-    }
-
-    function test_RevertWhen_setCatalogMembership_with_unsupported_IMembership() public {
-        membership_setUp();
-        ERC165Mock erc165 = new ERC165Mock(new bytes4[](0));
-
-        vm.expectRevert(ModaRegistry.ContractMustSupportIMembership.selector);
-        modaRegistry.setCatalogMembership(dropIndex, IMembership(address(erc165)));
     }
 
     // Catalog registration
 
-    function registerCatalog_setUp() public {
-        modaRegistry.registerCatalog(catalogName, catalogAddress, membership);
-    }
 
     function test_registerCatalog() public {
-        registerCatalog_setUp();
-        IModaRegistry.Catalog memory catalog = modaRegistry.getCatalogInfo(dropIndex);
+        modaRegistry.registerCatalog(catalogAddress);
 
-        assertEq(catalog.name, catalogName);
-        assertEq(catalog.catalog, catalogAddress);
-        assertEq(catalog.membership, address(membership));
+        assertTrue(modaRegistry.isRegisteredCatalog(catalogAddress));
+
     }
 
     function test_registerCatalog_emits_event() public {
@@ -115,48 +57,33 @@ contract ModaRegistryTest is Test {
     }
 
     function test_unregisterCatalog() public {
-        registerCatalog_setUp();
-        modaRegistry.unregisterCatalog(dropIndex);
-        IModaRegistry.Catalog memory catalog = modaRegistry.getCatalogInfo(dropIndex);
 
-        assertEq(catalog.name, "");
-        assertEq(catalog.catalog, address(0));
-        assertEq(catalog.membership, address(0));
-    }
+        modaRegistry.registerCatalog(catalogAddress);
+        assertTrue(modaRegistry.isRegisteredCatalog(catalogAddress));
 
-    function test_unregisterCatalog_emits_event() public {
-        registerCatalog_setUp();
-        vm.expectEmit(true, true, true, true);
-        emit CatalogUnregistered(catalogName, catalogAddress);
+        modaRegistry.unregisterCatalog(catalogAddress);
+        assertFalse(modaRegistry.isRegisteredCatalog(catalogAddress));
 
-        modaRegistry.unregisterCatalog(dropIndex);
-    }
-
-    function test_getCatalogCount() public {
-        registerCatalog_setUp();
-        uint256 count = modaRegistry.getCatalogCount();
-
-        assertEq(count, 1);
     }
 
     // Catalog reverts
 
     function test_RevertWhen_register_Catalog_With_Zero_Address() public {
         vm.expectRevert(ModaRegistry.AddressCannotBeZero.selector);
-        modaRegistry.registerCatalog(catalogName, address(0), membership);
-    }
+        modaRegistry.registerCatalog(address(0));
 
-    function test_RevertWhen_catalog_Already_Registered() public {
-        registerCatalog_setUp();
+    function test_RevertWhen_catalogAlreadyRegistered() public {
+        modaRegistry.registerCatalog(catalogAddress);
+
+
         vm.expectRevert(ModaRegistry.CatalogAlreadyRegistered.selector);
-        modaRegistry.registerCatalog(catalogName, catalogAddress, membership);
+        modaRegistry.registerCatalog(catalogAddress);
     }
 
-    function test_RevertWhen_unregister_Already_Unregistered_Catalog() public {
-        registerCatalog_setUp();
-        modaRegistry.unregisterCatalog(dropIndex);
-        vm.expectRevert(ModaRegistry.CatalogNotRegistered.selector);
-        modaRegistry.unregisterCatalog(dropIndex);
+    function test_RevertWhen_unregisterAlreadyUnregisteredCatalog() public {
+        vm.expectRevert(ModaRegistry.CatalogIsNotRegistered.selector);
+        modaRegistry.unregisterCatalog(catalogAddress);
+
     }
 
     // Artist Management
@@ -167,7 +94,7 @@ contract ModaRegistryTest is Test {
         artistManagementData.managers = new address[](2);
         artistManagementData.managers[0] = artistManagementData.managerOne;
         artistManagementData.managers[1] = artistManagementData.managerTwo;
-        vm.startPrank(user);
+        vm.startPrank(artist);
         modaRegistry.addManagers(artistManagementData.managers);
         vm.stopPrank();
     }
@@ -175,11 +102,11 @@ contract ModaRegistryTest is Test {
     function test_addManagers() public {
         artistManagement_setUp();
 
-        bool isManagerOne = modaRegistry.isManager(user, artistManagementData.managerOne);
-        bool isManagerTwo = modaRegistry.isManager(user, artistManagementData.managerTwo);
-        uint256 managerCount = modaRegistry.getManagerCount(user);
-        address managerOneAddress = modaRegistry.getManager(user, 0);
-        address managerTwoAddress = modaRegistry.getManager(user, 1);
+        bool isManagerOne = modaRegistry.isManager(artist, artistManagementData.managerOne);
+        bool isManagerTwo = modaRegistry.isManager(artist, artistManagementData.managerTwo);
+        uint256 managerCount = modaRegistry.getManagerCount(artist);
+        address managerOneAddress = modaRegistry.getManager(artist, 0);
+        address managerTwoAddress = modaRegistry.getManager(artist, 1);
 
         assertTrue(isManagerOne);
         assertTrue(isManagerTwo);
@@ -197,16 +124,17 @@ contract ModaRegistryTest is Test {
     }
 
     function test_removeManagers() public {
-        artistManagement_setUp();
-        vm.startPrank(user);
+
+        artistManagementSetUp();
+        vm.startPrank(artist);
         modaRegistry.removeManagers(artistManagementData.managers);
         vm.stopPrank();
-        bool isManagerOne = modaRegistry.isManager(user, artistManagementData.managerOne);
-        bool isManagerTwo = modaRegistry.isManager(user, artistManagementData.managerTwo);
-        uint256 managerCount = modaRegistry.getManagerCount(user);
-
+        bool isManagerOne = modaRegistry.isManager(artist, artistManagementData.managerOne);
+        bool isManagerTwo = modaRegistry.isManager(artist, artistManagementData.managerTwo);
         assertFalse(isManagerOne);
         assertFalse(isManagerTwo);
+        uint256 managerCount = modaRegistry.getManagerCount(artist);
+
         assertEq(managerCount, 0);
     }
 
@@ -227,10 +155,11 @@ contract ModaRegistryTest is Test {
         address[] memory managers = new address[](2);
         managers[0] = address(0x3);
         managers[1] = address(0x3);
-        vm.startPrank(user);
+        vm.startPrank(artist);
         modaRegistry.addManagers(managers);
         vm.stopPrank();
-        uint256 managerCount = modaRegistry.getManagerCount(user);
+
+        uint256 managerCount = modaRegistry.getManagerCount(artist);
 
         assertEq(managerCount, 1);
     }

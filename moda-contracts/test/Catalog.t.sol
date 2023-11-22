@@ -15,12 +15,8 @@ contract CatalogTest is Test {
     Releases public releases;
 
     address public catalogDeployer = address(0x1);
-    string public catalogName = "Drop";
-    uint256 public dropIndex = 0;
-    string public chainId = "80001";
+    string public catalogName = "ACME-CATALOG";
     string public catalogVersion = "1";
-    address public splitsFactory = address(0x2);
-    address public modaBeneficiary = address(0x3);
     address public artist = address(0x4);
 
     error InvalidInitialization();
@@ -113,15 +109,17 @@ contract CatalogTest is Test {
         catalog = new Catalog();
         releases = new Releases(false);
         vm.startPrank(catalogDeployer);
-        catalog.initialize(catalogName, catalogVersion, address(modaRegistry));
+        catalog.initialize(catalogName, catalogVersion, address(modaRegistry), membership);
         vm.stopPrank();
         membership.addMember(artist);
-        modaRegistry.registerCatalog(catalogName, address(catalog), membership);
-        address[] memory releaseAdmins = new address[](1);
-        releaseAdmins[0] = artist;
-        releases.initialize(
-            artist, releaseAdmins, "TestReleases", "TestSymbol", address(catalog), splitsFactory
-        );
+
+        modaRegistry.registerCatalog(address(catalog));
+    }
+
+    function setup_auto_verified(address account) public {
+        membership.addMember(account);
+        modaRegistry.grantRole(keccak256("AUTO_VERIFIED_ROLE"), account);
+
     }
 
     /// Initialization revert
@@ -130,7 +128,7 @@ contract CatalogTest is Test {
         setUp();
         vm.expectRevert(InvalidInitialization.selector);
         vm.startPrank(catalogDeployer);
-        catalog.initialize(catalogName, catalogVersion, address(modaRegistry));
+        catalog.initialize(catalogName, catalogVersion, address(modaRegistry), membership);
         vm.stopPrank();
     }
 
@@ -139,10 +137,7 @@ contract CatalogTest is Test {
     function registerTrack_SetUp() public {
         vm.startPrank(artist);
         catalog.registerTrack(
-            artist,
-            trackRegistrationData.trackBeneficiary,
-            trackRegistrationData.trackRegistrationHash,
-            dropIndex
+            artist, trackRegistrationData.trackBeneficiary, trackRegistrationData.trackRegistrationHash
         );
         vm.stopPrank();
         trackRegistrationData.trackId = catalog.getTrackId(trackRegistrationData.trackRegistrationHash);
@@ -153,7 +148,7 @@ contract CatalogTest is Test {
         Catalog.RegisteredTrack memory track = catalog.getTrack(trackRegistrationData.trackId);
 
         assertEq(uint256(track.trackStatus), uint256(ITrackRegistration.TrackStatus.PENDING));
-        assertEq(track.trackArtist, artist);
+        assertEq(track.trackOwner, artist);
         assertEq(track.trackBeneficiary, trackRegistrationData.trackBeneficiary);
         assertEq(track.trackRegistrationHash, trackRegistrationData.trackRegistrationHash);
         assertEq(track.fingerprintHash, "");
@@ -180,8 +175,7 @@ contract CatalogTest is Test {
         catalog.registerTrack(
             artist,
             trackRegistrationDataManager.trackBeneficiary,
-            trackRegistrationDataManager.trackRegistrationHash,
-            dropIndex
+            trackRegistrationDataManager.trackRegistrationHash
         );
         vm.stopPrank();
         trackRegistrationDataManager.trackId =
@@ -193,76 +187,58 @@ contract CatalogTest is Test {
         Catalog.RegisteredTrack memory track = catalog.getTrack(trackRegistrationDataManager.trackId);
 
         assertEq(uint256(track.trackStatus), uint256(ITrackRegistration.TrackStatus.PENDING));
-        assertEq(track.trackArtist, artist);
+        assertEq(track.trackOwner, artist);
         assertEq(track.trackBeneficiary, trackRegistrationDataManager.trackBeneficiary);
         assertEq(track.trackRegistrationHash, trackRegistrationDataManager.trackRegistrationHash);
         assertEq(track.fingerprintHash, "");
         assertEq(track.validationHash, "");
     }
 
-    function track_Registration_With_Auto_Verified_Role_SetUp() public {
-        address autoVerifiedArtist = address(0x10);
-        TrackRegistrationData_AutoVerifiedRole({
-            trackBeneficiary: address(0x5),
-            trackRegistrationHash: "trackHashAutoVerifiedRole",
-            trackId: "",
-            autoVerifiedArtist: autoVerifiedArtist
-        });
-        membership.addMember(trackRegistrationData_AutoVerifiedRole.autoVerifiedArtist);
-        modaRegistry.grantRole(
-            keccak256("AUTO_VERIFIED_ROLE"), trackRegistrationData_AutoVerifiedRole.autoVerifiedArtist
-        );
-        vm.startPrank(trackRegistrationData_AutoVerifiedRole.autoVerifiedArtist);
-        catalog.registerTrack(
-            trackRegistrationData_AutoVerifiedRole.autoVerifiedArtist,
-            trackRegistrationData_AutoVerifiedRole.trackBeneficiary,
-            trackRegistrationData_AutoVerifiedRole.trackRegistrationHash,
-            dropIndex
-        );
-        vm.stopPrank();
-        trackRegistrationData_AutoVerifiedRole.trackId =
-            catalog.getTrackId(trackRegistrationData_AutoVerifiedRole.trackRegistrationHash);
-    }
+    function test_registerTrack_with_AUTO_VERIFIED_ROLE() public {
+        address beneficiary = address(0x5);
+        string memory trackHash = "track";
+        setup_auto_verified(artist);
 
-    function test_registerTrack_With_Auto_Verified_Role() public {
-        track_Registration_With_Auto_Verified_Role_SetUp();
-        Catalog.RegisteredTrack memory track =
-            catalog.getTrack(trackRegistrationData_AutoVerifiedRole.trackId);
+        vm.startPrank(artist);
+        catalog.registerTrack(artist, beneficiary, trackHash);
+        vm.stopPrank();
+        string memory trackId = catalog.getTrackId(trackHash);
+        Catalog.RegisteredTrack memory track = catalog.getTrack(trackId);
 
         assertEq(uint256(track.trackStatus), uint256(ITrackRegistration.TrackStatus.VALIDATED));
-        assertEq(track.trackArtist, trackRegistrationData_AutoVerifiedRole.autoVerifiedArtist);
-        assertEq(track.trackBeneficiary, trackRegistrationData_AutoVerifiedRole.trackBeneficiary);
-        assertEq(
-            track.trackRegistrationHash, trackRegistrationData_AutoVerifiedRole.trackRegistrationHash
-        );
+        assertEq(track.trackOwner, artist);
+        assertEq(track.trackBeneficiary, beneficiary);
+        assertEq(track.trackRegistrationHash, trackHash);
+
         assertEq(track.fingerprintHash, "");
         assertEq(track.validationHash, "");
     }
 
     /// Track Registration revert
 
-    function test_RevertWhen_Track_Is_Already_Registered() public {
-        registerTrack_SetUp();
+
+    function test_RevertWhen_TrackIsAlreadyRegistered() public {
+        trackRegistrationSetUp();
+
+
         vm.expectRevert(Catalog.TrackAlreadyRegistered.selector);
         vm.startPrank(artist);
         catalog.registerTrack(
-            artist,
-            trackRegistrationData.trackBeneficiary,
-            trackRegistrationData.trackRegistrationHash,
-            dropIndex
+            artist, trackRegistrationData.trackBeneficiary, trackRegistrationData.trackRegistrationHash
         );
         vm.stopPrank();
     }
 
-    function test_RevertWhen_User_Is_Not_Member() public {
-        vm.expectRevert(Catalog.UserMustBeMember.selector);
+
+    function test_RevertWhen_UserIsNotMember() public {
+        vm.expectRevert(Catalog.MembershipRequired.selector);
+
         address nonMember = address(0x9);
         vm.startPrank(nonMember);
         catalog.registerTrack(
             nonMember,
             trackRegistrationData.trackBeneficiary,
-            trackRegistrationData.trackRegistrationHash,
-            dropIndex
+            trackRegistrationData.trackRegistrationHash
         );
         vm.stopPrank();
     }
@@ -271,12 +247,9 @@ contract CatalogTest is Test {
         address nonArtist = address(0x9);
         membership.addMember(nonArtist);
         vm.startPrank(nonArtist);
-        vm.expectRevert(Catalog.MustBeArtistOrManager.selector);
+        vm.expectRevert(Catalog.MustBeTrackOwnerOrManager.selector);
         catalog.registerTrack(
-            artist,
-            trackRegistrationData.trackBeneficiary,
-            trackRegistrationData.trackRegistrationHash,
-            dropIndex
+            artist, trackRegistrationData.trackBeneficiary, trackRegistrationData.trackRegistrationHash
         );
         vm.stopPrank();
     }
@@ -544,7 +517,7 @@ contract CatalogTest is Test {
     function test_RevertWhen_calling_setReleasesApproval_And_Not_Artist() public {
         releases_Approval_Setup();
         address nonArtist = address(0x9);
-        vm.expectRevert(Catalog.MustBeArtistOrManager.selector);
+        vm.expectRevert(Catalog.MustBeTrackOwnerOrManager.selector);
         vm.startPrank(nonArtist);
         catalog.setReleasesApproval(trackRegistrationData.trackId, address(releases), true);
         vm.stopPrank();
@@ -562,7 +535,7 @@ contract CatalogTest is Test {
     function test_RevertWhen_calling_setReleasesApprovalForAll_And_Not_Artist() public {
         releases_Approval_Setup();
         address nonArtist = address(0x9);
-        vm.expectRevert(Catalog.MustBeArtistOrManager.selector);
+        vm.expectRevert(Catalog.MustBeTrackOwnerOrManager.selector);
         vm.startPrank(nonArtist);
         catalog.setReleasesApprovalForAll(artist, address(releases), true);
         vm.stopPrank();
@@ -585,14 +558,10 @@ contract CatalogTest is Test {
         registerReleasesContract_setUp();
         string memory trackRegistrationHashOne = "trackHashOne";
         string memory trackRegistrationHashTwo = "trackHashTwo";
-        vm.startPrank(artist);
 
-        catalog.registerTrack(
-            artist, trackRegistrationData.trackBeneficiary, trackRegistrationHashOne, dropIndex
-        );
-        catalog.registerTrack(
-            artist, trackRegistrationData.trackBeneficiary, trackRegistrationHashTwo, dropIndex
-        );
+        vm.startPrank(artist);
+        catalog.registerTrack(artist, trackRegistrationData.trackBeneficiary, trackRegistrationHashOne);
+        catalog.registerTrack(artist, trackRegistrationData.trackBeneficiary, trackRegistrationHashTwo);
         vm.stopPrank();
 
         string memory trackIdOne = catalog.getTrackId(trackRegistrationHashOne);

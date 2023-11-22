@@ -17,7 +17,7 @@ interface ITrackRegistration {
     /// @dev Emitted whenever a field in RegisterTrack is updated
     event TrackUpdated(
         TrackStatus indexed trackStatus,
-        address indexed trackArtist,
+        address indexed trackOwner,
         address trackBeneficiary,
         string trackRegistrationHash,
         string fingerprintHash,
@@ -34,8 +34,8 @@ interface ITrackRegistration {
 
     /**
      * @dev Represents a registered track
-     * TrackStatus - The registration state of the track (pending, validated, invalidated)
-     * TrackArtist - The account that owns the rights to a track.
+     * trackStatus - The registration state of the track (pending, validated, invalidated)
+     * trackOwner - The account that owns the rights to a track.
      * This is usually the artist address, but could be a contract.
      * TrackRegistrationHash - This is a IPFS hash of the track metadata
      * FingerprintHash - This is a IPFS hash of the track fingerprint
@@ -44,7 +44,7 @@ interface ITrackRegistration {
      */
     struct RegisteredTrack {
         TrackStatus trackStatus;
-        address trackArtist;
+        address trackOwner;
         address trackBeneficiary;
         string trackRegistrationHash;
         string fingerprintHash;
@@ -55,17 +55,15 @@ interface ITrackRegistration {
     /**
      * @dev Registers a track using the IPFS hash of the track metadata.
      * Track status is set to pending by default unless the user has the GOLD_ROLE.
-     * The Track can be registered by the artist or a manager.
-     * @param artist - The address of the artist
+     * The Track can be registered by the trackOwner or a manager.
+     * @param trackOwner - The address of the owner of the track
      * @param trackRegistrationHash - The registration hash of the track
      * @param trackBeneficiary - The beneficiary of the track (could be single or an 0xSplit)
-     * @param catalogIndex - The index of the catalog
      */
     function registerTrack(
-        address artist,
+        address trackOwner,
         address trackBeneficiary,
-        string calldata trackRegistrationHash,
-        uint256 catalogIndex
+        string calldata trackRegistrationHash
     ) external;
 
     /**

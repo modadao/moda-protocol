@@ -3,7 +3,6 @@ pragma solidity 0.8.21;
 
 import {IModaRegistry} from "./interfaces/IModaRegistry.sol";
 import {IOfficialModaContracts} from "./interfaces/IOfficialModaContracts.sol";
-import {IMembership} from "./interfaces/IMembership.sol";
 import "@openzeppelin/contracts/access/extensions/AccessControlEnumerable.sol";
 
 contract ModaRegistry is IModaRegistry, IOfficialModaContracts, AccessControlEnumerable {
@@ -27,66 +26,45 @@ contract ModaRegistry is IModaRegistry, IOfficialModaContracts, AccessControlEnu
     uint256 _treasuryFee;
     address _splitsFactory;
 
-    Catalog[] _catalogs;
-    mapping(address => bool) _isCatalogRegistered;
+    EnumerableSet.AddressSet _catalogs;
     mapping(address => EnumerableSet.AddressSet) _managers;
 
     // Errors
 
-    error CatalogAlreadyRegistered();
-    error CatalogNotRegistered();
     error AddressCannotBeZero();
-    error ContractMustSupportIMembership();
+    error CatalogAlreadyRegistered();
+    error CatalogIsNotRegistered();
+    error CatalogRegisterationFailed();
+    error CatalogUnregistrationFailed();
 
     constructor() {
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
     }
 
-    // Membership
-
     /// @inheritdoc IModaRegistry
-    function isMember(uint256 index, address user) external view returns (bool) {
-        return IMembership(_catalogs[index].membership).isMember(user);
-    }
-
-    /// @inheritdoc IModaRegistry
-    function setCatalogMembership(
-        uint256 index,
-        IMembership membership
-    ) external onlyRole(DEFAULT_ADMIN_ROLE) {
-        _requireValidMembership(membership);
-
-        _catalogs[index].membership = address(membership);
-        emit CatalogMembershipChanged(_catalogs[index].name, address(membership));
-    }
-
-    /// @inheritdoc IModaRegistry
-    function registerCatalog(
-        string calldata name,
-        address catalog,
-        IMembership membership
-    ) external onlyRole(DEFAULT_ADMIN_ROLE) {
+    function registerCatalog(address catalog) external onlyRole(DEFAULT_ADMIN_ROLE) {
         if (catalog == address(0)) revert AddressCannotBeZero();
-        if (_isCatalogRegistered[catalog]) revert CatalogAlreadyRegistered();
-        _requireValidMembership(membership);
+        if (_catalogs.contains(catalog)) revert CatalogAlreadyRegistered();
 
-        _catalogs.push(Catalog({name: name, catalog: catalog, membership: address(membership)}));
-        _isCatalogRegistered[catalog] = true;
+        if (_catalogs.add(catalog)) {
+            emit CatalogRegistered(catalog, msg.sender);
+            return;
+        }
 
-        emit CatalogRegistered(name, catalog);
-        emit CatalogMembershipChanged(name, address(membership));
+        revert CatalogRegisterationFailed();
     }
 
     /// @inheritdoc IModaRegistry
-    function unregisterCatalog(uint256 index) external onlyRole(DEFAULT_ADMIN_ROLE) {
-        Catalog storage catalog = _catalogs[index];
-        if (catalog.catalog == address(0)) revert CatalogNotRegistered();
+    /// @notice Only a default admin can call this
+    function unregisterCatalog(address catalog) external onlyRole(DEFAULT_ADMIN_ROLE) {
+        if (!_catalogs.contains(catalog)) revert CatalogIsNotRegistered();
 
-        _isCatalogRegistered[catalog.catalog] = false;
-        emit CatalogUnregistered(catalog.name, catalog.catalog);
-        catalog.name = "";
-        catalog.catalog = address(0);
-        catalog.membership = address(0);
+        if (_catalogs.remove(catalog)) {
+            emit CatalogUnregistered(catalog, msg.sender);
+            return;
+        }
+
+        revert CatalogUnregistrationFailed();
     }
 
     function isCatalogRegistered(address catalog) external view returns (bool) {
@@ -94,13 +72,8 @@ contract ModaRegistry is IModaRegistry, IOfficialModaContracts, AccessControlEnu
     }
 
     /// @inheritdoc IModaRegistry
-    function getCatalogInfo(uint256 index) external view returns (Catalog memory) {
-        return _catalogs[index];
-    }
-
-    /// @inheritdoc IModaRegistry
-    function getCatalogCount() external view returns (uint256) {
-        return _catalogs.length;
+    function isRegisteredCatalog(address catalog) external view returns (bool) {
+        return _catalogs.contains(catalog);
     }
 
     /// @inheritdoc IModaRegistry
@@ -170,11 +143,5 @@ contract ModaRegistry is IModaRegistry, IOfficialModaContracts, AccessControlEnu
     /// @inheritdoc IOfficialModaContracts
     function getSplitsFactory() external view returns (address) {
         return _splitsFactory;
-    }
-
-    function _requireValidMembership(IMembership membership) private view {
-        if (!membership.supportsInterface(type(IMembership).interfaceId)) {
-            revert ContractMustSupportIMembership();
-        }
     }
 }

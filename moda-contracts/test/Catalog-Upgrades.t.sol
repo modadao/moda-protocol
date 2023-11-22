@@ -3,6 +3,7 @@ pragma solidity 0.8.21;
 
 import {Test, console2} from "forge-std/Test.sol";
 import "../src/Catalog.sol";
+import "../src/interfaces/IMembership.sol";
 import "../test/mocks/CatalogV2Mock.sol";
 import {Upgrades} from "openzeppelin-foundry-upgrades/Upgrades.sol";
 import {IBeacon} from "@openzeppelin/contracts/proxy/beacon/IBeacon.sol";
@@ -20,6 +21,7 @@ contract CatalogUpgradesTest is Test {
     address public splitsFactory = address(0x1);
     address public modaBeneficiary = address(0x2);
     address public catalogDeployer = address(0x3);
+    IMembership public membership = IMembership(address(0x4));
 
     address modaAdmin = address(0x4);
 
@@ -28,7 +30,8 @@ contract CatalogUpgradesTest is Test {
         catalogImplementation = IBeacon(beacon).implementation();
 
         catalogProxy = Upgrades.deployBeaconProxy(
-            beacon, abi.encodeCall(Catalog.initialize, (catalogName, catalogVersion, modaRegistry))
+            beacon,
+            abi.encodeCall(Catalog.initialize, (catalogName, catalogVersion, modaRegistry, membership))
         );
     }
 
