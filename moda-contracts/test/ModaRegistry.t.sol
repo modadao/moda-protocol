@@ -18,8 +18,8 @@ contract ModaRegistryTest is Test {
     address public catalogAddress = address(0x2);
     address public treasuryAddress = address(0x5);
 
-    string public catalogName = "Drop";
-    uint256 public dropIndex = 0;
+    string public catalogName = "The ACME Catalog";
+    uint256 public firstCatalogIndex = 0;
 
     function setUp() public {
         membership = new Membership();
@@ -36,14 +36,14 @@ contract ModaRegistryTest is Test {
 
     function test_isMember() public {
         membershipSetUp();
-        bool isMember = modaRegistry.isMember(dropIndex, user);
+        bool isMember = modaRegistry.isMember(firstCatalogIndex, user);
         assertTrue(isMember);
     }
 
     function test_isNotMember() public {
         membershipSetUp();
         address notMember = address(0x3);
-        bool isMember = modaRegistry.isMember(dropIndex, notMember);
+        bool isMember = modaRegistry.isMember(firstCatalogIndex, notMember);
         assertFalse(isMember);
     }
 
@@ -51,8 +51,8 @@ contract ModaRegistryTest is Test {
         membershipSetUp();
         Membership newMembership = new Membership();
 
-        modaRegistry.setCatalogMembership(dropIndex, newMembership);
-        IModaRegistry.Catalog memory catalog = modaRegistry.getCatalogInfo(dropIndex);
+        modaRegistry.setCatalogMembership(firstCatalogIndex, newMembership);
+        IModaRegistry.Catalog memory catalog = modaRegistry.getCatalogInfo(firstCatalogIndex);
 
         assertEq(catalog.membership, address(newMembership));
     }
@@ -62,7 +62,7 @@ contract ModaRegistryTest is Test {
         ERC165Mock erc165 = new ERC165Mock(new bytes4[](0));
 
         vm.expectRevert(ModaRegistry.IMembershipNotImplemented.selector);
-        modaRegistry.setCatalogMembership(dropIndex, IMembership(address(erc165)));
+        modaRegistry.setCatalogMembership(firstCatalogIndex, IMembership(address(erc165)));
     }
 
     // Catalog registration
@@ -73,7 +73,7 @@ contract ModaRegistryTest is Test {
 
     function test_registerCatalog() public {
         registerCatalogSetUp();
-        IModaRegistry.Catalog memory catalog = modaRegistry.getCatalogInfo(dropIndex);
+        IModaRegistry.Catalog memory catalog = modaRegistry.getCatalogInfo(firstCatalogIndex);
         assertEq(catalog.name, catalogName);
         assertEq(catalog.catalog, catalogAddress);
         assertEq(catalog.membership, address(membership));
@@ -81,8 +81,8 @@ contract ModaRegistryTest is Test {
 
     function test_unregisterCatalog() public {
         registerCatalogSetUp();
-        modaRegistry.unregisterCatalog(dropIndex);
-        IModaRegistry.Catalog memory catalog = modaRegistry.getCatalogInfo(dropIndex);
+        modaRegistry.unregisterCatalog(firstCatalogIndex);
+        IModaRegistry.Catalog memory catalog = modaRegistry.getCatalogInfo(firstCatalogIndex);
         assertEq(catalog.name, "");
         assertEq(catalog.catalog, address(0));
         assertEq(catalog.membership, address(0));
@@ -109,9 +109,9 @@ contract ModaRegistryTest is Test {
 
     function test_RevertWhen_unregisterAlreadyUnregisteredCatalog() public {
         registerCatalogSetUp();
-        modaRegistry.unregisterCatalog(dropIndex);
+        modaRegistry.unregisterCatalog(firstCatalogIndex);
         vm.expectRevert(ModaRegistry.CatalogNotRegistered.selector);
-        modaRegistry.unregisterCatalog(dropIndex);
+        modaRegistry.unregisterCatalog(firstCatalogIndex);
     }
 
     // Artist Management

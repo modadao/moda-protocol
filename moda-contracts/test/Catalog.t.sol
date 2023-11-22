@@ -15,7 +15,7 @@ contract CatalogTest is Test {
     ReleasesMock public releasesMock;
 
     address public catalogDeployer = address(0x1);
-    string public catalogName = "Drop";
+    string public catalogName = "ACME-CATALOG";
     uint256 public catalogIndex = 0;
     string public chainId = "80001";
     string public catalogVersion = "1";
