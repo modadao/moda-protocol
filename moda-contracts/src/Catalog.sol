@@ -114,9 +114,10 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
         );
         $._trackIds[trackRegistrationHash] = id;
 
-        bool isGoldRole = IModaRegistry($._modaRegistry).hasRole(keccak256("GOLD_ROLE"), msg.sender);
+        bool hasAutoVerification =
+            IModaRegistry($._modaRegistry).hasRole(keccak256("AUTO_VERIFIED_ROLE"), msg.sender);
 
-        TrackStatus status = isGoldRole ? TrackStatus.VALIDATED : TrackStatus.PENDING;
+        TrackStatus status = hasAutoVerification ? TrackStatus.VALIDATED : TrackStatus.PENDING;
 
         $._registeredTracks[id] =
             RegisteredTrack(status, artist, trackBeneficiary, trackRegistrationHash, "", "", address(0));
