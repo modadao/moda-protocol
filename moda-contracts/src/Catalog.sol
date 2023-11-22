@@ -90,7 +90,7 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
 
     /// @inheritdoc ITrackRegistration
     function registerTrack(
-        address artist,
+        address trackOwner,
         address trackBeneficiary,
         string calldata trackRegistrationHash
     ) external {
@@ -98,7 +98,7 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
 
         _requireTrackIsNotRegistered(trackRegistrationHash);
         _requireMembership(address(this), msg.sender);
-        _requireTrackManagementPermissions(msg.sender, artist);
+        _requireTrackWritePermissions(msg.sender, trackOwner);
 
         string memory id = string(
             abi.encodePacked(
@@ -118,8 +118,9 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
 
         TrackStatus status = hasAutoVerification ? TrackStatus.VALIDATED : TrackStatus.PENDING;
 
-        $._registeredTracks[id] =
-            RegisteredTrack(status, artist, trackBeneficiary, trackRegistrationHash, "", "", address(0));
+        $._registeredTracks[id] = RegisteredTrack(
+            status, trackOwner, trackBeneficiary, trackRegistrationHash, "", "", address(0)
+        );
         $._trackCount++;
 
         emit TrackRegistered(trackRegistrationHash, id, msg.sender);
@@ -167,7 +168,7 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
 
         _requireTrackIsRegistered(trackId);
         RegisteredTrack storage track = $._registeredTracks[trackId];
-        _requireUserIsTrackArtistOrManager(trackId, msg.sender);
+        _requireTrackWritePermissions(trackId, msg.sender);
         track.trackBeneficiary = newTrackBeneficiary;
         emit TrackUpdated(
             track.trackStatus,
@@ -189,8 +190,9 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
         CatalogStorage storage $ = _getCatalogStorage();
 
         RegisteredTrack storage track = $._registeredTracks[trackId];
-        _requireUserIsTrackArtistOrManager(trackId, msg.sender);
+        _requireTrackWritePermissions(trackId, msg.sender);
         track.trackRegistrationHash = newTrackRegistrationHash;
+
         emit TrackUpdated(
             track.trackStatus,
             track.trackArtist,
@@ -211,7 +213,7 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
 
         _requireTrackIsRegistered(trackId);
         RegisteredTrack storage track = $._registeredTracks[trackId];
-        _requireUserIsTrackArtistOrManager(trackId, msg.sender);
+        _requireTrackWritePermissions(trackId, msg.sender);
         track.fingerprintHash = fingerprintHash;
         emit TrackUpdated(
             track.trackStatus,
@@ -230,7 +232,7 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
 
         _requireTrackIsRegistered(trackId);
         RegisteredTrack storage track = $._registeredTracks[trackId];
-        _requireUserIsTrackArtistOrManager(trackId, msg.sender);
+        _requireTrackWritePermissions(trackId, msg.sender);
         track.validationHash = validationHash;
         emit TrackUpdated(
             track.trackStatus,
@@ -275,7 +277,7 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
     function setReleasesApproval(string calldata trackId, address releases, bool hasApproval) external {
         CatalogStorage storage $ = _getCatalogStorage();
 
-        _requireUserIsTrackArtistOrManager(trackId, msg.sender);
+        _requireTrackWritePermissions(trackId, msg.sender);
         _requireReleasesContractIsRegistered(releases);
         $._singleTrackReleasesPermission[trackId][releases] = hasApproval;
 
@@ -285,7 +287,7 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
     /// @inheritdoc IReleasesApproval
     function setReleasesApprovalForAll(address artist, address releases, bool hasApproval) external {
         CatalogStorage storage $ = _getCatalogStorage();
-        _requireTrackManagementPermissions(msg.sender, artist);
+        _requireTrackWritePermissions(msg.sender, artist);
         _requireReleasesContractIsRegistered(releases);
 
         $._allTracksReleasesPermission[artist][releases] = hasApproval;
@@ -387,10 +389,6 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
 
     /// Internal Functions
 
-    /**
-     * @dev Reverts if an account is not a member of the Catalog
-     * @param account The address of the EOA or contract
-     */
     function _requireMembership(address catalog, address account) internal {
         CatalogStorage storage $ = _getCatalogStorage();
 
@@ -399,12 +397,18 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
         }
     }
 
-    function _requireTrackManagementPermissions(address account, address artist) internal view {
+    function _requireTrackWritePermissions(address caller, address artist) internal view {
         CatalogStorage storage $ = _getCatalogStorage();
 
-        if (account != artist && !IModaRegistry($._modaRegistry).isManager(artist, account)) {
+        if (caller != artist && !IModaRegistry($._modaRegistry).isManager(artist, caller)) {
             revert MustBeArtistOrManager();
         }
+    }
+
+    function _requireTrackWritePermissions(string calldata trackId, address caller) internal view {
+        _requireTrackWritePermissions(
+            caller, _getCatalogStorage()._registeredTracks[trackId].trackArtist
+        );
     }
 
     function _requireVerifierRole(address account) internal view {
@@ -423,10 +427,6 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
         }
     }
 
-    /**
-     * @dev Checks the track is registered
-     * @param trackId The id of the track
-     */
     function _requireTrackIsRegistered(string calldata trackId) internal view {
         CatalogStorage storage $ = _getCatalogStorage();
 
@@ -435,10 +435,6 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
         }
     }
 
-    /**
-     * @dev Checks the track is not registered
-     * @param trackRegistrationHash The registration hash of the track
-     */
     function _requireTrackIsNotRegistered(string calldata trackRegistrationHash) internal view {
         CatalogStorage storage $ = _getCatalogStorage();
 
@@ -447,10 +443,6 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
         }
     }
 
-    /**
-     * @dev Checks the track is not invalidated
-     * @param trackId The id of the track
-     */
     function _requireTrackIsValid(string calldata trackId) internal view {
         CatalogStorage storage $ = _getCatalogStorage();
 
@@ -459,26 +451,6 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
         }
     }
 
-    /**
-     * @dev Checks the caller is the track owner or manager
-     * @param trackId The id of the track
-     * @param caller The address of the caller
-     */
-    function _requireUserIsTrackArtistOrManager(string calldata trackId, address caller) internal view {
-        CatalogStorage storage $ = _getCatalogStorage();
-
-        if (
-            $._registeredTracks[trackId].trackArtist != caller
-                && !IModaRegistry($._modaRegistry).isManager($._registeredTracks[trackId].trackArtist, caller)
-        ) {
-            revert MustBeArtistOrManager();
-        }
-    }
-
-    /**
-     * @dev Checks the track has been added to a Releases contract
-     * @param trackId The id of the track
-     */
     function _requireReleasesContractHasPermission(string calldata trackId) internal view {
         CatalogStorage storage $ = _getCatalogStorage();
 
@@ -487,20 +459,12 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
         }
     }
 
-    /**
-     * @dev Checks if the release token has been previously  minted
-     * @param releaseHash The release hash of the token
-     */
     function _requireReleaseNotDuplicate(bytes32 releaseHash) internal view {
         if (getRegisteredRelease(releaseHash).releases != address(0)) {
             revert ReleaseAlreadyCreated();
         }
     }
 
-    /**
-     * @dev Checks that the Releases contract is registered
-     * @param releases The address of the Releases contract
-     */
     function _requireReleasesContractIsRegistered(address releases) internal view {
         CatalogStorage storage $ = _getCatalogStorage();
 
@@ -509,10 +473,6 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
         }
     }
 
-    /**
-     * @dev Checks that the Releases contract is not registered
-     * @param releases The address of the Releases contract
-     */
     function _requireReleasesContractNotRegistered(address releases) internal view {
         CatalogStorage storage $ = _getCatalogStorage();
 
@@ -521,11 +481,6 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
         }
     }
 
-    /**
-     * @dev Creates a release hash from the ordered tracks and the metadata uri
-     * @param trackIds The track ids of the tracks
-     * @param uri The metadata uri of the release
-     */
     function _createReleaseHash(
         string[] memory trackIds,
         string memory uri
@@ -534,10 +489,6 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
         return keccak256(abi.encode(packedHashes, uri));
     }
 
-    /**
-     * @dev Packs an array of strings into a single bytes array
-     * @param array The array of strings
-     */
     function _packStringArray(string[] memory array) internal pure returns (bytes memory) {
         bytes memory packedBytes = "";
         for (uint256 i = 0; i < array.length; i++) {
