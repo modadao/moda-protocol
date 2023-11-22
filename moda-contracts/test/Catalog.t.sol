@@ -16,11 +16,7 @@ contract CatalogTest is Test {
 
     address public catalogDeployer = address(0x1);
     string public catalogName = "ACME-CATALOG";
-    uint256 public catalogIndex = 0;
-    string public chainId = "80001";
     string public catalogVersion = "1";
-    address public splitsFactory = address(0x2);
-    address public modaBeneficiary = address(0x3);
     address public artist = address(0x4);
 
     error InvalidInitialization();
