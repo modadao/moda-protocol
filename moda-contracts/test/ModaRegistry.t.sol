@@ -7,11 +7,9 @@ import {IMembership} from "../src/interfaces/IMembership.sol";
 import {ModaRegistry} from "../src/ModaRegistry.sol";
 import {Membership} from "../test/mocks/MembershipMock.sol";
 import {ERC165Mock} from "../test/mocks/ERC165Mock.sol";
-import {FaultyMembershipMock} from "../test/mocks/FaultyMembershipMock.sol";
 
 contract ModaRegistryTest is Test {
     Membership public membership;
-    FaultyMembershipMock public faultyMembership;
     ModaRegistry public modaRegistry;
 
     address public artist = address(0x1);
@@ -22,92 +20,40 @@ contract ModaRegistryTest is Test {
     function setUp() public {
         membership = new Membership();
         modaRegistry = new ModaRegistry();
-        faultyMembership = new FaultyMembershipMock();
-    }
-
-    // Membership
-
-    function membershipSetUp() public {
-        membership.addMember(artist);
-        modaRegistry.registerCatalog(catalogName, catalogAddress, membership);
-    }
-
-    function test_isMember() public {
-        membershipSetUp();
-        bool isMember = modaRegistry.isMember(catalogAddress, artist);
-        assertTrue(isMember);
-    }
-
-    function test_isNotMember() public {
-        membershipSetUp();
-        address notMember = address(0x3);
-        bool isMember = modaRegistry.isMember(catalogAddress, notMember);
-        assertFalse(isMember);
-    }
-
-    function test_setCatalogMembership() public {
-        membershipSetUp();
-        Membership newMembership = new Membership();
-
-        modaRegistry.setCatalogMembership(catalogAddress, newMembership);
-        IModaRegistry.Catalog memory catalog = modaRegistry.getCatalogInfo(catalogAddress);
-
-        assertEq(catalog.membership, address(newMembership));
-    }
-
-    function test_setCatalogMembership_reverts_with_unsupported_IMembership() public {
-        membershipSetUp();
-        ERC165Mock erc165 = new ERC165Mock(new bytes4[](0));
-
-        vm.expectRevert(ModaRegistry.IMembershipNotImplemented.selector);
-        modaRegistry.setCatalogMembership(catalogAddress, IMembership(address(erc165)));
     }
 
     // Catalog registration
 
-    function registerCatalogSetUp() public {
-        modaRegistry.registerCatalog(catalogName, catalogAddress, membership);
-    }
-
     function test_registerCatalog() public {
-        registerCatalogSetUp();
+        modaRegistry.registerCatalog(catalogAddress);
 
-        IModaRegistry.Catalog memory catalog = modaRegistry.getCatalogInfo(catalogAddress);
-
-        assertEq(catalog.name, catalogName);
-        assertEq(catalog.membership, address(membership));
+        assertTrue(modaRegistry.isRegisteredCatalog(catalogAddress));
     }
 
     function test_unregisterCatalog() public {
-        registerCatalogSetUp();
+        modaRegistry.registerCatalog(catalogAddress);
+        assertTrue(modaRegistry.isRegisteredCatalog(catalogAddress));
 
         modaRegistry.unregisterCatalog(catalogAddress);
-        IModaRegistry.Catalog memory catalog = modaRegistry.getCatalogInfo(catalogAddress);
-
-        assertEq(catalog.name, "");
-        assertEq(catalog.membership, address(0));
-        assertEq(catalog.membership, address(0));
+        assertFalse(modaRegistry.isRegisteredCatalog(catalogAddress));
     }
 
     // Catalog reverts
 
     function test_RevertWhen_registerCatalogWithZeroAddress() public {
         vm.expectRevert(ModaRegistry.AddressCannotBeZero.selector);
-        modaRegistry.registerCatalog(catalogName, address(0), membership);
+        modaRegistry.registerCatalog(address(0));
     }
 
     function test_RevertWhen_catalogAlreadyRegistered() public {
-        registerCatalogSetUp();
+        modaRegistry.registerCatalog(catalogAddress);
 
         vm.expectRevert(ModaRegistry.CatalogAlreadyRegistered.selector);
-        modaRegistry.registerCatalog(catalogName, catalogAddress, membership);
+        modaRegistry.registerCatalog(catalogAddress);
     }
 
     function test_RevertWhen_unregisterAlreadyUnregisteredCatalog() public {
-        registerCatalogSetUp();
-        modaRegistry.unregisterCatalog(catalogAddress);
-
-        vm.expectRevert(ModaRegistry.CatalogNotRegistered.selector);
+        vm.expectRevert(ModaRegistry.CatalogIsNotRegistered.selector);
         modaRegistry.unregisterCatalog(catalogAddress);
     }
 

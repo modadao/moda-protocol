@@ -8,6 +8,7 @@ import {IReleasesApproval} from "./interfaces/Releases/IReleasesApproval.sol";
 import {IReleasesRegistration} from "./interfaces/Releases/IReleasesRegistration.sol";
 import {IReleases} from "./interfaces/Releases/IReleases.sol";
 import {ICatalog} from "./interfaces/ICatalog.sol";
+import {IMembership} from "./interfaces/IMembership.sol";
 import {IModaRegistry} from "./interfaces/IModaRegistry.sol";
 import {IOfficialModaContracts} from "./interfaces/IOfficialModaContracts.sol";
 import {AccessControlUpgradeable} from
@@ -20,6 +21,7 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
     /// @custom:storage-location erc7201:moda.storage.Catalog
     struct CatalogStorage {
         address _modaRegistry;
+        IMembership _membership;
         string _name;
         string _version;
         uint256 _trackCount;
@@ -73,12 +75,15 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
     function initialize(
         string calldata name,
         string calldata version,
-        address modaRegistry
+        address modaRegistry,
+        IMembership membership
     ) external initializer {
         CatalogStorage storage $ = _getCatalogStorage();
         $._name = name;
         $._version = version;
         $._modaRegistry = modaRegistry;
+        $._membership = membership;
+
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
     }
 
@@ -97,7 +102,7 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
         CatalogStorage storage $ = _getCatalogStorage();
 
         _requireTrackIsNotRegistered(trackRegistrationHash);
-        _requireMembership(address(this), msg.sender);
+        _requireMembership(msg.sender);
         _requireTrackWritePermissions(trackOwner, msg.sender);
 
         string memory id = string(
@@ -396,12 +401,10 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
 
     /// Internal Functions
 
-    function _requireMembership(address catalog, address caller) internal {
+    function _requireMembership(address caller) internal view {
         CatalogStorage storage $ = _getCatalogStorage();
 
-        if (!IModaRegistry($._modaRegistry).isMember(catalog, caller)) {
-            revert MembershipRequired();
-        }
+        if (!$._membership.isMember(caller)) revert MembershipRequired();
     }
 
     function _requireTrackWritePermissions(address trackOwner, address caller) internal view {

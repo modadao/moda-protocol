@@ -3,7 +3,6 @@ pragma solidity 0.8.21;
 
 import {IModaRegistry} from "./interfaces/IModaRegistry.sol";
 import {IOfficialModaContracts} from "./interfaces/IOfficialModaContracts.sol";
-import {IMembership} from "./interfaces/IMembership.sol";
 import "@openzeppelin/contracts/access/extensions/AccessControlEnumerable.sol";
 
 contract ModaRegistry is IModaRegistry, IOfficialModaContracts, AccessControlEnumerable {
@@ -27,73 +26,50 @@ contract ModaRegistry is IModaRegistry, IOfficialModaContracts, AccessControlEnu
     uint256 _treasuryFee;
     address _splitsFactory;
 
-    mapping(address => Catalog) _catalogs;
+    EnumerableSet.AddressSet _catalogs;
     mapping(address => EnumerableSet.AddressSet) _managers;
 
     // Errors
 
-    error CatalogAlreadyRegistered();
-    error CatalogNotRegistered();
     error AddressCannotBeZero();
-    error IMembershipNotImplemented();
+    error CatalogAlreadyRegistered();
+    error CatalogIsNotRegistered();
+    error CatalogRegisterationFailed();
+    error CatalogUnregistrationFailed();
 
     constructor() {
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
     }
 
-    // Membership
-
     /// @inheritdoc IModaRegistry
-    function isMember(address catalog, address user) external view returns (bool) {
-        if (address(0) == _catalogs[catalog].membership) revert CatalogNotRegistered();
-
-        return IMembership(_catalogs[catalog].membership).isMember(user);
-    }
-
-    /// @inheritdoc IModaRegistry
-    /// @notice Only a default admin can call this
-    function setCatalogMembership(
-        address _catalog,
-        IMembership membership
-    ) external onlyRole(DEFAULT_ADMIN_ROLE) {
-        _requireValidMembership(membership);
-
-        _catalogs[_catalog].membership = address(membership);
-
-        emit CatalogMembershipChanged(_catalogs[_catalog].name, address(membership));
-    }
-
-    /// @inheritdoc IModaRegistry
-    function registerCatalog(
-        string calldata name,
-        address catalog,
-        IMembership membership
-    ) external onlyRole(DEFAULT_ADMIN_ROLE) {
+    function registerCatalog(address catalog) external onlyRole(DEFAULT_ADMIN_ROLE) {
         if (catalog == address(0)) revert AddressCannotBeZero();
-        if (address(0) != _catalogs[catalog].membership) revert CatalogAlreadyRegistered();
-        _requireValidMembership(membership);
+        if (_catalogs.contains(catalog)) revert CatalogAlreadyRegistered();
 
-        _catalogs[catalog] = Catalog({name: name, membership: address(membership)});
+        if (_catalogs.add(catalog)) {
+            emit CatalogRegistered(catalog, msg.sender);
+            return;
+        }
 
-        emit CatalogRegistered(name, catalog, msg.sender);
-        emit CatalogMembershipChanged(name, address(membership));
+        revert CatalogRegisterationFailed();
     }
 
     /// @inheritdoc IModaRegistry
     /// @notice Only a default admin can call this
-    function unregisterCatalog(address _catalog) external onlyRole(DEFAULT_ADMIN_ROLE) {
-        Catalog storage catalog = _catalogs[_catalog];
-        if (catalog.membership == address(0)) revert CatalogNotRegistered();
+    function unregisterCatalog(address catalog) external onlyRole(DEFAULT_ADMIN_ROLE) {
+        if (!_catalogs.contains(catalog)) revert CatalogIsNotRegistered();
 
-        emit CatalogUnregistered(catalog.name, _catalog, msg.sender);
+        if (_catalogs.remove(catalog)) {
+            emit CatalogUnregistered(catalog, msg.sender);
+            return;
+        }
 
-        catalog.name = "";
-        catalog.membership = address(0);
+        revert CatalogUnregistrationFailed();
     }
 
     /// @inheritdoc IModaRegistry
-    function getCatalogInfo(address _catalog) external view returns (Catalog memory) {
-        return _catalogs[_catalog];
+    function isRegisteredCatalog(address catalog) external view returns (bool) {
+        return _catalogs.contains(catalog);
     }
 
     /// @inheritdoc IModaRegistry
@@ -163,11 +139,5 @@ contract ModaRegistry is IModaRegistry, IOfficialModaContracts, AccessControlEnu
     /// @inheritdoc IOfficialModaContracts
     function getSplitsFactory() external view returns (address) {
         return _splitsFactory;
-    }
-
-    function _requireValidMembership(IMembership membership) private view {
-        if (!membership.supportsInterface(type(IMembership).interfaceId)) {
-            revert IMembershipNotImplemented();
-        }
     }
 }

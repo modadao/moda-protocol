@@ -27,10 +27,10 @@ contract CatalogTest is Test {
         catalog = new Catalog();
         releasesMock = new ReleasesMock();
         vm.startPrank(catalogDeployer);
-        catalog.initialize(catalogName, catalogVersion, address(modaRegistry));
+        catalog.initialize(catalogName, catalogVersion, address(modaRegistry), membership);
         vm.stopPrank();
         membership.addMember(artist);
-        modaRegistry.registerCatalog(catalogName, address(catalog), membership);
+        modaRegistry.registerCatalog(address(catalog));
     }
 
     function setup_auto_verified(address account) public {
@@ -44,7 +44,7 @@ contract CatalogTest is Test {
         setUp();
         vm.expectRevert(InvalidInitialization.selector);
         vm.startPrank(catalogDeployer);
-        catalog.initialize(catalogName, catalogVersion, address(modaRegistry));
+        catalog.initialize(catalogName, catalogVersion, address(modaRegistry), membership);
         vm.stopPrank();
     }
 

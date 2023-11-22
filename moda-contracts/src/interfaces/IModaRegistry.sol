@@ -2,17 +2,13 @@
 pragma solidity 0.8.21;
 
 import {IAccessControl} from "@openzeppelin/contracts/access/IAccessControl.sol";
-import {IMembership} from "./IMembership.sol";
 
 interface IModaRegistry is IAccessControl {
-    /// @dev Emitted when a catalog owner changes the membership contract
-    event CatalogMembershipChanged(string name, address indexed membership);
-
     /// @dev Emitted when a catalog is registered for an organization
-    event CatalogRegistered(string name, address indexed catalog, address registrar);
+    event CatalogRegistered(address indexed catalog, address registrar);
 
     /// @dev Emitted when a catalog is unregistered
-    event CatalogUnregistered(string name, address indexed catalog, address registrar);
+    event CatalogUnregistered(address indexed catalog, address registrar);
 
     /// @dev Emitted when a manager is added by an artist
     event ManagerAdded(address indexed artist, address indexed manager);
@@ -26,43 +22,14 @@ interface IModaRegistry is IAccessControl {
     /// @dev Emitted when the treasury address is changed by a default admin
     event TreasuryChanged(address oldTreasury, address newTreasury);
 
-    /**
-     * @dev Represents a registered catalog
-     * name - The name of the catalog
-     * membership - The address of the membership contract
-     */
-    struct Catalog {
-        string name;
-        address membership;
-    }
-
-    // Membership
-
-    /**
-     * @dev Checks if the user is a member of a particular catalog. Reverts if Catalog is not registered.
-     * This is a proxy to the Membership contract instance deployed by the catalog owner.
-     * @param catalog - The index of the catalog
-     * @param account - The address of an EOA or a contract.
-     */
-    function isMember(address catalog, address account) external returns (bool);
-
-    /**
-     * @dev Sets a membership contract for a particular catalog
-     * @param catalog - The address of the catalog
-     * @param membership - An instance of a membership contract that follows the IMembership interface
-     */
-    function setCatalogMembership(address catalog, IMembership membership) external;
-
     // Catalogs
 
     /**
      * @dev Registers a new catalog
      * @notice Only a default admin can call this
-     * @param name - The name of the catalog
      * @param catalog - The address of the catalog
-     * @param membership - A contract address that implements IMembership
      */
-    function registerCatalog(string calldata name, address catalog, IMembership membership) external;
+    function registerCatalog(address catalog) external;
 
     /**
      * @dev Unregisters a deprecated or malicious catalog
@@ -71,10 +38,10 @@ interface IModaRegistry is IAccessControl {
     function unregisterCatalog(address catalog) external;
 
     /**
-     * @dev Returns a info about a particular catalog
-     * @param catalog - The address of the catalog
+     * @dev Check if a catalog is registered
+     * @param catalog The address of a catalog
      */
-    function getCatalogInfo(address catalog) external view returns (Catalog memory);
+    function isRegisteredCatalog(address catalog) external view returns (bool);
 
     // Artist Management
 
