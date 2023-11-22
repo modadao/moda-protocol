@@ -34,8 +34,10 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
         mapping(string => mapping(address => bool)) _singleTrackReleasesPermission;
         /// @dev trackOwner => releases => true/false
         mapping(address => mapping(address => bool)) _allTracksReleasesPermission;
-        /// @dev releases => releasesOwner
+        /// @dev releasesOwner => releases
         mapping(address => address) _registeredReleasesContracts;
+        /// @dev release => releaseOwner
+        mapping(address => address) _registeredReleasesOwners;
         /// @dev releaseHash => RegisteredRelease
         mapping(bytes32 => RegisteredRelease) _registeredReleases;
         /// @dev releases => tokenId => tracks on release
@@ -257,7 +259,8 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
         _requireReleasesRegistrarRole(msg.sender);
         _requireReleasesContractNotRegistered(releases);
 
-        $._registeredReleasesContracts[releases] = releasesOwner;
+        $._registeredReleasesContracts[releasesOwner] = releases;
+        $._registeredReleasesOwners[releases] = releasesOwner;
         emit ReleasesRegistered(releases, releasesOwner);
     }
 
@@ -266,8 +269,9 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
         CatalogStorage storage $ = _getCatalogStorage();
 
         _requireReleasesContractIsRegistered(releases);
-        address releasesOwner = $._registeredReleasesContracts[releases];
-        delete $._registeredReleasesContracts[releases];
+        address releasesOwner = $._registeredReleasesOwners[releases];
+        delete $._registeredReleasesContracts[releasesOwner];
+        delete $._registeredReleasesOwners[releases];
         emit ReleasesUnregistered(releases, releasesOwner);
     }
 
@@ -275,7 +279,14 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
     function getReleasesOwner(address releases) external view returns (address owner) {
         CatalogStorage storage $ = _getCatalogStorage();
 
-        return $._registeredReleasesContracts[releases];
+        return $._registeredReleasesOwners[releases];
+    }
+
+    /// @inheritdoc IReleasesRegistration
+    function getReleasesContract(address releasesOwner) external view returns (address releases) {
+        CatalogStorage storage $ = _getCatalogStorage();
+
+        return $._registeredReleasesContracts[releasesOwner];
     }
 
     /// @inheritdoc IReleasesApproval
@@ -480,7 +491,7 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
     function _requireReleasesContractIsRegistered(address releases) internal view {
         CatalogStorage storage $ = _getCatalogStorage();
 
-        if ($._registeredReleasesContracts[releases] == address(0)) {
+        if ($._registeredReleasesOwners[releases] == address(0)) {
             revert ReleasesContractIsNotRegistered();
         }
     }
@@ -488,7 +499,7 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
     function _requireReleasesContractNotRegistered(address releases) internal view {
         CatalogStorage storage $ = _getCatalogStorage();
 
-        if ($._registeredReleasesContracts[releases] != address(0)) {
+        if ($._registeredReleasesOwners[releases] != address(0)) {
             revert ReleasesContractIsAlreadyRegistered();
         }
     }
