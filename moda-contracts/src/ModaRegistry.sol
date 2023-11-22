@@ -73,7 +73,7 @@ contract ModaRegistry is IModaRegistry, IOfficialModaContracts, AccessControlEnu
         _catalogs.push(Catalog({name: name, catalog: catalog, membership: address(membership)}));
         _isCatalogRegistered[catalog] = true;
 
-        emit CatalogRegistered(name, catalog);
+        emit CatalogRegistered(name, catalog, msg.sender);
         emit CatalogMembershipChanged(name, address(membership));
     }
 
@@ -83,7 +83,9 @@ contract ModaRegistry is IModaRegistry, IOfficialModaContracts, AccessControlEnu
         if (catalog.catalog == address(0)) revert CatalogNotRegistered();
 
         _isCatalogRegistered[catalog.catalog] = false;
-        emit CatalogUnregistered(catalog.name, catalog.catalog);
+
+        emit CatalogUnregistered(catalog.name, catalog.catalog, msg.sender);
+
         catalog.name = "";
         catalog.catalog = address(0);
         catalog.membership = address(0);

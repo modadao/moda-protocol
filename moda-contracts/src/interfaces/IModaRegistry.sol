@@ -8,11 +8,11 @@ interface IModaRegistry is IAccessControl {
     /// @dev Emitted when a catalog owner changes the membership contract
     event CatalogMembershipChanged(string name, address indexed membership);
 
-    /// @dev Emitted when a catalog is registered by an organization
-    event CatalogRegistered(string name, address indexed catalog);
+    /// @dev Emitted when a catalog is registered for an organization
+    event CatalogRegistered(string name, address indexed catalog, address registrar);
 
-    /// @dev Emitted when a catalog is unregistered by an organization or MODA
-    event CatalogUnregistered(string name, address indexed catalog);
+    /// @dev Emitted when a catalog is unregistered
+    event CatalogUnregistered(string name, address indexed catalog, address registrar);
 
     /// @dev Emitted when a manager is added by an artist
     event ManagerAdded(address indexed artist, address indexed manager);
