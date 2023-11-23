@@ -11,6 +11,7 @@ import {ICatalog} from "./interfaces/ICatalog.sol";
 import {IMembership} from "./interfaces/IMembership.sol";
 import {IModaRegistry} from "./interfaces/IModaRegistry.sol";
 import {IOfficialModaContracts} from "./interfaces/IOfficialModaContracts.sol";
+import {IManagement} from "./interfaces/IManagement.sol";
 import {AccessControlUpgradeable} from
     "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol";
 import {Strings} from "@openzeppelin/contracts/utils/Strings.sol";
@@ -83,7 +84,6 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
         $._version = version;
         $._modaRegistry = modaRegistry;
         $._membership = membership;
-
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
     }
 
@@ -327,9 +327,10 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
     /// @inheritdoc IReleasesApproval
     function hasTrackAccess(string calldata trackId, address caller) external view returns (bool) {
         CatalogStorage storage $ = _getCatalogStorage();
-
         return $._registeredTracks[trackId].trackOwner == caller
-            || IModaRegistry($._modaRegistry).isManager($._registeredTracks[trackId].trackOwner, caller);
+            || IOfficialModaContracts($._modaRegistry).getManagement().isManager(
+                $._registeredTracks[trackId].trackOwner, caller
+            );
     }
 
     /// @inheritdoc IReleaseRegistration
@@ -410,7 +411,10 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
     function _requireTrackWritePermissions(address trackOwner, address caller) internal view {
         CatalogStorage storage $ = _getCatalogStorage();
 
-        if (caller != trackOwner && !IModaRegistry($._modaRegistry).isManager(trackOwner, caller)) {
+        if (
+            caller != trackOwner
+                && !IOfficialModaContracts($._modaRegistry).getManagement().isManager(trackOwner, caller)
+        ) {
             revert MustBeTrackOwnerOrManager();
         }
     }
