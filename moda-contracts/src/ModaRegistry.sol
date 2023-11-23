@@ -3,6 +3,7 @@ pragma solidity 0.8.21;
 
 import {IModaRegistry} from "./interfaces/IModaRegistry.sol";
 import {IOfficialModaContracts} from "./interfaces/IOfficialModaContracts.sol";
+import {IManagement} from "./interfaces/IManagement.sol";
 import "@openzeppelin/contracts/access/extensions/AccessControlEnumerable.sol";
 
 contract ModaRegistry is IModaRegistry, IOfficialModaContracts, AccessControlEnumerable {
@@ -25,19 +26,28 @@ contract ModaRegistry is IModaRegistry, IOfficialModaContracts, AccessControlEnu
     address payable _treasury;
     uint256 _treasuryFee;
     address _splitsFactory;
+    IManagement _management;
 
     EnumerableSet.AddressSet _catalogs;
-    mapping(address => EnumerableSet.AddressSet) _managers;
 
     // Errors
 
     error AddressCannotBeZero();
     error CatalogAlreadyRegistered();
     error CatalogIsNotRegistered();
-    error CatalogRegisterationFailed();
+    error CatalogRegistrationFailed();
     error CatalogUnregistrationFailed();
 
-    constructor() {
+    constructor(
+        address payable treasury,
+        uint256 treasuryFee,
+        address splitsFactory,
+        IManagement management
+    ) {
+        _treasury = treasury;
+        _treasuryFee = treasuryFee;
+        _splitsFactory = splitsFactory;
+        _management = management;
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
     }
 
@@ -51,7 +61,7 @@ contract ModaRegistry is IModaRegistry, IOfficialModaContracts, AccessControlEnu
             return;
         }
 
-        revert CatalogRegisterationFailed();
+        revert CatalogRegistrationFailed();
     }
 
     /// @inheritdoc IModaRegistry
@@ -70,37 +80,6 @@ contract ModaRegistry is IModaRegistry, IOfficialModaContracts, AccessControlEnu
     /// @inheritdoc IModaRegistry
     function isRegisteredCatalog(address catalog) external view returns (bool) {
         return _catalogs.contains(catalog);
-    }
-
-    /// @inheritdoc IModaRegistry
-    function addManagers(address[] calldata managers) external {
-        for (uint256 i = 0; i < managers.length; i++) {
-            bool added = _managers[msg.sender].add(managers[i]);
-            if (added) emit ManagerAdded(msg.sender, managers[i]);
-        }
-    }
-
-    /// @inheritdoc IModaRegistry
-    function removeManagers(address[] calldata managers) external {
-        for (uint256 i = 0; i < managers.length; i++) {
-            bool removed = _managers[msg.sender].remove(managers[i]);
-            if (removed) emit ManagerRemoved(msg.sender, managers[i]);
-        }
-    }
-
-    /// @inheritdoc IModaRegistry
-    function getManagerCount(address artist) external view returns (uint256) {
-        return _managers[artist].length();
-    }
-
-    /// @inheritdoc IModaRegistry
-    function getManager(address artist, uint256 index) external view returns (address) {
-        return _managers[artist].at(index);
-    }
-
-    /// @inheritdoc IModaRegistry
-    function isManager(address artist, address who) external view returns (bool) {
-        return _managers[artist].contains(who);
     }
 
     /// @inheritdoc IModaRegistry
@@ -139,5 +118,15 @@ contract ModaRegistry is IModaRegistry, IOfficialModaContracts, AccessControlEnu
     /// @inheritdoc IOfficialModaContracts
     function getSplitsFactory() external view returns (address) {
         return _splitsFactory;
+    }
+
+    /// @inheritdoc IModaRegistry
+    function setManagement(IManagement management) external onlyRole(DEFAULT_ADMIN_ROLE) {
+        _management = management;
+    }
+
+    /// @inheritdoc IOfficialModaContracts
+    function getManagement() external view returns (IManagement) {
+        return _management;
     }
 }

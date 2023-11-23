@@ -5,10 +5,14 @@ import {Test, console2} from "forge-std/Test.sol";
 import "../src/Catalog.sol";
 import "../src/interfaces/IMembership.sol";
 import "../test/mocks/CatalogV2Mock.sol";
+import "../src/ModaRegistry.sol";
+import "../src/Management.sol";
 import {Upgrades} from "openzeppelin-foundry-upgrades/Upgrades.sol";
 import {IBeacon} from "@openzeppelin/contracts/proxy/beacon/IBeacon.sol";
 
 contract CatalogUpgradesTest is Test {
+    Management public management;
+    ModaRegistry public modaRegistry;
     address public catalogImplementation;
     address public catalogImplementationV2;
     address public catalogProxy;
@@ -17,21 +21,24 @@ contract CatalogUpgradesTest is Test {
     string public catalogName = "Test";
     uint256 public chainId = 0;
     string public catalogVersion = "0";
-    address public modaRegistry = address(0x0);
     address public splitsFactory = address(0x1);
-    address public modaBeneficiary = address(0x2);
+    address payable public treasuryAddress = payable(address(0x2));
     address public catalogDeployer = address(0x3);
     IMembership public membership = IMembership(address(0x4));
 
     address modaAdmin = address(0x4);
 
     function setUp() public {
+        modaRegistry = new ModaRegistry(treasuryAddress, 1000, splitsFactory, management);
+
         beacon = Upgrades.deployBeacon("Catalog.sol", modaAdmin);
         catalogImplementation = IBeacon(beacon).implementation();
 
         catalogProxy = Upgrades.deployBeaconProxy(
             beacon,
-            abi.encodeCall(Catalog.initialize, (catalogName, catalogVersion, modaRegistry, membership))
+            abi.encodeCall(
+                Catalog.initialize, (catalogName, catalogVersion, address(modaRegistry), membership)
+            )
         );
     }
 

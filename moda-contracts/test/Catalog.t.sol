@@ -4,12 +4,14 @@ pragma solidity ^0.8.13;
 import {Test, console2} from "forge-std/Test.sol";
 import "../src/Catalog.sol";
 import {ModaRegistry} from "../src/ModaRegistry.sol";
+import {Management} from "../src/Management.sol";
 import {Membership} from "../test/mocks/MembershipMock.sol";
 import {ITrackRegistration} from "../src/interfaces/ITrackRegistration.sol";
 import "../test/mocks/ReleasesMock.sol";
 
 contract CatalogTest is Test {
     Catalog public catalog;
+    Management public management;
     Membership public membership;
     ModaRegistry public modaRegistry;
     ReleasesMock public releasesMock;
@@ -18,12 +20,15 @@ contract CatalogTest is Test {
     string public catalogName = "ACME-CATALOG";
     string public catalogVersion = "1";
     address public artist = address(0x4);
+    address payable public treasuryAddress = payable(address(0x11));
+    address public splitsFactory = address(0x12);
 
     error InvalidInitialization();
 
     function setUp() public {
-        modaRegistry = new ModaRegistry();
+        management = new Management();
         membership = new Membership();
+        modaRegistry = new ModaRegistry(treasuryAddress, 1000, splitsFactory, management);
         catalog = new Catalog();
         releasesMock = new ReleasesMock();
         vm.startPrank(catalogDeployer);
@@ -94,7 +99,7 @@ contract CatalogTest is Test {
         membership.addMember(manager);
         address[] memory managers = new address[](1);
         managers[0] = manager;
-        modaRegistry.addManagers(managers);
+        management.addManagers(managers);
         vm.stopPrank();
         vm.startPrank(manager);
         catalog.registerTrack(
