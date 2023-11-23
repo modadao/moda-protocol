@@ -167,7 +167,7 @@ contract CatalogTest is Test {
 
     function test_registerTrack_emits_event() public {
         vm.expectEmit(true, true, true, true);
-        emit TrackRegistered("trackHash", "ACME-CATALOG-31337-0", artist);
+        emit TrackRegistered("trackHash", "ACME.CATALOG-31337-0", artist);
         vm.startPrank(artist);
         catalog.registerTrack(
             artist, trackRegistrationData.trackBeneficiary, trackRegistrationData.trackRegistrationHash
