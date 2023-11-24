@@ -54,9 +54,7 @@ contract ManagementTest is Test {
         assertEq(managerCount, 0);
     }
 
-    // reverts
-
-    function test_addManagersWithDuplicateAddress() public {
+    function test_addManagers_does_not_add_duplicate_address() public {
         address[] memory duplicateManagers = new address[](2);
         duplicateManagers[0] = address(0x3);
         duplicateManagers[1] = address(0x3);

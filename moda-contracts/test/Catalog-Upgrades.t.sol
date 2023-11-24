@@ -42,7 +42,7 @@ contract CatalogUpgradesTest is Test {
         );
     }
 
-    function test_catalogProxy() public {
+    function test_catalog_proxy() public {
         vm.chainId(chainId);
         (string memory name_, string memory version_) = IVersionInfo(catalogProxy).versionInfo();
         assertEq(name_, catalogName);
@@ -54,20 +54,20 @@ contract CatalogUpgradesTest is Test {
         assertEq(proxyBeaconAddress, beacon);
     }
 
-    function upgradingBeaconWithCatalogV2Setup() public {
+    function upgrade_beacon_with_CatalogV2_setUp() public {
         vm.startPrank(modaAdmin);
         Upgrades.upgradeBeacon(beacon, "CatalogV2Mock.sol");
         vm.stopPrank();
     }
 
-    function test_implementationAddressUpdated() public {
-        upgradingBeaconWithCatalogV2Setup();
+    function test_implementation_address_updated() public {
+        upgrade_beacon_with_CatalogV2_setUp();
         catalogImplementationV2 = IBeacon(beacon).implementation();
         assertFalse(catalogImplementation == catalogImplementationV2);
     }
 
-    function test_proxyCanCallUpdatedCatalog() public {
-        upgradingBeaconWithCatalogV2Setup();
+    function test_proxy_can_call_updated_Catalog() public {
+        upgrade_beacon_with_CatalogV2_setUp();
         CatalogV2Mock(catalogProxy).setTestingUpgradeVariable("upgradeTest");
         string memory upgradeTest = CatalogV2Mock(catalogProxy).getTestingUpgradeVariable();
         assertEq(upgradeTest, "upgradeTest");
