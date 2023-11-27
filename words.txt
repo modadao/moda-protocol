@@ -23,4 +23,6 @@ chainid
 xsplit
 web3
 unregistration
+genhtml
+lcov
 
