@@ -7,6 +7,7 @@ import {IReleaseRegistration} from "./interfaces/Releases/IReleaseRegistration.s
 import {IReleasesApproval} from "./interfaces/Releases/IReleasesApproval.sol";
 import {IReleasesRegistration} from "./interfaces/Releases/IReleasesRegistration.sol";
 import {IReleases} from "./interfaces/Releases/IReleases.sol";
+import {IOpenReleases} from "./interfaces/Releases/IOpenReleases.sol";
 import {ICatalog} from "./interfaces/ICatalog.sol";
 import {IMembership} from "./interfaces/IMembership.sol";
 import {IModaRegistry} from "./interfaces/IModaRegistry.sol";
@@ -353,7 +354,7 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
         CatalogStorage storage $ = _getCatalogStorage();
 
         _requireReleasesContractIsRegistered(msg.sender);
-        (, bool releasesOpen) = IReleases(msg.sender).info();
+        bool isOpen = IOpenReleases(msg.sender).supportsInterface(type(IOpenReleases).interfaceId);
         for (uint256 i = 0; i < trackIds.length; i++) {
             address trackOwner = $._registeredTracks[trackIds[i]].trackOwner;
 
@@ -361,7 +362,7 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
             _requireTrackIsRegistered(trackIds[i]);
             _requireTrackIsValid(trackIds[i]);
 
-            if (!hasFullPermission && !releasesOpen) {
+            if (!hasFullPermission && !isOpen) {
                 _requireReleasesContractHasPermission(trackIds[i]);
             }
 
