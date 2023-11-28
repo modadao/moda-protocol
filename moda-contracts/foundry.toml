@@ -10,6 +10,8 @@ remappings = [
 '@openzeppelin/contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable/contracts/'
 ]
 
+gas_reports = ["*"]
+
 [fmt]
 multiline_func_header = "params_first"
 line_length = 105

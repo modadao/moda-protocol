@@ -30,4 +30,10 @@ interface IReleasesRegistration {
      * @param releases - The address of the Releases contract
      */
     function getReleasesOwner(address releases) external view returns (address owner);
+
+    /**
+     * @dev Returns the Releases contract of an owner
+     * @param releasesOwner - The owner of the Releases contract
+     */
+    function getReleasesContract(address releasesOwner) external view returns (address releases);
 }
