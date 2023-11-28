@@ -2,8 +2,13 @@
 pragma solidity 0.8.21;
 
 import {IAccessControl} from "@openzeppelin/contracts/access/IAccessControl.sol";
+<<<<<<< HEAD:moda-contracts/src/interfaces/ModaRegistry/IModaRegistry.sol
 import {IManagement} from "../IManagement.sol";
 import {ISplitsFactory} from "../ISplitsFactory.sol";
+=======
+import {IManagement} from "./IManagement.sol";
+import {ISplitsFactory} from "./ISplitsFactory.sol";
+>>>>>>> 02131f9 (feat: Add SplitsFactory):moda-contracts/src/interfaces/IModaRegistry.sol
 
 interface IModaRegistry is IAccessControl {
     /// @dev Emitted when a catalog is registered for an organization
