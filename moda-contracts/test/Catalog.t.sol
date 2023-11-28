@@ -24,7 +24,7 @@ contract CatalogTest is Test {
     string public catalogVersion = "1";
     address public artist = address(0x4);
     address payable public treasuryAddress = payable(address(0x11));
-    address public splitsFactory = address(0x12);
+    ISplitsFactory public splitsFactory = ISplitsFactory(address(0x12));
 
     error InvalidInitialization();
 

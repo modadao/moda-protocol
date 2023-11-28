@@ -74,7 +74,7 @@ contract ReleasesTest is Test {
         management = new Management();
         membership = new Membership();
         splitsFactory = new SplitsFactoryMock(address(0x3));
-        modaRegistry = new ModaRegistry(treasury, 1000, address(splitsFactory), management);
+        modaRegistry = new ModaRegistry(treasury, 1000, splitsFactory, management);
         catalog = new Catalog();
         catalog.initialize(catalogName, catalogVersion, address(modaRegistry), membership);
         membership.addMember(releaseAdmin);
@@ -101,7 +101,7 @@ contract ReleasesTest is Test {
 
     function test_initialize_RevertIf_already_initialized() public {
         vm.expectRevert(InvalidInitialization.selector);
-        releases.initialize(admin, releaseAdmins, name, symbol, address(catalog), address(splitsFactory));
+        releases.initialize(admin, releaseAdmins, name, symbol, address(catalog), splitsFactory);
     }
 
     // create with a curated Releases contract

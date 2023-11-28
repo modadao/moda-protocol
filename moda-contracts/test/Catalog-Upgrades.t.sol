@@ -4,6 +4,7 @@ pragma solidity 0.8.21;
 import {Test, console2} from "forge-std/Test.sol";
 import "../src/Catalog.sol";
 import "../src/interfaces/IMembership.sol";
+import "../src/interfaces/ISplitsFactory.sol";
 import "../test/mocks/CatalogV2Mock.sol";
 import "../src/ModaRegistry.sol";
 import "../src/Management.sol";
@@ -21,7 +22,7 @@ contract CatalogUpgradesTest is Test {
     string public catalogName = "Test";
     uint256 public chainId = 0;
     string public catalogVersion = "0";
-    address public splitsFactory = address(0x1);
+    ISplitsFactory public splitsFactory = ISplitsFactory(address(0x1));
     address payable public treasuryAddress = payable(address(0x2));
     address public catalogDeployer = address(0x3);
     IMembership public membership = IMembership(address(0x4));

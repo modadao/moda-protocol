@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.21;
 
+import {ISplitsFactory} from "../ISplitsFactory.sol";
+
 /**
  * @title IReleases
  * @dev Interface for Releases
@@ -24,7 +26,7 @@ interface IReleases {
         string memory name_,
         string memory symbol_,
         address catalog,
-        address splitsFactory
+        ISplitsFactory splitsFactory
     ) external;
 
     /**

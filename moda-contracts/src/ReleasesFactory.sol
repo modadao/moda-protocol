@@ -5,6 +5,7 @@ import {Clones} from "@openzeppelin/contracts/proxy/Clones.sol";
 import {IReleasesFactory} from "./interfaces/Releases/IReleasesFactory.sol";
 import {IReleases} from "./interfaces/Releases/IReleases.sol";
 import {IModaRegistry} from "./interfaces/ModaRegistry/IModaRegistry.sol";
+import {ISplitsFactory} from "./interfaces/ISplitsFactory.sol";
 import {IOfficialModaContracts} from "./interfaces/ModaRegistry/IOfficialModaContracts.sol";
 import {IReleasesRegistration} from "./interfaces/Releases/IReleasesRegistration.sol";
 
@@ -32,7 +33,7 @@ contract ReleasesFactory is IReleasesFactory {
         address catalog
     ) external {
         address releasesClone = Clones.clone(releasesMaster);
-        address splitsFactory = IOfficialModaContracts(modaRegistry).getSplitsFactory();
+        ISplitsFactory splitsFactory = IOfficialModaContracts(modaRegistry).getSplitsFactory();
         IReleases(releasesClone).initialize(
             msg.sender, releaseAdmins, name, symbol, catalog, splitsFactory
         );
