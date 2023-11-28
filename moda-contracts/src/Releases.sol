@@ -10,7 +10,6 @@ import "./interfaces/Releases/IReleaseRegistration.sol";
 import "./interfaces/Releases/IReleasesApproval.sol";
 import "./interfaces/Catalog/ITrackRegistration.sol";
 import "./interfaces/ISplitsFactory.sol";
-
 /**
  * @title Releases
  * @dev This contract allows artists or labels to create their own release tokens.
@@ -27,7 +26,7 @@ contract Releases is
 
     uint256 constant MAX_ROYALTY_AMOUNT = 2_000;
     address _catalog;
-    address _splitsFactory;
+    ISplitsFactory _splitsFactory;
 
     string public name;
     string public symbol;
@@ -74,7 +73,7 @@ contract Releases is
         string calldata name_,
         string calldata symbol_,
         address catalog,
-        address splitsFactory
+        ISplitsFactory splitsFactory
     ) external initializer {
         __ERC1155_init("");
         if (admin == address(0)) revert CannotBeZeroAddress();

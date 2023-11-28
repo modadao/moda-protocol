@@ -4,13 +4,17 @@ pragma solidity 0.8.21;
 import {IModaRegistry} from "./interfaces/ModaRegistry/IModaRegistry.sol";
 import {IOfficialModaContracts} from "./interfaces/ModaRegistry/IOfficialModaContracts.sol";
 import {IManagement} from "./interfaces/IManagement.sol";
+import {ISplitsFactory} from "./interfaces/ISplitsFactory.sol";
 import "@openzeppelin/contracts/access/extensions/AccessControlEnumerable.sol";
 
 contract ModaRegistry is IModaRegistry, IOfficialModaContracts, AccessControlEnumerable {
     using EnumerableSet for EnumerableSet.AddressSet;
 
     /// @dev The max fee MODA can set. This is calculated as the numerator. e.g. 1_000 / 10_000 = 10%
-    uint256 constant MAX_TREASURY_FEE = 1_000;
+    uint32 constant MAX_TREASURY_FEE = 1_000;
+
+    /// @dev The denominator when determining the treasury fee. e.g. treasuryFee * someValue / FEE_SCALE
+    uint32 constant FEE_SCALE = 10_000;
 
     // State Variables
 
@@ -24,8 +28,8 @@ contract ModaRegistry is IModaRegistry, IOfficialModaContracts, AccessControlEnu
     bytes32 public constant AUTO_VERIFIED_ROLE = keccak256("AUTO_VERIFIED_ROLE");
 
     address payable _treasury;
-    uint256 _treasuryFee;
-    address _splitsFactory;
+    uint32 _treasuryFee;
+    ISplitsFactory _splitsFactory;
     IManagement _management;
 
     EnumerableSet.AddressSet _catalogs;
@@ -40,8 +44,8 @@ contract ModaRegistry is IModaRegistry, IOfficialModaContracts, AccessControlEnu
 
     constructor(
         address payable treasury,
-        uint256 treasuryFee,
-        address splitsFactory,
+        uint32 treasuryFee,
+        ISplitsFactory splitsFactory,
         IManagement management
     ) {
         _treasury = treasury;
@@ -52,6 +56,7 @@ contract ModaRegistry is IModaRegistry, IOfficialModaContracts, AccessControlEnu
     }
 
     /// @inheritdoc IModaRegistry
+    /// @notice Only a default admin can call this
     function registerCatalog(address catalog) external onlyRole(DEFAULT_ADMIN_ROLE) {
         if (catalog == address(0)) revert AddressCannotBeZero();
         if (_catalogs.contains(catalog)) revert CatalogAlreadyRegistered();
@@ -83,16 +88,18 @@ contract ModaRegistry is IModaRegistry, IOfficialModaContracts, AccessControlEnu
     }
 
     /// @inheritdoc IModaRegistry
-    function setTreasuryFee(uint256 newFee) external onlyRole(DEFAULT_ADMIN_ROLE) {
+    /// @notice The caller must be a default admin
+    function setTreasuryFee(uint32 newFee) external onlyRole(DEFAULT_ADMIN_ROLE) {
         require(newFee <= MAX_TREASURY_FEE, "Fee too high");
 
-        uint256 oldFee = _treasuryFee;
+        uint32 oldFee = _treasuryFee;
         _treasuryFee = newFee;
 
         emit TreasuryFeeChanged(oldFee, newFee);
     }
 
     /// @inheritdoc IModaRegistry
+    /// @notice The caller must be a default admin
     function setTreasury(address newTreasury) external onlyRole(DEFAULT_ADMIN_ROLE) {
         if (newTreasury == address(0)) revert AddressCannotBeZero();
         address oldTreasury = _treasury;
@@ -101,26 +108,23 @@ contract ModaRegistry is IModaRegistry, IOfficialModaContracts, AccessControlEnu
     }
 
     /// @inheritdoc IOfficialModaContracts
-    function getTreasury() external view returns (address) {
-        return _treasury;
+    function getTreasuryInfo() external view returns (address, uint32, uint32) {
+        return (_treasury, _treasuryFee, FEE_SCALE);
     }
 
     /// @inheritdoc IModaRegistry
-    function getTreasuryFee() external view returns (uint256) {
-        return _treasuryFee;
-    }
-
-    /// @inheritdoc IModaRegistry
-    function setSplitsFactory(address splitsFactory) external onlyRole(DEFAULT_ADMIN_ROLE) {
+    /// @notice The caller must be a default admin
+    function setSplitsFactory(ISplitsFactory splitsFactory) external onlyRole(DEFAULT_ADMIN_ROLE) {
         _splitsFactory = splitsFactory;
     }
 
     /// @inheritdoc IOfficialModaContracts
-    function getSplitsFactory() external view returns (address) {
+    function getSplitsFactory() external view returns (ISplitsFactory) {
         return _splitsFactory;
     }
 
     /// @inheritdoc IModaRegistry
+    /// @notice The caller must be a default admin
     function setManagement(IManagement management) external onlyRole(DEFAULT_ADMIN_ROLE) {
         _management = management;
     }

@@ -4,6 +4,7 @@ pragma solidity ^0.8.21;
 import {Test, console2} from "forge-std/Test.sol";
 import {IModaRegistry} from "../src/interfaces/ModaRegistry/IModaRegistry.sol";
 import {IMembership} from "../src/interfaces/IMembership.sol";
+import {ISplitsFactory} from "../src/interfaces/ISplitsFactory.sol";
 import {ModaRegistry} from "../src/ModaRegistry.sol";
 import "../src/Management.sol";
 import {Membership} from "../test/mocks/MembershipMock.sol";
@@ -17,18 +18,19 @@ contract ModaRegistryTest is Test {
     address public artist = address(0x1);
     address public catalogAddress = address(0x2);
     address payable public treasuryAddress = payable(address(0x5));
-    address public splitsFactory = address(0x3);
+    ISplitsFactory public splitsFactory = ISplitsFactory(address(0x3));
     string public catalogName = "The ACME Catalog";
+    uint32 _treasuryFee = 1_000;
 
     event CatalogRegistered(address indexed catalog, address registrar);
     event CatalogUnregistered(address indexed catalog, address registrar);
-    event TreasuryFeeChanged(uint256 oldFee, uint256 newFee);
+    event TreasuryFeeChanged(uint32 oldFee, uint32 newFee);
     event TreasuryChanged(address oldTreasury, address newTreasury);
 
     function setUp() public {
         membership = new Membership();
         management = new Management();
-        modaRegistry = new ModaRegistry(treasuryAddress, 1000, splitsFactory, management);
+        modaRegistry = new ModaRegistry(treasuryAddress, _treasuryFee, splitsFactory, management);
     }
 
     // registerCatalog
@@ -86,12 +88,14 @@ contract ModaRegistryTest is Test {
         modaRegistry.unregisterCatalog(catalogAddress);
     }
 
-    // getTreasury
+    // getTreasuryInfo
 
     function test_getTreasury() public {
-        address treasury = modaRegistry.getTreasury();
+        (address treasury, uint32 fee, uint32 feeScale) = modaRegistry.getTreasuryInfo();
 
         assertEq(treasury, treasuryAddress);
+        assertEq(fee, _treasuryFee);
+        assertEq(feeScale, 10_000);
     }
 
     // setTreasury
@@ -100,7 +104,7 @@ contract ModaRegistryTest is Test {
         address newTreasury = address(0x6);
         modaRegistry.setTreasury(newTreasury);
 
-        address treasury = modaRegistry.getTreasury();
+        (address treasury,,) = modaRegistry.getTreasuryInfo();
 
         assertEq(treasury, newTreasury);
     }
@@ -117,22 +121,15 @@ contract ModaRegistryTest is Test {
         modaRegistry.setTreasury(newTreasury);
     }
 
-    // getTreasuryFee
-
-    function test_getTreasuryFee() public {
-        uint256 treasuryFee = modaRegistry.getTreasuryFee();
-
-        assertEq(treasuryFee, 1000);
-    }
-
     // setTreasuryFee
 
     function test_setTreasuryFee() public {
-        uint256 newTreasuryFee = 500;
-        modaRegistry.setTreasuryFee(newTreasuryFee);
-        uint256 treasuryFee = modaRegistry.getTreasuryFee();
+        uint32 newTreasuryFee = 500;
 
-        assertEq(treasuryFee, newTreasuryFee);
+        modaRegistry.setTreasuryFee(newTreasuryFee);
+        (, uint32 fee,) = modaRegistry.getTreasuryInfo();
+
+        assertEq(fee, newTreasuryFee);
     }
 
     function test_setTreasuryFee_RevertIf_invalid_amount() public {
@@ -141,7 +138,7 @@ contract ModaRegistryTest is Test {
     }
 
     function test_setTreasuryFee_emits_event() public {
-        uint256 newTreasuryFee = 500;
+        uint32 newTreasuryFee = 500;
         vm.expectEmit(true, true, true, true);
         emit TreasuryFeeChanged(1000, newTreasuryFee);
         modaRegistry.setTreasuryFee(newTreasuryFee);
@@ -150,19 +147,20 @@ contract ModaRegistryTest is Test {
     // getSplitsFactory
 
     function test_getSplitsFactory() public {
-        address splitsFactoryAddress = modaRegistry.getSplitsFactory();
+        ISplitsFactory splits = modaRegistry.getSplitsFactory();
 
-        assertEq(splitsFactoryAddress, splitsFactory);
+        assertEq(address(splits), address(splitsFactory));
     }
 
     // setSplitsFactory
 
     function test_setSplitsFactory() public {
-        address newSplitsFactory = address(0x7);
-        modaRegistry.setSplitsFactory(newSplitsFactory);
-        address splitsFactoryAddress = modaRegistry.getSplitsFactory();
+        ISplitsFactory newSplitsFactory = ISplitsFactory(address(0x7));
 
-        assertEq(splitsFactoryAddress, newSplitsFactory);
+        modaRegistry.setSplitsFactory(newSplitsFactory);
+        ISplitsFactory splitsFactoryAddress = modaRegistry.getSplitsFactory();
+
+        assertEq(address(splitsFactoryAddress), address(newSplitsFactory));
     }
 
     // getManagement
