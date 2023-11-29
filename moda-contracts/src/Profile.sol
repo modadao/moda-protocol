@@ -6,8 +6,8 @@ import {IERC4906} from "./interfaces/ERC/IERC4906.sol";
 import {IERC721Metadata} from "@openzeppelin/contracts/interfaces/IERC721Metadata.sol";
 import {IERC721} from "@openzeppelin/contracts/interfaces/IERC721.sol";
 import {IAccessControl} from "@openzeppelin/contracts/access/IAccessControl.sol";
-import {IProfile} from "./interfaces/IProfile.sol";
-import {ISimpleOwnership} from "./interfaces/ISimpleOwnership.sol";
+import {IProfile} from "./interfaces/Profile/IProfile.sol";
+import {ISimpleOwnership} from "./interfaces/Profile/ISimpleOwnership.sol";
 
 contract Profile is IProfile, IERC721, IERC721Metadata, IERC4906, ERC165 {
     string private _name;

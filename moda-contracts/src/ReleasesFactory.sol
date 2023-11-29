@@ -4,9 +4,9 @@ pragma solidity 0.8.21;
 import {Clones} from "@openzeppelin/contracts/proxy/Clones.sol";
 import {IReleasesFactory} from "./interfaces/Releases/IReleasesFactory.sol";
 import {IReleases} from "./interfaces/Releases/IReleases.sol";
-import {IModaRegistry} from "./interfaces/IModaRegistry.sol";
+import {IModaRegistry} from "./interfaces/ModaRegistry/IModaRegistry.sol";
+import {IOfficialModaContracts} from "./interfaces/ModaRegistry/IOfficialModaContracts.sol";
 import {IReleasesRegistration} from "./interfaces/Releases/IReleasesRegistration.sol";
-import {IOfficialModaContracts} from "./interfaces/IOfficialModaContracts.sol";
 
 contract ReleasesFactory is IReleasesFactory {
     address public modaRegistry;

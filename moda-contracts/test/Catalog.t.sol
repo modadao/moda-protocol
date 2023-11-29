@@ -6,7 +6,7 @@ import "../src/Catalog.sol";
 import {ModaRegistry} from "../src/ModaRegistry.sol";
 import {Management} from "../src/Management.sol";
 import {Membership} from "../test/mocks/MembershipMock.sol";
-import {ITrackRegistration} from "../src/interfaces/ITrackRegistration.sol";
+import {ITrackRegistration} from "../src/interfaces/Catalog/ITrackRegistration.sol";
 import "../src/Releases.sol";
 import "../src/ReleasesFactory.sol";
 

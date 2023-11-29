@@ -2,7 +2,7 @@
 pragma solidity 0.8.21;
 
 import {IAccessControl} from "@openzeppelin/contracts/access/IAccessControl.sol";
-import {IManagement} from "./IManagement.sol";
+import {IManagement} from "../IManagement.sol";
 
 interface IModaRegistry is IAccessControl {
     /// @dev Emitted when a catalog is registered for an organization

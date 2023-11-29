@@ -1,17 +1,17 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.21;
 
-import {IVersionInfo} from "./interfaces/IVersionInfo.sol";
-import {ITrackRegistration} from "./interfaces/ITrackRegistration.sol";
+import {IVersionInfo} from "./interfaces/Catalog/IVersionInfo.sol";
+import {ITrackRegistration} from "./interfaces/Catalog/ITrackRegistration.sol";
 import {IReleaseRegistration} from "./interfaces/Releases/IReleaseRegistration.sol";
 import {IReleasesApproval} from "./interfaces/Releases/IReleasesApproval.sol";
 import {IReleasesRegistration} from "./interfaces/Releases/IReleasesRegistration.sol";
 import {IReleases} from "./interfaces/Releases/IReleases.sol";
-import {ICatalog} from "./interfaces/ICatalog.sol";
+import {ICatalog} from "./interfaces/Catalog/ICatalog.sol";
 import {IMembership} from "./interfaces/IMembership.sol";
-import {IModaRegistry} from "./interfaces/IModaRegistry.sol";
-import {IOfficialModaContracts} from "./interfaces/IOfficialModaContracts.sol";
+import {IModaRegistry} from "./interfaces/ModaRegistry/IModaRegistry.sol";
 import {IManagement} from "./interfaces/IManagement.sol";
+import {IOfficialModaContracts} from "./interfaces/ModaRegistry/IOfficialModaContracts.sol";
 import {AccessControlUpgradeable} from
     "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol";
 import {Strings} from "@openzeppelin/contracts/utils/Strings.sol";
