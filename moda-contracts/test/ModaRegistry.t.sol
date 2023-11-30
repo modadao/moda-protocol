@@ -2,7 +2,7 @@
 pragma solidity ^0.8.13;
 
 import {Test, console2} from "forge-std/Test.sol";
-import {IModaRegistry} from "../src/interfaces/IModaRegistry.sol";
+import {IModaRegistry} from "../src/interfaces/ModaRegistry/IModaRegistry.sol";
 import {IMembership} from "../src/interfaces/IMembership.sol";
 import {ModaRegistry} from "../src/ModaRegistry.sol";
 import "../src/Management.sol";

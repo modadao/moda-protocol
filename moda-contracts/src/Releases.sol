@@ -8,7 +8,7 @@ import "@openzeppelin/contracts-upgradeable/token/ERC1155/utils/ERC1155HolderUpg
 import "./interfaces/Releases/IReleases.sol";
 import "./interfaces/Releases/IReleaseRegistration.sol";
 import "./interfaces/Releases/IReleasesApproval.sol";
-import "./interfaces/ITrackRegistration.sol";
+import "./interfaces/Catalog/ITrackRegistration.sol";
 import "./interfaces/ISplitsFactory.sol";
 
 /**

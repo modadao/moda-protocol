@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.21;
 
-import {IModaRegistry} from "./interfaces/IModaRegistry.sol";
-import {IOfficialModaContracts} from "./interfaces/IOfficialModaContracts.sol";
+import {IModaRegistry} from "./interfaces/ModaRegistry/IModaRegistry.sol";
+import {IOfficialModaContracts} from "./interfaces/ModaRegistry/IOfficialModaContracts.sol";
 import {IManagement} from "./interfaces/IManagement.sol";
 import "@openzeppelin/contracts/access/extensions/AccessControlEnumerable.sol";
 
