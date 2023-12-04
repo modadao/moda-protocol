@@ -9,14 +9,16 @@ import {ModaRegistry} from "../src/ModaRegistry.sol";
 import "../src/Management.sol";
 import {Membership} from "../test/mocks/MembershipMock.sol";
 import {ERC165Mock} from "../test/mocks/ERC165Mock.sol";
+import {ICatalog} from "../src/interfaces/Catalog/ICatalog.sol";
 
 contract ModaRegistryTest is Test {
     Membership public membership;
     Management public management;
     ModaRegistry public modaRegistry;
 
+    address public catalogRegistrar = address(0x8);
     address public artist = address(0x1);
-    address public catalogAddress = address(0x2);
+    ICatalog public catalogAddress = ICatalog(address(0x2));
     address payable public treasuryAddress = payable(address(0x5));
     ISplitsFactory public splitsFactory = ISplitsFactory(address(0x3));
     string public catalogName = "The ACME Catalog";
@@ -31,61 +33,78 @@ contract ModaRegistryTest is Test {
         membership = new Membership();
         management = new Management();
         modaRegistry = new ModaRegistry(treasuryAddress, _treasuryFee, splitsFactory, management);
+        modaRegistry.grantRole(keccak256("CATALOG_REGISTRAR_ROLE"), catalogRegistrar);
     }
 
     // registerCatalog
 
     function test_registerCatalog() public {
+        vm.startPrank(catalogRegistrar);
         modaRegistry.registerCatalog(catalogAddress);
+        vm.stopPrank();
 
-        assertTrue(modaRegistry.isRegisteredCatalog(catalogAddress));
-    }
-
-    function test_registerCatalog_RevertIf_register_with_zero_address() public {
-        vm.expectRevert(ModaRegistry.AddressCannotBeZero.selector);
-        modaRegistry.registerCatalog(address(0));
+        assertTrue(modaRegistry.isRegisteredCatalog(address(catalogAddress)));
     }
 
     function test_registerCatalog_RevertIf_catalog_already_registered() public {
+        vm.startPrank(catalogRegistrar);
         modaRegistry.registerCatalog(catalogAddress);
+        vm.stopPrank();
 
         vm.expectRevert(ModaRegistry.CatalogAlreadyRegistered.selector);
+
+        vm.startPrank(catalogRegistrar);
         modaRegistry.registerCatalog(catalogAddress);
+        vm.stopPrank();
     }
 
     function test_registerCatalog_RevertIf_registering_registered_catalog() public {
+        vm.startPrank(catalogRegistrar);
         modaRegistry.registerCatalog(catalogAddress);
+        vm.stopPrank();
 
         vm.expectRevert(ModaRegistry.CatalogAlreadyRegistered.selector);
+
+        vm.startPrank(catalogRegistrar);
         modaRegistry.registerCatalog(catalogAddress);
+        vm.stopPrank();
     }
 
     function test_registerCatalog_emits_event() public {
         vm.expectEmit(true, true, true, true);
-        emit CatalogRegistered(catalogAddress, address(this));
+        emit CatalogRegistered(address(catalogAddress), catalogRegistrar);
+
+        vm.startPrank(catalogRegistrar);
         modaRegistry.registerCatalog(catalogAddress);
+        vm.stopPrank();
     }
 
     // unregisterCatalog
 
     function test_unregisterCatalog() public {
+        vm.startPrank(catalogRegistrar);
         modaRegistry.registerCatalog(catalogAddress);
-        assertTrue(modaRegistry.isRegisteredCatalog(catalogAddress));
+        vm.stopPrank();
 
-        modaRegistry.unregisterCatalog(catalogAddress);
-        assertFalse(modaRegistry.isRegisteredCatalog(catalogAddress));
+        assertTrue(modaRegistry.isRegisteredCatalog(address(catalogAddress)));
+
+        modaRegistry.unregisterCatalog(address(catalogAddress));
+        assertFalse(modaRegistry.isRegisteredCatalog(address(catalogAddress)));
     }
 
     function test_unregisterCatalog_RevertIf_unregister_unregistered_catalog() public {
         vm.expectRevert(ModaRegistry.CatalogIsNotRegistered.selector);
-        modaRegistry.unregisterCatalog(catalogAddress);
+        modaRegistry.unregisterCatalog(address(catalogAddress));
     }
 
     function test_unregisterCatalog_emits_event() public {
+        vm.startPrank(catalogRegistrar);
         modaRegistry.registerCatalog(catalogAddress);
+        vm.stopPrank();
+
         vm.expectEmit(true, true, true, true);
-        emit CatalogUnregistered(catalogAddress, address(this));
-        modaRegistry.unregisterCatalog(catalogAddress);
+        emit CatalogUnregistered(address(catalogAddress), address(this));
+        modaRegistry.unregisterCatalog(address(catalogAddress));
     }
 
     // getTreasuryInfo

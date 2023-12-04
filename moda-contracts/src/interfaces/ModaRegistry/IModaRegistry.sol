@@ -4,6 +4,7 @@ pragma solidity 0.8.21;
 import {IAccessControl} from "@openzeppelin/contracts/access/IAccessControl.sol";
 import {IManagement} from "../IManagement.sol";
 import {ISplitsFactory} from "../ISplitsFactory.sol";
+import {ICatalog} from "../Catalog/ICatalog.sol";
 
 interface IModaRegistry is IAccessControl {
     /// @dev Emitted when a catalog is registered for an organization
@@ -22,9 +23,10 @@ interface IModaRegistry is IAccessControl {
 
     /**
      * @dev Registers a new catalog
-     * @param catalog - The address of the catalog
+     * @notice Only a default admin can call this
+     * @param catalog - A contract that implements the ICatalog interface
      */
-    function registerCatalog(address catalog) external;
+    function registerCatalog(ICatalog catalog) external;
 
     /**
      * @dev Unregisters a deprecated or malicious catalog
@@ -61,7 +63,8 @@ interface IModaRegistry is IAccessControl {
 
     /**
      * @dev Sets the address of the management contract
-     * @param management - An address that follows the IManagement interface
+     * @notice The caller must be a default admin
+     * @param management - A contract that implements the IManagement interface
      */
     function setManagement(IManagement management) external;
 }

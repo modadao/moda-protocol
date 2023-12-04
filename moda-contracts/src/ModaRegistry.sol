@@ -2,6 +2,7 @@
 pragma solidity 0.8.21;
 
 import {IModaRegistry} from "./interfaces/ModaRegistry/IModaRegistry.sol";
+import {ICatalog} from "./interfaces/Catalog/ICatalog.sol";
 import {IOfficialModaContracts} from "./interfaces/ModaRegistry/IOfficialModaContracts.sol";
 import {IManagement} from "./interfaces/IManagement.sol";
 import {ISplitsFactory} from "./interfaces/ISplitsFactory.sol";
@@ -20,6 +21,9 @@ contract ModaRegistry is IModaRegistry, IOfficialModaContracts, AccessControlEnu
 
     /// @dev only an address with a verifier role can verify a track
     bytes32 public constant VERIFIER_ROLE = keccak256("VERIFIER_ROLE");
+
+    /// @dev only an address with a catalog registrar role can register a catalog contract
+    bytes32 public constant CATALOG_REGISTRAR_ROLE = keccak256("CATALOG_REGISTRAR_ROLE");
 
     /// @dev only an address with a releases registrar role can register a releases contract
     bytes32 public constant RELEASES_REGISTRAR_ROLE = keccak256("RELEASES_REGISTRAR_ROLE");
@@ -56,13 +60,12 @@ contract ModaRegistry is IModaRegistry, IOfficialModaContracts, AccessControlEnu
     }
 
     /// @inheritdoc IModaRegistry
-    /// @notice Only a default admin can call this
-    function registerCatalog(address catalog) external onlyRole(DEFAULT_ADMIN_ROLE) {
-        if (catalog == address(0)) revert AddressCannotBeZero();
-        if (_catalogs.contains(catalog)) revert CatalogAlreadyRegistered();
+    function registerCatalog(ICatalog catalog) external onlyRole(CATALOG_REGISTRAR_ROLE) {
+        if (address(catalog) == address(0)) revert AddressCannotBeZero();
+        if (_catalogs.contains(address(catalog))) revert CatalogAlreadyRegistered();
 
-        if (_catalogs.add(catalog)) {
-            emit CatalogRegistered(catalog, msg.sender);
+        if (_catalogs.add(address(catalog))) {
+            emit CatalogRegistered(address(catalog), msg.sender);
             return;
         }
 
