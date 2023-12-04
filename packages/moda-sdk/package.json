@@ -22,10 +22,14 @@
     "build": "tsup",
     "watch": "tsup --watch",
     "lint": "tsc",
-    "release": "pnpm run build && changeset publish"
+    "release": "pnpm run build && changeset publish",
+    "test": "jest"
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.2",
+    "@types/jest": "^29.5.11",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.1",
     "tsup": "^7.2.0",
     "typescript": "^5.2.2"
   },
@@ -50,6 +54,16 @@
         "default": "./dist/metadata.js"
       }
     },
+    "./profile": {
+      "import": {
+        "types": "./dist/profile.d.ts",
+        "default": "./dist/profile.mjs"
+      },
+      "require": {
+        "types": "./dist/profile.d.ts",
+        "default": "./dist/profile.js"
+      }
+    },
     "./react": {
       "import": {
         "types": "./dist/react.d.ts",
@@ -70,5 +84,9 @@
         "default": "./dist/utils.js"
       }
     }
+  },
+  "dependencies": {
+    "ts-node": "^10.9.2",
+    "viem": "^1.19.11"
   }
 }
