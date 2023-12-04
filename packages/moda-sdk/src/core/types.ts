@@ -1,4 +1,4 @@
-import { PublicClient, WalletClient } from 'viem';
+import { Address, PublicClient, WalletClient } from 'viem';
 
 export type CreateProfileArgs = {
   publicClient: PublicClient;
@@ -9,6 +9,6 @@ export type CreateProfileArgs = {
 export type CreateProfileForArgs = {
   publicClient: PublicClient;
   walletClient: WalletClient;
-  contractAddress: `0x${string}`;
+  contractAddress: Address;
   metadataUri: string;
 };

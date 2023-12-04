@@ -1,10 +1,11 @@
+import { Hash } from 'viem';
 import { ProfileABI } from '../abi/ProfileABI';
 import { ProfileAddress } from '../constants/ProfileAddress';
 import { CreateProfileArgs } from '../types';
 
 export async function createProfile(
   createProfileArgs: CreateProfileArgs,
-): Promise<`0x${string}`> {
+): Promise<Hash> {
   const { publicClient, walletClient, metadataUri } = createProfileArgs;
 
   const [account] = await walletClient.getAddresses();
