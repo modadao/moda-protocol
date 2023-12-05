@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/token/common/ERC2981.sol";
 import "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155Supply.sol";
 import "@openzeppelin/contracts/token/ERC1155/utils/ERC1155Holder.sol";
 import {IOpenReleases} from "./interfaces/Releases/IOpenReleases.sol";
-import {ICatalog} from "./interfaces/ICatalog.sol";
+import {ICatalog} from "./interfaces/Catalog/ICatalog.sol";
 import {ISplitsFactory} from "./interfaces/ISplitsFactory.sol";
 
 /**
