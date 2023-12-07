@@ -1,11 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.21;
 
-
 import {IERC165} from "@openzeppelin/contracts/utils/introspection/IERC165.sol";
 
 import {ISplitsFactory} from "../ISplitsFactory.sol";
-
 
 /**
  * @title IReleases
@@ -15,8 +13,7 @@ interface IReleases is IERC165 {
     event ReleaseCreated(uint256 tokenId);
     event ReleaseWithdrawn(address indexed receiver, uint256 tokenId, uint256 amount);
 
-
-     * @dev Creates a new release token and transfers to the receiver
+    /* @dev Creates a new release token and transfers to the receiver
      * @param receiver - The address that will receive the release tokens
      * @param royaltyAmount - The percentage of sale prices
      * that should be paid to the beneficiary for re-sales.

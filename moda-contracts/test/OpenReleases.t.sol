@@ -68,7 +68,7 @@ contract ReleasesOpenTest is Test {
         management = new Management();
         membership = new Membership();
         splitsFactory = new SplitsFactoryMock(address(0x3));
-        modaRegistry = new ModaRegistry(treasury, 1000, address(splitsFactory), management);
+        modaRegistry = new ModaRegistry(treasury, 1000, splitsFactory, management);
         catalog = new Catalog();
         catalog.initialize(catalogName, catalogVersion, address(modaRegistry), membership);
         membership.addMember(trackOwner);

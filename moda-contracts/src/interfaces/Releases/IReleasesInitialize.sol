@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.21;
 
-import {ICatalog} from "../ICatalog.sol";
+import {ICatalog} from "../Catalog/ICatalog.sol";
 import {ISplitsFactory} from "../ISplitsFactory.sol";
 
 interface IReleasesInitialize {
