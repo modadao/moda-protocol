@@ -7,7 +7,8 @@ import "../src/Releases.sol";
 import "../src/ModaRegistry.sol";
 import "../src/Catalog.sol";
 import "../src/Management.sol";
-import "../test/mocks/MembershipMock.sol";
+import "./mocks/MembershipMock.sol";
+import {ISplitsFactory} from "../src/interfaces/ISplitsFactory.sol";
 
 contract ReleasesFactoryTest is Test {
     ModaRegistry public modaRegistry;
@@ -17,7 +18,7 @@ contract ReleasesFactoryTest is Test {
     ReleasesFactory public releasesFactory;
     Catalog public catalog;
 
-    address public splitsFactory = address(0x3);
+    ISplitsFactory public splitsFactory = ISplitsFactory(address(0x3));
     address payable public treasury = payable(address(0x4));
     string name = "name";
     string symbol = "symbol";

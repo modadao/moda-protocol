@@ -2,14 +2,8 @@
 pragma solidity 0.8.21;
 
 import {Catalog} from "../../src/Catalog.sol";
-import {IVersionInfo} from "../../src/interfaces/IVersionInfo.sol";
-import {ITrackRegistration} from "../../src/interfaces/ITrackRegistration.sol";
 import {IMembership} from "../../src/interfaces/IMembership.sol";
-import {IReleasesRegistration} from "../../src/interfaces/Releases/IReleasesRegistration.sol";
-import {IReleaseRegistration} from "../../src/interfaces/Releases/IReleaseRegistration.sol";
-import {IReleasesApproval} from "../../src/interfaces/Releases/IReleasesApproval.sol";
-import {IModaRegistry} from "../../src/interfaces/IModaRegistry.sol";
-import {IOfficialModaContracts} from "../../src/interfaces/IOfficialModaContracts.sol";
+import {IModaRegistry} from "../../src/interfaces/ModaRegistry/IModaRegistry.sol";
 import {IReleases} from "../../src/interfaces/Releases/IReleases.sol";
 import {Strings} from "@openzeppelin/contracts/utils/Strings.sol";
 

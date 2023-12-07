@@ -10,7 +10,7 @@ contract SplitsFactoryMock is ISplitsFactory {
         mockSplit = _mockSplit;
     }
 
-    function create(address[] calldata beneficiaries) external view returns (address) {
+    function create(address[] calldata) external view returns (address) {
         return mockSplit;
     }
 }

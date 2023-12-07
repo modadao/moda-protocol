@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.13;
+pragma solidity ^0.8.21;
 
 import "forge-std/Test.sol";
 import {Profile} from "../src/Profile.sol";
-import {IProfile} from "../src/interfaces/IProfile.sol";
+import {IProfile} from "../src/interfaces/Profile/IProfile.sol";
 import {IERC4906} from "../src/interfaces/ERC/IERC4906.sol";
-import {ISimpleOwnership} from "../src/interfaces/ISimpleOwnership.sol";
+import {ISimpleOwnership} from "../src/interfaces/Profile/ISimpleOwnership.sol";
 import {IERC165, ERC165} from "@openzeppelin/contracts/utils/introspection/ERC165.sol";
 import {IERC721Metadata} from "@openzeppelin/contracts/interfaces/IERC721Metadata.sol";
 import {IERC721} from "@openzeppelin/contracts/interfaces/IERC721.sol";

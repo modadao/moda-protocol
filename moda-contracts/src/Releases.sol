@@ -5,11 +5,14 @@ import "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol"
 import "@openzeppelin/contracts-upgradeable/token/common/ERC2981Upgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/token/ERC1155/extensions/ERC1155SupplyUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/token/ERC1155/utils/ERC1155HolderUpgradeable.sol";
+
 import {IReleases} from "./interfaces/Releases/IReleases.sol";
 import {IReleasesInitialize} from "./interfaces/Releases/IReleasesInitialize.sol";
 import {IWithdrawRelease} from "./interfaces/Releases/IWithdrawRelease.sol";
-import {ICatalog} from "./interfaces/ICatalog.sol";
+import {ICatalog} from "./interfaces/Catalog/ICatalog.sol";
 import {ISplitsFactory} from "./interfaces/ISplitsFactory.sol";
+
+
 
 /**
  * @title Releases
@@ -28,7 +31,9 @@ contract Releases is
     // State Variables
 
     uint256 constant MAX_ROYALTY_AMOUNT = 2_000;
+
     ICatalog _catalog;
+
     ISplitsFactory _splitsFactory;
 
     string public name;
@@ -73,7 +78,9 @@ contract Releases is
         address[] calldata releaseAdmins,
         string calldata name_,
         string calldata symbol_,
+
         ICatalog catalog,
+
         ISplitsFactory splitsFactory
     ) external initializer {
         __ERC1155_init("");

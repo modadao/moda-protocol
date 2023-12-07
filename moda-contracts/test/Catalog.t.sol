@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.13;
+pragma solidity ^0.8.21;
 
 import {Test, console2} from "forge-std/Test.sol";
 import "../src/Catalog.sol";
 import {ModaRegistry} from "../src/ModaRegistry.sol";
 import {Management} from "../src/Management.sol";
 import {Membership} from "../test/mocks/MembershipMock.sol";
-import {ITrackRegistration} from "../src/interfaces/ITrackRegistration.sol";
+import {ITrackRegistration} from "../src/interfaces/Catalog/ITrackRegistration.sol";
 import "../src/Releases.sol";
 import "../src/ReleasesFactory.sol";
 
@@ -24,7 +24,7 @@ contract CatalogTest is Test {
     string public catalogVersion = "1";
     address public artist = address(0x4);
     address payable public treasuryAddress = payable(address(0x11));
-    address public splitsFactory = address(0x12);
+    ISplitsFactory public splitsFactory = ISplitsFactory(address(0x12));
 
     error InvalidInitialization();
 
