@@ -3,11 +3,13 @@ pragma solidity 0.8.21;
 
 import {Clones} from "@openzeppelin/contracts/proxy/Clones.sol";
 import {IReleasesFactory} from "./interfaces/Releases/IReleasesFactory.sol";
-import {IReleases} from "./interfaces/Releases/IReleases.sol";
+
+import {IReleasesInitialize} from "./interfaces/Releases/IReleasesInitialize.sol";
 import {IModaRegistry} from "./interfaces/ModaRegistry/IModaRegistry.sol";
-import {ISplitsFactory} from "./interfaces/ISplitsFactory.sol";
+import {ICatalog} from "./interfaces/ICatalog.sol";
 import {IOfficialModaContracts} from "./interfaces/ModaRegistry/IOfficialModaContracts.sol";
-import {IReleasesRegistration} from "./interfaces/Releases/IReleasesRegistration.sol";
+import {ISplitsFactory} from "./interfaces/ISplitsFactory.sol";
+
 
 contract ReleasesFactory is IReleasesFactory {
     address public modaRegistry;
@@ -30,14 +32,16 @@ contract ReleasesFactory is IReleasesFactory {
         address[] memory releaseAdmins,
         string memory name,
         string memory symbol,
-        address catalog
+        ICatalog catalog
     ) external {
         address releasesClone = Clones.clone(releasesMaster);
+
         ISplitsFactory splitsFactory = IOfficialModaContracts(modaRegistry).getSplitsFactory();
-        IReleases(releasesClone).initialize(
-            msg.sender, releaseAdmins, name, symbol, catalog, splitsFactory
+        IReleasesInitialize(releasesClone).initialize(
+            msg.sender, releaseAdmins, name, symbol, catalog, ISplitsFactory(splitsFactory)
+
         );
-        IReleasesRegistration(catalog).registerReleasesContract(releasesClone, msg.sender);
+        ICatalog(catalog).registerReleasesContract(releasesClone, msg.sender);
         emit ReleasesCreated(msg.sender, releasesClone, name, symbol);
     }
 }

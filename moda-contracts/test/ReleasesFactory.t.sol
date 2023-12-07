@@ -44,7 +44,7 @@ contract ReleasesFactoryTest is Test {
     function test_create() public {
         address[] memory releaseAdmins = new address[](1);
         releaseAdmins[0] = releaseAdmin;
-        releasesFactory.create(releaseAdmins, name, symbol, address(catalog));
+        releasesFactory.create(releaseAdmins, name, symbol, catalog);
         address releases = catalog.getReleasesContract(address(this));
 
         assertEq(Releases(releases).name(), name);

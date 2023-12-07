@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.21;
 
+import {ICatalog} from "../ICatalog.sol";
+
 /**
  * @title IReleasesFactory
  * @dev Interface for the ReleasesFactory
@@ -19,12 +21,12 @@ interface IReleasesFactory {
      * @param releaseAdmins The addresses of the release admins
      * @param name The name of the releases contract
      * @param symbol The symbol of the releases contract
-     * @param catalog The address of the catalog contract
+     * @param catalog A contract that implements ICatalog
      */
     function create(
         address[] memory releaseAdmins,
         string memory name,
         string memory symbol,
-        address catalog
+        ICatalog catalog
     ) external;
 }

@@ -63,7 +63,7 @@ contract CatalogTest is Test {
         modaRegistry.grantRole(keccak256("RELEASES_REGISTRAR_ROLE"), address(releasesFactory));
         address[] memory releaseAdmins = new address[](1);
         releaseAdmins[0] = artist;
-        releasesFactory.create(releaseAdmins, "name", "symbol", address(catalog));
+        releasesFactory.create(releaseAdmins, "name", "symbol", catalog);
 
         releases = Releases(catalog.getReleasesContract(address(this)));
 
