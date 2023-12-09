@@ -32,7 +32,10 @@ contract ModaRegistryTest is Test {
     function setUp() public {
         membership = new Membership();
         management = new Management();
-        modaRegistry = new ModaRegistry(treasuryAddress, _treasuryFee, splitsFactory, management);
+        modaRegistry = new ModaRegistry(treasuryAddress, _treasuryFee);
+        modaRegistry.setManagement(management);
+        modaRegistry.setSplitsFactory(splitsFactory);
+
         modaRegistry.grantRole(keccak256("CATALOG_REGISTRAR_ROLE"), catalogRegistrar);
     }
 

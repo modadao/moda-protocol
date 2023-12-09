@@ -27,7 +27,9 @@ contract CatalogFactoryTest is Test {
 
     function setUp() public {
         management = new Management();
-        modaRegistry = new ModaRegistry(treasury, treasuryFee, splitsFactory, management);
+        modaRegistry = new ModaRegistry(treasury, treasuryFee);
+        modaRegistry.setManagement(management);
+        modaRegistry.setSplitsFactory(splitsFactory);
         catalogBeacon = Upgrades.deployBeacon("Catalog.sol", modaAdmin);
 
         catalogFactory = new CatalogFactory(modaRegistry, catalogBeacon);

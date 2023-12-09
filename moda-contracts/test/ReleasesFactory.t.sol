@@ -35,7 +35,10 @@ contract ReleasesFactoryTest is Test {
 
     function setUp() public {
         management = new Management();
-        modaRegistry = new ModaRegistry(treasury, 1000, splitsFactory, management);
+        modaRegistry = new ModaRegistry(treasury, 1000);
+        modaRegistry.setManagement(management);
+        modaRegistry.setSplitsFactory(splitsFactory);
+
         catalogBeacon = Upgrades.deployBeacon("Catalog.sol", modaAdmin);
         catalogFactory = new CatalogFactory(modaRegistry, catalogBeacon);
         modaRegistry.grantRole(keccak256("CATALOG_REGISTRAR_ROLE"), address(catalogFactory));

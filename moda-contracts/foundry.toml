@@ -10,10 +10,22 @@ remappings = [
 '@openzeppelin/contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable/contracts/'
 ]
 
-gas_reports = ["*"]
+fs_permissions = [{ access = "read-write", path = "./"}]
+
+[rpc_endpoints]
+rpcUrl = "${EVM_RPC_URL}"
+
+[etherscan]
+mumbai = { key = "${POLYGONSCAN_API_KEY}" }
+
 
 [fmt]
 multiline_func_header = "params_first"
 line_length = 105
+
+gas_reports = ["*"]
+
+
+
 
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options

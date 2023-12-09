@@ -29,7 +29,10 @@ contract CatalogUpgradesTest is Test {
     address modaAdmin = address(0x4);
 
     function setUp() public {
-        modaRegistry = new ModaRegistry(treasuryAddress, 1000, splitsFactory, management);
+        modaRegistry = new ModaRegistry(treasuryAddress, 1000);
+        modaRegistry.setManagement(management);
+        modaRegistry.setSplitsFactory(splitsFactory);
+
         beacon = Upgrades.deployBeacon("Catalog.sol", modaAdmin);
         catalogImplementation = IBeacon(beacon).implementation();
 
