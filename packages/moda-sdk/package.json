@@ -70,5 +70,8 @@
         "default": "./dist/utils.js"
       }
     }
+  },
+  "dependencies": {
+    "viem": "^1.19.11"
   }
 }
