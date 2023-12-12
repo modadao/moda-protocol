@@ -2,6 +2,7 @@
 pragma solidity ^0.8.21;
 
 import {ISplitMain} from "../../src/interfaces/0xSplits/ISplitMain.sol";
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 contract SplitMainMock is ISplitMain {
     address[] public beneficiaries;
@@ -30,6 +31,20 @@ contract SplitMainMock is ISplitMain {
 
         return mockSplitAddress();
     }
+
+    function distributeETH(
+        address split,
+        address[] calldata accounts,
+        uint32[] calldata percentAllocations,
+        uint32 distributorFee_,
+        address distributorAddress
+    ) external {}
+
+    function getETHBalance(address account) external view returns (uint256) {
+        return payable(account).balance;
+    }
+
+    function withdraw(address account, uint256 withdrawETH, ERC20[] calldata tokens) external {}
 
     function mockSplitAddress() public view returns (address) {
         return address(this);

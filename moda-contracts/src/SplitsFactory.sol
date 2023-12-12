@@ -29,9 +29,7 @@ contract SplitsFactory is ISplitsFactory, Ownable {
     /// @inheritdoc ISplitsFactory
     /// @notice This factory will create a new 0xSplit contract and add the MODA Treasury as a benefactor.
     function create(address[] calldata beneficiaries) external override returns (address) {
-        address[] memory accounts = new address[](
-            beneficiaries.length + 1
-        );
+        address[] memory accounts = new address[](beneficiaries.length + 1);
 
         for (uint256 i = 0; i < beneficiaries.length; i++) {
             accounts[i] = beneficiaries[i];
