@@ -21,6 +21,41 @@
 pnpm i
 ```
 
+# Contracts
+
+## Owned by Moda
+
+### Moda Registry
+
+### Management
+
+### Splits Factory
+
+### Catalog Factory
+
+### Releases Factory
+
+## Owned by an Organisation
+
+### Catalog
+
+### Releases
+
+### Marketplace
+
+
+
+## Set Contract Environment Variables
+
+Navigate to the moda-contracts directory and run 
+
+```bash
+cp ./.env.example ./.env
+```
+
+Fill in the environment variables
+
+
 ## Smart Contract Testing
 
 Navigate to the moda-contracts directory and run
@@ -33,6 +68,27 @@ To generate a coverage report run
 
 ```bash
 pnpm coverage
+```
+
+## Smart Contract Deployment and Verification
+
+
+Navigate to the moda-contracts directory and deploy contracts in the following order. The contracts will be verified upon deployment.
+
+```bash
+pnpm deploy_ModaRegistry
+```
+
+```bash
+pnpm deploy_Management
+```
+
+```bash
+pnpm deploy_SplitsFactory
+```
+
+```bash
+pnpm deploy_CatalogFactory
 ```
 
 ## License
