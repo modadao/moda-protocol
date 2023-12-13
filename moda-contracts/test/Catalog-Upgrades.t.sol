@@ -21,7 +21,6 @@ contract CatalogUpgradesTest is Test {
 
     string public catalogName = "Test";
     uint256 public chainId = 0;
-    string public catalogVersion = "0";
     ISplitsFactory public splitsFactory = ISplitsFactory(address(0x1));
     address payable public treasuryAddress = payable(address(0x2));
     address public catalogDeployer = address(0x3);
@@ -31,23 +30,13 @@ contract CatalogUpgradesTest is Test {
 
     function setUp() public {
         modaRegistry = new ModaRegistry(treasuryAddress, 1000, splitsFactory, management);
-
         beacon = Upgrades.deployBeacon("Catalog.sol", modaAdmin);
         catalogImplementation = IBeacon(beacon).implementation();
 
         catalogProxy = Upgrades.deployBeaconProxy(
             beacon,
-            abi.encodeCall(
-                Catalog.initialize, (catalogName, catalogVersion, address(modaRegistry), membership)
-            )
+            abi.encodeCall(Catalog.initialize, (modaAdmin, catalogName, modaRegistry, membership))
         );
-    }
-
-    function test_catalog_proxy() public {
-        vm.chainId(chainId);
-        (string memory name_, string memory version_) = IVersionInfo(catalogProxy).versionInfo();
-        assertEq(name_, catalogName);
-        assertEq(version_, catalogVersion);
     }
 
     function test_beacon() public {

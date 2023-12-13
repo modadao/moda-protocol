@@ -3,25 +3,29 @@ pragma solidity ^0.8.13;
 
 import {Test, console2} from "forge-std/Test.sol";
 import "../src/ModaRegistry.sol";
+import "../src/CatalogFactory.sol";
 import "../src/Catalog.sol";
 import "../src/Releases.sol";
 import "../src/Management.sol";
 import "../test/mocks/MembershipMock.sol";
 import "../test/mocks/SplitsFactoryMock.sol";
 import "../src/ReleasesFactory.sol";
+import {Upgrades} from "openzeppelin-foundry-upgrades/Upgrades.sol";
 
 contract ReleasesTest is Test {
     Membership public membership;
     Management public management;
     ModaRegistry public modaRegistry;
     SplitsFactoryMock public splitsFactory;
+    CatalogFactory public catalogFactory;
     Catalog public catalog;
     Releases public releasesMaster;
     ReleasesFactory public releasesFactory;
     Releases public releases;
 
+    address catalogBeacon;
+    address modaAdmin = address(0xa);
     string public catalogName = "TestCatalog";
-    string public catalogVersion = "1";
 
     string name = "TestReleases";
     string symbol = "TEST";
@@ -75,10 +79,13 @@ contract ReleasesTest is Test {
         membership = new Membership();
         splitsFactory = new SplitsFactoryMock(address(0x3));
         modaRegistry = new ModaRegistry(treasury, 1000, splitsFactory, management);
-        catalog = new Catalog();
-        catalog.initialize(catalogName, catalogVersion, address(modaRegistry), membership);
+        catalogBeacon = Upgrades.deployBeacon("Catalog.sol", modaAdmin);
+        catalogFactory = new CatalogFactory(modaRegistry, catalogBeacon);
+        modaRegistry.grantRole(keccak256("CATALOG_REGISTRAR_ROLE"), address(catalogFactory));
+
+        catalog = Catalog(catalogFactory.create(catalogName, IMembership(membership)));
+
         membership.addMember(releaseAdmin);
-        modaRegistry.registerCatalog(address(catalog));
         releasesMaster = new Releases();
         releasesFactory = new ReleasesFactory(address(modaRegistry), address(releasesMaster));
         modaRegistry.grantRole(keccak256("RELEASES_REGISTRAR_ROLE"), address(releasesFactory));
@@ -102,7 +109,6 @@ contract ReleasesTest is Test {
         vm.expectRevert(InvalidInitialization.selector);
 
         releases.initialize(admin, releaseAdmins, name, symbol, catalog, splitsFactory);
-
     }
 
     // create with a curated Releases contract

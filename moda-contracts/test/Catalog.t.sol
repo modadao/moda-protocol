@@ -2,6 +2,7 @@
 pragma solidity ^0.8.21;
 
 import {Test, console2} from "forge-std/Test.sol";
+import "../src/CatalogFactory.sol";
 import "../src/Catalog.sol";
 import {ModaRegistry} from "../src/ModaRegistry.sol";
 import {Management} from "../src/Management.sol";
@@ -9,8 +10,10 @@ import {Membership} from "../test/mocks/MembershipMock.sol";
 import {ITrackRegistration} from "../src/interfaces/Catalog/ITrackRegistration.sol";
 import "../src/Releases.sol";
 import "../src/ReleasesFactory.sol";
+import {Upgrades} from "openzeppelin-foundry-upgrades/Upgrades.sol";
 
 contract CatalogTest is Test {
+    CatalogFactory public catalogFactory;
     Catalog public catalog;
     Management public management;
     Membership public membership;
@@ -19,9 +22,10 @@ contract CatalogTest is Test {
     Releases public releasesMaster;
     Releases public releases;
 
+    address catalogBeacon;
+    address modaAdmin = address(0xa);
     address public catalogAdmin = address(0x1);
-    string public catalogName = "ACME-CATALOG";
-    string public catalogVersion = "1";
+    string public catalogName = "ACME.CATALOG";
     address public artist = address(0x4);
     address payable public treasuryAddress = payable(address(0x11));
     ISplitsFactory public splitsFactory = ISplitsFactory(address(0x12));
@@ -52,13 +56,17 @@ contract CatalogTest is Test {
         management = new Management();
         membership = new Membership();
         modaRegistry = new ModaRegistry(treasuryAddress, 1000, splitsFactory, management);
-        catalog = new Catalog();
-        releasesMaster = new Releases();
-        releasesFactory = new ReleasesFactory(address(modaRegistry), address(releasesMaster));
+        catalogBeacon = Upgrades.deployBeacon("Catalog.sol", modaAdmin);
+        catalogFactory = new CatalogFactory(modaRegistry, catalogBeacon);
+        console2.log("factory", address(catalogFactory));
+        modaRegistry.grantRole(keccak256("CATALOG_REGISTRAR_ROLE"), address(catalogFactory));
 
         vm.startPrank(catalogAdmin);
-        catalog.initialize(catalogName, catalogVersion, address(modaRegistry), membership);
+        catalog = Catalog(catalogFactory.create(catalogName, IMembership(membership)));
         vm.stopPrank();
+
+        releasesMaster = new Releases();
+        releasesFactory = new ReleasesFactory(address(modaRegistry), address(releasesMaster));
 
         modaRegistry.grantRole(keccak256("RELEASES_REGISTRAR_ROLE"), address(releasesFactory));
         address[] memory releaseAdmins = new address[](1);
@@ -68,7 +76,6 @@ contract CatalogTest is Test {
         releases = Releases(catalog.getReleasesContract(address(this)));
 
         membership.addMember(artist);
-        modaRegistry.registerCatalog(address(catalog));
     }
 
     function setup_auto_verified(address account) public {
@@ -82,7 +89,7 @@ contract CatalogTest is Test {
         setUp();
         vm.expectRevert(InvalidInitialization.selector);
         vm.startPrank(catalogAdmin);
-        catalog.initialize(catalogName, catalogVersion, address(modaRegistry), membership);
+        catalog.initialize(modaAdmin, catalogName, modaRegistry, membership);
         vm.stopPrank();
     }
 
@@ -157,7 +164,7 @@ contract CatalogTest is Test {
 
     function test_registerTrack_emits_event() public {
         vm.expectEmit(true, true, true, true);
-        emit TrackRegistered("trackHash", "ACME-CATALOG-31337-1-TRACK-ID-0", artist);
+        emit TrackRegistered("trackHash", "ACME-CATALOG-31337-0", artist);
         vm.startPrank(artist);
         catalog.registerTrack(
             artist, trackRegistrationData.trackBeneficiary, trackRegistrationData.trackRegistrationHash

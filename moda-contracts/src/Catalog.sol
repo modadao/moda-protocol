@@ -1,18 +1,13 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.21;
 
-import {IVersionInfo} from "./interfaces/Catalog/IVersionInfo.sol";
 import {ITrackRegistration} from "./interfaces/Catalog/ITrackRegistration.sol";
 import {IReleaseRegistration} from "./interfaces/Releases/IReleaseRegistration.sol";
 import {IReleasesApproval} from "./interfaces/Releases/IReleasesApproval.sol";
 import {IReleasesRegistration} from "./interfaces/Releases/IReleasesRegistration.sol";
 import {IReleases} from "./interfaces/Releases/IReleases.sol";
-
 import {IOpenReleases} from "./interfaces/Releases/IOpenReleases.sol";
-
-
 import {ICatalog} from "./interfaces/Catalog/ICatalog.sol";
-
 import {IMembership} from "./interfaces/IMembership.sol";
 import {IModaRegistry} from "./interfaces/ModaRegistry/IModaRegistry.sol";
 import {IManagement} from "./interfaces/IManagement.sol";
@@ -26,10 +21,9 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
 
     /// @custom:storage-location erc7201:moda.storage.Catalog
     struct CatalogStorage {
-        address _modaRegistry;
+        IModaRegistry _modaRegistry;
         IMembership _membership;
         string _name;
-        string _version;
         uint256 _trackCount;
         /// @dev trackRegistrationHash => trackId
         mapping(string => string) _trackIds;
@@ -77,27 +71,29 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
         }
     }
 
+    /**
+     * @dev Constructor
+     * @notice The initializer is disabled when deployed as an implementation contract
+     * @custom:oz-upgrades-unsafe-allow constructor
+     */
+    constructor() {
+        _disableInitializers();
+    }
+
     // External Functions
 
     /// @dev Initializes the contract
     function initialize(
+        address owner,
         string calldata name,
-        string calldata version,
-        address modaRegistry,
+        IModaRegistry modaRegistry,
         IMembership membership
     ) external initializer {
         CatalogStorage storage $ = _getCatalogStorage();
+        _grantRole(DEFAULT_ADMIN_ROLE, owner);
         $._name = name;
-        $._version = version;
         $._modaRegistry = modaRegistry;
         $._membership = membership;
-        _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
-    }
-
-    /// @inheritdoc IVersionInfo
-    function versionInfo() external view returns (string memory name, string memory version) {
-        CatalogStorage storage $ = _getCatalogStorage();
-        return ($._name, $._version);
     }
 
     /// @inheritdoc ITrackRegistration
@@ -114,13 +110,7 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
 
         string memory id = string(
             abi.encodePacked(
-                $._name,
-                "-",
-                Strings.toString(block.chainid),
-                "-",
-                $._version,
-                "-TRACK-ID-",
-                Strings.toString($._trackCount)
+                $._name, "-", Strings.toString(block.chainid), "-", Strings.toString($._trackCount)
             )
         );
         $._trackIds[trackRegistrationHash] = id;
@@ -344,7 +334,7 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
     function hasTrackAccess(string calldata trackId, address caller) external view returns (bool) {
         CatalogStorage storage $ = _getCatalogStorage();
         return $._registeredTracks[trackId].trackOwner == caller
-            || IOfficialModaContracts($._modaRegistry).getManagement().isManager(
+            || IOfficialModaContracts(address($._modaRegistry)).getManagement().isManager(
                 $._registeredTracks[trackId].trackOwner, caller
             );
     }
@@ -429,7 +419,9 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
 
         if (
             caller != trackOwner
-                && !IOfficialModaContracts($._modaRegistry).getManagement().isManager(trackOwner, caller)
+                && !IOfficialModaContracts(address($._modaRegistry)).getManagement().isManager(
+                    trackOwner, caller
+                )
         ) {
             revert MustBeTrackOwnerOrManager();
         }

@@ -8,15 +8,20 @@ import "../src/OpenReleases.sol";
 import "../src/Management.sol";
 import "../test/mocks/MembershipMock.sol";
 import "../test/mocks/SplitsFactoryMock.sol";
+import "../src/CatalogFactory.sol";
+import {Upgrades} from "openzeppelin-foundry-upgrades/Upgrades.sol";
 
-contract ReleasesOpenTest is Test {
+contract OpenReleasesTest is Test {
     Membership public membership;
     Management public management;
     ModaRegistry public modaRegistry;
     SplitsFactoryMock public splitsFactory;
+    CatalogFactory public catalogFactory;
     Catalog public catalog;
     OpenReleases public openReleases;
 
+    address public catalogBeacon;
+    address public modaAdmin = address(0xa);
     string public catalogName = "TestCatalog";
     string public catalogVersion = "1";
 
@@ -69,10 +74,11 @@ contract ReleasesOpenTest is Test {
         membership = new Membership();
         splitsFactory = new SplitsFactoryMock(address(0x3));
         modaRegistry = new ModaRegistry(treasury, 1000, splitsFactory, management);
-        catalog = new Catalog();
-        catalog.initialize(catalogName, catalogVersion, address(modaRegistry), membership);
+        catalogBeacon = Upgrades.deployBeacon("Catalog.sol", modaAdmin);
+        catalogFactory = new CatalogFactory(modaRegistry, catalogBeacon);
+        modaRegistry.grantRole(keccak256("CATALOG_REGISTRAR_ROLE"), address(catalogFactory));
+        catalog = Catalog(catalogFactory.create(catalogName, IMembership(membership)));
         membership.addMember(trackOwner);
-        modaRegistry.registerCatalog(address(catalog));
         openReleases = new OpenReleases(organizationAdmin, name, symbol, catalog, splitsFactory);
     }
 
