@@ -78,7 +78,10 @@ contract ReleasesTest is Test {
         management = new Management();
         membership = new Membership();
         splitsFactory = new SplitsFactoryMock(address(0x3));
-        modaRegistry = new ModaRegistry(treasury, 1000, splitsFactory, management);
+        modaRegistry = new ModaRegistry(treasury, 1000);
+        modaRegistry.setManagement(management);
+        modaRegistry.setSplitsFactory(splitsFactory);
+
         catalogBeacon = Upgrades.deployBeacon("Catalog.sol", modaAdmin);
         catalogFactory = new CatalogFactory(modaRegistry, catalogBeacon);
         modaRegistry.grantRole(keccak256("CATALOG_REGISTRAR_ROLE"), address(catalogFactory));
@@ -89,9 +92,11 @@ contract ReleasesTest is Test {
         releasesMaster = new Releases();
         releasesFactory = new ReleasesFactory(address(modaRegistry), address(releasesMaster));
         modaRegistry.grantRole(keccak256("RELEASES_REGISTRAR_ROLE"), address(releasesFactory));
+
         vm.startPrank(admin);
         releasesFactory.create(releaseAdmins, name, symbol, catalog);
         vm.stopPrank();
+
         releases = Releases(catalog.getReleasesContract(admin));
     }
 

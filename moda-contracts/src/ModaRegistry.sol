@@ -46,16 +46,9 @@ contract ModaRegistry is IModaRegistry, IOfficialModaContracts, AccessControlEnu
     error CatalogRegistrationFailed();
     error CatalogUnregistrationFailed();
 
-    constructor(
-        address payable treasury,
-        uint32 treasuryFee,
-        ISplitsFactory splitsFactory,
-        IManagement management
-    ) {
+    constructor(address payable treasury, uint32 treasuryFee) {
         _treasury = treasury;
         _treasuryFee = treasuryFee;
-        _splitsFactory = splitsFactory;
-        _management = management;
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
     }
 
