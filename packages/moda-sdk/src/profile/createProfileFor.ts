@@ -13,11 +13,14 @@ interface CreateProfileForArgs {
   metadataUri: string;
 }
 
-export async function createProfileFor(
-  { config, profileAddress, contractAddress, metadataUri }: CreateProfileForArgs,
-): Promise<Result<Hash, ConfigError | AddressError | string>> {
-  
-
+export async function createProfileFor({
+  config,
+  profileAddress,
+  contractAddress,
+  metadataUri,
+}: CreateProfileForArgs): Promise<
+  Result<Hash, ConfigError | AddressError | string>
+> {
   const verifiedConfig = verifyConfig(config);
   if (!verifiedConfig.ok) return verifiedConfig;
   const { publicClient, walletClient } = verifiedConfig.value;

@@ -1,20 +1,25 @@
-import { Address } from "viem";
-import { AddressError, Config, ConfigError } from "../types";
-import { Result } from "../utils/types";
-import { verifyConfig } from "../utils/verifyConfig";
-import { isValidAddress } from "../utils/isValidAddress";
-import { ProfileABI } from "./abi/ProfileABI";
-import { ProfileError } from "./types";
+import { Address, PublicClient, WalletClient } from 'viem';
+import { AddressError, Config, ConfigError } from '../types';
+import { isValidAddress } from '../utils/isValidAddress';
+import { Result } from '../utils/types';
+import { verifyConfig } from '../utils/verifyConfig';
+import { ProfileABI } from './abi/ProfileABI';
+import { ProfileError } from './types';
 
 interface GetNameArgs {
-    config: Config;
-    profileAddress: Address;
+  config: Config;
+  profileAddress: Address;
 }
 
-export async function getName(
-    { config, profileAddress} : GetNameArgs,
-): Promise<Result<string, ConfigError | AddressError | ProfileError>> {
+export type ReaderClient = Pick<PublicClient, 'readContract'>;
+export type WriterClient = Pick<WalletClient, 'writeContract'>;
 
+export async function getName({
+  config,
+  profileAddress,
+}: GetNameArgs): Promise<
+  Result<string, ConfigError | AddressError | ProfileError>
+> {
   const verifiedConfig = verifyConfig(config);
   if (!verifiedConfig.ok) return verifiedConfig;
 
@@ -29,10 +34,8 @@ export async function getName(
     functionName: 'name',
   });
 
- 
-
-  if(data) {
+  if (data) {
     return { ok: true, value: data as string };
   }
-    return { ok: false, error: ProfileError.NameUndefined };
+  return { ok: false, error: ProfileError.NameUndefined };
 }
