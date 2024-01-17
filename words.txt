@@ -12,6 +12,7 @@ gasleft
 genhtml
 hevm
 inheritdoc
+inpage
 ipfs
 keccak
 kontract
