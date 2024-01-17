@@ -13,11 +13,10 @@ remappings = [
 fs_permissions = [{ access = "read-write", path = "./"}]
 
 [rpc_endpoints]
-rpcUrl = "${EVM_RPC_URL}"
+mumbai = "${MUMBAI_RPC_URL}"
 
 [etherscan]
 mumbai = { key = "${POLYGONSCAN_API_KEY}" }
-
 
 [fmt]
 multiline_func_header = "params_first"

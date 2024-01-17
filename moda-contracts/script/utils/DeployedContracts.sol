@@ -8,16 +8,16 @@ import {console2} from "forge-std/Script.sol";
 library DeployedContracts {
     Vm internal constant vm = Vm(address(uint160(uint256(keccak256("hevm cheat code")))));
 
-    function get(string calldata deployFileName, uint256 chainId) external returns (address) {
+    function get(string calldata scriptFileName, uint256 chainId) external view returns (address) {
         string memory filePath = string(
             abi.encodePacked(
-                "./broadcast/", deployFileName, "/", Strings.toString(chainId), "/run-latest.json"
+                "./broadcast/", scriptFileName, "/", Strings.toString(chainId), "/run-latest.json"
             )
         );
         string memory jsonContent = vm.readFile(filePath);
         string memory jsonPath = "$.transactions[0].contractAddress";
-        bytes memory profileBytes = vm.parseJson(jsonContent, jsonPath);
+        bytes memory contractBytes = vm.parseJson(jsonContent, jsonPath);
 
-        return abi.decode(profileBytes, (address));
+        return abi.decode(contractBytes, (address));
     }
 }

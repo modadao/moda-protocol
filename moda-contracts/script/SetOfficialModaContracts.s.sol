@@ -19,7 +19,7 @@ contract SetOfficialModaContracts is Script {
         IManagement management =
             IManagement(DeployedContracts.get("DeployManagement.s.sol", block.chainid));
         ISplitsFactory splitsFactory =
-            ISplitsFactory(DeployedContracts.getSplitsFactoryAddress(block.chainid));
+            ISplitsFactory(DeployedContracts.get("DeploySplitsFactory.s.sol", block.chainid));
 
         ModaRegistry(modaRegistry).setManagement(management);
         ModaRegistry(modaRegistry).setSplitsFactory(splitsFactory);
