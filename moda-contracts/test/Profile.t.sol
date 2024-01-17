@@ -2,7 +2,13 @@
 pragma solidity ^0.8.21;
 
 import "forge-std/Test.sol";
-import {Profile} from "../src/Profile.sol";
+import {
+    Profile,
+    ProfileAlreadyMinted,
+    ProfileDoesNotExist,
+    ProfilesAreSoulBound,
+    CallerNotAuthorized
+} from "../src/Profile.sol";
 import {IProfile} from "../src/interfaces/Profile/IProfile.sol";
 import {IERC4906} from "../src/interfaces/ERC/IERC4906.sol";
 import {ISimpleOwnership} from "../src/interfaces/Profile/ISimpleOwnership.sol";
@@ -58,7 +64,7 @@ contract ProfileTest is Test {
 
     function test_mint_reverts_for_duplicates() public {
         profile.mint(firstUri);
-        vm.expectRevert(Profile.ProfileAlreadyMinted.selector);
+        vm.expectRevert(ProfileAlreadyMinted.selector);
         profile.mint(firstUri);
     }
 
@@ -119,7 +125,7 @@ contract ProfileTest is Test {
         address labelControlledContract = address(new AccessControlledMock(label));
 
         vm.startPrank(artist);
-        vm.expectRevert(Profile.CallerNotAuthorized.selector);
+        vm.expectRevert(CallerNotAuthorized.selector);
         profile.mintFor(labelControlledContract, firstUri);
         vm.stopPrank();
     }
@@ -128,7 +134,7 @@ contract ProfileTest is Test {
         address labelControlledContract = address(new OwnedContractMock(label));
 
         vm.startPrank(artist);
-        vm.expectRevert(Profile.CallerNotAuthorized.selector);
+        vm.expectRevert(CallerNotAuthorized.selector);
         profile.mintFor(labelControlledContract, firstUri);
         vm.stopPrank();
     }
@@ -140,7 +146,7 @@ contract ProfileTest is Test {
         profile.mintFor(kontract, firstUri);
         assertEq(profile.accountUri(kontract), firstUri);
 
-        vm.expectRevert(Profile.ProfileAlreadyMinted.selector);
+        vm.expectRevert(ProfileAlreadyMinted.selector);
         profile.mintFor(kontract, firstUri);
 
         vm.stopPrank();
@@ -201,7 +207,7 @@ contract ProfileTest is Test {
     }
 
     function test_updateProfile_reverts_for_nonexisting_profile() public {
-        vm.expectRevert(Profile.ProfileDoesNotExist.selector);
+        vm.expectRevert(ProfileDoesNotExist.selector);
         profile.updateProfile(firstUri);
     }
 
@@ -259,7 +265,7 @@ contract ProfileTest is Test {
         vm.stopPrank();
 
         vm.startPrank(label);
-        vm.expectRevert(Profile.CallerNotAuthorized.selector);
+        vm.expectRevert(CallerNotAuthorized.selector);
         profile.updateProfileFor(kontract, secondUri);
 
         vm.stopPrank();
@@ -269,7 +275,7 @@ contract ProfileTest is Test {
         address kontract = address(new AccessControlledMock(artist));
 
         vm.startPrank(artist);
-        vm.expectRevert(Profile.ProfileDoesNotExist.selector);
+        vm.expectRevert(ProfileDoesNotExist.selector);
         profile.updateProfileFor(kontract, firstUri);
 
         vm.stopPrank();
@@ -301,7 +307,7 @@ contract ProfileTest is Test {
     }
 
     function test_accountUri_reverts_with_nonexistent_profile() public {
-        vm.expectRevert(Profile.ProfileDoesNotExist.selector);
+        vm.expectRevert(ProfileDoesNotExist.selector);
 
         profile.accountUri(artist);
     }
@@ -317,7 +323,7 @@ contract ProfileTest is Test {
     }
 
     function test_tokenUri_reverts_with_nonexistent_token() public {
-        vm.expectRevert(Profile.ProfileDoesNotExist.selector);
+        vm.expectRevert(ProfileDoesNotExist.selector);
 
         profile.tokenURI(1);
     }
@@ -333,7 +339,7 @@ contract ProfileTest is Test {
     }
 
     function test_ownerOf_reverts_with_nonexistent_token() public {
-        vm.expectRevert(Profile.ProfileDoesNotExist.selector);
+        vm.expectRevert(ProfileDoesNotExist.selector);
 
         profile.ownerOf(1);
     }
@@ -367,21 +373,21 @@ contract ProfileTest is Test {
     // approve
 
     function test_approve_reverts() public {
-        vm.expectRevert(Profile.ProfilesAreSoulBound.selector);
+        vm.expectRevert(ProfilesAreSoulBound.selector);
         profile.approve(label, 1);
     }
 
     // getApproved
 
     function test_getApproved_reverts() public {
-        vm.expectRevert(Profile.ProfilesAreSoulBound.selector);
+        vm.expectRevert(ProfilesAreSoulBound.selector);
         profile.getApproved(1);
     }
 
     // setApprovalForAll
 
     function test_setApprovalForAll_reverts() public {
-        vm.expectRevert(Profile.ProfilesAreSoulBound.selector);
+        vm.expectRevert(ProfilesAreSoulBound.selector);
         profile.setApprovalForAll(label, true);
     }
 
@@ -394,21 +400,21 @@ contract ProfileTest is Test {
     // transferFrom
 
     function test_transferFrom_reverts() public {
-        vm.expectRevert(Profile.ProfilesAreSoulBound.selector);
+        vm.expectRevert(ProfilesAreSoulBound.selector);
         profile.transferFrom(artist, label, 1);
     }
 
     // safeTransferFrom
 
     function test_safeTransferFrom_reverts() public {
-        vm.expectRevert(Profile.ProfilesAreSoulBound.selector);
+        vm.expectRevert(ProfilesAreSoulBound.selector);
         profile.safeTransferFrom(artist, label, 1);
     }
 
     // safeTransferFrom with data argument
 
     function test_safeTransferFrom_with_data_arg_reverts() public {
-        vm.expectRevert(Profile.ProfilesAreSoulBound.selector);
+        vm.expectRevert(ProfilesAreSoulBound.selector);
         profile.safeTransferFrom(artist, label, 1, bytes(""));
     }
 

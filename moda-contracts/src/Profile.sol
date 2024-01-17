@@ -9,6 +9,11 @@ import {IAccessControl} from "@openzeppelin/contracts/access/IAccessControl.sol"
 import {IProfile} from "./interfaces/Profile/IProfile.sol";
 import {ISimpleOwnership} from "./interfaces/Profile/ISimpleOwnership.sol";
 
+error ProfileAlreadyMinted();
+error ProfileDoesNotExist();
+error ProfilesAreSoulBound();
+error CallerNotAuthorized();
+
 contract Profile is IProfile, IERC721, IERC721Metadata, IERC4906, ERC165 {
     string private _name;
     string private _symbol;
@@ -19,11 +24,6 @@ contract Profile is IProfile, IERC721, IERC721Metadata, IERC4906, ERC165 {
     mapping(uint256 => string) private _tokenToUri;
 
     bytes32 private constant _DEFAULT_ADMIN_ROLE = 0x00;
-
-    error ProfileAlreadyMinted();
-    error ProfileDoesNotExist();
-    error ProfilesAreSoulBound();
-    error CallerNotAuthorized();
 
     /// @dev Check if the caller is an owner or admin of a contract.
     /// @param kontract The address of a contract that may or may not use OpenZeppelin's Ownership
