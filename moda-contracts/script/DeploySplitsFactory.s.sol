@@ -15,7 +15,7 @@ contract DeploySplitsFactory is Script {
         vm.startBroadcast(privateKey);
 
         IOfficialModaContracts modaRegistry =
-            IOfficialModaContracts(DeployedContracts.getModaRegistryAddress(block.chainid));
+            IOfficialModaContracts(DeployedContracts.get("DeployModaRegistry.s.sol", block.chainid));
         new SplitsFactory(splitMain, modaRegistry);
 
         vm.stopBroadcast();
