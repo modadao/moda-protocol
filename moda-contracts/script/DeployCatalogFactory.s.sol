@@ -15,7 +15,8 @@ contract DeployCatalogFactory is Script {
         address modaDeployer = vm.addr(privateKey);
         vm.startBroadcast(privateKey);
 
-        ModaRegistry modaRegistry = ModaRegistry(DeployedContracts.getModaRegistryAddress(block.chainid));
+        ModaRegistry modaRegistry =
+            ModaRegistry(DeployedContracts.get("DeployModaRegistry.s.sol", block.chainid));
         IBeacon beacon = IBeacon(Upgrades.deployBeacon("Catalog.sol", modaDeployer));
         new CatalogFactory(modaRegistry, address(beacon));
 
