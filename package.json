@@ -1,13 +1,10 @@
 {
   "name": "root",
   "private": true,
-  "workspaces": [
-    "packages/*",
-    "contracts/"
-  ],
   "scripts": {
     "build": "pnpm --filter moda-sdk build",
     "dev": "pnpm --filter moda-sdk watch",
+    "contracts:docs": "pnpm --filter moda-contracts contracts:docs",
     "format": "biome format . --write",
     "lint": "biome check .",
     "lint:fix": "pnpm lint --apply-unsafe",

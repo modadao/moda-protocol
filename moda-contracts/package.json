@@ -7,6 +7,7 @@
     "test": "forge clean && forge build && forge test --ffi",
     "coverage": "forge coverage --report lcov --ffi && genhtml lcov.info --branch-coverage --output-dir coverage ",
     "size": "forge build --sizes",
+    "contracts:docs": "forge doc -s",
     "deploy_ModaRegistry": "forge script script/DeployModaRegistry.s.sol:DeployModaRegistry --rpc-url rpcUrl --broadcast --verify -vvvv",
     "deploy_Management": "forge script script/DeployManagement.s.sol:DeployManagement --rpc-url rpcUrl --broadcast --verify -vvvv",
     "deploy_SplitsFactory": "forge script script/DeploySplitsFactory.s.sol:DeploySplitsFactory --rpc-url rpcUrl --broadcast --verify -vvvv",
