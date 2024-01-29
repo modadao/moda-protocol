@@ -4,8 +4,8 @@ pragma solidity 0.8.21;
 import {IManagement} from "../IManagement.sol";
 import {ISplitsFactory} from "../ISplitsFactory.sol";
 
-interface IOfficialModaContracts {
-    /// @dev Returns the address of the Moda Treasury, a suggested percentage fee, and the fee scale.
+interface IOfficialContracts {
+    /// @dev Returns the address of the Treasury, a suggested percentage fee, and the fee scale.
     /// e.g. If the percentage fee is 1_000 and the fee scale is 10_000, then (1_000 / 10_000) * 100 = 10%
     function getTreasuryInfo() external view returns (address, uint32, uint32);
 

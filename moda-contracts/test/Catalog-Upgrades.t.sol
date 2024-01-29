@@ -6,14 +6,14 @@ import "../src/Catalog.sol";
 import "../src/interfaces/IMembership.sol";
 import "../src/interfaces/ISplitsFactory.sol";
 import "../test/mocks/CatalogV2Mock.sol";
-import "../src/ModaRegistry.sol";
+import "../src/Registry.sol";
 import "../src/Management.sol";
 import {Upgrades} from "openzeppelin-foundry-upgrades/Upgrades.sol";
 import {IBeacon} from "@openzeppelin/contracts/proxy/beacon/IBeacon.sol";
 
 contract CatalogUpgradesTest is Test {
     Management public management;
-    ModaRegistry public modaRegistry;
+    Registry public registry;
     address public catalogImplementation;
     address public catalogImplementationV2;
     address public catalogProxy;
@@ -26,19 +26,18 @@ contract CatalogUpgradesTest is Test {
     address public catalogDeployer = address(0x3);
     IMembership public membership = IMembership(address(0x4));
 
-    address modaAdmin = address(0x4);
+    address admin = address(0x4);
 
     function setUp() public {
-        modaRegistry = new ModaRegistry(treasuryAddress, 1000);
-        modaRegistry.setManagement(management);
-        modaRegistry.setSplitsFactory(splitsFactory);
+        registry = new Registry(treasuryAddress, 1000);
+        registry.setManagement(management);
+        registry.setSplitsFactory(splitsFactory);
 
-        beacon = Upgrades.deployBeacon("Catalog.sol", modaAdmin);
+        beacon = Upgrades.deployBeacon("Catalog.sol", admin);
         catalogImplementation = IBeacon(beacon).implementation();
 
         catalogProxy = Upgrades.deployBeaconProxy(
-            beacon,
-            abi.encodeCall(Catalog.initialize, (modaAdmin, catalogName, modaRegistry, membership))
+            beacon, abi.encodeCall(Catalog.initialize, (admin, catalogName, registry, membership))
         );
     }
 
@@ -48,7 +47,7 @@ contract CatalogUpgradesTest is Test {
     }
 
     function upgrade_beacon_with_CatalogV2_setUp() public {
-        vm.startPrank(modaAdmin);
+        vm.startPrank(admin);
         Upgrades.upgradeBeacon(beacon, "CatalogV2Mock.sol");
         vm.stopPrank();
     }

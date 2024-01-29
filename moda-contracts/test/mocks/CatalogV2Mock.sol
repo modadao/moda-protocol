@@ -2,10 +2,6 @@
 pragma solidity 0.8.21;
 
 import {Catalog} from "../../src/Catalog.sol";
-import {IMembership} from "../../src/interfaces/IMembership.sol";
-import {IModaRegistry} from "../../src/interfaces/ModaRegistry/IModaRegistry.sol";
-import {IReleases} from "../../src/interfaces/Releases/IReleases.sol";
-import {Strings} from "@openzeppelin/contracts/utils/Strings.sol";
 
 /// @custom:oz-upgrades-from Catalog
 contract CatalogV2Mock is Catalog {

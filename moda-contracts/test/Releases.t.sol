@@ -2,7 +2,7 @@
 pragma solidity ^0.8.13;
 
 import {Test, console2} from "forge-std/Test.sol";
-import "../src/ModaRegistry.sol";
+import "../src/Registry.sol";
 import "../src/CatalogFactory.sol";
 import "../src/Catalog.sol";
 import "../src/Releases.sol";
@@ -15,7 +15,7 @@ import {Upgrades} from "openzeppelin-foundry-upgrades/Upgrades.sol";
 contract ReleasesTest is Test {
     Membership public membership;
     Management public management;
-    ModaRegistry public modaRegistry;
+    Registry public registry;
     SplitsFactoryMock public splitsFactory;
     CatalogFactory public catalogFactory;
     Catalog public catalog;
@@ -24,7 +24,6 @@ contract ReleasesTest is Test {
     Releases public releases;
 
     address catalogBeacon;
-    address modaAdmin = address(0xa);
     string public catalogName = "TestCatalog";
 
     string name = "TestReleases";
@@ -78,20 +77,20 @@ contract ReleasesTest is Test {
         management = new Management();
         membership = new Membership();
         splitsFactory = new SplitsFactoryMock(address(0x3));
-        modaRegistry = new ModaRegistry(treasury, 1000);
-        modaRegistry.setManagement(management);
-        modaRegistry.setSplitsFactory(splitsFactory);
+        registry = new Registry(treasury, 1000);
+        registry.setManagement(management);
+        registry.setSplitsFactory(splitsFactory);
 
-        catalogBeacon = Upgrades.deployBeacon("Catalog.sol", modaAdmin);
-        catalogFactory = new CatalogFactory(modaRegistry, catalogBeacon);
-        modaRegistry.grantRole(keccak256("CATALOG_REGISTRAR_ROLE"), address(catalogFactory));
+        catalogBeacon = Upgrades.deployBeacon("Catalog.sol", admin);
+        catalogFactory = new CatalogFactory(registry, catalogBeacon);
+        registry.grantRole(keccak256("CATALOG_REGISTRAR_ROLE"), address(catalogFactory));
 
         catalog = Catalog(catalogFactory.create(catalogName, IMembership(membership)));
 
         membership.addMember(releaseAdmin);
         releasesMaster = new Releases();
-        releasesFactory = new ReleasesFactory(address(modaRegistry), address(releasesMaster));
-        modaRegistry.grantRole(keccak256("RELEASES_REGISTRAR_ROLE"), address(releasesFactory));
+        releasesFactory = new ReleasesFactory(registry, address(releasesMaster));
+        registry.grantRole(keccak256("RELEASES_REGISTRAR_ROLE"), address(releasesFactory));
 
         vm.startPrank(admin);
         releasesFactory.create(releaseAdmins, name, symbol, catalog);

@@ -3,13 +3,11 @@ pragma solidity 0.8.21;
 
 import "./interfaces/ISplitsFactory.sol";
 import {ISplitMain} from "./interfaces/0xSplits/ISplitMain.sol";
-import {IOfficialModaContracts} from "./interfaces/ModaRegistry/IOfficialModaContracts.sol";
-import "./interfaces/ModaRegistry/IModaRegistry.sol";
+import {IOfficialContracts} from "./interfaces/Registry/IOfficialContracts.sol";
+import "./interfaces/Registry/IRegistry.sol";
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 
 contract SplitsFactory is ISplitsFactory, Ownable {
-    // State Variables
-
     /// @dev constant denominator to calculate percentages (1,000,000 = 100%)
     uint32 public constant PERCENTAGE_SCALE = 1e6;
 
@@ -17,17 +15,17 @@ contract SplitsFactory is ISplitsFactory, Ownable {
     uint32 constant DISTRIBUTOR_FEE = 1e4;
 
     ISplitMain _splitMain;
-    IOfficialModaContracts _modaRegistry;
+    IOfficialContracts _registry;
 
     event SplitCreated(address indexed sender, address indexed split);
 
-    constructor(ISplitMain splitMain, IOfficialModaContracts modaRegistry) Ownable(msg.sender) {
+    constructor(ISplitMain splitMain, IOfficialContracts Registry) Ownable(msg.sender) {
         _splitMain = splitMain;
-        _modaRegistry = modaRegistry;
+        _registry = Registry;
     }
 
     /// @inheritdoc ISplitsFactory
-    /// @notice This factory will create a new 0xSplit contract and add the MODA Treasury as a benefactor.
+    /// @notice This factory will create a new 0xSplit contract and add the  Treasury as a benefactor.
     function create(address[] calldata beneficiaries) external override returns (address) {
         address[] memory accounts = new address[](beneficiaries.length + 1);
 
@@ -35,7 +33,7 @@ contract SplitsFactory is ISplitsFactory, Ownable {
             accounts[i] = beneficiaries[i];
         }
 
-        (address treasury, uint32 treasuryFee, uint32 treasuryFeeScale) = _modaRegistry.getTreasuryInfo();
+        (address treasury, uint32 treasuryFee, uint32 treasuryFeeScale) = _registry.getTreasuryInfo();
 
         accounts[accounts.length - 1] = treasury;
         accounts = _sortAddresses(accounts);
@@ -45,14 +43,14 @@ contract SplitsFactory is ISplitsFactory, Ownable {
         uint32 shareHolderAllocation =
             uint32((PERCENTAGE_SCALE - treasuryAllocation) / beneficiaries.length);
 
-        // If MODA treasury was passed in as an argument in the beneficiaries list then we do not want
+        // If  treasury was passed in as an argument in the beneficiaries list then we do not want
         // to give out the treasury fee more than once.
-        bool modaFeeAllocated;
+        bool feeAllocated;
         uint32[] memory shares = new uint32[](accounts.length);
         for (uint256 i = 0; i < accounts.length; i++) {
-            if (accounts[i] == treasury && !modaFeeAllocated) {
+            if (accounts[i] == treasury && !feeAllocated) {
                 shares[i] = treasuryAllocation;
-                modaFeeAllocated = true;
+                feeAllocated = true;
                 continue;
             }
 
@@ -64,7 +62,7 @@ contract SplitsFactory is ISplitsFactory, Ownable {
             totalPercentage += shares[i];
         }
 
-        // @dev If there is any "dust" percentages, give them to MODA
+        // @dev If there is any "dust" percentages, give them to the admin facilitator
         if (totalPercentage != PERCENTAGE_SCALE) {
             for (uint256 i = 0; i < accounts.length; i++) {
                 if (accounts[i] == treasury) {

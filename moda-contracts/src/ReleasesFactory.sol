@@ -4,22 +4,22 @@ pragma solidity 0.8.21;
 import {Clones} from "@openzeppelin/contracts/proxy/Clones.sol";
 import {IReleasesFactory} from "./interfaces/Releases/IReleasesFactory.sol";
 import {IReleasesInitialize} from "./interfaces/Releases/IReleasesInitialize.sol";
-import {IModaRegistry} from "./interfaces/ModaRegistry/IModaRegistry.sol";
+import {IRegistry} from "./interfaces/Registry/IRegistry.sol";
 import {ICatalog} from "./interfaces/Catalog/ICatalog.sol";
-import {IOfficialModaContracts} from "./interfaces/ModaRegistry/IOfficialModaContracts.sol";
+import {IOfficialContracts} from "./interfaces/Registry/IOfficialContracts.sol";
 import {ISplitsFactory} from "./interfaces/ISplitsFactory.sol";
 
 contract ReleasesFactory is IReleasesFactory {
-    address public modaRegistry;
+    IOfficialContracts public registry;
     address public releasesMaster;
 
     /**
      * @dev Constructor
-     * @param modaRegistry_ - The address of the ModaRegistry contract
+     * @param registry_ - The registry contract that implements IOfficialContracts
      * @param releasesMaster_ - The address of the Releases implementation contract
      */
-    constructor(address modaRegistry_, address releasesMaster_) {
-        modaRegistry = modaRegistry_;
+    constructor(IOfficialContracts registry_, address releasesMaster_) {
+        registry = registry_;
         releasesMaster = releasesMaster_;
     }
 
@@ -34,7 +34,7 @@ contract ReleasesFactory is IReleasesFactory {
     ) external {
         address releasesClone = Clones.clone(releasesMaster);
 
-        ISplitsFactory splitsFactory = IOfficialModaContracts(modaRegistry).getSplitsFactory();
+        ISplitsFactory splitsFactory = registry.getSplitsFactory();
         IReleasesInitialize(releasesClone).initialize(
             msg.sender, releaseAdmins, name, symbol, catalog, ISplitsFactory(splitsFactory)
         );
