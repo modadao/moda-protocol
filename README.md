@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./moda-logo.svg" alt="MODA" height="60" />
+  <img src="./logo.svg" alt="Logo" height="60" />
   <br/>
   <br/>
   <a href="https://www.npmjs.com/package/modadao">

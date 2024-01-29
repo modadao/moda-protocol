@@ -4,7 +4,7 @@ pragma solidity ^0.8.21;
 import {Test, console2} from "forge-std/Test.sol";
 import "../src/CatalogFactory.sol";
 import "../src/Catalog.sol";
-import {ModaRegistry} from "../src/ModaRegistry.sol";
+import {Registry} from "../src/Registry.sol";
 import {Management} from "../src/Management.sol";
 import {Membership} from "../test/mocks/MembershipMock.sol";
 import {ITrackRegistration} from "../src/interfaces/Catalog/ITrackRegistration.sol";
@@ -17,13 +17,13 @@ contract CatalogTest is Test {
     Catalog public catalog;
     Management public management;
     Membership public membership;
-    ModaRegistry public modaRegistry;
+    Registry public registry;
     ReleasesFactory public releasesFactory;
     Releases public releasesMaster;
     Releases public releases;
 
     address catalogBeacon;
-    address modaAdmin = address(0xa);
+    address admin = address(0xa);
     address public catalogAdmin = address(0x1);
     string public catalogName = "ACME.CATALOG";
     address public artist = address(0x4);
@@ -55,23 +55,23 @@ contract CatalogTest is Test {
     function setUp() public {
         management = new Management();
         membership = new Membership();
-        modaRegistry = new ModaRegistry(treasuryAddress, 1000);
-        modaRegistry.setManagement(management);
-        modaRegistry.setSplitsFactory(splitsFactory);
+        registry = new Registry(treasuryAddress, 1000);
+        registry.setManagement(management);
+        registry.setSplitsFactory(splitsFactory);
 
-        catalogBeacon = Upgrades.deployBeacon("Catalog.sol", modaAdmin);
-        catalogFactory = new CatalogFactory(modaRegistry, catalogBeacon);
+        catalogBeacon = Upgrades.deployBeacon("Catalog.sol", admin);
+        catalogFactory = new CatalogFactory(registry, catalogBeacon);
         console2.log("factory", address(catalogFactory));
-        modaRegistry.grantRole(keccak256("CATALOG_REGISTRAR_ROLE"), address(catalogFactory));
+        registry.grantRole(keccak256("CATALOG_REGISTRAR_ROLE"), address(catalogFactory));
 
         vm.startPrank(catalogAdmin);
         catalog = Catalog(catalogFactory.create(catalogName, IMembership(membership)));
         vm.stopPrank();
 
         releasesMaster = new Releases();
-        releasesFactory = new ReleasesFactory(address(modaRegistry), address(releasesMaster));
+        releasesFactory = new ReleasesFactory(registry, address(releasesMaster));
 
-        modaRegistry.grantRole(keccak256("RELEASES_REGISTRAR_ROLE"), address(releasesFactory));
+        registry.grantRole(keccak256("RELEASES_REGISTRAR_ROLE"), address(releasesFactory));
         address[] memory releaseAdmins = new address[](1);
         releaseAdmins[0] = artist;
         releasesFactory.create(releaseAdmins, "name", "symbol", catalog);
@@ -83,7 +83,7 @@ contract CatalogTest is Test {
 
     function setup_auto_verified(address account) public {
         membership.addMember(account);
-        modaRegistry.grantRole(keccak256("AUTO_VERIFIED_ROLE"), account);
+        registry.grantRole(keccak256("AUTO_VERIFIED_ROLE"), account);
     }
 
     /// Initialization revert
@@ -92,7 +92,7 @@ contract CatalogTest is Test {
         setUp();
         vm.expectRevert(InvalidInitialization.selector);
         vm.startPrank(catalogAdmin);
-        catalog.initialize(modaAdmin, catalogName, modaRegistry, membership);
+        catalog.initialize(admin, catalogName, registry, membership);
         vm.stopPrank();
     }
 
@@ -239,7 +239,7 @@ contract CatalogTest is Test {
 
     function setTrackStatus_setUp() public {
         registerTrack_setUp();
-        modaRegistry.grantRole(keccak256("VERIFIER_ROLE"), address(this));
+        registry.grantRole(keccak256("VERIFIER_ROLE"), address(this));
         catalog.setTrackStatus(trackRegistrationData.trackId, ITrackRegistration.TrackStatus.VALIDATED);
     }
 
@@ -261,7 +261,7 @@ contract CatalogTest is Test {
     }
 
     function test_setTrackStatus_RevertIf_track_not_registered() public {
-        modaRegistry.grantRole(keccak256("VERIFIER_ROLE"), address(this));
+        registry.grantRole(keccak256("VERIFIER_ROLE"), address(this));
         string memory unregisteredId = "unregisteredId";
         vm.expectRevert(Catalog.TrackIsNotRegistered.selector);
         catalog.setTrackStatus(unregisteredId, ITrackRegistration.TrackStatus.VALIDATED);
@@ -269,7 +269,7 @@ contract CatalogTest is Test {
 
     function test_setTrackStatus_emits_event() public {
         registerTrack_setUp();
-        modaRegistry.grantRole(keccak256("VERIFIER_ROLE"), address(this));
+        registry.grantRole(keccak256("VERIFIER_ROLE"), address(this));
         vm.expectEmit(true, true, true, true);
         emit TrackUpdated(
             ITrackRegistration.TrackStatus.VALIDATED,
@@ -500,7 +500,7 @@ contract CatalogTest is Test {
     });
 
     function registerReleasesContract_setUp() public {
-        modaRegistry.grantRole(
+        registry.grantRole(
             keccak256("RELEASES_REGISTRAR_ROLE"), registerReleasesContractData.releasesRegistrar
         );
         vm.startPrank(registerReleasesContractData.releasesRegistrar);
@@ -539,7 +539,7 @@ contract CatalogTest is Test {
     }
 
     function test_registerReleasesContract_emits_event() public {
-        modaRegistry.grantRole(
+        registry.grantRole(
             keccak256("RELEASES_REGISTRAR_ROLE"), registerReleasesContractData.releasesRegistrar
         );
         vm.expectEmit(true, true, true, true);
@@ -749,7 +749,7 @@ contract CatalogTest is Test {
 
     function test_registerRelease_RevertIf_track_not_validated() public {
         registeringRelease_setUp();
-        modaRegistry.grantRole(keccak256("VERIFIER_ROLE"), address(this));
+        registry.grantRole(keccak256("VERIFIER_ROLE"), address(this));
         catalog.setTrackStatus(
             registeringReleaseData.trackIds[0], ITrackRegistration.TrackStatus.INVALIDATED
         );

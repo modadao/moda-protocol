@@ -5,13 +5,13 @@ import {SplitsFactory} from "../src/SplitsFactory.sol";
 import {ISplitsFactory} from "../src/interfaces/ISplitsFactory.sol";
 import {IManagement} from "../src/interfaces/IManagement.sol";
 import {ISplitMain} from "../src/interfaces/0xSplits/ISplitMain.sol";
-import {IOfficialModaContracts} from "../src/interfaces/ModaRegistry/IOfficialModaContracts.sol";
+import {IOfficialContracts} from "../src/interfaces/Registry/IOfficialContracts.sol";
 import {SplitMainMock} from "./mocks/SplitMainMock.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "forge-std/Test.sol";
 import "forge-std/console2.sol";
 
-contract ModaRegistry is IOfficialModaContracts {
+contract Registry is IOfficialContracts {
     address _treasury;
     uint32 _fee;
     uint32 _feeMultiplier;
@@ -37,22 +37,22 @@ contract ModaRegistry is IOfficialModaContracts {
 
 contract SplitsFactoryWithForkTest is Test {
     SplitsFactory _splitsFactory;
-    ModaRegistry _modaRegistry;
+    Registry _registry;
     ISplitMain _splitMain;
 
     string EVM_RPC_URL = vm.envString("EVM_RPC_URL");
     address _splitMainAddress = 0x2ed6c4B5dA6378c7897AC67Ba9e43102Feb694EE;
-    address _payer = makeAddr("MODA_payer");
-    address _modaTreasury = makeAddr("MODA_treasury");
-    address _deployer = makeAddr("MODA_deployer");
-    address _alice = makeAddr("MODA_user_alice");
-    address _bob = makeAddr("MODA_user_bob");
-    address _distributor = makeAddr("MODA_distributor");
+    address _payer = makeAddr("_payer");
+    address _treasury = makeAddr("_treasury");
+    address _deployer = makeAddr("_deployer");
+    address _alice = makeAddr("_user_alice");
+    address _bob = makeAddr("_user_bob");
+    address _distributor = makeAddr("_distributor");
 
     address _split;
 
-    uint32 _modaFee = 1_000;
-    uint32 _modaFeeMultiplier = 10_000;
+    uint32 _fee = 1_000;
+    uint32 _feeMultiplier = 10_000;
 
     address[] _beneficiaries;
 
@@ -82,9 +82,9 @@ contract SplitsFactoryWithForkTest is Test {
         vm.deal(_payer, 10 ether);
 
         vm.startPrank(_deployer);
-        _modaRegistry = new ModaRegistry(_modaTreasury, _modaFee, _modaFeeMultiplier);
+        _registry = new Registry(_treasury, _fee, _feeMultiplier);
         _splitMain = ISplitMain(_splitMainAddress);
-        _splitsFactory = new SplitsFactory(_splitMain, _modaRegistry);
+        _splitsFactory = new SplitsFactory(_splitMain, _registry);
         vm.stopPrank();
     }
 
@@ -110,14 +110,14 @@ contract SplitsFactoryWithForkTest is Test {
     }
 
     function allocations_setUp() public returns (uint32[] memory) {
-        _beneficiaries.push(_modaTreasury);
+        _beneficiaries.push(_treasury);
 
         _beneficiaries = _sortAddresses(_beneficiaries);
 
         uint32[] memory percentAllocations = new uint32[](3);
 
         for (uint256 i = 0; i < _beneficiaries.length; i++) {
-            if (_beneficiaries[i] == _modaTreasury) {
+            if (_beneficiaries[i] == _treasury) {
                 percentAllocations[i] = 100_000;
             } else {
                 percentAllocations[i] = 450_000;
@@ -143,7 +143,7 @@ contract SplitsFactoryWithForkTest is Test {
 
         uint256 balanceAlice = _splitMain.getETHBalance(_alice);
         uint256 balanceBob = _splitMain.getETHBalance(_bob);
-        uint256 balanceTreasury = _splitMain.getETHBalance(_modaTreasury);
+        uint256 balanceTreasury = _splitMain.getETHBalance(_treasury);
         uint256 distributorBalance = _splitMain.getETHBalance(_distributor);
 
         assertLt(totalGas, distributorBalance, "Gas used should be less than the distributor's balance");
@@ -174,13 +174,13 @@ contract SplitsFactoryWithForkTest is Test {
         vm.startPrank(_bob);
         _splitMain.withdraw(_bob, 4.455 ether, new ERC20[](0));
         vm.stopPrank();
-        vm.startPrank(_modaTreasury);
-        _splitMain.withdraw(_modaTreasury, 0.99 ether, new ERC20[](0));
+        vm.startPrank(_treasury);
+        _splitMain.withdraw(_treasury, 0.99 ether, new ERC20[](0));
         vm.stopPrank();
 
         uint256 balanceAlice = _alice.balance;
         uint256 balanceBob = _bob.balance;
-        uint256 balanceTreasury = _modaTreasury.balance;
+        uint256 balanceTreasury = _treasury.balance;
 
         // The SplitMain contract leaves 1 wei in each account after
         // withdraw is called for gas optimization purposes.

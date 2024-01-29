@@ -9,9 +9,9 @@ import {IReleases} from "./interfaces/Releases/IReleases.sol";
 import {IOpenReleases} from "./interfaces/Releases/IOpenReleases.sol";
 import {ICatalog} from "./interfaces/Catalog/ICatalog.sol";
 import {IMembership} from "./interfaces/IMembership.sol";
-import {IModaRegistry} from "./interfaces/ModaRegistry/IModaRegistry.sol";
+import {IRegistry} from "./interfaces/Registry/IRegistry.sol";
 import {IManagement} from "./interfaces/IManagement.sol";
-import {IOfficialModaContracts} from "./interfaces/ModaRegistry/IOfficialModaContracts.sol";
+import {IOfficialContracts} from "./interfaces/Registry/IOfficialContracts.sol";
 import {AccessControlUpgradeable} from
     "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol";
 import {Strings} from "@openzeppelin/contracts/utils/Strings.sol";
@@ -21,7 +21,7 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
 
     /// @custom:storage-location erc7201:moda.storage.Catalog
     struct CatalogStorage {
-        IModaRegistry _modaRegistry;
+        IRegistry _registry;
         IMembership _membership;
         string _name;
         uint256 _trackCount;
@@ -86,13 +86,13 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
     function initialize(
         address owner,
         string calldata name,
-        IModaRegistry modaRegistry,
+        IRegistry Registry,
         IMembership membership
     ) external initializer {
         CatalogStorage storage $ = _getCatalogStorage();
         _grantRole(DEFAULT_ADMIN_ROLE, owner);
         $._name = name;
-        $._modaRegistry = modaRegistry;
+        $._registry = Registry;
         $._membership = membership;
     }
 
@@ -116,7 +116,7 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
         $._trackIds[trackRegistrationHash] = id;
 
         bool hasAutoVerification =
-            IModaRegistry($._modaRegistry).hasRole(keccak256("AUTO_VERIFIED_ROLE"), msg.sender);
+            IRegistry($._registry).hasRole(keccak256("AUTO_VERIFIED_ROLE"), msg.sender);
 
         TrackStatus status = hasAutoVerification ? TrackStatus.VALIDATED : TrackStatus.PENDING;
 
@@ -334,7 +334,7 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
     function hasTrackAccess(string calldata trackId, address caller) external view returns (bool) {
         CatalogStorage storage $ = _getCatalogStorage();
         return $._registeredTracks[trackId].trackOwner == caller
-            || IOfficialModaContracts(address($._modaRegistry)).getManagement().isManager(
+            || IOfficialContracts(address($._registry)).getManagement().isManager(
                 $._registeredTracks[trackId].trackOwner, caller
             );
     }
@@ -419,9 +419,7 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
 
         if (
             caller != trackOwner
-                && !IOfficialModaContracts(address($._modaRegistry)).getManagement().isManager(
-                    trackOwner, caller
-                )
+                && !IOfficialContracts(address($._registry)).getManagement().isManager(trackOwner, caller)
         ) {
             revert MustBeTrackOwnerOrManager();
         }
@@ -434,7 +432,7 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
     function _requireVerifierRole(address account) internal view {
         CatalogStorage storage $ = _getCatalogStorage();
 
-        if (!IModaRegistry($._modaRegistry).hasRole(keccak256("VERIFIER_ROLE"), account)) {
+        if (!IRegistry($._registry).hasRole(keccak256("VERIFIER_ROLE"), account)) {
             revert VerifierRoleRequired();
         }
     }
@@ -442,7 +440,7 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
     function _requireReleasesRegistrarRole(address account) internal view {
         CatalogStorage storage $ = _getCatalogStorage();
 
-        if (!IModaRegistry($._modaRegistry).hasRole(keccak256("RELEASES_REGISTRAR_ROLE"), account)) {
+        if (!IRegistry($._registry).hasRole(keccak256("RELEASES_REGISTRAR_ROLE"), account)) {
             revert ReleasesRegistrarRoleRequired();
         }
     }

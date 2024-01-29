@@ -4,7 +4,7 @@ pragma solidity ^0.8.13;
 import {Test, console2, Vm} from "forge-std/Test.sol";
 import "../src/CatalogFactory.sol";
 import "../src/Catalog.sol";
-import "../src/ModaRegistry.sol";
+import "../src/Registry.sol";
 import "../src/Management.sol";
 import "../src/SplitsFactory.sol";
 import {IMembership} from "../src/interfaces/IMembership.sol";
@@ -13,12 +13,12 @@ import {Upgrades} from "openzeppelin-foundry-upgrades/Upgrades.sol";
 contract CatalogFactoryTest is Test {
     CatalogFactory public catalogFactory;
     Catalog public catalog;
-    ModaRegistry public modaRegistry;
+    Registry public registry;
     Management public management;
     SplitsFactory public splitsFactory;
 
     address catalogBeacon;
-    address modaAdmin = address(0xa);
+    address admin = address(0xa);
     address payable treasury = payable(address(0x1));
     uint32 treasuryFee = 1000;
     address membership = address(0x3);
@@ -27,13 +27,13 @@ contract CatalogFactoryTest is Test {
 
     function setUp() public {
         management = new Management();
-        modaRegistry = new ModaRegistry(treasury, treasuryFee);
-        modaRegistry.setManagement(management);
-        modaRegistry.setSplitsFactory(splitsFactory);
-        catalogBeacon = Upgrades.deployBeacon("Catalog.sol", modaAdmin);
+        registry = new Registry(treasury, treasuryFee);
+        registry.setManagement(management);
+        registry.setSplitsFactory(splitsFactory);
+        catalogBeacon = Upgrades.deployBeacon("Catalog.sol", admin);
 
-        catalogFactory = new CatalogFactory(modaRegistry, catalogBeacon);
-        modaRegistry.grantRole(keccak256("CATALOG_REGISTRAR_ROLE"), address(catalogFactory));
+        catalogFactory = new CatalogFactory(registry, catalogBeacon);
+        registry.grantRole(keccak256("CATALOG_REGISTRAR_ROLE"), address(catalogFactory));
     }
 
     function test_create_catalog() public {

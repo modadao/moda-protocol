@@ -5,22 +5,22 @@ import "@openzeppelin/contracts/proxy/beacon/BeaconProxy.sol";
 import {ICatalog} from "./interfaces/Catalog/ICatalog.sol";
 import {ICatalogFactory} from "./interfaces/Catalog/ICatalogFactory.sol";
 import {ICatalogInitialize} from "./interfaces/Catalog/ICatalogInitialize.sol";
-import {IModaRegistry} from "./interfaces/ModaRegistry/IModaRegistry.sol";
+import {IRegistry} from "./interfaces/Registry/IRegistry.sol";
 import {IMembership} from "./interfaces/IMembership.sol";
 
 contract CatalogFactory is ICatalogFactory {
-    IModaRegistry public modaRegistry;
+    IRegistry public registry;
     address public catalogBeacon;
     string public version;
 
     /**
      * @dev Constructor
-     * @param modaRegistry_ - The address of the ModaRegistry contract
+     * @param registry_ - The address of the Registry contract
      * @param catalogBeacon_ - The address of the catalog beacon that holds
      * the Catalog implementation address
      */
-    constructor(IModaRegistry modaRegistry_, address catalogBeacon_) {
-        modaRegistry = modaRegistry_;
+    constructor(IRegistry registry_, address catalogBeacon_) {
+        registry = registry_;
         catalogBeacon = catalogBeacon_;
     }
 
@@ -29,8 +29,8 @@ contract CatalogFactory is ICatalogFactory {
      */
     function create(string calldata name, IMembership membership) external returns (address) {
         address catalog = address(new BeaconProxy(catalogBeacon, ""));
-        ICatalogInitialize(catalog).initialize(msg.sender, name, modaRegistry, membership);
-        IModaRegistry(modaRegistry).registerCatalog(ICatalog(catalog));
+        ICatalogInitialize(catalog).initialize(msg.sender, name, registry, membership);
+        registry.registerCatalog(ICatalog(catalog));
         emit CatalogCreated(msg.sender, catalog, name);
 
         return catalog;

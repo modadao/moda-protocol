@@ -6,7 +6,7 @@ import {IManagement} from "../IManagement.sol";
 import {ISplitsFactory} from "../ISplitsFactory.sol";
 import {ICatalog} from "../Catalog/ICatalog.sol";
 
-interface IModaRegistry is IAccessControl {
+interface IRegistry is IAccessControl {
     /// @dev Emitted when a catalog is registered for an organization
     event CatalogRegistered(address indexed catalog, address registrar);
 
@@ -40,18 +40,18 @@ interface IModaRegistry is IAccessControl {
      */
     function isRegisteredCatalog(address catalog) external view returns (bool);
 
-    // Treasury
+    //Treasury
 
     /**
-     * @dev Sets the numerator for calculating the percentage of fees to be sent to the Moda Treasury
+     * @dev Sets the numerator for calculating the percentage of fees to be sent to the Treasury
      * @notice TreasuryFee is based on a denominator of 10,000 (e.g. 1000 is 10.0%). Max of 10%
-     * @param fee - The percentage of fees to be sent to the Moda Treasury
+     * @param fee - The percentage of fees to be sent to the Treasury
      */
     function setTreasuryFee(uint32 fee) external;
 
     /**
-     * @dev Sets the address of the Moda Treasury
-     * @param treasury - The address of the Treasury
+     * @dev Sets the address of the Treasury
+     * @param treasury - The address of theTreasury
      */
     function setTreasury(address treasury) external;
 

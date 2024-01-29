@@ -2,27 +2,27 @@
 pragma solidity ^0.8.21;
 
 import {Script, console2} from "forge-std/Script.sol";
-import "../src/ModaRegistry.sol";
+import "../src/Registry.sol";
 import {IManagement} from "../src/interfaces/IManagement.sol";
 import {ISplitsFactory} from "../src/interfaces/ISplitsFactory.sol";
 import {Strings} from "@openzeppelin/contracts/utils/Strings.sol";
 import {DeployedContracts} from "./utils/DeployedContracts.sol";
-import {IOfficialModaContracts} from "../src/interfaces/ModaRegistry/IOfficialModaContracts.sol";
+import {IOfficialContracts} from "../src/interfaces/Registry/IOfficialContracts.sol";
 
-contract SetOfficialModaContracts is Script {
+contract SetOfficialContracts is Script {
     function run() public {
-        uint256 privateKey = vm.envUint("MODA_DEPLOYER_PRIVATE_KEY");
+        uint256 privateKey = vm.envUint("DEPLOYER_PRIVATE_KEY");
 
         vm.startBroadcast(privateKey);
 
-        address modaRegistry = DeployedContracts.get("DeployModaRegistry.s.sol", block.chainid);
+        address registry = DeployedContracts.get("DeployRegistry.s.sol", block.chainid);
         IManagement management =
             IManagement(DeployedContracts.get("DeployManagement.s.sol", block.chainid));
         ISplitsFactory splitsFactory =
             ISplitsFactory(DeployedContracts.get("DeploySplitsFactory.s.sol", block.chainid));
 
-        ModaRegistry(modaRegistry).setManagement(management);
-        ModaRegistry(modaRegistry).setSplitsFactory(splitsFactory);
+        Registry(registry).setManagement(management);
+        Registry(registry).setSplitsFactory(splitsFactory);
 
         vm.stopBroadcast();
     }

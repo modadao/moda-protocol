@@ -5,11 +5,11 @@ import {SplitsFactory} from "../src/SplitsFactory.sol";
 import {ISplitsFactory} from "../src/interfaces/ISplitsFactory.sol";
 import {IManagement} from "../src/interfaces/IManagement.sol";
 import {ISplitMain} from "../src/interfaces/0xSplits/ISplitMain.sol";
-import {IOfficialModaContracts} from "../src/interfaces/ModaRegistry/IOfficialModaContracts.sol";
+import {IOfficialContracts} from "../src/interfaces/Registry/IOfficialContracts.sol";
 import {SplitMainMock} from "./mocks/SplitMainMock.sol";
-import {ModaTest} from "./utils/ModaTest.sol";
+import {TestUtils} from "./utils/TestUtils.sol";
 
-contract ModaRegistry is IOfficialModaContracts {
+contract Registry is IOfficialContracts {
     address _treasury;
     uint32 _fee;
     uint32 _feeMultiplier;
@@ -33,22 +33,22 @@ contract ModaRegistry is IOfficialModaContracts {
     }
 }
 
-contract SplitsFactoryTest is ModaTest {
+contract SplitsFactoryTest is TestUtils {
     SplitsFactory _splitsFactory;
-    ModaRegistry _modaRegistry;
+    Registry _registry;
     SplitMainMock _splitMain;
 
-    uint32 _modaFee = 1_000;
-    uint32 _modaFeeMultiplier = 10_000;
+    uint32 _Fee = 1_000;
+    uint32 _FeeMultiplier = 10_000;
 
     address[] _beneficiaries;
 
     event SplitCreated(address indexed sender, address indexed split);
 
     function setUp() public {
-        _modaRegistry = new ModaRegistry(_modaTreasury, _modaFee, _modaFeeMultiplier);
+        _registry = new Registry(_treasury, _Fee, _FeeMultiplier);
         _splitMain = new SplitMainMock();
-        _splitsFactory = new SplitsFactory(_splitMain, _modaRegistry);
+        _splitsFactory = new SplitsFactory(_splitMain, _registry);
     }
 
     function setupBeneficiaries() public {
@@ -60,7 +60,7 @@ contract SplitsFactoryTest is ModaTest {
 
     function test_constructor_sets_sender_as_owner() public {
         vm.startPrank(_w.alice());
-        SplitsFactory sf = new SplitsFactory(_splitMain, _modaRegistry);
+        SplitsFactory sf = new SplitsFactory(_splitMain, _registry);
         assertEq(sf.owner(), _w.alice());
         vm.stopPrank();
     }
@@ -73,30 +73,30 @@ contract SplitsFactoryTest is ModaTest {
         _splitsFactory.create(_beneficiaries);
 
         uint32 expectedUserShare = 450_000;
-        uint32 expectedModaShare = 100_000;
+        uint32 expectedFacilitatorShare = 100_000;
 
         assertEq(_splitMain.beneficiariesLength(), _beneficiaries.length + 1);
         assertEq(_splitMain.allocationFor(_w.alice()), expectedUserShare);
         assertEq(_splitMain.allocationFor(_w.bob()), expectedUserShare);
-        assertEq(_splitMain.allocationFor(_modaTreasury), expectedModaShare);
+        assertEq(_splitMain.allocationFor(_treasury), expectedFacilitatorShare);
     }
 
-    function test_create_adds_correct_shares_if_moda_treasury_is_passed_in_as_a_beneficiary() public {
+    function test_create_adds_correct_shares_if_treasury_is_passed_in_as_a_beneficiary() public {
         setupBeneficiaries();
-        _beneficiaries.push(_modaTreasury);
+        _beneficiaries.push(_treasury);
 
         _splitsFactory.create(_beneficiaries);
 
         uint32 expectedUserShare = 300_000;
-        uint32 expectedModaShare = 100_000 + expectedUserShare;
+        uint32 expectedFacilitatorShare = 100_000 + expectedUserShare;
 
         assertEq(_splitMain.beneficiariesLength(), _beneficiaries.length + 1);
         assertEq(_splitMain.allocationFor(_w.alice()), expectedUserShare);
         assertEq(_splitMain.allocationFor(_w.bob()), expectedUserShare);
-        assertEq(_splitMain.allocationFor(_modaTreasury), expectedModaShare);
+        assertEq(_splitMain.allocationFor(_treasury), expectedFacilitatorShare);
     }
 
-    function test_create_adds_dust_allocations_to_moda_treasury() public {
+    function test_create_adds_dust_allocations_to_treasury() public {
         setupBeneficiaries();
         _beneficiaries.push(_w.carl());
         _beneficiaries.push(_w.dave());
@@ -107,10 +107,10 @@ contract SplitsFactoryTest is ModaTest {
         _splitsFactory.create(_beneficiaries);
 
         uint32 expectedUserShare = uint32(900_000) / uint32(7); // 128,571.4285714286 -> 128,571
-        uint32 expectedModaShare = 100_003;
+        uint32 expectedFacilitatorShare = 100_003;
 
         assertEq(_splitMain.beneficiariesLength(), _beneficiaries.length + 1);
-        assertEq(_splitMain.allocationFor(_modaTreasury), expectedModaShare);
+        assertEq(_splitMain.allocationFor(_treasury), expectedFacilitatorShare);
         assertEq(_splitMain.allocationFor(_w.alice()), expectedUserShare);
         assertEq(_splitMain.allocationFor(_w.bob()), expectedUserShare);
         assertEq(_splitMain.allocationFor(_w.carl()), expectedUserShare);
@@ -138,11 +138,11 @@ contract SplitsFactoryTest is ModaTest {
         _splitsFactory.create(_beneficiaries);
         uint32 expectedUserShare = 900_000 / uint32(_beneficiaries.length);
         uint32 expectedSharesForAlice = expectedUserShare * 3;
-        uint32 expectedModaShare = 100_000;
+        uint32 expectedFacilitatorShare = 100_000;
 
         assertEq(_splitMain.allocationFor(_w.alice()), expectedSharesForAlice);
         assertEq(_splitMain.allocationFor(_w.bob()), expectedUserShare);
-        assertEq(_splitMain.allocationFor(_modaTreasury), expectedModaShare);
+        assertEq(_splitMain.allocationFor(_treasury), expectedFacilitatorShare);
     }
 
     function test_create_emits_SplitCreated() public {
