@@ -22,6 +22,7 @@ modadao
 quickfix
 reentrancy
 remappings
+soulbound
 struct
 struct
 structs

@@ -35,6 +35,12 @@ To generate a coverage report run
 pnpm coverage
 ```
 
+## Smart Contract Documentation
+
+1. `pnpm contracts:docs`
+2. Visit [localhost:3000](localhost:3000)
+
+
 ## License
 
 `moda-protocol` is [Apache licensed](LICENSE).

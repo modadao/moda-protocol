@@ -14,13 +14,19 @@ error ProfileDoesNotExist();
 error ProfilesAreSoulBound();
 error CallerNotAuthorized();
 
+/// @dev Profile is a smart contract for users to set metadata as soul bound ERC721 NFTs with the Metadata of their choice.
 contract Profile is IProfile, IERC721, IERC721Metadata, IERC4906, ERC165 {
     string private _name;
     string private _symbol;
+
+    /// @dev This is a counter to keep track of how many Profiles have been minted and to assign new IDs to new minters.
     uint256 public totalSupply = 0;
 
+    /// @dev This is a map from the token ID to a user's account.
     mapping(uint256 => address) private _tokenToAccount;
+    /// @dev This is a map from a user's account to a token ID.
     mapping(address => uint256) private _accountToToken;
+    /// @dev This is a map from a token ID to the URI that contains metadata.
     mapping(uint256 => string) private _tokenToUri;
 
     bytes32 private constant _DEFAULT_ADMIN_ROLE = 0x00;
@@ -56,7 +62,7 @@ contract Profile is IProfile, IERC721, IERC721Metadata, IERC4906, ERC165 {
         _symbol = symbol_;
     }
 
-    /// @dev See {IProfile-mint}.
+    /// @inheritdoc IProfile
     function mint(string calldata uri) external {
         if (_accountToToken[msg.sender] != 0) revert ProfileAlreadyMinted();
 
@@ -68,7 +74,7 @@ contract Profile is IProfile, IERC721, IERC721Metadata, IERC4906, ERC165 {
         emit Transfer(address(this), msg.sender, totalSupply);
     }
 
-    /// @dev See {IProfile-mintFor}.
+    /// @inheritdoc IProfile
     function mintFor(address kontract, string calldata uri) external requireAuthority(kontract) {
         if (_accountToToken[kontract] != 0) revert ProfileAlreadyMinted();
 
@@ -80,7 +86,7 @@ contract Profile is IProfile, IERC721, IERC721Metadata, IERC4906, ERC165 {
         emit Transfer(address(this), kontract, totalSupply);
     }
 
-    /// @dev See {IProfile-updateProfile}.
+    /// @inheritdoc IProfile
     function updateProfile(string calldata uri) external {
         uint256 tokenId = _accountToToken[msg.sender];
         if (tokenId == 0) revert ProfileDoesNotExist();
@@ -90,7 +96,7 @@ contract Profile is IProfile, IERC721, IERC721Metadata, IERC4906, ERC165 {
         emit MetadataUpdate(tokenId);
     }
 
-    /// @dev See {IProfile-updateProfileFor}.
+    /// @inheritdoc IProfile
     function updateProfileFor(
         address kontract,
         string calldata uri
@@ -103,25 +109,25 @@ contract Profile is IProfile, IERC721, IERC721Metadata, IERC4906, ERC165 {
         emit MetadataUpdate(tokenId);
     }
 
-    /// @dev See {IProfile-accountUri}.
+    /// @inheritdoc IProfile
     function accountUri(address account) external view returns (string memory) {
         return tokenURI(_accountToToken[account]);
     }
 
-    /// @dev See {IERC721Metadata-tokenURI}.
+    /// @inheritdoc IERC721Metadata
     function tokenURI(uint256 tokenId) public view virtual returns (string memory) {
         if (_tokenToAccount[tokenId] == address(0)) revert ProfileDoesNotExist();
 
         return _tokenToUri[tokenId];
     }
 
-    /// @dev See {IERC721-ownerOf}.
+    /// @inheritdoc IERC721
     function ownerOf(uint256 tokenId) public view virtual returns (address) {
         if (_tokenToAccount[tokenId] == address(0)) revert ProfileDoesNotExist();
         return _tokenToAccount[tokenId];
     }
 
-    /// @dev See {IERC721-balanceOf}.
+    /// @inheritdoc IERC721
     function balanceOf(address account) external view returns (uint256 balance) {
         if (_accountToToken[account] > 0) {
             return 1;
@@ -130,52 +136,52 @@ contract Profile is IProfile, IERC721, IERC721Metadata, IERC4906, ERC165 {
         return 0;
     }
 
-    /// @dev See {IERC721Metadata-name}.
+    /// @inheritdoc IERC721Metadata
     function name() public view virtual returns (string memory) {
         return _name;
     }
 
-    /// @dev See {IERC721Metadata-symbol}.
+    /// @inheritdoc IERC721Metadata
     function symbol() public view virtual returns (string memory) {
         return _symbol;
     }
 
-    /// @dev See {IERC721-approve}.
+    /// @inheritdoc IERC721
     function approve(address, uint256) public virtual {
         revert ProfilesAreSoulBound();
     }
 
-    /// @dev See {IERC721-getApproved}.
+    /// @dev This will revert. Profiles are soulbound.
     function getApproved(uint256) public view virtual returns (address) {
         revert ProfilesAreSoulBound();
     }
 
-    /// @dev See {IERC721-setApprovalForAll}.
+    /// @dev This will revert. Profiles are soulbound.
     function setApprovalForAll(address, bool) public virtual {
         revert ProfilesAreSoulBound();
     }
 
-    /// @dev See {IERC721-isApprovedForAll}.
+    /// @dev This will always return `false`. Profiles are soulbound.
     function isApprovedForAll(address, address) public view virtual returns (bool) {
         return false;
     }
 
-    /// @dev See {IERC721-transferFrom}.
+    /// @dev This will revert. Profiles are soulbound.
     function transferFrom(address, address, uint256) public virtual {
         revert ProfilesAreSoulBound();
     }
 
-    /// @dev See {IERC721-safeTransferFrom}.
+    /// @dev This will revert. Profiles are soulbound.
     function safeTransferFrom(address, address, uint256) public pure {
         revert ProfilesAreSoulBound();
     }
 
-    /// @dev See {IERC721-safeTransferFrom}.
+    /// @dev This will revert. Profiles are soulbound.
     function safeTransferFrom(address, address, uint256, bytes memory) public virtual {
         revert ProfilesAreSoulBound();
     }
 
-    /// @dev See {IERC165-supportsInterface}.
+    /// @inheritdoc IERC165
     function supportsInterface(bytes4 interfaceId)
         public
         view
