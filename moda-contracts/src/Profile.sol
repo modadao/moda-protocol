@@ -31,26 +31,15 @@ contract Profile is IProfile, IERC721, IERC721Metadata, IERC4906, ERC165 {
 
     bytes32 private constant _DEFAULT_ADMIN_ROLE = 0x00;
 
+    /// @dev This event is used to keep track of who updated a profile on behalf of a contract.
+    /// This is useful for client applications.
+    event ProfileChangedFor(address indexed kontract, address indexed caller);
+
     /// @dev Check if the caller is an owner or admin of a contract.
     /// @param kontract The address of a contract that may or may not use OpenZeppelin's Ownership
     /// or AccessControl contracts.
     modifier requireAuthority(address kontract) {
-        bool hasAuthority;
-
-        try ISimpleOwnership(kontract).owner() returns (address actualOwner) {
-            if (actualOwner == msg.sender) {
-                hasAuthority = true;
-            }
-        } catch {}
-
-        if (!hasAuthority) {
-            try IAccessControl(kontract).hasRole(_DEFAULT_ADMIN_ROLE, msg.sender) returns (bool isAdmin)
-            {
-                if (isAdmin) {
-                    hasAuthority = true;
-                }
-            } catch {}
-        }
+        bool hasAuthority = _hasAuthority(msg.sender, kontract);
 
         if (!hasAuthority) revert CallerNotAuthorized();
 
@@ -84,6 +73,12 @@ contract Profile is IProfile, IERC721, IERC721Metadata, IERC4906, ERC165 {
         _tokenToUri[totalSupply] = uri;
 
         emit Transfer(address(this), kontract, totalSupply);
+        emit ProfileChangedFor(kontract, msg.sender);
+    }
+
+    /// @inheritdoc IProfile
+    function canMintFor(address account, address kontract) external view returns (bool) {
+        return _hasAuthority(account, kontract);
     }
 
     /// @inheritdoc IProfile
@@ -107,6 +102,7 @@ contract Profile is IProfile, IERC721, IERC721Metadata, IERC4906, ERC165 {
         _tokenToUri[tokenId] = uri;
 
         emit MetadataUpdate(tokenId);
+        emit ProfileChangedFor(kontract, msg.sender);
     }
 
     /// @inheritdoc IProfile
@@ -192,5 +188,19 @@ contract Profile is IProfile, IERC721, IERC721Metadata, IERC4906, ERC165 {
         return interfaceId == type(IERC721).interfaceId
             || interfaceId == type(IERC721Metadata).interfaceId || interfaceId == type(IProfile).interfaceId
             || interfaceId == type(IERC4906).interfaceId || super.supportsInterface(interfaceId);
+    }
+
+    function _hasAuthority(address account, address kontract) private view returns (bool) {
+        try ISimpleOwnership(kontract).owner() returns (address actualOwner) {
+            if (actualOwner == account) {
+                return true;
+            }
+        } catch {}
+
+        try IAccessControl(kontract).hasRole(_DEFAULT_ADMIN_ROLE, account) returns (bool isAdmin) {
+            return isAdmin;
+        } catch {}
+
+        return false;
     }
 }

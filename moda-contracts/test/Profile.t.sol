@@ -22,8 +22,8 @@ import {AccessControlledMock} from "./mocks/AccessControlledMock.sol";
 contract ProfileTest is Test {
     Profile public profile;
 
-    address public artist = address(0x1);
-    address public label = address(0x2);
+    address public firstUser = address(0x1);
+    address public secondUser = address(0x2);
 
     string public name = "Profile";
     string public symbol = "PROF";
@@ -35,6 +35,7 @@ contract ProfileTest is Test {
 
     event Transfer(address indexed from, address indexed to, uint256 indexed amount);
     event MetadataUpdate(uint256 _tokenId);
+    event ProfileChangedFor(address indexed kontract, address indexed caller);
 
     function setUp() public {
         profile = new Profile(name, symbol);
@@ -52,13 +53,13 @@ contract ProfileTest is Test {
     function test_mint_creates_new_token() public {
         uint256 tokenId = 1;
 
-        vm.startPrank(artist);
+        vm.startPrank(firstUser);
         profile.mint(firstUri);
         vm.stopPrank();
 
-        assertEq(profile.accountUri(artist), firstUri);
+        assertEq(profile.accountUri(firstUser), firstUri);
         assertEq(profile.tokenURI(tokenId), firstUri);
-        assertEq(profile.ownerOf(tokenId), artist);
+        assertEq(profile.ownerOf(tokenId), firstUser);
         assertEq(profile.totalSupply(), tokenId);
     }
 
@@ -69,22 +70,22 @@ contract ProfileTest is Test {
     }
 
     function test_mint_emits_event() public {
-        vm.startPrank(artist);
+        vm.startPrank(firstUser);
         vm.expectEmit(true, true, true, false);
         uint256 tokenId = 1;
-        emit Transfer(address(profile), artist, tokenId);
+        emit Transfer(address(profile), firstUser, tokenId);
         profile.mint(firstUri);
         vm.stopPrank();
     }
 
     function test_mint_increments_total_supply() public {
-        vm.startPrank(artist);
+        vm.startPrank(firstUser);
         profile.mint(firstUri);
         vm.stopPrank();
 
         assertEq(profile.totalSupply(), 1);
 
-        vm.startPrank(label);
+        vm.startPrank(secondUser);
         profile.mint(secondUri);
         vm.stopPrank();
 
@@ -95,9 +96,9 @@ contract ProfileTest is Test {
 
     function test_mintFor_as_owner() public {
         uint256 tokenId = 1;
-        address kontract = address(new OwnedContractMock(artist));
+        address kontract = address(new OwnedContractMock(firstUser));
 
-        vm.startPrank(artist);
+        vm.startPrank(firstUser);
         profile.mintFor(kontract, firstUri);
         vm.stopPrank();
 
@@ -109,9 +110,9 @@ contract ProfileTest is Test {
 
     function test_mintFor_as_IAccessControl_DEFAULT_ADMIN_ROLE() public {
         uint256 tokenId = 1;
-        address kontract = address(new AccessControlledMock(artist));
+        address kontract = address(new AccessControlledMock(firstUser));
 
-        vm.startPrank(artist);
+        vm.startPrank(firstUser);
         profile.mintFor(kontract, firstUri);
         vm.stopPrank();
 
@@ -122,27 +123,27 @@ contract ProfileTest is Test {
     }
 
     function test_mintFor_without_DEFAULT_ADMIN_ROLE() public {
-        address labelControlledContract = address(new AccessControlledMock(label));
+        address controlledContract = address(new AccessControlledMock(secondUser));
 
-        vm.startPrank(artist);
+        vm.startPrank(firstUser);
         vm.expectRevert(CallerNotAuthorized.selector);
-        profile.mintFor(labelControlledContract, firstUri);
+        profile.mintFor(controlledContract, firstUri);
         vm.stopPrank();
     }
 
     function test_mintFor_without_ownership() public {
-        address labelControlledContract = address(new OwnedContractMock(label));
+        address controlledContract = address(new OwnedContractMock(secondUser));
 
-        vm.startPrank(artist);
+        vm.startPrank(firstUser);
         vm.expectRevert(CallerNotAuthorized.selector);
-        profile.mintFor(labelControlledContract, firstUri);
+        profile.mintFor(controlledContract, firstUri);
         vm.stopPrank();
     }
 
     function test_mintFor_reverts_for_duplicates() public {
-        address kontract = address(new OwnedContractMock(artist));
+        address kontract = address(new OwnedContractMock(firstUser));
 
-        vm.startPrank(artist);
+        vm.startPrank(firstUser);
         profile.mintFor(kontract, firstUri);
         assertEq(profile.accountUri(kontract), firstUri);
 
@@ -152,23 +153,24 @@ contract ProfileTest is Test {
         vm.stopPrank();
     }
 
-    function test_mintFor_emits_event() public {
-        address kontract = address(new OwnedContractMock(artist));
+    function test_mintFor_emits_events() public {
+        address kontract = address(new OwnedContractMock(firstUser));
 
-        vm.startPrank(artist);
+        vm.startPrank(firstUser);
         uint256 tokenId = 1;
 
         vm.expectEmit(true, true, true, false);
         emit Transfer(address(profile), kontract, tokenId);
+        emit ProfileChangedFor(kontract, firstUser);
         profile.mintFor(kontract, firstUri);
 
         vm.stopPrank();
     }
 
     function test_mintFor_increments_total_supply() public {
-        address kontract = address(new OwnedContractMock(artist));
+        address kontract = address(new OwnedContractMock(firstUser));
 
-        vm.startPrank(artist);
+        vm.startPrank(firstUser);
 
         profile.mint(firstUri);
         assertEq(profile.totalSupply(), 1);
@@ -176,6 +178,40 @@ contract ProfileTest is Test {
         assertEq(profile.totalSupply(), 2);
 
         vm.stopPrank();
+    }
+
+    // canMintFor
+
+    function test_canMintFor_as_owner() public {
+        address kontract = address(new OwnedContractMock(firstUser));
+
+        bool canMint = profile.canMintFor(firstUser, kontract);
+
+        assertTrue(canMint);
+    }
+
+    function test_canMintFor_as_IAccessControl_DEFAULT_ADMIN_ROLE() public {
+        address kontract = address(new AccessControlledMock(firstUser));
+
+        bool canMint = profile.canMintFor(firstUser, kontract);
+
+        assertTrue(canMint);
+    }
+
+    function test_canMintFor_without_DEFAULT_ADMIN_ROLE() public {
+        address controlledContract = address(new AccessControlledMock(secondUser));
+
+        bool canMint = profile.canMintFor(firstUser, controlledContract);
+
+        assertFalse(canMint);
+    }
+
+    function test_canMintFor_without_ownership() public {
+        address controlledContract = address(new OwnedContractMock(secondUser));
+
+        bool canMint = profile.canMintFor(firstUser, controlledContract);
+
+        assertFalse(canMint);
     }
 
     // totalSupply
@@ -193,15 +229,15 @@ contract ProfileTest is Test {
     function test_updateProfile_sets_new_uri() public {
         uint256 tokenId = 1;
 
-        vm.startPrank(artist);
+        vm.startPrank(firstUser);
 
         profile.mint(firstUri);
         assertEq(profile.tokenURI(tokenId), firstUri);
-        assertEq(profile.accountUri(artist), firstUri);
+        assertEq(profile.accountUri(firstUser), firstUri);
 
         profile.updateProfile(secondUri);
         assertEq(profile.tokenURI(tokenId), secondUri);
-        assertEq(profile.accountUri(artist), secondUri);
+        assertEq(profile.accountUri(firstUser), secondUri);
 
         vm.stopPrank();
     }
@@ -223,10 +259,10 @@ contract ProfileTest is Test {
     // updateProfileFor
 
     function test_updateProfileFor_with_ownership_sets_new_uri() public {
-        address kontract = address(new OwnedContractMock(artist));
+        address kontract = address(new OwnedContractMock(firstUser));
         uint256 tokenId = 1;
 
-        vm.startPrank(artist);
+        vm.startPrank(firstUser);
 
         profile.mintFor(kontract, firstUri);
         assertEq(profile.tokenURI(tokenId), firstUri);
@@ -240,10 +276,10 @@ contract ProfileTest is Test {
     }
 
     function test_updateProfileFor_with_AccessControl_DEFAULT_ADMIN_ROLE() public {
-        address kontract = address(new AccessControlledMock(artist));
+        address kontract = address(new AccessControlledMock(firstUser));
         uint256 tokenId = 1;
 
-        vm.startPrank(artist);
+        vm.startPrank(firstUser);
 
         profile.mintFor(kontract, firstUri);
         assertEq(profile.tokenURI(tokenId), firstUri);
@@ -257,14 +293,14 @@ contract ProfileTest is Test {
     }
 
     function test_updateProfileFor_reverts_when_unauthorized() public {
-        address kontract = address(new AccessControlledMock(artist));
+        address kontract = address(new AccessControlledMock(firstUser));
 
-        vm.startPrank(artist);
+        vm.startPrank(firstUser);
         profile.mintFor(kontract, firstUri);
         assertEq(profile.accountUri(kontract), firstUri);
         vm.stopPrank();
 
-        vm.startPrank(label);
+        vm.startPrank(secondUser);
         vm.expectRevert(CallerNotAuthorized.selector);
         profile.updateProfileFor(kontract, secondUri);
 
@@ -272,25 +308,26 @@ contract ProfileTest is Test {
     }
 
     function test_updateProfileFor_reverts_for_nonexisting_profile() public {
-        address kontract = address(new AccessControlledMock(artist));
+        address kontract = address(new AccessControlledMock(firstUser));
 
-        vm.startPrank(artist);
+        vm.startPrank(firstUser);
         vm.expectRevert(ProfileDoesNotExist.selector);
         profile.updateProfileFor(kontract, firstUri);
 
         vm.stopPrank();
     }
 
-    function test_updateProfileFor_emits_MetadataUpdate() public {
-        address kontract = address(new AccessControlledMock(artist));
+    function test_updateProfileFor_emits_events() public {
+        address kontract = address(new AccessControlledMock(firstUser));
         uint256 tokenId = 1;
 
-        vm.startPrank(artist);
+        vm.startPrank(firstUser);
 
         profile.mintFor(kontract, firstUri);
         assertEq(profile.accountUri(kontract), firstUri);
         vm.expectEmit(true, true, true, false);
         emit MetadataUpdate(tokenId);
+        emit ProfileChangedFor(kontract, firstUser);
         profile.updateProfileFor(kontract, firstUri);
 
         vm.stopPrank();
@@ -299,23 +336,23 @@ contract ProfileTest is Test {
     // accountUri
 
     function test_accountUri() public {
-        vm.startPrank(artist);
+        vm.startPrank(firstUser);
         profile.mint(firstUri);
         vm.stopPrank();
 
-        assertEq(profile.accountUri(artist), firstUri);
+        assertEq(profile.accountUri(firstUser), firstUri);
     }
 
     function test_accountUri_reverts_with_nonexistent_profile() public {
         vm.expectRevert(ProfileDoesNotExist.selector);
 
-        profile.accountUri(artist);
+        profile.accountUri(firstUser);
     }
 
     // tokenUri
 
     function test_tokenUri() public {
-        vm.startPrank(artist);
+        vm.startPrank(firstUser);
         profile.mint(firstUri);
         vm.stopPrank();
 
@@ -331,11 +368,11 @@ contract ProfileTest is Test {
     // ownerOf
 
     function test_ownerOf() public {
-        vm.startPrank(artist);
+        vm.startPrank(firstUser);
         profile.mint(firstUri);
         vm.stopPrank();
 
-        assertEq(profile.ownerOf(1), artist);
+        assertEq(profile.ownerOf(1), firstUser);
     }
 
     function test_ownerOf_reverts_with_nonexistent_token() public {
@@ -347,15 +384,15 @@ contract ProfileTest is Test {
     // balanceOf
 
     function test_balanceOf_with_profile() public {
-        vm.startPrank(artist);
+        vm.startPrank(firstUser);
         profile.mint(firstUri);
         vm.stopPrank();
 
-        assertEq(profile.balanceOf(artist), 1);
+        assertEq(profile.balanceOf(firstUser), 1);
     }
 
     function test_balanceOf_without_profile() public {
-        assertEq(profile.balanceOf(artist), 0);
+        assertEq(profile.balanceOf(firstUser), 0);
     }
 
     // name
@@ -374,7 +411,7 @@ contract ProfileTest is Test {
 
     function test_approve_reverts() public {
         vm.expectRevert(ProfilesAreSoulBound.selector);
-        profile.approve(label, 1);
+        profile.approve(secondUser, 1);
     }
 
     // getApproved
@@ -388,34 +425,34 @@ contract ProfileTest is Test {
 
     function test_setApprovalForAll_reverts() public {
         vm.expectRevert(ProfilesAreSoulBound.selector);
-        profile.setApprovalForAll(label, true);
+        profile.setApprovalForAll(secondUser, true);
     }
 
     // isApprovedForAll
 
     function test_isApprovedForAll() public {
-        assertFalse(profile.isApprovedForAll(artist, label));
+        assertFalse(profile.isApprovedForAll(firstUser, secondUser));
     }
 
     // transferFrom
 
     function test_transferFrom_reverts() public {
         vm.expectRevert(ProfilesAreSoulBound.selector);
-        profile.transferFrom(artist, label, 1);
+        profile.transferFrom(firstUser, secondUser, 1);
     }
 
     // safeTransferFrom
 
     function test_safeTransferFrom_reverts() public {
         vm.expectRevert(ProfilesAreSoulBound.selector);
-        profile.safeTransferFrom(artist, label, 1);
+        profile.safeTransferFrom(firstUser, secondUser, 1);
     }
 
     // safeTransferFrom with data argument
 
     function test_safeTransferFrom_with_data_arg_reverts() public {
         vm.expectRevert(ProfilesAreSoulBound.selector);
-        profile.safeTransferFrom(artist, label, 1, bytes(""));
+        profile.safeTransferFrom(firstUser, secondUser, 1, bytes(""));
     }
 
     // supportsInterface
