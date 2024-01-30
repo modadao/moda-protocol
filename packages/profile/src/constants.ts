@@ -1,3 +1,3 @@
 export const ProfileAddresses = {
-  mumbai: '0x03152fe681eD035D41178C5b6E6a4b8D70902345',
+  mumbai: '0x6bC60bdd829b44a34459CdE9a39B38D0f7e5D18B',
 };
