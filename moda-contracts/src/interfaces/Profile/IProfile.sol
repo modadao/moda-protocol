@@ -20,9 +20,9 @@ interface IProfile is IERC165 {
     /// @dev This function can be used to check if an account is authorized to mint a profile for another contract.
     /// The account must be the owner of a contract that uses OpenZeppelin's Ownership or have the role DEFAULT_ADMIN_ROLE
     /// from OpenZeppelin's IAccessControl.
-    /// @param account The address of an account to check.
     /// @param kontract The address of a contract to check that the account owns or functions as an admin for.
-    function canMintFor(address account, address kontract) external view returns (bool);
+    /// @param account The address of an account to check.
+    function canMintFor(address kontract, address account) external view returns (bool);
 
     /// @notice The caller can only update their own profile. The profile must exist.
     /// @param uri The token URI containing the metadata of an account's profile. e.g. ipfs://<CID>

@@ -77,7 +77,7 @@ contract Profile is IProfile, IERC721, IERC721Metadata, IERC4906, ERC165 {
     }
 
     /// @inheritdoc IProfile
-    function canMintFor(address account, address kontract) external view returns (bool) {
+    function canMintFor(address kontract, address account) external view returns (bool) {
         return _hasAuthority(account, kontract);
     }
 

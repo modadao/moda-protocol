@@ -185,7 +185,7 @@ contract ProfileTest is Test {
     function test_canMintFor_as_owner() public {
         address kontract = address(new OwnedContractMock(firstUser));
 
-        bool canMint = profile.canMintFor(firstUser, kontract);
+        bool canMint = profile.canMintFor(kontract, firstUser);
 
         assertTrue(canMint);
     }
@@ -193,7 +193,7 @@ contract ProfileTest is Test {
     function test_canMintFor_as_IAccessControl_DEFAULT_ADMIN_ROLE() public {
         address kontract = address(new AccessControlledMock(firstUser));
 
-        bool canMint = profile.canMintFor(firstUser, kontract);
+        bool canMint = profile.canMintFor(kontract, firstUser);
 
         assertTrue(canMint);
     }
@@ -201,7 +201,7 @@ contract ProfileTest is Test {
     function test_canMintFor_without_DEFAULT_ADMIN_ROLE() public {
         address controlledContract = address(new AccessControlledMock(secondUser));
 
-        bool canMint = profile.canMintFor(firstUser, controlledContract);
+        bool canMint = profile.canMintFor(controlledContract, firstUser);
 
         assertFalse(canMint);
     }
@@ -209,7 +209,7 @@ contract ProfileTest is Test {
     function test_canMintFor_without_ownership() public {
         address controlledContract = address(new OwnedContractMock(secondUser));
 
-        bool canMint = profile.canMintFor(firstUser, controlledContract);
+        bool canMint = profile.canMintFor(controlledContract, firstUser);
 
         assertFalse(canMint);
     }
