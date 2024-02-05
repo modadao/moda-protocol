@@ -10,11 +10,6 @@
     "noUncheckedIndexedAccess": true,
     "noEmit": true,
     "allowImportingTsExtensions": true,
-    "jsx": "react",
-
-  },
-  
-  
- 
+    "jsx": "react"
+  }
 }
-

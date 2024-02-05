@@ -8,15 +8,15 @@ import { uploadProfileData } from '@/utils/profileHelpers';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import {
-  ProfileAddresses,
   simulateProfileMintFor,
   useWatchProfileTransferEvent,
   useWriteProfileMintFor,
 } from 'profile';
 
+import { config } from '@/context/WagmiWrapper';
+import { useProfileState } from '@/hooks/profile';
 import { useEffect, useMemo, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { config } from '../../WagmiWrapper';
 import ProfileDataForm from '../Ui/ProfileDataForm';
 
 interface CreateProfileForContractProps {
@@ -34,12 +34,13 @@ export default function CreateProfileForContract({
   });
 
   const [isCreatingProfile, setIsCreatingProfile] = useState(false);
+  const { profileAddress } = useProfileState();
 
   const { getValues } = formMethods;
   const profileData = getValues();
 
   useWatchProfileTransferEvent({
-    address: ProfileAddresses.mumbai,
+    address: profileAddress,
     onLogs() {
       setIsCreatingProfile(false);
     },
@@ -59,8 +60,8 @@ export default function CreateProfileForContract({
     const hash = await uploadProfileData(profileData);
     const uri = `${IPFS_GATEWAY}${hash}`;
     const { request, error } = await simulateProfileMintFor(config, {
-      address: ProfileAddresses.mumbai,
-      args: [profileData.profile.address, uri],
+      address: profileAddress,
+      args: [profileData?.profile?.address, uri],
     });
 
     console.log('error', error);
@@ -80,7 +81,8 @@ export default function CreateProfileForContract({
         description: 'Your contract profile has been created successfully.',
         variant: 'success',
       });
-      router.push(`/profile/${profileData.profile.address}`);
+      profileData?.profile?.address &&
+        router.push(`/profile/${profileData.profile.address}`);
     } else if (isProfileMintForError) {
       toast({
         title: 'Error',
@@ -98,7 +100,7 @@ export default function CreateProfileForContract({
     isProfileMintForErrorObject,
     resetProfileMintFor,
     toast,
-    profileData.profile.address,
+    profileData?.profile?.address,
   ]);
 
   return (

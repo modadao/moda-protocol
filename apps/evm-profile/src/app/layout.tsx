@@ -1,7 +1,7 @@
-import { ProfileContextProvider } from '@/context/ProfileContext';
+import { ProfileProvider } from '@/context/ProfileContext';
 import type { Metadata } from 'next';
 import { Barlow } from 'next/font/google';
-import WagmiWrapper from '../components/WagmiWrapper';
+import WagmiWrapper from '../context/WagmiWrapper';
 
 import { Toaster } from '@/components/Ui/Toaster';
 import './globals.css';
@@ -26,10 +26,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${barlow.className}`}>
         <WagmiWrapper>
-          <ProfileContextProvider>
+          <ProfileProvider {...{ profileAddress: '' }}>
             {children}
             <Toaster />
-          </ProfileContextProvider>
+          </ProfileProvider>
         </WagmiWrapper>
       </body>
     </html>

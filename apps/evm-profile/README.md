@@ -6,11 +6,9 @@ Create a profile for an account or a contract.
 - Add metadata.
 - View other profiles.
 
-The profile contract is currently deployed on the Mumbai testnet at the following address:
+The profile contract is deployed to the following networks:
 
-```shell
-0x03152fe681eD035D41178C5b6E6a4b8D70902345
-```
+- Mumbai Testnet: [0xAFc5A45d643fb0ff142233Fb23C3991934E0045e](https://mumbai.polygonscan.com/address/0xAFc5A45d643fb0ff142233Fb23C3991934E0045e#readContract)
 
 ## Setup Environment
 
@@ -19,7 +17,7 @@ Before running the project
 1. From the root of the monorepo, run the following command to generate the necessary Wagmi hooks for the profile:
 
     ```shell
-    pnpm run generate:profile
+    pnpm generate:profile
     ```
 
 2. Navigate to the `apps/evm-profile` directory:

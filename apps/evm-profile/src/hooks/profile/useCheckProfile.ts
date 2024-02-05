@@ -1,20 +1,20 @@
-import { ProfileAddresses, useReadProfileBalanceOf } from 'profile';
+import { useReadProfileBalanceOf } from 'profile';
 import { useEffect, useState } from 'react';
 import { useAccount } from 'wagmi';
+import { useProfileState } from './useProfileState';
 
 export const useCheckProfile = () => {
   const { address } = useAccount();
+  const { profileAddress } = useProfileState();
   const { data: userBalance, isFetched } = useReadProfileBalanceOf({
-    address: ProfileAddresses.mumbai,
+    address: profileAddress,
     args: [address],
   });
 
   const [hasProfile, setHasProfile] = useState(false);
 
   useEffect(() => {
-    if (Number(userBalance) === 1) {
-      setHasProfile(true);
-    }
+    if (Number(userBalance) === 1) setHasProfile(true);
   }, [userBalance]);
 
   return { hasProfile, isFetched };

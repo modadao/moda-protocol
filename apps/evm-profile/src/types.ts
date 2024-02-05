@@ -1,22 +1,33 @@
 import { MetaMaskInpageProvider } from '@metamask/providers';
+import { Abi, GetContractReturnType, PublicClient } from 'viem';
 import { z } from 'zod';
 import { isValidAddress } from './utils/isValidAddress';
 
 export type Result<T, E> = { ok: true; value: T } | { ok: false; error: E };
 
+type AbiLike = Abi | readonly unknown[];
+
+export type Contract<T extends AbiLike> = GetContractReturnType<
+  T,
+  PublicClient,
+  Address
+>;
+
 export interface ProfileMetadata {
-  name: string;
-  image: string;
-  description: string;
+  name?: string;
+  image?: string;
+  description?: string;
   animation_url?: string;
-  profile: {
-    banner: string;
-    spotify: string;
-    instagram: string;
-    twitter: string;
-    address?: `0x${string}` | undefined;
+  profile?: {
+    banner?: string;
+    spotify?: string;
+    instagram?: string;
+    twitter?: string;
+    address?: string;
   };
 }
+
+export type Address = `0x${string}`;
 
 export const EVMAddressSchema = z.string().refine(
   (val) => {

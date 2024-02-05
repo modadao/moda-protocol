@@ -1,5 +1,7 @@
 'use client';
 
+import { config } from '@/context/WagmiWrapper';
+import { useProfileState } from '@/hooks/profile';
 import { useToast } from '@/hooks/useToast';
 import { ProfileMetadataSchema } from '@/types';
 import { IPFS_GATEWAY } from '@/utils/constants';
@@ -8,7 +10,6 @@ import { uploadProfileData } from '@/utils/profileHelpers';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import {
-  ProfileAddresses,
   simulateProfileMint,
   useWatchProfileTransferEvent,
   useWriteProfileMint,
@@ -16,7 +17,6 @@ import {
 import { useEffect, useMemo, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useAccount } from 'wagmi';
-import { config } from '../../WagmiWrapper';
 import ProfileDataForm from '../Ui/ProfileDataForm';
 
 interface CreateProfileForAccountProps {
@@ -35,6 +35,7 @@ export default function CreateProfileForAccount({
   });
 
   const [isCreatingProfile, setIsCreatingProfile] = useState(false);
+  const { profileAddress } = useProfileState();
 
   const { getValues } = formMethods;
   const profileData = getValues();
@@ -49,7 +50,7 @@ export default function CreateProfileForAccount({
   } = useWriteProfileMint();
 
   useWatchProfileTransferEvent({
-    address: ProfileAddresses.mumbai,
+    address: profileAddress,
     onLogs() {
       setIsCreatingProfile(false);
     },
@@ -61,7 +62,7 @@ export default function CreateProfileForAccount({
     const uri = `${IPFS_GATEWAY}${hash}`;
 
     const profileMintResult = await simulateProfileMint(config, {
-      address: ProfileAddresses.mumbai,
+      address: profileAddress,
       args: [uri],
     });
     profileMint(profileMintResult.request);

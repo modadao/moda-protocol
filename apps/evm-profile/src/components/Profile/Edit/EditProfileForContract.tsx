@@ -1,7 +1,8 @@
 'use client';
 
-import { config } from '@/components/WagmiWrapper';
-import { useGetProfileData } from '@/hooks/useGetProfileData';
+import { config } from '@/context/WagmiWrapper';
+import { useAccountProfile } from '@/hooks/profile';
+import { useProfileState } from '@/hooks/profile/useProfileState';
 import { useToast } from '@/hooks/useToast';
 import { ProfileMetadataSchema } from '@/types';
 import { IPFS_GATEWAY } from '@/utils/constants';
@@ -9,7 +10,6 @@ import { uploadProfileData } from '@/utils/profileHelpers';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import {
-  ProfileAddresses,
   simulateProfileUpdateProfileFor,
   useWatchProfileMetadataUpdateEvent,
   useWriteProfileUpdateProfileFor,
@@ -30,10 +30,11 @@ export default function EditProfileForContract({
   const router = useRouter();
   const { toast } = useToast();
 
-  const { profileData } = useGetProfileData();
+  const { profile } = useAccountProfile();
+  const { profileAddress } = useProfileState();
 
   const formMethods = useForm({
-    defaultValues: profileData,
+    defaultValues: profile,
     resolver: zodResolver(ProfileMetadataSchema),
   });
 
@@ -51,7 +52,7 @@ export default function EditProfileForContract({
   } = useWriteProfileUpdateProfileFor();
 
   useWatchProfileMetadataUpdateEvent({
-    address: ProfileAddresses.mumbai,
+    address: profileAddress,
     onLogs() {
       setIsUpdatingData(false);
     },
@@ -63,7 +64,7 @@ export default function EditProfileForContract({
     const hash = await uploadProfileData(profileData);
     const uri = `${IPFS_GATEWAY}${hash}`;
     const { request } = await simulateProfileUpdateProfileFor(config, {
-      address: ProfileAddresses.mumbai,
+      address: profileAddress,
       args: [contractAddress, uri],
     });
     updateProfileFor(request);
@@ -75,10 +76,8 @@ export default function EditProfileForContract({
   );
 
   useEffect(() => {
-    if (profileData) {
-      formMethods.reset(profileData);
-    }
-  }, [profileData, formMethods]);
+    profile && formMethods.reset(profile);
+  }, [profile, formMethods]);
 
   useEffect(() => {
     if (isUpdateProfileForSuccess && !isLoading) {

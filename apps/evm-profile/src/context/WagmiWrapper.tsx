@@ -13,7 +13,6 @@ const rpcUrl = process.env.NEXT_PUBLIC_RPC_URL || '';
 
 export const config = createConfig({
   chains: [polygon, polygonMumbai],
-
   transports: {
     [polygon.id]: http(rpcUrl),
     [polygonMumbai.id]: http(rpcUrl),

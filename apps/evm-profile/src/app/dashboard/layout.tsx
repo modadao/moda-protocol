@@ -10,9 +10,8 @@ export default function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { hasProfile } = useContext(ProfileContext);
+  const { accountUri: hasProfile } = useContext(ProfileContext);
   const { address } = useAccount();
-
   const linksProfile = [{ href: `profile/${address}`, text: 'Profile' }];
 
   const linksCreateProfile = [
@@ -22,8 +21,7 @@ export default function DashboardLayout({
   return (
     <>
       <NavBar links={hasProfile ? linksProfile : linksCreateProfile} />
-
-      <div>{children}</div>
+      {children}
     </>
   );
 }

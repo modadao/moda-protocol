@@ -1,42 +1,80 @@
 'use client';
-import { ProfileAddresses, useReadProfileBalanceOf } from 'profile';
-import { ReactNode, createContext, useEffect, useState } from 'react';
-import { useAccount } from 'wagmi';
+import { Address, Contract, ProfileMetadata } from '@/types';
+import { downloadJSON } from '@/utils/IPFS';
+import {
+  ProfileAddresses,
+  profileAbi,
+  useReadProfileAccountUri,
+} from 'profile';
+import {
+  PropsWithChildren,
+  createContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
+import { useAccount, useChainId } from 'wagmi';
 
-interface ProfileContextProps {
-  hasProfile: boolean;
+export type ProfileContract = Contract<typeof profileAbi> | undefined;
+
+export interface ProfileState {
+  profileAddress?: Address;
+  account: {
+    uri?: string;
+    profile?: ProfileMetadata;
+    isFetching: boolean;
+  };
 }
 
-interface ProfileContextProviderProps {
-  children: ReactNode;
-}
-
-export const ProfileContext = createContext<ProfileContextProps>({
-  hasProfile: false,
+export const ProfileContext = createContext<ProfileState>({
+  account: {
+    isFetching: false,
+  },
 });
 
-export function ProfileContextProvider({
+export const ProfileProvider: React.FC<PropsWithChildren<ProfileState>> = ({
   children,
-}: ProfileContextProviderProps) {
+}) => {
+  const chainId = useChainId();
   const { address } = useAccount();
-  const { data: userBalance } = useReadProfileBalanceOf({
-    address: ProfileAddresses.mumbai,
+  const profileAddress = useMemo(
+    () => ProfileAddresses[chainId] || '0x0',
+    [chainId],
+  );
+
+  const { data: accountUri, isPending } = useReadProfileAccountUri({
+    address: profileAddress,
     args: [address],
   });
 
-  const [hasProfile, setHasProfile] = useState(false);
+  const [profileData, setProfileData] = useState<ProfileMetadata>();
+  const [isFetchingData, setIsFetchingData] = useState(false);
 
   useEffect(() => {
-    if (Number(userBalance) === 1) {
-      setHasProfile(true);
-    } else {
-      setHasProfile(false);
+    setIsFetchingData(true);
+
+    if (accountUri && !isPending) {
+      downloadJSON(accountUri)
+        .then(({ value }) => {
+          if (value) setProfileData(value);
+        })
+        .catch(() => setIsFetchingData(false))
+        .finally(() => setIsFetchingData(false));
     }
-  }, [userBalance]);
+  }, [accountUri, isPending]);
 
   return (
-    <ProfileContext.Provider value={{ hasProfile }}>
+    <ProfileContext.Provider
+      value={{
+        profileAddress: profileAddress,
+        account: {
+          uri: accountUri,
+          isFetching: isFetchingData || isPending,
+          profile: profileData,
+        },
+      }}
+    >
       {children}
     </ProfileContext.Provider>
   );
-}
+};

@@ -1,11 +1,12 @@
 'use client';
 
+import { useProfileState } from '@/hooks/profile';
 import { useRouter } from 'next/navigation';
 import { ProfileAddresses, useReadProfileBalanceOf } from 'profile';
 import { useEffect, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { Button } from './Ui/Button';
-import { SearchInput } from './Ui/SearchInput';
+import { Button } from '../Ui/Button';
+import { SearchInput } from '../Ui/SearchInput';
 
 interface SearchData {
   searchedAddress: '' | undefined;
@@ -15,11 +16,12 @@ const defaultSearchData: SearchData = {
   searchedAddress: '',
 };
 
-export default function Search() {
+export function Search() {
   const router = useRouter();
   const formMethods = useForm({
     defaultValues: defaultSearchData,
   });
+  const { profileAddress } = useProfileState();
 
   const { handleSubmit, register, watch } = formMethods;
 
@@ -30,7 +32,7 @@ export default function Search() {
   const searchedAddress = watch('searchedAddress');
 
   const { data: userBalance, isFetched } = useReadProfileBalanceOf({
-    address: ProfileAddresses.mumbai,
+    address: profileAddress,
     args: [searchedAddress],
   });
 
@@ -62,7 +64,7 @@ export default function Search() {
         onSubmit={handleSubmit(() => setIsSearchLoading(true))}
         className="flex flex-col items-center mt-12"
       >
-        <div className="flex flex-row items-center ">
+        <div className="flex flex-row items-center gap-3">
           <SearchInput {...register('searchedAddress')} />
           <Button>Search</Button>
         </div>
