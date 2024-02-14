@@ -3,9 +3,9 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: "drops.moda.audio",
-        pathname: "/ipfs/*",
+        protocol: 'https',
+        hostname: 'drops.moda.audio',
+        pathname: '/ipfs/*',
       },
     ],
   },
