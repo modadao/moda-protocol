@@ -30,7 +30,7 @@ export const useGetProfileData = (
       setIsFetchingData(true);
       if (accountUri && !isPending) {
         const result = await downloadJSON(accountUri);
-        console.log(accountUri);
+
         if (result.value) {
           setProfileData(result.value);
           setIsFetchingData(false);

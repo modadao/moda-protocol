@@ -8,7 +8,7 @@ export interface TextareaProps
   errorMessage?: string;
 }
 
-const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
+const UiTextarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ label, errorMessage, className, ...props }, ref) => {
     return (
       <div className="flex flex-col items-left">
@@ -29,6 +29,6 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     );
   },
 );
-Textarea.displayName = 'Textarea';
+UiTextarea.displayName = 'Textarea';
 
-export { Textarea };
+export { UiTextarea };

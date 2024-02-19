@@ -1,23 +1,22 @@
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '@/components/Ui/Dropdown-menu';
-import { ChevronDownIcon } from '@/components/Ui/Icons/ChevronDownIcon';
-import { UserProfileBadge } from '@/components/Ui/UserProfileBadge';
+import { UserProfileBadge } from '@/components/Profile/UserProfileBadge';
 import { useGetProfileContracts } from '@/hooks/useGetProfileContracts';
 import { useGetProfileData } from '@/hooks/useGetProfileData';
 import { useHasAccountProfile } from '@/hooks/useHasAccountProfile';
+import { ChevronDownIcon } from '@/ui/Icons/ChevronDownIcon';
+import { UiButton } from '@/ui/UiButton';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuTrigger,
+} from '@/ui/UiDropdownMenu';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useAccount } from 'wagmi';
-import { Button } from './Ui/Button';
+import DisconnectWallet from '../Wallet/DisconnectWallet';
 
-export default function NavDropdown() {
+export default function NavDropdownProfile() {
   const router = useRouter();
   const { address } = useAccount();
   const { hasProfile } = useHasAccountProfile();
@@ -37,32 +36,40 @@ export default function NavDropdown() {
       <DropdownMenuContent
         sideOffset={10}
         align="end"
-        className="text-xl font-bold px-6 py-5 bg-white italic space-y-2 min-w-64 z-[70] shadow-menu-content"
+        className="divide-y text-xl px-6 py-5 bg-white italic space-y-2 min-w-56 z-[70] shadow-menu-content"
       >
-        <DropdownMenuLabel className="text-2xl">Profiles</DropdownMenuLabel>
-        <DropdownMenuSeparator />
+        <DropdownMenuLabel className="text-2xl font-extrabold p-0 text-center">
+          Profiles
+        </DropdownMenuLabel>
 
-        <DropdownMenuItem
-          className="flex flex-row justify-between p-0"
+        <div
+          className="flex flex-row justify-between p-0 pt-2"
           onMouseEnter={() => setIsAccountHovered(true)}
           onMouseLeave={() => setIsAccountHovered(false)}
         >
-          <DropdownMenuLabel>Account</DropdownMenuLabel>
+          <DropdownMenuLabel className="font-extrabold p-0 text-lg">
+            Account
+          </DropdownMenuLabel>
           {isAccountHovered && !hasProfile && (
             <MenuItemButton
               text={'Create'}
               onClick={() => router.push('/create-profile?isContract=false')}
             />
           )}
-        </DropdownMenuItem>
-        <DropdownMenuSeparator />
+        </div>
+
         {hasProfile ? (
-          <DropdownMenuItem
-            className="flex flex-row justify-between py-2 px-0"
+          <div
+            className="flex flex-row justify-between items-center py-1 px-0 pt-2"
             onMouseEnter={() => setIsProfileHovered(true)}
             onMouseLeave={() => setIsProfileHovered(false)}
           >
-            <Link href={`/profile/${address}`}>{profileData.name}</Link>
+            <Link
+              className="font-extrabold text-sm"
+              href={`/profile/${address}`}
+            >
+              {profileData.name}
+            </Link>
 
             {isProfileHovered && (
               <MenuItemButton
@@ -70,33 +77,37 @@ export default function NavDropdown() {
                 onClick={() => router.push(`/edit/${address}?isContract=false`)}
               />
             )}
-          </DropdownMenuItem>
+          </div>
         ) : (
-          <h3 className="text-sm font-semibold">None</h3>
+          <h3 className="text-sm font-extrabold">None</h3>
         )}
-        <DropdownMenuSeparator />
 
-        <DropdownMenuItem
-          className="flex flex-row justify-between p-0"
+        <div
+          className="flex flex-row justify-between items-center p-0 pt-2"
           onMouseEnter={() => setIsContractsHovered(true)}
           onMouseLeave={() => setIsContractsHovered(false)}
         >
-          <DropdownMenuLabel>Contract</DropdownMenuLabel>
+          <DropdownMenuLabel className="font-extrabold p-0 text-lg">
+            Contract
+          </DropdownMenuLabel>
           {isContractsHovered && (
             <MenuItemButton
               text={'Create'}
               onClick={() => router.push('/create-profile?isContract=true')}
             />
           )}
-        </DropdownMenuItem>
-
-        <DropdownMenuSeparator />
+        </div>
 
         <NavDropdownContracts />
-        <DropdownMenuSeparator />
-        <DropdownMenuItem className="py-2 px-0 text-lg font-semibold">
-          <Link href="/dashboard">Dashboard</Link>
-        </DropdownMenuItem>
+
+        <div className="pt-2">
+          <Link className="italic font-extrabold " href="/">
+            Home
+          </Link>
+        </div>
+        <div className="flex flex-col items-center pt-4">
+          <DisconnectWallet />
+        </div>
       </DropdownMenuContent>
     </DropdownMenu>
   );
@@ -110,7 +121,7 @@ function NavDropdownContracts() {
   return (
     <div>
       {contracts.length > 0 ? (
-        <div>
+        <div className="mt-2">
           {contracts.map((contractAddress) => (
             <NavDropDownContract
               key={contractAddress}
@@ -119,7 +130,7 @@ function NavDropdownContracts() {
           ))}
         </div>
       ) : (
-        <h3 className="text-sm font-semibold">None</h3>
+        <h3 className="text-sm font-extrabold">None</h3>
       )}
     </div>
   );
@@ -130,12 +141,17 @@ function NavDropDownContract({ contractAddress }: { contractAddress: string }) {
   const { profileData } = useGetProfileData(contractAddress);
   const [isItemHovered, setIsItemHovered] = useState(false);
   return (
-    <DropdownMenuItem
-      className="flex flex-row justify-between py-2 px-0 "
+    <div
+      className="flex flex-row justify-between py-1 px-0"
       onMouseEnter={() => setIsItemHovered(true)}
       onMouseLeave={() => setIsItemHovered(false)}
     >
-      <Link href={`/profile/${contractAddress}`}>{profileData.name}</Link>
+      <Link
+        className="font-extrabold text-sm"
+        href={`/profile/${contractAddress}`}
+      >
+        {profileData.name}
+      </Link>
       {isItemHovered && (
         <MenuItemButton
           text={'Edit'}
@@ -144,7 +160,7 @@ function NavDropDownContract({ contractAddress }: { contractAddress: string }) {
           }
         />
       )}
-    </DropdownMenuItem>
+    </div>
   );
 }
 
@@ -155,11 +171,13 @@ interface MenuItemButtonProps {
 
 function MenuItemButton({ text, onClick }: MenuItemButtonProps) {
   return (
-    <Button
-      className=" h-4 text-sm italic hover:underline bg-transparent hover:bg-transparent cursor-pointer border-none hover:text-black "
+    <UiButton
+      className=" h-4 p-0 text-sm italic bg-transparent text-black border-none text-sm  hover:bg-transparent hover:underline"
+      intent="secondary"
+      size="sm"
       onClick={onClick}
     >
       {text}
-    </Button>
+    </UiButton>
   );
 }

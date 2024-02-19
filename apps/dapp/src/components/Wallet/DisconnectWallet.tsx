@@ -1,21 +1,19 @@
 'use client';
-import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
-import { useAccount, useDisconnect } from 'wagmi';
-import { Button } from '../Ui/Button';
+
+import { UiButton } from '@/ui/UiButton';
+import { useDisconnect } from 'wagmi';
 
 export default function DisconnectWallet() {
-  const router = useRouter();
   const { disconnect } = useDisconnect();
-  const { isConnected } = useAccount();
-
-  useEffect(() => {
-    if (!isConnected) router.push('/');
-  }, [isConnected, router]);
 
   return (
-    <Button className="h-9 italic" onClick={() => disconnect()}>
+    <UiButton
+      className="mt-0 "
+      size="sm"
+      intent="secondary"
+      onClick={() => disconnect()}
+    >
       Disconnect
-    </Button>
+    </UiButton>
   );
 }

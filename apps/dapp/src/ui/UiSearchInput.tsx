@@ -5,7 +5,7 @@ import { FaSearch } from 'react-icons/fa';
 
 export type InputProps = React.InputHTMLAttributes<HTMLInputElement>;
 
-const SearchInput = React.forwardRef<HTMLInputElement, InputProps>(
+const UiSearchInput = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, ...props }, ref) => {
     return (
       <div
@@ -25,6 +25,6 @@ const SearchInput = React.forwardRef<HTMLInputElement, InputProps>(
     );
   },
 );
-SearchInput.displayName = 'SearchInput';
+UiSearchInput.displayName = 'SearchInput';
 
-export { SearchInput };
+export { UiSearchInput };

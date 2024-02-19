@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
-import { UserIcon } from './Icons/UserIcon';
+import { UserIcon } from '../../ui/Icons/UserIcon';
 
 interface UserProfileBadgeProps {
   name: string;

@@ -1,11 +1,11 @@
 'use client';
 
+import { UiButton } from '@/ui/UiButton';
 import { useRouter } from 'next/navigation';
 import { ProfileAddresses, useReadProfileBalanceOf } from 'profile';
 import { useEffect, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { Button } from './Ui/Button';
-import { SearchInput } from './Ui/SearchInput';
+import { UiSearchInput } from '../../ui/UiSearchInput';
 
 interface SearchData {
   searchedAddress: '' | undefined;
@@ -63,21 +63,21 @@ export default function Search() {
         className="flex flex-col items-center mt-12"
       >
         <div className="flex flex-row items-center ">
-          <SearchInput {...register('searchedAddress')} />
-          <Button>Search</Button>
+          <UiSearchInput {...register('searchedAddress')} />
+          <UiButton className="h-10">Search</UiButton>
         </div>
 
         <div className="mt-4 font-bold italic text-2xl">
           {isUserFound ? (
             <div className=" flex flex-col items-center">
               <h3>Profile Found</h3>
-              <Button
+              <UiButton
                 className="border-none hover:underline text-black hover:bg-white hover:text-black italic text-lg"
                 type="button"
                 onClick={() => visitProfile()}
               >
                 Visit
-              </Button>
+              </UiButton>
             </div>
           ) : isUserNotFound ? (
             <h3 className="mt-2 font-bold italic text-xl">User Not Found</h3>
