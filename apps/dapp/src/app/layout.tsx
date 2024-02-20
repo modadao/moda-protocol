@@ -1,10 +1,10 @@
-import { ProfileContextProvider } from '@/context/ProfileContext';
-import type { Metadata } from 'next';
+import './globals.css';
+
+import { GoogleAnalytics } from '@/components/GoogleAnalytics';
+import WrongNetworkDialog from '@/components/Wallet/WrongNetworkDialog';
+import { Toaster } from '@/ui/UiToaster';
 import { Barlow } from 'next/font/google';
 import WagmiWrapper from '../components/WagmiWrapper';
-
-import { Toaster } from '@/components/Ui/Toaster';
-import './globals.css';
 
 const barlow = Barlow({
   subsets: ['latin'],
@@ -12,9 +12,9 @@ const barlow = Barlow({
   style: ['normal', 'italic'],
 });
 
-export const metadata: Metadata = {
-  title: 'EVM Profile',
-  description: 'Create EVM compatible Profile tokens',
+export const metadata = {
+  title: '',
+  description: '',
 };
 
 export default function RootLayout({
@@ -23,13 +23,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${barlow.className}`}>
+    <html lang="en" className="antialiased">
+      <head>
+        <meta name="robots" content="noindex" />
+      </head>
+      <body className={`${barlow.className} bg-whiteBackground`}>
+        {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID ? (
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID} />
+        ) : null}
+
         <WagmiWrapper>
-          <ProfileContextProvider>
-            {children}
-            <Toaster />
-          </ProfileContextProvider>
+          {children}
+          <Toaster />
+          <WrongNetworkDialog />
         </WagmiWrapper>
       </body>
     </html>
