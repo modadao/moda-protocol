@@ -1,4 +1,5 @@
 import { MetaMaskInpageProvider } from '@metamask/providers';
+import { StaticImageData } from 'next/image';
 import { z } from 'zod';
 import { isValidAddress } from './utils/isValidAddress';
 
@@ -71,4 +72,33 @@ declare global {
   interface Window {
     ethereum?: MetaMaskInpageProvider;
   }
+}
+
+export interface LatestDrop {
+  key: string;
+  spotlight: boolean;
+  priority: number;
+  description: string;
+  image: StaticImageData;
+  release: Release;
+}
+
+export interface Artist {
+  title: string;
+  slug: string;
+}
+
+export interface Release {
+  heroImage: {
+    url: StaticImageData;
+    width: number;
+    height: number;
+  };
+  saleStartTime: string;
+  title: string;
+  album: {
+    primary_artist: Artist;
+    other_artists: Artist[];
+  };
+  slug: string;
 }

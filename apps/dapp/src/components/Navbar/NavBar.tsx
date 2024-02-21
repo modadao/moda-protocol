@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useAccount } from 'wagmi';
 import ConnectWallet from '../Wallet/ConnectWallet';
+import { MainLinks } from './MainLinks';
 import { NavBarDropdown } from './NavDropdown';
 
 export const NavBar = ({
@@ -65,6 +66,7 @@ export const NavBar = ({
         {/* Desktop */}
         <div className="hidden md:block">
           <div className="flex items-center gap-8">
+            <MainLinks />
             <NavBarDropdown />
             {!isConnected && <ConnectWallet />}
           </div>
