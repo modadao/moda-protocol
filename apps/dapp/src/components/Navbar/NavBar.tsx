@@ -1,9 +1,12 @@
 'use client';
+import { useHydratedState } from '@/hooks/useHydratedState';
 import { Logo } from '@/ui/Icons/Logo';
 import { clx } from '@/utils/clx';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import ConnectWallet from './Wallet/ConnectWallet';
+import { useAccount } from 'wagmi';
+import ConnectWallet from '../Wallet/ConnectWallet';
+import { NavBarDropdown } from './NavDropdown';
 
 export const NavBar = ({
   useScrollHandler = true,
@@ -11,6 +14,8 @@ export const NavBar = ({
   navButtons?: boolean;
   useScrollHandler?: boolean;
 }) => {
+  const isHydrated = useHydratedState();
+  const { isConnected } = useAccount();
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -24,6 +29,10 @@ export const NavBar = ({
   const scrollHandler = () => {
     setIsScrolled(window.scrollY > 5);
   };
+
+  if (!isHydrated) {
+    return null;
+  }
 
   return (
     <nav
@@ -56,7 +65,8 @@ export const NavBar = ({
         {/* Desktop */}
         <div className="hidden md:block">
           <div className="flex items-center gap-8">
-            <ConnectWallet />
+            <NavBarDropdown />
+            {!isConnected && <ConnectWallet />}
           </div>
         </div>
       </div>

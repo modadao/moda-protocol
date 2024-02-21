@@ -57,6 +57,4 @@ h3.landing-page__sub-heading {
   @apply overflow-hidden;
 }
 
-#paper-js-sdk-modal {
-  pointer-events: auto !important;
-}
+

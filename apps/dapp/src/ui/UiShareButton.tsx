@@ -34,7 +34,7 @@ export const UiShareButton = ({
         }, 1800);
       } catch (error) {
         const message = getErrorMessage(error);
-        console.log('Error copying to clipboard: ', message);
+
         toast({
           variant: 'error',
           title: 'Copy Error',

@@ -16,7 +16,7 @@ import {
 } from 'profile';
 import { useEffect, useMemo, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import ProfileDataForm from '../Ui/ProfileDataForm';
+import ProfileDataForm from '../ProfileUi/ProfileDataForm';
 
 interface EditProfileForContractProps {
   contractAddress: string;

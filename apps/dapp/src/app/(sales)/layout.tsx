@@ -1,5 +1,5 @@
 import { GlobalFooter } from '@/components/GlobalFooter';
-import { NavBar } from '@/components/NavBar';
+import { NavBar } from '@/components/Navbar/NavBar';
 
 export default async function SalesLayout({
   children,

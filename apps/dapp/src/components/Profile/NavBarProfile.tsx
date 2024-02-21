@@ -1,11 +1,13 @@
 'use client';
 
 import Link from 'next/link';
-import { clx } from '../utils/clx';
-import NavDropdown from './NavDropdown';
-import DisconnectWallet from './Wallet/DisconnectWallet';
+import { useAccount } from 'wagmi';
+import { clx } from '../../utils/clx';
+import ConnectWallet from '../Wallet/ConnectWallet';
+import NavDropdownProfile from './NavDropdownProfile';
 
 export const NavBarProfile = () => {
+  const { isConnected } = useAccount();
   return (
     <nav
       className={clx(
@@ -20,8 +22,8 @@ export const NavBarProfile = () => {
         </h1>
 
         <div className="flex flex-row justify-center items-center gap-6">
-          <NavDropdown />
-          <DisconnectWallet />
+          <NavDropdownProfile />
+          {!isConnected && <ConnectWallet />}
         </div>
       </div>
     </nav>

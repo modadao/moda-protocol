@@ -1,8 +1,8 @@
 import { ChangeEvent, SyntheticEvent } from 'react';
 import { FiUpload } from 'react-icons/fi';
-import LoadingSpinner from './LoadingSpinner';
+import { UiSpinner } from './UiSpinner';
 
-interface props {
+interface UiFileUploaderProps {
   uploadFunction: (
     e: SyntheticEvent | ChangeEvent<HTMLInputElement>,
   ) =>
@@ -16,13 +16,13 @@ interface props {
   multiple?: boolean;
 }
 
-export default function Uploader({
+export default function UiFileUploader({
   uploadFunction,
   loadingState,
   fileName,
   innerText,
   errorMessage,
-}: props) {
+}: UiFileUploaderProps) {
   return (
     <label
       className="flex flex-row h-10 w-60 rounded-md border border-black justify-between items-center"
@@ -38,7 +38,7 @@ export default function Uploader({
       )}
       <div className="flex flex-col cursor-pointer items-center justify-center h-10 w-10 border-l border-black rounded-md">
         {loadingState ? (
-          <LoadingSpinner />
+          <UiSpinner />
         ) : (
           <div>
             <FiUpload className="h-6 w-6" />

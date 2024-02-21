@@ -17,7 +17,7 @@ import {
 import { useEffect, useMemo, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { config } from '../../WagmiWrapper';
-import ProfileDataForm from '../Ui/ProfileDataForm';
+import ProfileDataForm from '../ProfileUi/ProfileDataForm';
 
 interface CreateProfileForContractProps {
   isContract: boolean;

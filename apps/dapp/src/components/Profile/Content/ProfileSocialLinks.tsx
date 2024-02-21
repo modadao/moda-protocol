@@ -26,7 +26,7 @@ const SocialLink = ({
   );
 };
 
-export default function SocialLinks({
+export default function ProfileSocialLinks({
   spotify,
   twitter,
   instagram,

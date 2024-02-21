@@ -1,9 +1,9 @@
 import { ProfileMetadata } from '@/types';
+import { UiButton } from '@/ui/UiButton';
+import { UiInput } from '@/ui/UiInput';
 import { useFormContext } from 'react-hook-form';
-import { Button } from '../../Ui/Button';
-import { Input } from '../../Ui/Input';
-import LoadingSpinner from '../../Ui/LoadingSpinner';
-import { Textarea } from '../../Ui/Textarea';
+import { UiSpinner } from '../../../ui/UiSpinner';
+import { UiTextarea } from '../../../ui/UiTextarea';
 import UploadProfileImage from './UploadProfileImage';
 
 interface ProfileDataFormProps {
@@ -38,12 +38,12 @@ export default function ProfileDataForm({
 
       <div className="flex flex-row gap-8">
         <div className="flex flex-col gap-4">
-          <Input
+          <UiInput
             {...register('name')}
             label="Name"
             errorMessage={errors.name?.message}
           />
-          <Textarea
+          <UiTextarea
             {...register('description')}
             label="About"
             errorMessage={errors.description?.message}
@@ -60,18 +60,18 @@ export default function ProfileDataForm({
           />
         </div>
         <div className="flex flex-col gap-4">
-          <Input
+          <UiInput
             {...register('profile.address')}
             label={isContract ? 'Contract Address' : 'EVM Address'}
           />
-          <Input {...register('profile.spotify')} label="Spotify" />
-          <Input {...register('profile.instagram')} label="Instagram" />
-          <Input {...register('profile.twitter')} label="Twitter" />
+          <UiInput {...register('profile.spotify')} label="Spotify" />
+          <UiInput {...register('profile.instagram')} label="Instagram" />
+          <UiInput {...register('profile.twitter')} label="Twitter" />
         </div>
       </div>
-      <Button className="w-52 h-12 rounded-lg text-lg mt-6" type="submit">
-        {isLoading ? <LoadingSpinner /> : buttonText}
-      </Button>
+      <UiButton className="w-52 h-12 rounded-lg text-lg mt-6" type="submit">
+        {isLoading ? <UiSpinner /> : buttonText}
+      </UiButton>
       {isLoading && <h3 className="text-xl font-bold italic">{loadingText}</h3>}
     </form>
   );

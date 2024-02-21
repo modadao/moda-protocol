@@ -4,7 +4,7 @@ import { IPFS_GATEWAY } from '@/utils/constants';
 import { uploadProfileImage } from '@/utils/profileHelpers';
 import { ChangeEvent, SyntheticEvent, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
-import Uploader from '../../Ui/Uploader';
+import UiFileUploader from '../../../ui/UiFileUploader';
 
 interface UploadProfileImageProps {
   value: 'image' | 'profile.banner';
@@ -49,7 +49,7 @@ export default function UploadProfileImage({
   };
   return (
     <div className="mt-1">
-      <Uploader
+      <UiFileUploader
         innerText={innerText}
         uploadFunction={uploadImage}
         loadingState={isUploadingImage}
