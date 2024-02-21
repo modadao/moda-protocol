@@ -1,3 +1,4 @@
+import { exampleDrops } from '@/examples/exampleDrop';
 import { SectionDeluxe } from './SectionDeluxe';
 import { SectionFAQ } from './SectionFAQ';
 import { SectionGateway } from './SectionGateway';
@@ -9,7 +10,7 @@ export const LandingPage = () => {
     <div className="relative overflow-hidden pt-20">
       <SectionHeader />
       <SectionDeluxe />
-      <SectionLatestDrops />
+      <SectionLatestDrops latestDrops={exampleDrops} />
       <SectionGateway />
       <SectionFAQ />
     </div>

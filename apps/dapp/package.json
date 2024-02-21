@@ -27,6 +27,7 @@
     "@wagmi/chains": "^1.8.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
+    "date-fns": "^3.3.1",
     "dotenv": "^16.3.1",
     "lucide-react": "^0.312.0",
     "moralis": "^2.24.2",
