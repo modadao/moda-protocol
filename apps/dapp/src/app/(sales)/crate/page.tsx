@@ -1,19 +1,19 @@
 import { Crate } from '@/components/Crate';
 
-import { exampleDrops } from '@/examples/exampleDrop';
-import { exampleNfts } from '@/examples/exampleNfts';
+import { Drops } from '@/examples/Drop';
+import { Nfts } from '@/examples/Nfts';
 
 export const dynamic = 'force-dynamic';
 
 export default async function CratePage() {
   const crateReleases = [
-    exampleDrops[0].release,
-    exampleDrops[1].release,
-    exampleDrops[2].release,
-    exampleDrops[3].release,
+    Drops[0].release,
+    Drops[1].release,
+    Drops[2].release,
+    Drops[3].release,
   ];
 
-  const crateNfts = exampleNfts;
+  const crateNfts = Nfts;
 
   return (
     <div className="md:px-4 pb-40">

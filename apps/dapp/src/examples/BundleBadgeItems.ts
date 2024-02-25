@@ -1,4 +1,4 @@
-import Vinyl_Badge from '../../public/bundle_badge/Vinyl_Badge.jpg';
+import Vinyl_Badge from '../../public/badges/Vinyl_Badge.jpg';
 
 const bundleBadgeType = {
   badgeName: 'Vinyl',

@@ -84,18 +84,21 @@ export interface LatestDrop {
 }
 
 export interface Artist {
+  id: string;
   title: string;
+  image: {
+    url: StaticImageData;
+    fileName: string;
+  };
   slug: string;
 }
 
 export interface Release {
   tokenId: number;
-  contract: {
-    contractAddress: string;
-    testnetContractAddress: string;
-  };
+  contract: Contract;
   heroImage: {
     url: StaticImageData;
+    fileName: string;
     width: number;
     height: number;
   };
@@ -107,15 +110,34 @@ export interface Release {
   tracksDownload?: {
     url: string;
   };
+  releasePrice?: number;
 }
 
 export interface Album {
+  title: string;
+  description: string;
   primary_artist: Artist;
   other_artists: Artist[];
   coverImage: {
     url: StaticImageData;
   };
   spotifyLink: string;
+  tracks: Track[];
+}
+
+export interface Track {
+  id: string;
+  title: string;
+  coverImage: {
+    id: string;
+    url: StaticImageData;
+    height: number;
+    width: number;
+  };
+  artists: Artist[];
+  mediaUpload: {
+    url: string;
+  };
 }
 
 export const DropNftSchema = z.object({
@@ -148,3 +170,22 @@ export interface BundleBadgeItem {
     url: string;
   };
 }
+
+export interface Contract {
+  contractAddress: string;
+  testnetContractAddress: string;
+}
+
+export interface FanType {
+  username: string;
+  profileImage: StaticImageData;
+  web3Address: string;
+}
+
+export const FanSchema = z.object({
+  username: z.string(),
+  profileImage: z.string(),
+  web3Address: z.string(),
+});
+
+export const FanSchemaArray = FanSchema.array();

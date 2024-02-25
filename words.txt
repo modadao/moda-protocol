@@ -44,4 +44,6 @@ stringifying
 SIGNUP
 Hygraph
 aaaaa'm
+jazzicon
+zustand
 
