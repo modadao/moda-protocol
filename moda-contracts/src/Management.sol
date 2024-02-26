@@ -4,6 +4,7 @@ pragma solidity 0.8.21;
 import {IManagement} from "./interfaces/IManagement.sol";
 import {EnumerableSet} from "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
 
+/// @notice Management is where users can whitelist other accounts to manage tracks and releases across multiple contracts.
 contract Management is IManagement {
     using EnumerableSet for EnumerableSet.AddressSet;
 

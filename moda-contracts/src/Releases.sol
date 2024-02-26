@@ -12,13 +12,11 @@ import {IWithdrawRelease} from "./interfaces/Releases/IWithdrawRelease.sol";
 import {ICatalog} from "./interfaces/Catalog/ICatalog.sol";
 import {ISplitsFactory} from "./interfaces/ISplitsFactory.sol";
 
-
-
 /**
- * @title Releases
- * @dev This contract allows artists or labels to create their own release tokens.
+ * @notice Releases is a contract to allow artists or labels to create track or multiple
+ * track tokens called a "Release". `Releases` are registered with a Catalog, and can only create a
+ * Release of tracks that have also been registered in the Catalog.
  */
-
 contract Releases is
     IReleases,
     IReleasesInitialize,
@@ -78,9 +76,7 @@ contract Releases is
         address[] calldata releaseAdmins,
         string calldata name_,
         string calldata symbol_,
-
         ICatalog catalog,
-
         ISplitsFactory splitsFactory
     ) external initializer {
         __ERC1155_init("");

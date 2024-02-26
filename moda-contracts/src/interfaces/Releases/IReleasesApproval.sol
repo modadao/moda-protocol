@@ -1,21 +1,24 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.21;
 
+/**
+ * @notice A lightweight interface for approving other accounts to create releases with your track.
+ */
 interface IReleasesApproval {
     /**
-     * @dev Emitted when a track owner has changed permissions for a
+     * @notice Emitted when a track owner has changed permissions for a
      * releases contract to be able to release their track
      */
     event TrackApprovalChanged(string trackId, address indexed releases, bool hasApproval);
 
     /**
-     * @dev Emitted when a track owner has given permission to a
+     * @notice Emitted when a track owner has given permission to a
      * releases contract to be able to release all their tracks
      */
     event AllTracksApprovalChanged(address indexed artist, address indexed releases, bool hasApproval);
 
     /**
-     * @dev Add or revoke approval for a Releases contract to release a track
+     * @notice Add or revoke approval for a Releases contract to release a track
      * @param trackId - The ID of the track
      * @param releases - The address of the Releases contract
      * @param hasApproval - The approval to set true/false
@@ -23,7 +26,7 @@ interface IReleasesApproval {
     function setReleasesApproval(string calldata trackId, address releases, bool hasApproval) external;
 
     /**
-     * @dev Sets approval for a Releases contract to be able to release
+     * @notice Sets approval for a Releases contract to be able to release
      * all tracks owned by the artist
      * @param artist - The address of the artist
      * @param releases - The address of the Releases contract
@@ -32,7 +35,7 @@ interface IReleasesApproval {
     function setReleasesApprovalForAll(address artist, address releases, bool hasApproval) external;
 
     /**
-     * @dev Returns true/false if a Releases contract has approval
+     * @notice Returns true/false if a Releases contract has approval
      * to release a track
      * @param trackId - The track id of the track
      * @param releases - The address of the Releases contract
@@ -43,7 +46,7 @@ interface IReleasesApproval {
     ) external view returns (bool);
 
     /**
-     * @dev Returns true/false if a Releases contract has approval
+     * @notice Returns true/false if a Releases contract has approval
      * to release all tracks owned by the caller
      * @param artist - The address of the artist
      * @param releases - The address of the Releases contract
@@ -51,8 +54,7 @@ interface IReleasesApproval {
     function getReleasesApprovalForAll(address artist, address releases) external view returns (bool);
 
     /**
-     * @dev Checks the caller has permission to release a track
-     * through an open Releases contract
+     * @notice Checks the caller has permission to release a track through an open Releases contract.
      * @param trackId The id of the track
      * @param caller The address of the caller
      */

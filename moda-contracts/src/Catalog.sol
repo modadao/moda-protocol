@@ -16,9 +16,9 @@ import {AccessControlUpgradeable} from
     "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol";
 import {Strings} from "@openzeppelin/contracts/utils/Strings.sol";
 
+/// @notice A Catalog is a contract where artists and labels can register tracks.
+///         Membership to the Catalog is controlled by `IMembership`.
 contract Catalog is ICatalog, AccessControlUpgradeable {
-    // State Variables
-
     /// @custom:storage-location erc7201:moda.storage.Catalog
     struct CatalogStorage {
         IRegistry _registry;
@@ -72,7 +72,6 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
     }
 
     /**
-     * @dev Constructor
      * @notice The initializer is disabled when deployed as an implementation contract
      * @custom:oz-upgrades-unsafe-allow constructor
      */
@@ -82,17 +81,23 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
 
     // External Functions
 
-    /// @dev Initializes the contract
+    /**
+     * @notice Initializes the contract
+     * @param owner The account that will gain ownership.
+     * @param name The name of the Catalog
+     * @param registry The top level Registry contract where all Catalogs must register.
+     * @param membership A custom constract to gate user access.
+     */
     function initialize(
         address owner,
         string calldata name,
-        IRegistry Registry,
+        IRegistry registry,
         IMembership membership
     ) external initializer {
         CatalogStorage storage $ = _getCatalogStorage();
         _grantRole(DEFAULT_ADMIN_ROLE, owner);
         $._name = name;
-        $._registry = Registry;
+        $._registry = registry;
         $._membership = membership;
     }
 
