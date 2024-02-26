@@ -2,6 +2,7 @@ import { UserProfileBadge } from '@/components/Profile/UserProfileBadge';
 import { useGetProfileContracts } from '@/hooks/useGetProfileContracts';
 import { useGetProfileData } from '@/hooks/useGetProfileData';
 import { useHasAccountProfile } from '@/hooks/useHasAccountProfile';
+import { toast } from '@/hooks/useToast';
 import { ChevronDownIcon } from '@/ui/Icons/ChevronDownIcon';
 import { UiButton } from '@/ui/UiButton';
 import {
@@ -12,7 +13,7 @@ import {
 } from '@/ui/UiDropdownMenu';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAccount } from 'wagmi';
 import DisconnectWallet from '../Wallet/DisconnectWallet';
 
@@ -20,30 +21,56 @@ export default function NavDropdownProfile() {
   const router = useRouter();
   const { address } = useAccount();
   const { hasProfile } = useHasAccountProfile();
-  const { profileData } = useGetProfileData(address);
-  const { name, image } = profileData;
+
   const [isAccountHovered, setIsAccountHovered] = useState(false);
   const [isContractsHovered, setIsContractsHovered] = useState(false);
   const [isProfileHovered, setIsProfileHovered] = useState(false);
+
+  const {
+    profileData: accountProfileData,
+    isLoading: isAccountProfileDataLoading,
+    getProfileDataError,
+  } = useGetProfileData();
+
+  useEffect(() => {
+    if (getProfileDataError) {
+      toast({
+        title: 'Error fetching account profile data',
+        description: getProfileDataError?.message,
+        variant: 'error',
+      });
+    }
+  }, [getProfileDataError]);
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="focus:outline-none">
         <div className="flex gap-2 items-center">
-          <UserProfileBadge name={name} imageUrl={image} />
+          {accountProfileData && (
+            <UserProfileBadge
+              name={
+                isAccountProfileDataLoading
+                  ? 'Loading name...'
+                  : accountProfileData.name
+              }
+              imageUrl={
+                isAccountProfileDataLoading ? '' : accountProfileData.image
+              }
+            />
+          )}
           <ChevronDownIcon />
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent
         sideOffset={10}
         align="end"
-        className="divide-y text-xl px-6 py-5 bg-white italic space-y-2 min-w-56 z-[70] shadow-menu-content"
+        className="divide-y text-xl px-6 py-5 bg-white italic space-y-2 min-w-60 z-[70] shadow-menu-content"
       >
         <DropdownMenuLabel className="text-2xl font-extrabold p-0 text-center">
           Profiles
         </DropdownMenuLabel>
 
         <div
-          className="flex flex-row justify-between p-0 pt-2"
+          className="flex flex-row justify-between items-center p-0 pt-2"
           onMouseEnter={() => setIsAccountHovered(true)}
           onMouseLeave={() => setIsAccountHovered(false)}
         >
@@ -68,7 +95,9 @@ export default function NavDropdownProfile() {
               className="font-extrabold text-sm"
               href={`/profile/${address}`}
             >
-              {profileData.name}
+              {isAccountProfileDataLoading
+                ? 'Loading name...'
+                : accountProfileData.name}
             </Link>
 
             {isProfileHovered && (
@@ -114,9 +143,9 @@ export default function NavDropdownProfile() {
 }
 
 function NavDropdownContracts() {
-  const result = useGetProfileContracts();
+  const contractsResult = useGetProfileContracts();
 
-  const contracts = result.ok ? result.value : [];
+  const contracts = contractsResult.ok ? contractsResult.value.contracts : [];
 
   return (
     <div>
@@ -138,8 +167,24 @@ function NavDropdownContracts() {
 
 function NavDropDownContract({ contractAddress }: { contractAddress: string }) {
   const router = useRouter();
-  const { profileData } = useGetProfileData(contractAddress);
   const [isItemHovered, setIsItemHovered] = useState(false);
+
+  const {
+    profileData: contractProfileData,
+    isLoading: isContractProfileDataLoading,
+    getProfileDataError,
+  } = useGetProfileData(contractAddress);
+
+  useEffect(() => {
+    if (getProfileDataError) {
+      toast({
+        title: 'Error fetching contract profile data',
+        description: getProfileDataError?.message,
+        variant: 'error',
+      });
+    }
+  }, [getProfileDataError]);
+
   return (
     <div
       className="flex flex-row justify-between py-1 px-0"
@@ -150,7 +195,9 @@ function NavDropDownContract({ contractAddress }: { contractAddress: string }) {
         className="font-extrabold text-sm"
         href={`/profile/${contractAddress}`}
       >
-        {profileData.name}
+        {isContractProfileDataLoading
+          ? '...loading name'
+          : contractProfileData.name}
       </Link>
       {isItemHovered && (
         <MenuItemButton

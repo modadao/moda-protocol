@@ -1,33 +1,30 @@
 import { Result } from '@/types';
-import { useEffect, useState } from 'react';
+
+import { useQuery } from '@tanstack/react-query';
 import { useAccount } from 'wagmi';
 
 export const useGetProfileContracts = (): Result<
-  string[],
+  { contracts: string[]; isLoading: boolean },
   string | undefined
 > => {
   const { address } = useAccount();
 
-  const [contracts, setContracts] = useState<string[]>();
-  const [error, setError] = useState<string>();
-
-  useEffect(() => {
-    const fetchProfileContracts = async () => {
-      try {
-        const response = await fetch(`/api/contract-profiles/${address}`, {
-          method: 'GET',
-        });
-        const contracts = await response.json();
-        setContracts(contracts);
-      } catch (_e) {
-        setError('Error fetching contracts. Please try again.');
-      }
-    };
-    fetchProfileContracts();
-  }, [address]);
+  const {
+    data: contracts,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ['profileContracts'],
+    queryFn: async () => {
+      const response = await fetch(`/api/contract-profiles/${address}`);
+      if (!response.ok) throw new Error('Error fetching profile contracts');
+      return response.json();
+    },
+    enabled: !!address,
+  });
 
   if (contracts === undefined) {
-    return { ok: false, error: error };
+    return { ok: false, error: error?.message };
   }
-  return { ok: true, value: contracts };
+  return { ok: true, value: { contracts, isLoading } };
 };

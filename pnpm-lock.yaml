@@ -165,18 +165,6 @@ importers:
 
   moda-contracts: {}
 
-  packages/moda-sdk:
-    devDependencies:
-      '@changesets/cli':
-        specifier: ^2.26.2
-        version: 2.26.2
-      tsup:
-        specifier: ^7.2.0
-        version: 7.2.0(ts-node@10.9.2)(typescript@5.2.2)
-      typescript:
-        specifier: ^5.2.2
-        version: 5.2.2
-
   packages/profile:
     dependencies:
       '@wagmi/core':

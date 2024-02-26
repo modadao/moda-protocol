@@ -66,6 +66,7 @@ export enum JsonError {
 
 export enum FileError {
   FileUploadError = 'Error uploading file',
+  InvalidDataError = 'Invalid data',
 }
 
 declare global {

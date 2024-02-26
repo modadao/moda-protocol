@@ -5,9 +5,8 @@ import { UiSpinner } from './UiSpinner';
 interface UiFileUploaderProps {
   uploadFunction: (
     e: SyntheticEvent | ChangeEvent<HTMLInputElement>,
-  ) =>
-    | Promise<void>
-    | ((e: SyntheticEvent | ChangeEvent<HTMLInputElement>) => void);
+  ) => Promise<void>;
+
   loadingState: boolean;
   fileName?: string;
   innerText?: string;

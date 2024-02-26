@@ -1,5 +1,6 @@
 'use client';
 
+import { useHydratedState } from '@/hooks/useHydratedState';
 import Link from 'next/link';
 import { useAccount } from 'wagmi';
 import { clx } from '../../utils/clx';
@@ -7,7 +8,12 @@ import ConnectWallet from '../Wallet/ConnectWallet';
 import NavDropdownProfile from './NavDropdownProfile';
 
 export const NavBarProfile = () => {
+  const isHydrated = useHydratedState();
   const { isConnected } = useAccount();
+
+  if (!isHydrated) {
+    return null;
+  }
   return (
     <nav
       className={clx(

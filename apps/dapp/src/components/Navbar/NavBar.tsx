@@ -52,7 +52,7 @@ export const NavBar = ({
           </Link>
         </h1>
 
-        {/* Mobile */}
+        {/* Mobile
 
         <div className="flex gap-2 md:hidden items-center justify-center">
           <ConnectWallet />
@@ -61,10 +61,10 @@ export const NavBar = ({
             href="/profile"
             className="flex gap-2 items-center justify-center"
           />
-        </div>
+        </div> */}
 
         {/* Desktop */}
-        <div className="hidden md:block">
+        <div>
           <div className="flex items-center gap-8">
             <MainLinks />
             <NavBarDropdown />

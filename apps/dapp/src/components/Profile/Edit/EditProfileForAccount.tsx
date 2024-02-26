@@ -3,9 +3,10 @@
 import { config } from '@/components/WagmiWrapper';
 import { useGetProfileData } from '@/hooks/useGetProfileData';
 import { useToast } from '@/hooks/useToast';
+import { useUploadProfileData } from '@/hooks/useUploadProfileData';
 import { ProfileMetadataSchema } from '@/types';
+import { defaultProfileMetadata } from '@/utils';
 import { IPFS_GATEWAY } from '@/utils/constants';
-import { uploadProfileData } from '@/utils/profileHelpers';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import {
@@ -30,12 +31,14 @@ export default function EditProfileForAccount({
   const router = useRouter();
   const { toast } = useToast();
 
-  const { profileData } = useGetProfileData();
+  const { profileData, getProfileDataError } = useGetProfileData();
 
   const formMethods = useForm({
-    defaultValues: profileData,
+    defaultValues: profileData || defaultProfileMetadata,
     resolver: zodResolver(ProfileMetadataSchema),
   });
+
+  const { uploadProfileData, uploadProfileDataError } = useUploadProfileData();
 
   const { getValues } = formMethods;
 
@@ -60,13 +63,23 @@ export default function EditProfileForAccount({
   const editProfile = async () => {
     setIsUpdatingData(true);
     const profileData = getValues();
-    const hash = await uploadProfileData(profileData);
-    const uri = `${IPFS_GATEWAY}${hash}`;
+    const ipfsHash = await uploadProfileData(profileData);
+
+    if (uploadProfileDataError) {
+      toast({
+        title: 'Profile Update Failed',
+        description: 'Error uploading profile data',
+        variant: 'error',
+      });
+      return;
+    }
+
+    const uri = `${IPFS_GATEWAY}${ipfsHash}`;
+
     const { request } = await simulateProfileUpdateProfile(config, {
       address: ProfileAddresses.mumbai,
       args: [uri],
     });
-
     updateProfile(request);
   };
 
@@ -76,9 +89,17 @@ export default function EditProfileForAccount({
   );
 
   useEffect(() => {
-    if (profileData) {
-      formMethods.reset(profileData);
+    if (getProfileDataError) {
+      toast({
+        title: 'Error fetching profile data',
+        description: getProfileDataError?.message,
+        variant: 'error',
+      });
     }
+  }, [getProfileDataError, toast]);
+
+  useEffect(() => {
+    if (profileData) formMethods.reset(profileData);
   }, [profileData, formMethods]);
 
   useEffect(() => {

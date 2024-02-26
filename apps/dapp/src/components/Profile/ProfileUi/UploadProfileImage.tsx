@@ -1,7 +1,7 @@
 import { toast } from '@/hooks/useToast';
+import { useUploadImage } from '@/hooks/useUploadImage';
 import { ProfileMetadata } from '@/types';
 import { IPFS_GATEWAY } from '@/utils/constants';
-import { uploadProfileImage } from '@/utils/profileHelpers';
 import { ChangeEvent, SyntheticEvent, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import UiFileUploader from '../../../ui/UiFileUploader';
@@ -21,24 +21,28 @@ export default function UploadProfileImage({
   const [fileName, setFileName] = useState('');
   const [isUploadingImage, setIsUploadingImage] = useState(false);
 
-  const uploadImage = async (
+  const { uploadImage, uploadImageError } = useUploadImage();
+
+  const uploadProfileImage = async (
     e: SyntheticEvent | ChangeEvent<HTMLInputElement>,
   ) => {
     setIsUploadingImage(true);
-    const result = await uploadProfileImage(e);
-    if (typeof result !== 'string' && result?.hash && result?.fileName) {
-      const { hash, fileName } = result;
-      setValue(value, `${IPFS_GATEWAY}${hash}`);
+    const imageData = await uploadImage(e);
+
+    if (imageData) {
+      const ipfsHash = imageData.ipfsHash;
+      const name = imageData.fileName;
+      setValue(value, `${IPFS_GATEWAY}${ipfsHash}`);
       toast({
         title: 'Success',
         description: 'Image uploaded successfully',
         variant: 'success',
       });
-      setFileName(fileName);
-    } else if (typeof result === 'string') {
+      setFileName(name);
+    } else if (uploadImageError) {
       toast({
         title: 'Error',
-        description: result,
+        description: uploadImageError.message,
         variant: 'error',
       });
       setFileName('No File Selected');
@@ -51,7 +55,7 @@ export default function UploadProfileImage({
     <div className="mt-1">
       <UiFileUploader
         innerText={innerText}
-        uploadFunction={uploadImage}
+        uploadFunction={uploadProfileImage}
         loadingState={isUploadingImage}
         fileName={fileName}
         errorMessage={errorMessage}

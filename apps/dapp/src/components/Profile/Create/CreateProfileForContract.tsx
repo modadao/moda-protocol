@@ -1,10 +1,10 @@
 'use client';
 
 import { useToast } from '@/hooks/useToast';
+import { useUploadProfileData } from '@/hooks/useUploadProfileData';
 import { ProfileMetadataSchema } from '@/types';
 import { IPFS_GATEWAY } from '@/utils/constants';
 import { defaultProfileMetadata } from '@/utils/defaultProfileMetadata';
-import { uploadProfileData } from '@/utils/profileHelpers';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import {
@@ -33,6 +33,8 @@ export default function CreateProfileForContract({
     resolver: zodResolver(ProfileMetadataSchema),
   });
 
+  const { uploadProfileData, uploadProfileDataError } = useUploadProfileData();
+
   const [isCreatingProfile, setIsCreatingProfile] = useState(false);
 
   const { getValues } = formMethods;
@@ -56,8 +58,20 @@ export default function CreateProfileForContract({
 
   const createProfile = async () => {
     setIsCreatingProfile(true);
-    const hash = await uploadProfileData(profileData);
-    const uri = `${IPFS_GATEWAY}${hash}`;
+    const ipfsHash = await uploadProfileData(profileData);
+
+    if (uploadProfileDataError) {
+      toast({
+        title: 'Error',
+        description: uploadProfileDataError.message,
+        variant: 'error',
+      });
+      setIsCreatingProfile(false);
+      return;
+    }
+
+    const uri = `${IPFS_GATEWAY}${ipfsHash}`;
+
     const { request } = await simulateProfileMintFor(config, {
       address: ProfileAddresses.mumbai,
       args: [profileData.profile.address, uri],
