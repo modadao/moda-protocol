@@ -8,27 +8,32 @@ import {IManagement} from "./interfaces/IManagement.sol";
 import {ISplitsFactory} from "./interfaces/ISplitsFactory.sol";
 import "@openzeppelin/contracts/access/extensions/AccessControlEnumerable.sol";
 
+/**
+ * @notice The Registry is a single top-level contract typically managed by a DAO.
+ * Catalogs, managed by an organization, must register with the Registry to participate in the ecosystem.
+ * The Registry also contains DAO treasury information to receive a portion of sales and royalties.
+ */
 contract Registry is IRegistry, IOfficialContracts, AccessControlEnumerable {
     using EnumerableSet for EnumerableSet.AddressSet;
 
-    /// @dev The max fee an admin can set. This is calculated as the numerator. e.g. 1_000 / 10_000 = 10%
+    /// @notice The max fee an admin can set. This is calculated as the numerator. e.g. 1_000 / 10_000 = 10%
     uint32 constant MAX_TREASURY_FEE = 1_000;
 
-    /// @dev The denominator when determining the treasury fee. e.g. treasuryFee * someValue / FEE_SCALE
+    /// @notice The denominator when determining the treasury fee. e.g. treasuryFee * someValue / FEE_SCALE
     uint32 constant FEE_SCALE = 10_000;
 
     // State Variables
 
-    /// @dev only an address with a verifier role can verify a track
+    /// @notice only an address with a verifier role can verify a track
     bytes32 public constant VERIFIER_ROLE = keccak256("VERIFIER_ROLE");
 
-    /// @dev only an address with a catalog registrar role can register a catalog contract
+    /// @notice only an address with a catalog registrar role can register a catalog contract
     bytes32 public constant CATALOG_REGISTRAR_ROLE = keccak256("CATALOG_REGISTRAR_ROLE");
 
-    /// @dev only an address with a releases registrar role can register a releases contract
+    /// @notice only an address with a releases registrar role can register a releases contract
     bytes32 public constant RELEASES_REGISTRAR_ROLE = keccak256("RELEASES_REGISTRAR_ROLE");
 
-    /// @dev an address with AUTO_VERIFIED_ROLE will have their tracks verified on registration
+    /// @notice an address with AUTO_VERIFIED_ROLE will have their tracks verified on registration
     bytes32 public constant AUTO_VERIFIED_ROLE = keccak256("AUTO_VERIFIED_ROLE");
 
     address payable _treasury;

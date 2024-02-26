@@ -5,7 +5,7 @@ import {IReleases} from "./IReleases.sol";
 import {IBurnable} from "./IBurnable.sol";
 
 /**
- * @title IOpenReleases
- * @dev Interface for IOpenReleases, extends IReleases
+ * @notice IOpenReleases is "open" for anyone to release a drop. It contains `IBurnable`
+ * functionality for privileged accounts to remove malicious tokens.
  */
 interface IOpenReleases is IReleases, IBurnable {}

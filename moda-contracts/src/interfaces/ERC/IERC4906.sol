@@ -4,15 +4,12 @@ pragma solidity 0.8.21;
 import "@openzeppelin/contracts/interfaces/IERC165.sol";
 import "@openzeppelin/contracts/interfaces/IERC721.sol";
 
-/// @title EIP-721 Metadata Update Extension
+/// @notice EIP-721 Metadata Update Extension. This standard will notify third parties
+///         to update their cache when metadata is changed.
 interface IERC4906 is IERC165, IERC721 {
-    /// @dev This event emits when the metadata of a token is changed.
-    /// So that the third-party platforms such as NFT market could
-    /// timely update the images and related attributes of the NFT.
+    /// @dev This event should be emitted when the metadata of a single token is changed.
     event MetadataUpdate(uint256 _tokenId);
 
-    /// @dev This event emits when the metadata of a range of tokens is changed.
-    /// So that the third-party platforms such as NFT market could
-    /// timely update the images and related attributes of the NFTs.
+    /// @dev This event should be emitted when metadata for multiple tokens are changed.
     event BatchMetadataUpdate(uint256 _fromTokenId, uint256 _toTokenId);
 }

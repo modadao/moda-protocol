@@ -2,13 +2,7 @@
 pragma solidity ^0.8.21;
 
 import "forge-std/Test.sol";
-import {
-    Profile,
-    ProfileAlreadyMinted,
-    ProfileDoesNotExist,
-    ProfilesAreSoulBound,
-    CallerNotAuthorized
-} from "../src/Profile.sol";
+import {Profile} from "../src/Profile.sol";
 import {IProfile} from "../src/interfaces/Profile/IProfile.sol";
 import {IERC4906} from "../src/interfaces/ERC/IERC4906.sol";
 import {ISimpleOwnership} from "../src/interfaces/Profile/ISimpleOwnership.sol";
@@ -20,6 +14,11 @@ import {OwnedContractMock} from "./mocks/OwnedContractMock.sol";
 import {AccessControlledMock} from "./mocks/AccessControlledMock.sol";
 
 contract ProfileTest is Test {
+    error ProfileAlreadyMinted();
+    error ProfileDoesNotExist();
+    error ProfilesAreSoulBound();
+    error CallerNotAuthorized();
+
     Profile public profile;
 
     address public firstUser = address(0x1);

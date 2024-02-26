@@ -10,10 +10,8 @@ import {ICatalog} from "./interfaces/Catalog/ICatalog.sol";
 import {ISplitsFactory} from "./interfaces/ISplitsFactory.sol";
 
 /**
- * @title OpenReleases
- * @dev The contract allows any track owner to be able to create a release
+ * @notice The contract allows any track owner to be able to create a release.
  */
-
 contract OpenReleases is IOpenReleases, ERC1155Supply, ERC1155Holder, AccessControl, ERC2981 {
     // State Variables
     uint256 constant MAX_ROYALTY_AMOUNT = 2_000;
@@ -39,11 +37,11 @@ contract OpenReleases is IOpenReleases, ERC1155Supply, ERC1155Holder, AccessCont
 
     /**
      * @dev Constructor
-     * @param admin - The address of the organization admin
-     * @param name_ - The name of the token
-     * @param symbol_ - The symbol of the token
-     * @param catalog - A contract that implements ICatalog
-     * @param splitsFactory - A contract that implements ISplitsFactory
+     * @param admin The address of the organization admin
+     * @param name_ The name of the token
+     * @param symbol_ The symbol of the token
+     * @param catalog A contract that implements ICatalog
+     * @param splitsFactory A contract that implements ISplitsFactory
      */
     constructor(
         address admin,
@@ -67,14 +65,14 @@ contract OpenReleases is IOpenReleases, ERC1155Supply, ERC1155Holder, AccessCont
 
     /**
      * @dev Creates a new release token and transfers to the receiver
-     * @param receiver - The address that will receive the release tokens
+     * @param receiver The address that will receive the release tokens
      * @notice Only release admins can call this function
-     * @param royaltyAmount - The percentage of sale prices that should be
+     * @param royaltyAmount The percentage of sale prices that should be
      * paid to the beneficiary for re-sales. Calculated by <NOMINATOR> / 10,000.
      * e.g. For 10% royalties, pass in 1000
-     * @param uri_ - The URI of the token metadata
-     * @param totalSupply - The total amount of tokens to mint
-     * @param trackIds - An array containing the registered track ids of the tracks
+     * @param uri_ The URI of the token metadata
+     * @param totalSupply The total amount of tokens to mint
+     * @param trackIds An array containing the registered track ids of the tracks
      */
     function create(
         address receiver,
