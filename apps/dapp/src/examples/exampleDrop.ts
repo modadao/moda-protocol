@@ -3,6 +3,7 @@ import exampleImage1 from '../../public/exampleImage1.jpg';
 import exampleImage2 from '../../public/exampleImage2.jpg';
 import exampleImage3 from '../../public/exampleImage3.jpg';
 import exampleImage4 from '../../public/exampleImage4.jpg';
+import { bundleBadgeItems } from './BundleBadgeItems';
 
 export const exampleDrops: LatestDrop[] = [
   {
@@ -12,6 +13,11 @@ export const exampleDrops: LatestDrop[] = [
     description: 'Description',
     image: exampleImage1,
     release: {
+      tokenId: 0,
+      contract: {
+        contractAddress: '0x',
+        testnetContractAddress: '0x',
+      },
       heroImage: {
         url: exampleImage1,
         width: 3000,
@@ -24,14 +30,22 @@ export const exampleDrops: LatestDrop[] = [
           title: 'First Artist',
           slug: 'first-artist',
         },
+        coverImage: {
+          url: exampleImage1,
+        },
         other_artists: [
           {
             title: 'Secondary First Artist',
             slug: 'secondary-first-artist',
           },
         ],
+        spotifyLink: 'https://open.spotify.com/album/0',
       },
       slug: 'slug',
+      bundleBadgeItems: bundleBadgeItems,
+      tracksDownload: {
+        url: 'https://drop.audio',
+      },
     },
   },
   {
@@ -41,6 +55,11 @@ export const exampleDrops: LatestDrop[] = [
     description: 'Description',
     image: exampleImage2,
     release: {
+      tokenId: 1,
+      contract: {
+        contractAddress: '0x',
+        testnetContractAddress: '0x',
+      },
       heroImage: {
         url: exampleImage2,
         width: 3000,
@@ -54,14 +73,22 @@ export const exampleDrops: LatestDrop[] = [
           title: 'Second Artist',
           slug: 'second-artist',
         },
+        coverImage: {
+          url: exampleImage2,
+        },
         other_artists: [
           {
             title: 'Secondary Second Artist',
             slug: 'secondary-second-artist',
           },
         ],
+        spotifyLink: 'https://open.spotify.com/album/1',
       },
       slug: 'slug',
+      bundleBadgeItems: bundleBadgeItems,
+      tracksDownload: {
+        url: 'https://drop.audio',
+      },
     },
   },
   {
@@ -71,6 +98,11 @@ export const exampleDrops: LatestDrop[] = [
     description: 'Description',
     image: exampleImage3,
     release: {
+      tokenId: 2,
+      contract: {
+        contractAddress: '0x',
+        testnetContractAddress: '0x',
+      },
       heroImage: {
         url: exampleImage3,
         width: 3000,
@@ -84,14 +116,22 @@ export const exampleDrops: LatestDrop[] = [
           title: 'Third Artist',
           slug: 'third-artist',
         },
+        coverImage: {
+          url: exampleImage3,
+        },
         other_artists: [
           {
             title: 'Secondary Third Artist',
             slug: 'secondary-third-artist',
           },
         ],
+        spotifyLink: 'https://open.spotify.com/album/2',
       },
       slug: 'slug',
+      bundleBadgeItems: bundleBadgeItems,
+      tracksDownload: {
+        url: 'https://drop.audio',
+      },
     },
   },
   {
@@ -101,6 +141,11 @@ export const exampleDrops: LatestDrop[] = [
     description: 'Description',
     image: exampleImage4,
     release: {
+      tokenId: 3,
+      contract: {
+        contractAddress: '0x',
+        testnetContractAddress: '0x',
+      },
       heroImage: {
         url: exampleImage4,
         width: 3000,
@@ -113,14 +158,22 @@ export const exampleDrops: LatestDrop[] = [
           title: 'Fourth Artist',
           slug: 'fourth-artist',
         },
+        coverImage: {
+          url: exampleImage4,
+        },
         other_artists: [
           {
             title: 'Secondary Fourth Artist',
             slug: 'secondary-fourth-artist',
           },
         ],
+        spotifyLink: 'https://open.spotify.com/album/3',
       },
       slug: 'slug',
+      bundleBadgeItems: bundleBadgeItems,
+      tracksDownload: {
+        url: 'https://drop.audio',
+      },
     },
   },
 ];
