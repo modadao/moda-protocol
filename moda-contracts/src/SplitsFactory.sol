@@ -7,11 +7,12 @@ import {IOfficialContracts} from "./interfaces/Registry/IOfficialContracts.sol";
 import "./interfaces/Registry/IRegistry.sol";
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 
+/// @notice SplitsFactory creates a Trustless 0xSplit contract with the Registry treasury as a beneficiary.
 contract SplitsFactory is ISplitsFactory, Ownable {
-    /// @dev constant denominator to calculate percentages (1,000,000 = 100%)
+    /// @notice constant denominator to calculate percentages (1,000,000 = 100%)
     uint32 public constant PERCENTAGE_SCALE = 1e6;
 
-    /// @dev 1% distributor fee (10,000 = 1%)
+    /// @notice 1% distributor fee (10,000 = 1%)
     uint32 constant DISTRIBUTOR_FEE = 1e4;
 
     ISplitMain _splitMain;
@@ -19,9 +20,14 @@ contract SplitsFactory is ISplitsFactory, Ownable {
 
     event SplitCreated(address indexed sender, address indexed split);
 
-    constructor(ISplitMain splitMain, IOfficialContracts Registry) Ownable(msg.sender) {
+    /**
+     * @notice Constructor
+     * @param splitMain The 0xSplit SplitMain contract address.
+     * @param registry The top level Registry contract.
+     */
+    constructor(ISplitMain splitMain, IOfficialContracts registry) Ownable(msg.sender) {
         _splitMain = splitMain;
-        _registry = Registry;
+        _registry = registry;
     }
 
     /// @inheritdoc ISplitsFactory
@@ -62,7 +68,7 @@ contract SplitsFactory is ISplitsFactory, Ownable {
             totalPercentage += shares[i];
         }
 
-        // @dev If there is any "dust" percentages, give them to the admin facilitator
+        /// @notice If there is any "dust" percentages, give them to the admin facilitator
         if (totalPercentage != PERCENTAGE_SCALE) {
             for (uint256 i = 0; i < accounts.length; i++) {
                 if (accounts[i] == treasury) {

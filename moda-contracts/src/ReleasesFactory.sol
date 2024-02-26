@@ -9,14 +9,17 @@ import {ICatalog} from "./interfaces/Catalog/ICatalog.sol";
 import {IOfficialContracts} from "./interfaces/Registry/IOfficialContracts.sol";
 import {ISplitsFactory} from "./interfaces/ISplitsFactory.sol";
 
+/**
+ * @notice ReleasesFactory creates Trustless Release contracts and registers them with a Catalog.
+ */
 contract ReleasesFactory is IReleasesFactory {
     IOfficialContracts public registry;
     address public releasesMaster;
 
     /**
-     * @dev Constructor
-     * @param registry_ - The registry contract that implements IOfficialContracts
-     * @param releasesMaster_ - The address of the Releases implementation contract
+     * @notice Constructor
+     * @param registry_ The registry contract that implements IOfficialContracts
+     * @param releasesMaster_ The address of the Releases implementation contract
      */
     constructor(IOfficialContracts registry_, address releasesMaster_) {
         registry = registry_;
