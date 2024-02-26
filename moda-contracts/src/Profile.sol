@@ -9,17 +9,18 @@ import {IAccessControl} from "@openzeppelin/contracts/access/IAccessControl.sol"
 import {IProfile} from "./interfaces/Profile/IProfile.sol";
 import {ISimpleOwnership} from "./interfaces/Profile/ISimpleOwnership.sol";
 
-error ProfileAlreadyMinted();
-error ProfileDoesNotExist();
-error ProfilesAreSoulBound();
-error CallerNotAuthorized();
-
-/// @dev Profile is a smart contract for users to set metadata as soul bound ERC721 NFTs with the Metadata of their choice.
+/// @notice Profile is a smart contract for users to set metadata as soul bound ERC721 NFTs with the Metadata of their choice.
 contract Profile is IProfile, IERC721, IERC721Metadata, IERC4906, ERC165 {
+    // Errors
+    error ProfileAlreadyMinted();
+    error ProfileDoesNotExist();
+    error ProfilesAreSoulBound();
+    error CallerNotAuthorized();
+
     string private _name;
     string private _symbol;
 
-    /// @dev This is a counter to keep track of how many Profiles have been minted and to assign new IDs to new minters.
+    /// @notice This is a counter to keep track of how many Profiles have been minted and to assign new IDs to new minters.
     uint256 public totalSupply = 0;
 
     /// @dev This is a map from the token ID to a user's account.
@@ -31,11 +32,11 @@ contract Profile is IProfile, IERC721, IERC721Metadata, IERC4906, ERC165 {
 
     bytes32 private constant _DEFAULT_ADMIN_ROLE = 0x00;
 
-    /// @dev This event is used to keep track of who updated a profile on behalf of a contract.
+    /// @notice This event is used to keep track of who updated a profile on behalf of a contract.
     /// This is useful for client applications.
     event ProfileChangedFor(address indexed kontract, address indexed caller);
 
-    /// @dev Check if the caller is an owner or admin of a contract.
+    /// @notice Check if the caller is an owner or admin of a contract.
     /// @param kontract The address of a contract that may or may not use OpenZeppelin's Ownership
     /// or AccessControl contracts.
     modifier requireAuthority(address kontract) {
@@ -147,32 +148,32 @@ contract Profile is IProfile, IERC721, IERC721Metadata, IERC4906, ERC165 {
         revert ProfilesAreSoulBound();
     }
 
-    /// @dev This will revert. Profiles are soulbound.
+    /// @notice This will revert. Profiles are soulbound.
     function getApproved(uint256) public view virtual returns (address) {
         revert ProfilesAreSoulBound();
     }
 
-    /// @dev This will revert. Profiles are soulbound.
+    /// @notice This will revert. Profiles are soulbound.
     function setApprovalForAll(address, bool) public virtual {
         revert ProfilesAreSoulBound();
     }
 
-    /// @dev This will always return `false`. Profiles are soulbound.
+    /// @notice This will always return `false`. Profiles are soulbound.
     function isApprovedForAll(address, address) public view virtual returns (bool) {
         return false;
     }
 
-    /// @dev This will revert. Profiles are soulbound.
+    /// @notice This will revert. Profiles are soulbound.
     function transferFrom(address, address, uint256) public virtual {
         revert ProfilesAreSoulBound();
     }
 
-    /// @dev This will revert. Profiles are soulbound.
+    /// @notice This will revert. Profiles are soulbound.
     function safeTransferFrom(address, address, uint256) public pure {
         revert ProfilesAreSoulBound();
     }
 
-    /// @dev This will revert. Profiles are soulbound.
+    /// @notice This will revert. Profiles are soulbound.
     function safeTransferFrom(address, address, uint256, bytes memory) public virtual {
         revert ProfilesAreSoulBound();
     }

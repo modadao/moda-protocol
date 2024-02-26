@@ -8,8 +8,9 @@ interface ICatalogFactory {
 
     /**
      * @dev Creates a new Catalog contract
-     * @param name - The name of the Catalog contract
-     * @param membership - A contract that implements the IMembership interface
+     * @param name The name of the Catalog contract
+     * @param membership A contract that implements `IMembership`.
+     *                   `IMembership` can be used to gate users based on rules that you define.
      */
     function create(string calldata name, IMembership membership) external returns (address);
 }

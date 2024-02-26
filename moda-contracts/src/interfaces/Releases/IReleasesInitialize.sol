@@ -6,13 +6,13 @@ import {ISplitsFactory} from "../ISplitsFactory.sol";
 
 interface IReleasesInitialize {
     /**
-     * @dev Initializes the contract
-     * @param admin - The address that will be given the role of default admin. See {AccessControl}
-     * @param releaseAdmins - An array of addresses that will be given the role of release admin
-     * @param name_ - The name of the Releases contract
-     * @param symbol_ - The symbol of the Releases contract
-     * @param catalog - A contract that implements ICatalog
-     * @param splitsFactory - A contract that implements ISplitsFactory
+     * @notice Initializes the contract
+     * @param admin The address that will be given the role of default admin. See {AccessControl}
+     * @param releaseAdmins An array of addresses that will be given the role of release admin
+     * @param name_ The name of the Releases contract
+     * @param symbol_ The symbol of the Releases contract
+     * @param catalog A contract that implements ICatalog
+     * @param splitsFactory A contract that implements ISplitsFactory
      */
     function initialize(
         address admin,

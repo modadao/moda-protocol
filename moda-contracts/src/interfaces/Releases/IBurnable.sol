@@ -5,8 +5,7 @@ import {IReleases} from "./IReleases.sol";
 import {IERC165} from "@openzeppelin/contracts/utils/introspection/IERC165.sol";
 
 /**
- * @title IBurnable
- * @dev Interface for IBurnable
+ * @notice IBurnable is an interface for burning a token.
  */
 interface IBurnable {
     event Burned(uint256 tokenId, address indexed tokenOwner);
