@@ -1,6 +1,6 @@
 import { DropNft } from '@/types';
 
-export const exampleNfts: DropNft[] = [
+export const Nfts: DropNft[] = [
   {
     tokenAddress: '0x',
     tokenId: 0,
