@@ -16,6 +16,7 @@ import {
 } from 'profile';
 import { useEffect, useMemo, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
+import { polygonMumbai } from 'viem/chains';
 import { useAccount } from 'wagmi';
 import ProfileDataForm from '../ProfileUi/ProfileDataForm';
 
@@ -51,7 +52,7 @@ export default function EditProfileForAccount({
   } = useWriteProfileUpdateProfile();
 
   useWatchProfileMetadataUpdateEvent({
-    address: ProfileAddresses.mumbai,
+    address: ProfileAddresses[polygonMumbai.id],
     onLogs() {
       setIsUpdatingData(false);
     },
@@ -63,7 +64,7 @@ export default function EditProfileForAccount({
     const hash = await uploadProfileData(profileData);
     const uri = `${IPFS_GATEWAY}${hash}`;
     const { request } = await simulateProfileUpdateProfile(config, {
-      address: ProfileAddresses.mumbai,
+      address: ProfileAddresses[polygonMumbai.id],
       args: [uri],
     });
 
@@ -76,9 +77,7 @@ export default function EditProfileForAccount({
   );
 
   useEffect(() => {
-    if (profileData) {
-      formMethods.reset(profileData);
-    }
+    if (profileData) formMethods.reset(profileData);
   }, [profileData, formMethods]);
 
   useEffect(() => {
