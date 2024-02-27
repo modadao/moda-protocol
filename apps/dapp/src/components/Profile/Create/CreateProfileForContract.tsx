@@ -16,6 +16,7 @@ import {
 
 import { useEffect, useMemo, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
+import { polygonMumbai } from 'viem/chains';
 import { config } from '../../WagmiWrapper';
 import ProfileDataForm from '../ProfileUi/ProfileDataForm';
 
@@ -39,7 +40,7 @@ export default function CreateProfileForContract({
   const profileData = getValues();
 
   useWatchProfileTransferEvent({
-    address: ProfileAddresses.mumbai,
+    address: ProfileAddresses[polygonMumbai.id],
     onLogs() {
       setIsCreatingProfile(false);
     },
@@ -59,7 +60,7 @@ export default function CreateProfileForContract({
     const hash = await uploadProfileData(profileData);
     const uri = `${IPFS_GATEWAY}${hash}`;
     const { request } = await simulateProfileMintFor(config, {
-      address: ProfileAddresses.mumbai,
+      address: ProfileAddresses[polygonMumbai.id],
       args: [profileData.profile.address, uri],
     });
     profileMintFor(request);

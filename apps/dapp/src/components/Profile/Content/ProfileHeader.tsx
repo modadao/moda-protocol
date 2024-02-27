@@ -14,7 +14,7 @@ export default function ProfileHeader({ address }: ProfileHeaderProps) {
         <Image
           className="object-cover"
           src={profileData.profile.banner}
-          alt=""
+          alt="Banner"
           fill={true}
         />
       </div>
@@ -22,8 +22,8 @@ export default function ProfileHeader({ address }: ProfileHeaderProps) {
         <Image
           className="rounded-full object-cover"
           src={profileData.image}
-          alt=""
-          fill={true}
+          alt="Profile"
+          fill
         />
       </div>
     </div>

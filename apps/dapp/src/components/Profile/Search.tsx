@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { ProfileAddresses, useReadProfileBalanceOf } from 'profile';
 import { useEffect, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
+import { polygonMumbai } from 'viem/chains';
 import { UiSearchInput } from '../../ui/UiSearchInput';
 
 interface SearchData {
@@ -30,7 +31,7 @@ export default function Search() {
   const searchedAddress = watch('searchedAddress');
 
   const { data: userBalance, isFetched } = useReadProfileBalanceOf({
-    address: ProfileAddresses.mumbai,
+    address: ProfileAddresses[polygonMumbai.id],
     args: [searchedAddress],
   });
 
@@ -62,7 +63,7 @@ export default function Search() {
         onSubmit={handleSubmit(() => setIsSearchLoading(true))}
         className="flex flex-col items-center mt-12"
       >
-        <div className="flex flex-row items-center ">
+        <div className="flex flex-row items-center gap-3">
           <UiSearchInput {...register('searchedAddress')} />
           <UiButton className="h-10">Search</UiButton>
         </div>
