@@ -48,7 +48,7 @@ export default function NavDropdownProfile() {
           onMouseLeave={() => setIsAccountHovered(false)}
         >
           <DropdownMenuLabel className="font-extrabold p-0 text-lg">
-            Account
+            My Profile
           </DropdownMenuLabel>
           {isAccountHovered && !hasProfile && (
             <MenuItemButton
