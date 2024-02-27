@@ -2,6 +2,10 @@ import './globals.css';
 
 import { GoogleAnalytics } from '@/components/GoogleAnalytics';
 import WrongNetworkDialog from '@/components/Wallet/WrongNetworkDialog';
+import {
+  DEFAULT_WEB3_STORAGE_PROPS,
+  Web3StorageProvider,
+} from '@/context/Web3StorageProvider';
 import { Toaster } from '@/ui/UiToaster';
 import { Barlow } from 'next/font/google';
 import WagmiWrapper from '../components/WagmiWrapper';
@@ -33,9 +37,11 @@ export default function RootLayout({
         ) : null}
 
         <WagmiWrapper>
-          {children}
-          <Toaster />
-          <WrongNetworkDialog />
+          <Web3StorageProvider {...DEFAULT_WEB3_STORAGE_PROPS}>
+            {children}
+            <Toaster />
+            <WrongNetworkDialog />
+          </Web3StorageProvider>
         </WagmiWrapper>
       </body>
     </html>

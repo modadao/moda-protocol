@@ -3,6 +3,7 @@ import { downloadJSON } from '@/utils/IPFS';
 import { defaultProfileMetadata } from '@/utils/defaultProfileMetadata';
 import { ProfileAddresses, useReadProfileAccountUri } from 'profile';
 import { useEffect, useMemo, useState } from 'react';
+import { polygonMumbai } from 'viem/chains';
 import { useAccount } from 'wagmi';
 
 export const useGetProfileData = (
@@ -13,7 +14,7 @@ export const useGetProfileData = (
 } => {
   const { address } = useAccount();
   const { data: accountUri, isPending } = useReadProfileAccountUri({
-    address: ProfileAddresses.mumbai,
+    address: ProfileAddresses[polygonMumbai.id],
     args: [profileAddress ? profileAddress : address],
   });
 

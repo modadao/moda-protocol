@@ -16,6 +16,7 @@ import {
 } from 'profile';
 import { useEffect, useMemo, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
+import { polygonMumbai } from 'viem/chains';
 import ProfileDataForm from '../ProfileUi/ProfileDataForm';
 
 interface EditProfileForContractProps {
@@ -51,7 +52,7 @@ export default function EditProfileForContract({
   } = useWriteProfileUpdateProfileFor();
 
   useWatchProfileMetadataUpdateEvent({
-    address: ProfileAddresses.mumbai,
+    address: ProfileAddresses[polygonMumbai.id],
     onLogs() {
       setIsUpdatingData(false);
     },
@@ -63,7 +64,7 @@ export default function EditProfileForContract({
     const hash = await uploadProfileData(profileData);
     const uri = `${IPFS_GATEWAY}${hash}`;
     const { request } = await simulateProfileUpdateProfileFor(config, {
-      address: ProfileAddresses.mumbai,
+      address: ProfileAddresses[polygonMumbai.id],
       args: [contractAddress, uri],
     });
     updateProfileFor(request);

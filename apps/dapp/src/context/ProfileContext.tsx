@@ -1,6 +1,7 @@
 'use client';
 import { ProfileAddresses, useReadProfileBalanceOf } from 'profile';
 import { ReactNode, createContext, useEffect, useState } from 'react';
+import { polygonMumbai } from 'viem/chains';
 import { useAccount } from 'wagmi';
 
 interface ProfileContextProps {
@@ -20,7 +21,7 @@ export function ProfileContextProvider({
 }: ProfileContextProviderProps) {
   const { address } = useAccount();
   const { data: userBalance } = useReadProfileBalanceOf({
-    address: ProfileAddresses.mumbai,
+    address: ProfileAddresses[polygonMumbai.id],
     args: [address],
   });
 

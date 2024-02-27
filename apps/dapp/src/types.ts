@@ -26,6 +26,12 @@ export const EVMAddressSchema = z.string().refine(
   { message: 'Invalid EVM address' },
 );
 
+export const Web3StorageAuthSchema = z.object({
+  email: z.string().email(),
+});
+
+export type Web3StorageAuth = z.infer<typeof Web3StorageAuthSchema>;
+
 export const ProfileMetadataSchema = z.object({
   name: z.string().min(1, { message: 'Name is required' }),
   image: z
