@@ -1,4 +1,5 @@
 import { Config } from '@/config';
+
 import { useQuery } from '@tanstack/react-query';
 import { useReadProfileAccountUri } from 'profile';
 import { useMemo } from 'react';

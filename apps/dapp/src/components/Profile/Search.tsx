@@ -1,11 +1,11 @@
 'use client';
 
+import { Config } from '@/config';
 import { UiButton } from '@/ui/UiButton';
 import { useRouter } from 'next/navigation';
-import { ProfileAddresses, useReadProfileBalanceOf } from 'profile';
+import { useReadProfileBalanceOf } from 'profile';
 import { useEffect, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { polygonMumbai } from 'viem/chains';
 import { UiSearchInput } from '../../ui/UiSearchInput';
 
 interface SearchData {
@@ -31,7 +31,7 @@ export default function Search() {
   const searchedAddress = watch('searchedAddress');
 
   const { data: userBalance, isFetched } = useReadProfileBalanceOf({
-    address: ProfileAddresses[polygonMumbai.id],
+    address: Config.profileAddress,
     args: [searchedAddress],
   });
 

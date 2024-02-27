@@ -1,5 +1,6 @@
 'use client';
 
+import { Config } from '@/config';
 import { useToast } from '@/hooks/useToast';
 import { useUploadProfileData } from '@/hooks/useUploadProfileData';
 import { ProfileMetadataSchema } from '@/types';
@@ -8,14 +9,12 @@ import { defaultProfileMetadata } from '@/utils/defaultProfileMetadata';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import {
-  ProfileAddresses,
   simulateProfileMint,
   useWatchProfileTransferEvent,
   useWriteProfileMint,
 } from 'profile';
 import { useEffect, useMemo, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { polygonMumbai } from 'viem/chains';
 import { useAccount } from 'wagmi';
 import { config } from '../../WagmiWrapper';
 import ProfileDataForm from '../ProfileUi/ProfileDataForm';
@@ -52,7 +51,7 @@ export default function CreateProfileForAccount({
   } = useWriteProfileMint();
 
   useWatchProfileTransferEvent({
-    address: ProfileAddresses[polygonMumbai.id],
+    address: Config.profileAddress,
     onLogs() {
       setIsCreatingProfile(false);
     },
@@ -75,7 +74,7 @@ export default function CreateProfileForAccount({
     const uri = `${IPFS_GATEWAY}${ipfsHash}`;
 
     const profileMintResult = await simulateProfileMint(config, {
-      address: ProfileAddresses[polygonMumbai.id],
+      address: Config.profileAddress,
       args: [uri],
     });
     profileMint(profileMintResult.request);
