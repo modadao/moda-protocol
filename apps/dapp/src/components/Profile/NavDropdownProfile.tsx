@@ -219,7 +219,7 @@ interface MenuItemButtonProps {
 function MenuItemButton({ text, onClick }: MenuItemButtonProps) {
   return (
     <UiButton
-      className=" h-4 p-0 text-sm italic bg-transparent text-black border-none text-sm  hover:bg-transparent hover:underline"
+      className=" h-4 p-0 italic bg-transparent text-black border-none text-sm hover:bg-transparent hover:underline"
       intent="secondary"
       size="sm"
       onClick={onClick}

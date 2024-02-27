@@ -34,7 +34,7 @@ export default function ProfileDataForm({
       onSubmit={handleSubmit(submitData)}
       className="flex flex-col items-center justify-center gap-6"
     >
-      <h1 className="text-4xl font-extrabold mt-12 italic ">{headerText}</h1>
+      <h1 className="text-4xl font-extrabold mt-12 italic">{headerText}</h1>
 
       <div className="flex flex-row gap-8">
         <div className="flex flex-col gap-4">

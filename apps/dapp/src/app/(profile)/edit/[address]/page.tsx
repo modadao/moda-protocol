@@ -1,6 +1,6 @@
 import EditProfile from '@/components/Profile/Edit/EditProfile';
 
-interface EditPageProps {
+export interface EditPageProps {
   params: {
     address: string;
   };
@@ -13,7 +13,8 @@ export default function EditProfilePage({
   params,
   searchParams,
 }: EditPageProps) {
-  const isContract = searchParams.isContract === 'true' ? true : false;
+  const isContract = searchParams.isContract === 'true';
+
   return (
     <div className="relative">
       <EditProfile address={params.address} isContract={isContract} />

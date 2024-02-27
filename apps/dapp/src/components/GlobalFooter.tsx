@@ -14,11 +14,11 @@ interface FooterLink {
 const FooterLinks1: FooterLink[] = [
   {
     label: 'Terms and Conditions',
-    href: '/page/terms-and-conditions',
+    href: '/terms-and-conditions',
   },
   {
     label: 'Privacy Policy',
-    href: '/page/privacy-policy',
+    href: '/privacy-policy',
   },
 ];
 const FooterLinks2: FooterLink[] = [];

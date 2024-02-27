@@ -1,6 +1,7 @@
 'use client';
 
 import { config } from '@/components/WagmiWrapper';
+import { Config } from '@/config';
 import { useGetProfileData } from '@/hooks/useGetProfileData';
 import { useToast } from '@/hooks/useToast';
 import { useUploadProfileData } from '@/hooks/useUploadProfileData';
@@ -10,7 +11,6 @@ import { IPFS_GATEWAY } from '@/utils/constants';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import {
-  ProfileAddresses,
   simulateProfileUpdateProfile,
   useWatchProfileMetadataUpdateEvent,
   useWriteProfileUpdateProfile,
@@ -54,7 +54,7 @@ export default function EditProfileForAccount({
   } = useWriteProfileUpdateProfile();
 
   useWatchProfileMetadataUpdateEvent({
-    address: ProfileAddresses.mumbai,
+    address: Config.profileAddress,
     onLogs() {
       setIsUpdatingData(false);
     },
@@ -77,7 +77,7 @@ export default function EditProfileForAccount({
     const uri = `${IPFS_GATEWAY}${ipfsHash}`;
 
     const { request } = await simulateProfileUpdateProfile(config, {
-      address: ProfileAddresses.mumbai,
+      address: Config.profileAddress,
       args: [uri],
     });
     updateProfile(request);
