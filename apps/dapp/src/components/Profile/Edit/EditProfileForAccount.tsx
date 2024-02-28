@@ -1,6 +1,7 @@
 'use client';
 
 import { config } from '@/components/WagmiWrapper';
+import { Config } from '@/config';
 import { useGetProfileData } from '@/hooks/useGetProfileData';
 import { useToast } from '@/hooks/useToast';
 import { ProfileMetadataSchema } from '@/types';
@@ -9,14 +10,12 @@ import { uploadProfileData } from '@/utils/profileHelpers';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import {
-  ProfileAddresses,
   simulateProfileUpdateProfile,
   useWatchProfileMetadataUpdateEvent,
   useWriteProfileUpdateProfile,
 } from 'profile';
 import { useEffect, useMemo, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { polygonMumbai } from 'viem/chains';
 import { useAccount } from 'wagmi';
 import ProfileDataForm from '../ProfileUi/ProfileDataForm';
 
@@ -52,7 +51,7 @@ export default function EditProfileForAccount({
   } = useWriteProfileUpdateProfile();
 
   useWatchProfileMetadataUpdateEvent({
-    address: ProfileAddresses[polygonMumbai.id],
+    address: Config.profileAddress,
     onLogs() {
       setIsUpdatingData(false);
     },
@@ -64,7 +63,7 @@ export default function EditProfileForAccount({
     const hash = await uploadProfileData(profileData);
     const uri = `${IPFS_GATEWAY}${hash}`;
     const { request } = await simulateProfileUpdateProfile(config, {
-      address: ProfileAddresses[polygonMumbai.id],
+      address: Config.profileAddress,
       args: [uri],
     });
 
