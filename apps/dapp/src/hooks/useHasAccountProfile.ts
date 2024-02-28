@@ -5,6 +5,7 @@ import { useAccount } from 'wagmi';
 
 export const useHasAccountProfile = () => {
   const { address } = useAccount();
+
   const { data: userBalance, isFetched } = useReadProfileBalanceOf({
     address: Config.profileAddress,
     args: [address],
@@ -13,9 +14,7 @@ export const useHasAccountProfile = () => {
   const [hasProfile, setHasProfile] = useState(false);
 
   useEffect(() => {
-    if (Number(userBalance) === 1) {
-      setHasProfile(true);
-    }
+    setHasProfile(Number(userBalance) > 1);
   }, [userBalance]);
 
   return { hasProfile, isFetched };
