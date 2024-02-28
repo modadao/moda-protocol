@@ -8,15 +8,14 @@ import { uploadProfileData } from '@/utils/profileHelpers';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import {
-  ProfileAddresses,
   simulateProfileMintFor,
   useWatchProfileTransferEvent,
   useWriteProfileMintFor,
 } from 'profile';
 
+import { Config } from '@/config';
 import { useEffect, useMemo, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { polygonMumbai } from 'viem/chains';
 import { config } from '../../WagmiWrapper';
 import ProfileDataForm from '../ProfileUi/ProfileDataForm';
 
@@ -40,7 +39,7 @@ export default function CreateProfileForContract({
   const profileData = getValues();
 
   useWatchProfileTransferEvent({
-    address: ProfileAddresses[polygonMumbai.id],
+    address: Config.profileAddress,
     onLogs() {
       setIsCreatingProfile(false);
     },
@@ -60,7 +59,7 @@ export default function CreateProfileForContract({
     const hash = await uploadProfileData(profileData);
     const uri = `${IPFS_GATEWAY}${hash}`;
     const { request } = await simulateProfileMintFor(config, {
-      address: ProfileAddresses[polygonMumbai.id],
+      address: Config,
       args: [profileData.profile.address, uri],
     });
     profileMintFor(request);

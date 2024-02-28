@@ -1,6 +1,7 @@
 'use client';
 
 import { config } from '@/components/WagmiWrapper';
+import { Config } from '@/config';
 import { useGetProfileData } from '@/hooks/useGetProfileData';
 import { useToast } from '@/hooks/useToast';
 import { ProfileMetadataSchema } from '@/types';
@@ -9,7 +10,6 @@ import { uploadProfileData } from '@/utils/profileHelpers';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import {
-  ProfileAddresses,
   simulateProfileUpdateProfileFor,
   useWatchProfileMetadataUpdateEvent,
   useWriteProfileUpdateProfileFor,
@@ -51,7 +51,7 @@ export default function EditProfileForContract({
   } = useWriteProfileUpdateProfileFor();
 
   useWatchProfileMetadataUpdateEvent({
-    address: ProfileAddresses.mumbai,
+    address: Config.profileAddress,
     onLogs() {
       setIsUpdatingData(false);
     },
@@ -63,7 +63,7 @@ export default function EditProfileForContract({
     const hash = await uploadProfileData(profileData);
     const uri = `${IPFS_GATEWAY}${hash}`;
     const { request } = await simulateProfileUpdateProfileFor(config, {
-      address: ProfileAddresses.mumbai,
+      address: Config.profileAddress,
       args: [contractAddress, uri],
     });
     updateProfileFor(request);

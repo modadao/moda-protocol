@@ -1,7 +1,7 @@
+import { Config } from '@/config';
 import { getChainInfo } from '@/utils/getChainInfo';
 import { EvmAbiItem, EvmChain } from '@moralisweb3/common-evm-utils';
 import Moralis from 'moralis';
-import { ProfileAddresses } from 'profile';
 
 const apiKey = process.env.NEXT_PUBLIC_MORALIS_API_KEY || '';
 
@@ -56,7 +56,7 @@ export async function GET(_request: Request, { params }: Params) {
   };
 
   const response = await Moralis.EvmApi.events.getContractEvents({
-    address: ProfileAddresses.mumbai,
+    address: Config.profileAddress,
     chain,
     topic,
     abi,

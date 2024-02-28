@@ -1,5 +1,6 @@
 'use client';
-import { ProfileAddresses, useReadProfileBalanceOf } from 'profile';
+import { Config } from '@/config';
+import { useReadProfileBalanceOf } from 'profile';
 import { ReactNode, createContext, useEffect, useState } from 'react';
 import { useAccount } from 'wagmi';
 
@@ -20,7 +21,7 @@ export function ProfileContextProvider({
 }: ProfileContextProviderProps) {
   const { address } = useAccount();
   const { data: userBalance } = useReadProfileBalanceOf({
-    address: ProfileAddresses.mumbai,
+    address: Config.profileAddress,
     args: [address],
   });
 
