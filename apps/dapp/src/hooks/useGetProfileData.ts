@@ -1,7 +1,8 @@
+import { Config } from '@/config';
 import { ProfileMetadata } from '@/types';
 import { downloadJSON } from '@/utils/IPFS';
 import { defaultProfileMetadata } from '@/utils/defaultProfileMetadata';
-import { ProfileAddresses, useReadProfileAccountUri } from 'profile';
+import { useReadProfileAccountUri } from 'profile';
 import { useEffect, useMemo, useState } from 'react';
 import { useAccount } from 'wagmi';
 
@@ -13,7 +14,7 @@ export const useGetProfileData = (
 } => {
   const { address } = useAccount();
   const { data: accountUri, isPending } = useReadProfileAccountUri({
-    address: ProfileAddresses.mumbai,
+    address: Config.profileAddress,
     args: [profileAddress ? profileAddress : address],
   });
 

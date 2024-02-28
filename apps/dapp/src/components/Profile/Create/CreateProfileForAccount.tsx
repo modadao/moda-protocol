@@ -1,5 +1,6 @@
 'use client';
 
+import { Config } from '@/config';
 import { useToast } from '@/hooks/useToast';
 import { ProfileMetadataSchema } from '@/types';
 import { IPFS_GATEWAY } from '@/utils/constants';
@@ -8,7 +9,6 @@ import { uploadProfileData } from '@/utils/profileHelpers';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import {
-  ProfileAddresses,
   simulateProfileMint,
   useWatchProfileTransferEvent,
   useWriteProfileMint,
@@ -49,7 +49,7 @@ export default function CreateProfileForAccount({
   } = useWriteProfileMint();
 
   useWatchProfileTransferEvent({
-    address: ProfileAddresses.mumbai,
+    address: Config.profileAddress,
     onLogs() {
       setIsCreatingProfile(false);
     },
@@ -61,7 +61,7 @@ export default function CreateProfileForAccount({
     const uri = `${IPFS_GATEWAY}${hash}`;
 
     const profileMintResult = await simulateProfileMint(config, {
-      address: ProfileAddresses.mumbai,
+      address: Config.profileAddress,
       args: [uri],
     });
     profileMint(profileMintResult.request);
