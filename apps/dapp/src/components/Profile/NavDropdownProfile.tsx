@@ -41,6 +41,8 @@ export default function NavDropdownProfile() {
       });
     }
   }, [getProfileDataError]);
+
+  console.log('has profile', hasProfile);
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="focus:outline-none">
@@ -70,7 +72,7 @@ export default function NavDropdownProfile() {
         </DropdownMenuLabel>
 
         <div
-          className="flex flex-row justify-between items-center p-0 pt-2"
+          className="flex flex-row justify-between items-center pt-2"
           onMouseEnter={() => setIsAccountHovered(true)}
           onMouseLeave={() => setIsAccountHovered(false)}
         >
@@ -87,7 +89,7 @@ export default function NavDropdownProfile() {
 
         {hasProfile ? (
           <div
-            className="flex flex-row justify-between items-center py-1 px-0 pt-2"
+            className="flex flex-row justify-between items-center pb-1 px-0 pt-2"
             onMouseEnter={() => setIsProfileHovered(true)}
             onMouseLeave={() => setIsProfileHovered(false)}
           >
@@ -108,7 +110,7 @@ export default function NavDropdownProfile() {
             )}
           </div>
         ) : (
-          <h3 className="text-sm font-extrabold">None</h3>
+          <h3 className="text-sm font-extrabold pb-1 px-0 pt-2">None</h3>
         )}
 
         <div
@@ -159,7 +161,7 @@ function NavDropdownContracts() {
           ))}
         </div>
       ) : (
-        <h3 className="text-sm font-extrabold">None</h3>
+        <h3 className="text-sm font-extrabold pb-1 px-0 pt-2">None</h3>
       )}
     </div>
   );

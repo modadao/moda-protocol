@@ -1,6 +1,8 @@
 import { Readable } from 'stream';
-import { uploadFile, uploadJSON } from '@/storage';
+import pinningService from '@/storage';
 import { FileError } from '@/types';
+
+const { uploadFile, uploadJSON } = pinningService();
 
 export async function POST(request: Request): Promise<Response> {
   let result;
