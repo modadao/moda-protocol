@@ -1,8 +1,8 @@
 import { Readable } from 'stream';
 
-export interface PinningService<R> {
-  uploadFile(file: Readable, name: string): Promise<R>;
-  uploadJSON(json: JSON): Promise<R>;
+export interface PinningService<StorageResult> {
+  uploadFile(file: Readable, name: string): Promise<StorageResult>;
+  uploadJSON(json: JSON): Promise<StorageResult>;
 }
 
 export interface StorageResult {

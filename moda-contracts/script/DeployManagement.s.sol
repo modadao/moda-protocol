@@ -6,7 +6,7 @@ import "../src/Management.sol";
 
 contract DeployManagement is Script {
     function run() public {
-        uint256 privateKey = vm.envUint("MODA_DEPLOYER_PRIVATE_KEY");
+        uint256 privateKey = vm.envUint("DEPLOYER_PRIVATE_KEY");
         vm.startBroadcast(privateKey);
         new Management();
         vm.stopBroadcast();
