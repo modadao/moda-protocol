@@ -7,7 +7,7 @@ import {DeployedContracts} from "./utils/DeployedContracts.sol";
 
 contract DeployProfile is Script {
     function run() public {
-        uint256 privateKey = vm.envUint("MODA_DEPLOYER_PRIVATE_KEY");
+        uint256 privateKey = vm.envUint("DEPLOYER_PRIVATE_KEY");
         vm.startBroadcast(privateKey);
 
         new Profile("Profile", "PROF");
