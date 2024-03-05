@@ -1,18 +1,27 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.21;
 
-import "@openzeppelin/contracts/access/AccessControl.sol";
-import "@openzeppelin/contracts/token/common/ERC2981.sol";
-import "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155Supply.sol";
-import "@openzeppelin/contracts/token/ERC1155/utils/ERC1155Holder.sol";
+import "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/token/common/ERC2981Upgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/token/ERC1155/extensions/ERC1155SupplyUpgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/token/ERC1155/utils/ERC1155HolderUpgradeable.sol";
+
 import {IOpenReleases} from "./interfaces/Releases/IOpenReleases.sol";
+import {IOpenReleasesInitialize} from "./interfaces/Releases/IOpenReleasesInitialize.sol";
 import {ICatalog} from "./interfaces/Catalog/ICatalog.sol";
 import {ISplitsFactory} from "./interfaces/ISplitsFactory.sol";
 
 /**
  * @notice The contract allows any track owner to be able to create a release.
  */
-contract OpenReleases is IOpenReleases, ERC1155Supply, ERC1155Holder, AccessControl, ERC2981 {
+contract OpenReleases is
+    IOpenReleases,
+    IOpenReleasesInitialize,
+    ERC1155SupplyUpgradeable,
+    ERC1155HolderUpgradeable,
+    AccessControlUpgradeable,
+    ERC2981Upgradeable
+{
     // State Variables
     uint256 constant MAX_ROYALTY_AMOUNT = 2_000;
 
@@ -35,21 +44,27 @@ contract OpenReleases is IOpenReleases, ERC1155Supply, ERC1155Holder, AccessCont
     error InvalidTokenId();
     error CallerDoesNotHaveAccess();
 
+    /// @custom:oz-upgrades-unsafe-allow constructor
+    constructor() {
+        _disableInitializers();
+    }
+
     /**
-     * @dev Constructor
+     * @notice Initializer
      * @param admin The address of the organization admin
      * @param name_ The name of the token
      * @param symbol_ The symbol of the token
      * @param catalog A contract that implements ICatalog
      * @param splitsFactory A contract that implements ISplitsFactory
      */
-    constructor(
+    function initialize(
         address admin,
         string memory name_,
         string memory symbol_,
         ICatalog catalog,
         ISplitsFactory splitsFactory
-    ) ERC1155("") {
+    ) external initializer {
+        __ERC1155_init("");
         if (admin == address(0)) revert CannotBeZeroAddress();
         if (bytes(name_).length == 0) revert FieldCannotBeEmpty("name");
         if (bytes(symbol_).length == 0) revert FieldCannotBeEmpty("symbol");
@@ -145,7 +160,13 @@ contract OpenReleases is IOpenReleases, ERC1155Supply, ERC1155Holder, AccessCont
         public
         view
         virtual
-        override(IERC165, ERC1155, ERC2981, AccessControl, ERC1155Holder)
+        override(
+            IERC165,
+            ERC1155Upgradeable,
+            ERC2981Upgradeable,
+            AccessControlUpgradeable,
+            ERC1155HolderUpgradeable
+        )
         returns (bool)
     {
         return interfaceId == type(IOpenReleases).interfaceId || super.supportsInterface(interfaceId);
