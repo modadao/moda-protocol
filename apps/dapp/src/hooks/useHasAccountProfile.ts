@@ -10,11 +10,10 @@ export const useHasAccountProfile = () => {
     address: Config.profileAddress,
     args: [address],
   });
-
   const [hasProfile, setHasProfile] = useState(false);
 
   useEffect(() => {
-    setHasProfile(Number(userBalance) > 1);
+    setHasProfile(Number(userBalance) === 1);
   }, [userBalance]);
 
   return { hasProfile, isFetched };

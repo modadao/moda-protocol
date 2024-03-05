@@ -2,6 +2,7 @@ import { UserProfileBadge } from '@/components/Profile/UserProfileBadge';
 import { useGetProfileContracts } from '@/hooks/useGetProfileContracts';
 import { useGetProfileData } from '@/hooks/useGetProfileData';
 import { useHasAccountProfile } from '@/hooks/useHasAccountProfile';
+import { useToastError } from '@/hooks/useToastError';
 import { ChevronDownIcon } from '@/ui/Icons/ChevronDownIcon';
 import { UiButton } from '@/ui/UiButton';
 import {
@@ -20,30 +21,48 @@ export default function NavDropdownProfile() {
   const router = useRouter();
   const { address } = useAccount();
   const { hasProfile } = useHasAccountProfile();
-  const { profileData } = useGetProfileData(address);
-  const { name, image } = profileData;
+
   const [isAccountHovered, setIsAccountHovered] = useState(false);
   const [isContractsHovered, setIsContractsHovered] = useState(false);
   const [isProfileHovered, setIsProfileHovered] = useState(false);
+
+  const {
+    profileData: accountProfileData,
+    isLoading: isAccountProfileDataLoading,
+    getProfileDataError,
+  } = useGetProfileData();
+
+  useToastError(getProfileDataError, 'Error fetching profile data');
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="focus:outline-none">
         <div className="flex gap-2 items-center">
-          <UserProfileBadge name={name} imageUrl={image} />
+          {accountProfileData && (
+            <UserProfileBadge
+              name={
+                isAccountProfileDataLoading
+                  ? 'Loading name...'
+                  : accountProfileData.name
+              }
+              imageUrl={
+                isAccountProfileDataLoading ? '' : accountProfileData.image
+              }
+            />
+          )}
           <ChevronDownIcon />
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent
         sideOffset={10}
         align="end"
-        className="divide-y text-xl px-6 py-5 bg-white italic space-y-2 min-w-56 z-[70] shadow-menu-content"
+        className="divide-y text-xl px-6 py-5 bg-white italic space-y-2 min-w-60 z-[70] shadow-menu-content"
       >
         <DropdownMenuLabel className="text-2xl font-extrabold p-0 text-center">
           Profiles
         </DropdownMenuLabel>
 
         <div
-          className="flex flex-row justify-between p-0 pt-2"
+          className="flex flex-row justify-between items-center pt-2"
           onMouseEnter={() => setIsAccountHovered(true)}
           onMouseLeave={() => setIsAccountHovered(false)}
         >
@@ -60,7 +79,7 @@ export default function NavDropdownProfile() {
 
         {hasProfile ? (
           <div
-            className="flex flex-row justify-between items-center py-1 px-0 pt-2"
+            className="flex flex-row justify-between items-center pb-1 px-0 pt-2"
             onMouseEnter={() => setIsProfileHovered(true)}
             onMouseLeave={() => setIsProfileHovered(false)}
           >
@@ -68,7 +87,9 @@ export default function NavDropdownProfile() {
               className="font-extrabold text-sm"
               href={`/profile/${address}`}
             >
-              {profileData.name}
+              {isAccountProfileDataLoading
+                ? 'Loading name...'
+                : accountProfileData.name}
             </Link>
 
             {isProfileHovered && (
@@ -79,7 +100,7 @@ export default function NavDropdownProfile() {
             )}
           </div>
         ) : (
-          <h3 className="text-sm font-extrabold">None</h3>
+          <h3 className="text-sm font-extrabold pb-1 px-0 pt-2">None</h3>
         )}
 
         <div
@@ -114,9 +135,9 @@ export default function NavDropdownProfile() {
 }
 
 function NavDropdownContracts() {
-  const result = useGetProfileContracts();
+  const contractsResult = useGetProfileContracts();
 
-  const contracts = result.ok ? result.value : [];
+  const contracts = contractsResult.ok ? contractsResult.value.contracts : [];
 
   return (
     <div>
@@ -130,7 +151,7 @@ function NavDropdownContracts() {
           ))}
         </div>
       ) : (
-        <h3 className="text-sm font-extrabold">None</h3>
+        <h3 className="text-sm font-extrabold pb-1 px-0 pt-2">None</h3>
       )}
     </div>
   );
@@ -138,8 +159,16 @@ function NavDropdownContracts() {
 
 function NavDropDownContract({ contractAddress }: { contractAddress: string }) {
   const router = useRouter();
-  const { profileData } = useGetProfileData(contractAddress);
   const [isItemHovered, setIsItemHovered] = useState(false);
+
+  const {
+    profileData: contractProfileData,
+    isLoading: isContractProfileDataLoading,
+    getProfileDataError,
+  } = useGetProfileData(contractAddress);
+
+  useToastError(getProfileDataError, 'Error fetching contract profile data');
+
   return (
     <div
       className="flex flex-row justify-between py-1 px-0"
@@ -150,7 +179,9 @@ function NavDropDownContract({ contractAddress }: { contractAddress: string }) {
         className="font-extrabold text-sm"
         href={`/profile/${contractAddress}`}
       >
-        {profileData.name}
+        {isContractProfileDataLoading
+          ? '...loading name'
+          : contractProfileData.name}
       </Link>
       {isItemHovered && (
         <MenuItemButton

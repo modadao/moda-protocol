@@ -4,9 +4,10 @@ import { config } from '@/components/WagmiWrapper';
 import { Config } from '@/config';
 import { useGetProfileData } from '@/hooks/useGetProfileData';
 import { useToast } from '@/hooks/useToast';
+import { useToastError } from '@/hooks/useToastError';
+import { useUploadProfileData } from '@/hooks/useUploadProfileData';
 import { ProfileMetadataSchema } from '@/types';
-import { IPFS_GATEWAY } from '@/utils/constants';
-import { uploadProfileData } from '@/utils/profileHelpers';
+import { defaultProfileMetadata } from '@/utils';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import {
@@ -30,12 +31,16 @@ export default function EditProfileForAccount({
   const router = useRouter();
   const { toast } = useToast();
 
-  const { profileData } = useGetProfileData();
+  const { profileData, getProfileDataError } = useGetProfileData();
 
   const formMethods = useForm({
-    defaultValues: profileData,
+    defaultValues: profileData || defaultProfileMetadata,
     resolver: zodResolver(ProfileMetadataSchema),
   });
+
+  const storageUrl = process.env.NEXT_PUBLIC_STORAGE_URL || '';
+
+  const { uploadProfileData, uploadProfileDataError } = useUploadProfileData();
 
   const { getValues } = formMethods;
 
@@ -60,13 +65,23 @@ export default function EditProfileForAccount({
   const editProfile = async () => {
     setIsUpdatingData(true);
     const profileData = getValues();
-    const hash = await uploadProfileData(profileData);
-    const uri = `${IPFS_GATEWAY}${hash}`;
+    const uri = await uploadProfileData(profileData);
+
+    if (uploadProfileDataError) {
+      toast({
+        title: 'Profile Update Failed',
+        description: 'Error uploading profile data',
+        variant: 'error',
+      });
+      return;
+    }
+
+    const url = `${storageUrl}${uri}`;
+
     const { request } = await simulateProfileUpdateProfile(config, {
       address: Config.profileAddress,
-      args: [uri],
+      args: [url],
     });
-
     updateProfile(request);
   };
 
@@ -74,6 +89,8 @@ export default function EditProfileForAccount({
     () => isUpdateProfilePending || isUpdatingData,
     [isUpdateProfilePending, isUpdatingData],
   );
+
+  useToastError(getProfileDataError, 'Error fetching profile data');
 
   useEffect(() => {
     if (profileData) formMethods.reset(profileData);

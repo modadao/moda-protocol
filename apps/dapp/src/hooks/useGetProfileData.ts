@@ -1,46 +1,42 @@
 import { Config } from '@/config';
-import { ProfileMetadata } from '@/types';
-import { downloadJSON } from '@/utils/IPFS';
-import { defaultProfileMetadata } from '@/utils/defaultProfileMetadata';
+import { useQuery } from '@tanstack/react-query';
 import { useReadProfileAccountUri } from 'profile';
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { useAccount } from 'wagmi';
 
-export const useGetProfileData = (
-  profileAddress?: string,
-): {
-  profileData: ProfileMetadata;
-  isLoading: boolean;
-} => {
-  const { address } = useAccount();
+export const useGetProfileData = (profileAddress?: string) => {
+  const { address: connectedAddress } = useAccount();
+
+  const address = profileAddress || connectedAddress;
+
   const { data: accountUri, isPending } = useReadProfileAccountUri({
     address: Config.profileAddress,
     args: [profileAddress ? profileAddress : address],
   });
 
-  const [profileData, setProfileData] = useState(defaultProfileMetadata);
-  const [isFetchingData, setIsFetchingData] = useState(false);
-
-  const isLoading = useMemo(
-    () => isPending || isFetchingData,
-    [isPending, isFetchingData],
+  const queryKey = useMemo(
+    () => ['profileData', address, accountUri],
+    [address, accountUri],
   );
 
-  useEffect(() => {
-    const fetchProfileData = async () => {
-      setIsFetchingData(true);
-      if (accountUri && !isPending) {
-        const result = await downloadJSON(accountUri);
+  const {
+    data: profileData,
+    isLoading: isProfileDataLoading,
+    error: getProfileDataError,
+  } = useQuery({
+    queryKey,
+    queryFn: async () => {
+      const response = await fetch(accountUri);
+      if (!response.ok) throw new Error('Error fetching profile data');
+      return response.json();
+    },
+    enabled: !!accountUri,
+  });
 
-        if (result.value) {
-          setProfileData(result.value);
-          setIsFetchingData(false);
-        }
-      }
-    };
+  const isLoading = useMemo(
+    () => isPending || isProfileDataLoading,
+    [isPending, isProfileDataLoading],
+  );
 
-    fetchProfileData();
-  }, [accountUri, isPending]);
-
-  return { profileData, isLoading };
+  return { profileData, isLoading, getProfileDataError };
 };
