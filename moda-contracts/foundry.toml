@@ -13,18 +13,15 @@ remappings = [
 fs_permissions = [{ access = "read-write", path = "./"}]
 
 [rpc_endpoints]
-mumbai = "${MUMBAI_RPC_URL}"
+rpcUrl = "${MUMBAI_RPC_URL}"
 
 [etherscan]
-mumbai = { key = "${POLYGONSCAN_API_KEY}" }
+mumbai = { key = "${ETHERSCAN_API_KEY}" }
 
 [fmt]
 multiline_func_header = "params_first"
 line_length = 105
 
 gas_reports = ["*"]
-
-
-
 
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options

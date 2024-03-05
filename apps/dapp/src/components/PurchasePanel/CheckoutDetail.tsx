@@ -1,4 +1,4 @@
-import type { Release } from '@/api/client/generated';
+import { Release } from '@/types';
 import { UiInputCounter } from '@/ui/UiInputCounter';
 import Image from 'next/image';
 

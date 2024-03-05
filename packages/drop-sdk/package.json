@@ -1,0 +1,58 @@
+{
+  "name": "drop-sdk",
+  "keywords": [
+    "MODA",
+    "Music3",
+    "Music",
+    "Distribution",
+    "Royalties",
+    "NFTs",
+    "Polygon",
+    "Ethereum",
+    "Web3"
+  ],
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "description": "A JavaScript library for MODA protocol",
+  "license": "Apache-2.0",
+  "repository": "github:modadao/moda-protocol",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "wagmi generate && tsup",
+    "watch": "tsup --watch",
+    "lint": "tsc",
+    "release": "pnpm run build && changeset publish"
+  },
+  "peerDependencies": {
+    "@tanstack/react-query": "^5.17.15",
+    "@wagmi/connectors": "^4.1.12",
+    "react": "^18.0.0",
+    "viem": "^2.7.1",
+    "wagmi": "^2.5.5"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.27.1",
+    "@types/node": "^20.11.14",
+    "@wagmi/cli": "^2.1.2",
+    "ts-node": "^10.9.2",
+    "tsup": "^7.2.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@wagmi/core": "^2.2.1",
+    "codegen": "link:@wagmi/core/codegen"
+  },
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    }
+  }
+}

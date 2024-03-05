@@ -11,7 +11,8 @@ export const useGetProfileData = (profileAddress?: string) => {
 
   const { data: accountUri, isPending } = useReadProfileAccountUri({
     address: Config.profileAddress,
-    args: [profileAddress ? profileAddress : address],
+    args: [address],
+    enabled: !!address,
   });
 
   const queryKey = useMemo(

@@ -19,6 +19,56 @@ export interface ProfileMetadata {
   };
 }
 
+export interface TrackData {
+  trackName: string;
+  trackImage: string;
+  trackUri: string;
+}
+
+export interface TrackMetadata {
+  name: string;
+  image: string;
+  description?: string;
+  animation_url: string;
+  attributes?: [
+    {
+      trait_type: string;
+      value: string;
+    },
+  ];
+}
+
+export interface CreateReleaseData {
+  releaseName: string;
+  releaseImage: string;
+  releaseDescription: string;
+  releaseGenre: string;
+  royaltyAmount: number;
+  totalSupply: string;
+}
+
+export interface ReleaseMetadata {
+  name: string;
+  image: string;
+  description: string;
+  animation_url: string;
+  attributes: [
+    {
+      trait_type: string;
+      value: string[];
+    },
+    {
+      trait_type: string;
+      value: string;
+    },
+  ];
+}
+
+export interface RegisteredTrack {
+  trackId: string;
+  trackUri: string;
+}
+
 export const EVMAddressSchema = z.string().refine(
   (val) => {
     return isValidAddress(val);
@@ -112,6 +162,7 @@ export interface Release {
     url: string;
   };
   releasePrice?: number;
+  maxQuantity?: number;
 }
 
 export interface Album {

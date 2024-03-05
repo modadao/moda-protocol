@@ -21,7 +21,7 @@ export const UiSelect = ({
   return (
     <Select.Root onValueChange={(value: string) => onValueChange?.(value)}>
       <Select.Trigger
-        className="w-full inline-flex items-center justify-between rounded text-base border border-[#404040] px-[15px] text-[13px] leading-none h-[48px] gap-[5px] bg-white text-black shadow-[0_2px_10px] shadow-black/10 hover:bg-gray-100 focus:shadow-[0_0_0_2px] focus:shadow-black data-[placeholder]:text-black data-[placeholder]:text-base data-[placeholder]:font-bold outline-none"
+        className="w-full inline-flex items-center justify-between rounded-md text-base border border-[#404040] px-[15px] text-[13px] leading-none h-10 gap-[5px] bg-white text-black shadow-[0_2px_10px] shadow-black/10 hover:bg-gray-100  data-[placeholder]:text-black data-[placeholder]:text-base data-[placeholder]:font-bold outline-none"
         aria-label={label}
       >
         <Select.Value placeholder={placeholder} className="text-black" />

@@ -66,7 +66,6 @@ contract OpenReleases is IOpenReleases, ERC1155Supply, ERC1155Holder, AccessCont
     /**
      * @dev Creates a new release token and transfers to the receiver
      * @param receiver The address that will receive the release tokens
-     * @notice Only release admins can call this function
      * @param royaltyAmount The percentage of sale prices that should be
      * paid to the beneficiary for re-sales. Calculated by <NOMINATOR> / 10,000.
      * e.g. For 10% royalties, pass in 1000

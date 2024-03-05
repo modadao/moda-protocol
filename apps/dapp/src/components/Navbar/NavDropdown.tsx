@@ -1,4 +1,6 @@
+'use client';
 import { useGetProfileData } from '@/hooks/useGetProfileData';
+import { useHydratedState } from '@/hooks/useHydratedState';
 import { useToastError } from '@/hooks/useToastError';
 import { ChevronDownIcon } from '@/ui/Icons';
 import {
@@ -7,15 +9,20 @@ import {
   DropdownMenuTrigger,
 } from '@/ui/UiDropdownMenu';
 import { useAccount } from 'wagmi';
-import { UserProfileBadge } from '../Profile/UserProfileBadge';
+import { UserProfileBadge } from '../User/Profile/UserProfileBadge';
 import DisconnectWallet from '../Wallet/DisconnectWallet';
 import UserLinks from './UserLinks';
 
 export const NavBarDropdown = () => {
   const { isConnected } = useAccount();
   const { profileData, isLoading, getProfileDataError } = useGetProfileData();
+  const isHydrated = useHydratedState();
 
   useToastError(getProfileDataError, 'Error fetching profile data');
+
+  if (!isHydrated) {
+    return null;
+  }
 
   return (
     <DropdownMenu>

@@ -18,7 +18,7 @@ interface ProfileChangedFor {
   caller: string;
 }
 
-interface ResponseJson {
+interface ProfileChangeForResponseJson {
   transaction_hash: string;
   address: string;
   block_timestamp: string;
@@ -62,7 +62,8 @@ export async function GET(_request: Request, { params }: Params) {
     abi,
   });
 
-  const responses: ResponseJson[] = response.toJSON().result as ResponseJson[];
+  const responses: ProfileChangeForResponseJson[] = response.toJSON()
+    .result as ProfileChangeForResponseJson[];
 
   const events = responses.map((event) => {
     return event.data;
