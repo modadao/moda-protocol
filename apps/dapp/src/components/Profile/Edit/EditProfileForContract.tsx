@@ -91,16 +91,6 @@ export default function EditProfileForContract({
     [isUpdateProfileForPending, isUpdatingData],
   );
 
-  // useEffect(() => {
-  //   if (getProfileDataError) {
-  //     toast({
-  //       title: 'Error fetching contract profile data',
-  //       description: getProfileDataError?.message,
-  //       variant: 'error',
-  //     });
-  //   }
-  // }, [getProfileDataError, toast]);
-
   useToastError(getProfileDataError, 'Error fetching contract profile data');
 
   useEffect(() => {
