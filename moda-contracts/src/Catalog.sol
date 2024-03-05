@@ -258,6 +258,7 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
     function registerReleasesContract(address releases, address releasesOwner) external {
         CatalogStorage storage $ = _getCatalogStorage();
 
+        if (!hasRole(DEFAULT_ADMIN_ROLE, releasesOwner)) _requireMembership(releasesOwner);
         _requireReleasesRegistrarRole(msg.sender);
         _requireReleasesContractNotRegistered(releases);
 

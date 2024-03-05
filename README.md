@@ -26,11 +26,30 @@ pnpm i
 cp ./moda-contracts/.env-local ./moda-contracts/.env
 # Add your values to ./moda-contracts/.env
 ```
-## Deploy a Catalog Contract
 
-A Catalog is owned by an organization and is where artists and labels register tracks. Once registered, users can create releases, music NFTs that can be single tracks or a list of tracks.
+## Generate Smart Contract Documentation
 
-## Deploy Common-Good Contracts (Not Recommended)
+1. `pnpm c:docs`
+2. Visit [localhost:8080](localhost:8080)
+
+### Deploy Membership
+
+Membership is a way to control who has access to your Catalog. The default implementation defines any address as a "member", which means anyone can register tracks in the Catalog. You can extend this logic to define your own rules such as NFT-gates, minimal ERC-20 balance amounts, or a generic whitelist. See Membership.sol in `./moda-contracts/src/Membership.sol`
+
+1. Deploy contract `pnpm 1_deploy_Membership --chain mumbai`
+
+### Deploy Catalog
+
+2. Deploy contract `pnpm 2_deploy_Catalog --chain mumbai --sender <YOUR_OWNER_ADDRESS>`
+
+Then look in the console for your Catalog address:
+
+```
+ $ Your Catalog was deployed to:
+ $ <ADDRESS>
+```
+
+## (Optional, but not recommended) Deploy Common-Good Contracts
 
 These contracts have already been deployed on Mumbai. It is recommended that you use the ones already deployed so that the creators can benefit, but if you need to change certain features you are free to redeploy these. If you would like these contracts on a particular chain please reach out to the team and we will help facilitate. 
 
@@ -59,9 +78,11 @@ All registered tracks have a status that is used to represent their authenticity
 `pnpm add_verified_roles <address1> <address2> ....`
 
 ## Generate Smart Contract Documentation
+### Deploy ReleasesFactory
+`pnpm _deploy_ReleasesFactory --chain mumbai --sender <ADDRESS>`
 
-1. `pnpm c:docs`
-2. Visit [localhost:3000](localhost:3000)
+### Deploy OpenReleasesFactory
+`pnpm _deploy_OpenReleasesFactory --chain mumbai --sender <ADDRESS>`
 
 ## Smart Contract Testing
 

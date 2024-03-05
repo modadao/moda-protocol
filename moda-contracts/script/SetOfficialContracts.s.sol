@@ -5,7 +5,6 @@ import {Script, console2} from "forge-std/Script.sol";
 import "../src/Registry.sol";
 import {IManagement} from "../src/interfaces/IManagement.sol";
 import {ISplitsFactory} from "../src/interfaces/ISplitsFactory.sol";
-import {Strings} from "@openzeppelin/contracts/utils/Strings.sol";
 import {DeployedContracts} from "./utils/DeployedContracts.sol";
 import {IOfficialContracts} from "../src/interfaces/Registry/IOfficialContracts.sol";
 
@@ -15,14 +14,14 @@ contract SetOfficialContracts is Script {
 
         vm.startBroadcast(privateKey);
 
-        address registry = DeployedContracts.get("DeployRegistry.s.sol", block.chainid);
+        Registry registry = Registry(DeployedContracts.get("DeployRegistry.s.sol", block.chainid));
         IManagement management =
             IManagement(DeployedContracts.get("DeployManagement.s.sol", block.chainid));
         ISplitsFactory splitsFactory =
-            ISplitsFactory(DeployedContracts.get("DeploySplitsFactory.s.sol", block.chainid));
+            ISplitsFactory(DeployedContracts.getAt("DeploySplitsFactory.s.sol", block.chainid, 1));
 
-        Registry(registry).setManagement(management);
-        Registry(registry).setSplitsFactory(splitsFactory);
+        registry.setManagement(management);
+        registry.setSplitsFactory(splitsFactory);
 
         vm.stopBroadcast();
     }

@@ -2,8 +2,8 @@
 pragma solidity ^0.8.21;
 
 import {Script, console2} from "forge-std/Script.sol";
-import "../src/CatalogFactory.sol";
-import "../src/Registry.sol";
+import {CatalogFactory} from "../src/CatalogFactory.sol";
+import {Registry} from "../src/Registry.sol";
 import {Upgrades} from "openzeppelin-foundry-upgrades/Upgrades.sol";
 import {IBeacon} from "@openzeppelin/contracts/proxy/beacon/IBeacon.sol";
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
@@ -17,7 +17,9 @@ contract DeployCatalogFactory is Script {
 
         Registry registry = Registry(DeployedContracts.get("DeployRegistry.s.sol", block.chainid));
         IBeacon beacon = IBeacon(Upgrades.deployBeacon("Catalog.sol", deployer));
-        new CatalogFactory(registry, address(beacon));
+        CatalogFactory catalog = new CatalogFactory(registry, address(beacon));
+
+        registry.grantRole(registry.CATALOG_REGISTRAR_ROLE(), address(catalog));
 
         vm.stopBroadcast();
     }
