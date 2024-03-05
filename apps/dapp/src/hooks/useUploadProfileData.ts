@@ -10,11 +10,11 @@ const upload = async (json: ProfileMetadata) => {
     body: JSON.stringify(json),
   });
 
-  if (!response.ok) throw new Error('Network response was not ok.');
+  if (!response.ok) throw new Error(response.statusText);
 
   const result = await response.json();
 
-  return result.IpfsHash;
+  return result.uri;
 };
 
 export const useUploadProfileData = () => {

@@ -4,7 +4,6 @@ import { Config } from '@/config';
 import { useToast } from '@/hooks/useToast';
 import { useUploadProfileData } from '@/hooks/useUploadProfileData';
 import { ProfileMetadataSchema } from '@/types';
-import { IPFS_GATEWAY } from '@/utils/constants';
 import { defaultProfileMetadata } from '@/utils/defaultProfileMetadata';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
@@ -34,6 +33,8 @@ export default function CreateProfileForAccount({
     resolver: zodResolver(ProfileMetadataSchema),
   });
 
+  const storageUrl = process.env.NEXT_PUBLIC_STORAGE_URL || '';
+
   const { uploadProfileData, uploadProfileDataError } = useUploadProfileData();
 
   const [isCreatingProfile, setIsCreatingProfile] = useState(false);
@@ -59,7 +60,7 @@ export default function CreateProfileForAccount({
 
   const createProfile = async () => {
     setIsCreatingProfile(true);
-    const ipfsHash = await uploadProfileData(profileData);
+    const uri = await uploadProfileData(profileData);
 
     if (uploadProfileDataError) {
       toast({
@@ -71,11 +72,11 @@ export default function CreateProfileForAccount({
       return;
     }
 
-    const uri = `${IPFS_GATEWAY}${ipfsHash}`;
+    const url = `${storageUrl}${uri}`;
 
     const profileMintResult = await simulateProfileMint(config, {
       address: Config.profileAddress,
-      args: [uri],
+      args: [url],
     });
     profileMint(profileMintResult.request);
   };

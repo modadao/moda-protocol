@@ -2,7 +2,7 @@ import { UserProfileBadge } from '@/components/Profile/UserProfileBadge';
 import { useGetProfileContracts } from '@/hooks/useGetProfileContracts';
 import { useGetProfileData } from '@/hooks/useGetProfileData';
 import { useHasAccountProfile } from '@/hooks/useHasAccountProfile';
-import { toast } from '@/hooks/useToast';
+import { useToastError } from '@/hooks/useToastError';
 import { ChevronDownIcon } from '@/ui/Icons/ChevronDownIcon';
 import { UiButton } from '@/ui/UiButton';
 import {
@@ -13,7 +13,7 @@ import {
 } from '@/ui/UiDropdownMenu';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useAccount } from 'wagmi';
 import DisconnectWallet from '../Wallet/DisconnectWallet';
 
@@ -32,17 +32,7 @@ export default function NavDropdownProfile() {
     getProfileDataError,
   } = useGetProfileData();
 
-  useEffect(() => {
-    if (getProfileDataError) {
-      toast({
-        title: 'Error fetching account profile data',
-        description: getProfileDataError?.message,
-        variant: 'error',
-      });
-    }
-  }, [getProfileDataError]);
-
-  console.log('has profile', hasProfile);
+  useToastError(getProfileDataError, 'Error fetching profile data');
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="focus:outline-none">
@@ -177,15 +167,7 @@ function NavDropDownContract({ contractAddress }: { contractAddress: string }) {
     getProfileDataError,
   } = useGetProfileData(contractAddress);
 
-  useEffect(() => {
-    if (getProfileDataError) {
-      toast({
-        title: 'Error fetching contract profile data',
-        description: getProfileDataError?.message,
-        variant: 'error',
-      });
-    }
-  }, [getProfileDataError]);
+  useToastError(getProfileDataError, 'Error fetching contract profile data');
 
   return (
     <div

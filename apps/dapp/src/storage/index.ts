@@ -1,33 +1,39 @@
 import { Readable } from 'stream';
-import pinataSDK, { PinataPinOptions, PinataPinResponse } from '@pinata/sdk';
-import { PinningService } from './types';
+import pinataSDK, { PinataPinOptions } from '@pinata/sdk';
+import { PinningService, StorageResult } from './types';
 
 const pinata = new pinataSDK(
   process.env.NEXT_PUBLIC_PINATA_API_KEY,
   process.env.NEXT_PUBLIC_PINATA_SECRET,
 );
 
-export default function pinningService(): PinningService<PinataPinResponse> {
+export default function pinningService(): PinningService<StorageResult> {
   async function uploadFile(
     file: Readable,
     name: string,
-  ): Promise<PinataPinResponse> {
+  ): Promise<StorageResult> {
     const options: PinataPinOptions = {
       pinataMetadata: {
         name,
       },
     };
     try {
-      const result = await pinata.pinFileToIPFS(file, options);
+      const pinataResponse = await pinata.pinFileToIPFS(file, options);
+      const result: StorageResult = {
+        uri: pinataResponse.IpfsHash,
+      };
       return result;
     } catch (e) {
       throw new Error((e as Error).message);
     }
   }
 
-  async function uploadJSON(json: JSON): Promise<PinataPinResponse> {
+  async function uploadJSON(json: JSON): Promise<StorageResult> {
     try {
-      const result = await pinata.pinJSONToIPFS(json);
+      const pinataResponse = await pinata.pinJSONToIPFS(json);
+      const result: StorageResult = {
+        uri: pinataResponse.IpfsHash,
+      };
       return result;
     } catch (e) {
       throw new Error((e as Error).message);

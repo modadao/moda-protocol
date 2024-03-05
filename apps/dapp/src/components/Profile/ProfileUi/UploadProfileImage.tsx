@@ -1,7 +1,6 @@
 import { toast } from '@/hooks/useToast';
 import { useUploadImage } from '@/hooks/useUploadImage';
 import { ProfileMetadata } from '@/types';
-import { IPFS_GATEWAY } from '@/utils/constants';
 import { ChangeEvent, SyntheticEvent, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import UiFileUploader from '../../../ui/UiFileUploader';
@@ -23,6 +22,8 @@ export default function UploadProfileImage({
 
   const { uploadImage, uploadImageError } = useUploadImage();
 
+  const storageUrl = process.env.NEXT_PUBLIC_STORAGE_URL || '';
+
   const uploadProfileImage = async (
     e: SyntheticEvent | ChangeEvent<HTMLInputElement>,
   ) => {
@@ -30,9 +31,9 @@ export default function UploadProfileImage({
     const imageData = await uploadImage(e);
 
     if (imageData) {
-      const ipfsHash = imageData.ipfsHash;
+      const uri = imageData.uri;
       const name = imageData.fileName;
-      setValue(value, `${IPFS_GATEWAY}${ipfsHash}`);
+      setValue(value, `${storageUrl}${uri}`);
       toast({
         title: 'Success',
         description: 'Image uploaded successfully',

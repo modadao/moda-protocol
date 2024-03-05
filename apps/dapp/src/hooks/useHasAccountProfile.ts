@@ -10,8 +10,6 @@ export const useHasAccountProfile = () => {
     address: Config.profileAddress,
     args: [address],
   });
-
-  console.log('userBalance', userBalance);
   const [hasProfile, setHasProfile] = useState(false);
 
   useEffect(() => {

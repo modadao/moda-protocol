@@ -20,11 +20,11 @@ const upload = async (e: SyntheticEvent | ChangeEvent<HTMLInputElement>) => {
       body: formData,
     });
 
-    if (!response.ok) throw new Error('Network response was not ok.');
+    if (!response.ok) throw new Error(response.statusText);
 
     const result = await response.json();
 
-    return { ipfsHash: result.IpfsHash, fileName: file.name };
+    return { uri: result.uri, fileName: file.name };
   }
 };
 

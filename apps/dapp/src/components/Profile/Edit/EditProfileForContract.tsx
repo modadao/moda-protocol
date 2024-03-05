@@ -4,10 +4,10 @@ import { config } from '@/components/WagmiWrapper';
 import { Config } from '@/config';
 import { useGetProfileData } from '@/hooks/useGetProfileData';
 import { useToast } from '@/hooks/useToast';
+import { useToastError } from '@/hooks/useToastError';
 import { useUploadProfileData } from '@/hooks/useUploadProfileData';
 import { ProfileMetadataSchema } from '@/types';
 import { defaultProfileMetadata } from '@/utils';
-import { IPFS_GATEWAY } from '@/utils/constants';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import {
@@ -38,6 +38,8 @@ export default function EditProfileForContract({
     resolver: zodResolver(ProfileMetadataSchema),
   });
 
+  const storageUrl = process.env.NEXT_PUBLIC_STORAGE_URL || '';
+
   const { uploadProfileData, uploadProfileDataError } = useUploadProfileData();
 
   const { getValues } = formMethods;
@@ -63,7 +65,7 @@ export default function EditProfileForContract({
   const editProfile = async () => {
     setIsUpdatingData(true);
     const profileData = getValues();
-    const ipfsHash = await uploadProfileData(profileData);
+    const uri = await uploadProfileData(profileData);
 
     if (uploadProfileDataError) {
       toast({
@@ -75,11 +77,11 @@ export default function EditProfileForContract({
       return;
     }
 
-    const uri = `${IPFS_GATEWAY}${ipfsHash}`;
+    const url = `${storageUrl}${uri}`;
 
     const { request } = await simulateProfileUpdateProfileFor(config, {
       address: Config.profileAddress,
-      args: [contractAddress, uri],
+      args: [contractAddress, url],
     });
     updateProfileFor(request);
   };
@@ -89,15 +91,17 @@ export default function EditProfileForContract({
     [isUpdateProfileForPending, isUpdatingData],
   );
 
-  useEffect(() => {
-    if (getProfileDataError) {
-      toast({
-        title: 'Error fetching contract profile data',
-        description: getProfileDataError?.message,
-        variant: 'error',
-      });
-    }
-  }, [getProfileDataError, toast]);
+  // useEffect(() => {
+  //   if (getProfileDataError) {
+  //     toast({
+  //       title: 'Error fetching contract profile data',
+  //       description: getProfileDataError?.message,
+  //       variant: 'error',
+  //     });
+  //   }
+  // }, [getProfileDataError, toast]);
+
+  useToastError(getProfileDataError, 'Error fetching contract profile data');
 
   useEffect(() => {
     if (profileData) {
