@@ -27,8 +27,8 @@ contract ReleasesFactoryTest is Test {
     address catalogBeacon;
 
     address payable public treasury = payable(address(0x4));
-    string name = "name";
-    string symbol = "symbol";
+    string name = "DRIP";
+    string symbol = "DRIP";
 
     address public releasesOwner = address(0x5);
     address public releaseAdmin = address(0x6);
@@ -41,12 +41,13 @@ contract ReleasesFactoryTest is Test {
 
         catalogBeacon = Upgrades.deployBeacon("Catalog.sol", admin);
         catalogFactory = new CatalogFactory(registry, catalogBeacon);
-        registry.grantRole(keccak256("CATALOG_REGISTRAR_ROLE"), address(catalogFactory));
+        registry.grantRole(registry.CATALOG_REGISTRAR_ROLE(), address(catalogFactory));
 
-        catalog = Catalog(catalogFactory.create("name", IMembership(membership)));
+        catalog = Catalog(catalogFactory.create(name, IMembership(membership)));
 
         releasesMaster = new Releases();
         releasesFactory = new ReleasesFactory(registry, address(releasesMaster));
+
         registry.grantRole(keccak256("RELEASES_REGISTRAR_ROLE"), address(releasesFactory));
     }
 

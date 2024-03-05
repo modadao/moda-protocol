@@ -9,6 +9,7 @@ contract DeployRegistry is Script {
         uint256 privateKey = vm.envUint("DEPLOYER_PRIVATE_KEY");
         uint256 treasuryFee = vm.envUint("TREASURY_FEE");
         address payable treasury = payable(vm.envAddress("TREASURY_ADDRESS"));
+
         vm.startBroadcast(privateKey);
         new Registry(treasury, uint32(treasuryFee));
         vm.stopBroadcast();

@@ -22,10 +22,14 @@ contract CatalogTest is Test {
     Releases public releasesMaster;
     Releases public releases;
 
+    address public trackBeneficiary = address(0x5);
+    string public trackRegistrationHash = "trackHash";
+    string public trackId = "";
+
     address catalogBeacon;
     address admin = address(0xa);
     address public catalogAdmin = address(0x1);
-    string public catalogName = "ACME.CATALOG";
+    string public catalogName = "ACME";
     address public artist = address(0x4);
     address payable public treasuryAddress = payable(address(0x11));
     ISplitsFactory public splitsFactory = ISplitsFactory(address(0x12));
@@ -70,15 +74,18 @@ contract CatalogTest is Test {
 
         releasesMaster = new Releases();
         releasesFactory = new ReleasesFactory(registry, address(releasesMaster));
-
         registry.grantRole(keccak256("RELEASES_REGISTRAR_ROLE"), address(releasesFactory));
-        address[] memory releaseAdmins = new address[](1);
-        releaseAdmins[0] = artist;
-        releasesFactory.create(releaseAdmins, "name", "symbol", catalog);
-
-        releases = Releases(catalog.getReleasesContract(address(this)));
 
         membership.addMember(artist);
+
+        address[] memory releaseAdmins = new address[](1);
+        releaseAdmins[0] = artist;
+
+        vm.startPrank(artist);
+        releasesFactory.create(releaseAdmins, "name", "symbol", catalog);
+        vm.stopPrank();
+
+        releases = Releases(catalog.getReleasesContract(artist));
     }
 
     function setup_auto_verified(address account) public {
@@ -98,35 +105,21 @@ contract CatalogTest is Test {
 
     /// registerTrack
 
-    struct TrackRegistrationData {
-        address trackBeneficiary;
-        string trackRegistrationHash;
-        string trackId;
-    }
-
-    TrackRegistrationData trackRegistrationData = TrackRegistrationData({
-        trackBeneficiary: address(0x5),
-        trackRegistrationHash: "trackHash",
-        trackId: ""
-    });
-
     function registerTrack_setUp() public {
         vm.startPrank(artist);
-        catalog.registerTrack(
-            artist, trackRegistrationData.trackBeneficiary, trackRegistrationData.trackRegistrationHash
-        );
+        catalog.registerTrack(artist, trackBeneficiary, trackRegistrationHash);
         vm.stopPrank();
-        trackRegistrationData.trackId = catalog.getTrackId(trackRegistrationData.trackRegistrationHash);
+        trackId = catalog.getTrackId(trackRegistrationHash);
     }
 
     function test_registerTrack() public {
         registerTrack_setUp();
-        Catalog.RegisteredTrack memory track = catalog.getTrack(trackRegistrationData.trackId);
+        Catalog.RegisteredTrack memory track = catalog.getTrack(trackId);
 
         assertEq(uint256(track.trackStatus), uint256(ITrackRegistration.TrackStatus.PENDING));
         assertEq(track.trackOwner, artist);
-        assertEq(track.trackBeneficiary, trackRegistrationData.trackBeneficiary);
-        assertEq(track.trackRegistrationHash, trackRegistrationData.trackRegistrationHash);
+        assertEq(track.trackBeneficiary, trackBeneficiary);
+        assertEq(track.trackRegistrationHash, trackRegistrationHash);
         assertEq(track.fingerprintHash, "");
         assertEq(track.validationHash, "");
     }
@@ -136,9 +129,7 @@ contract CatalogTest is Test {
 
         vm.expectRevert(Catalog.TrackAlreadyRegistered.selector);
         vm.startPrank(artist);
-        catalog.registerTrack(
-            artist, trackRegistrationData.trackBeneficiary, trackRegistrationData.trackRegistrationHash
-        );
+        catalog.registerTrack(artist, trackBeneficiary, trackRegistrationHash);
         vm.stopPrank();
     }
 
@@ -146,11 +137,7 @@ contract CatalogTest is Test {
         vm.expectRevert(Catalog.MembershipRequired.selector);
         address nonMember = address(0x9);
         vm.startPrank(nonMember);
-        catalog.registerTrack(
-            nonMember,
-            trackRegistrationData.trackBeneficiary,
-            trackRegistrationData.trackRegistrationHash
-        );
+        catalog.registerTrack(nonMember, trackBeneficiary, trackRegistrationHash);
         vm.stopPrank();
     }
 
@@ -159,29 +146,20 @@ contract CatalogTest is Test {
         membership.addMember(nonArtist);
         vm.startPrank(nonArtist);
         vm.expectRevert(Catalog.MustBeTrackOwnerOrManager.selector);
-        catalog.registerTrack(
-            artist, trackRegistrationData.trackBeneficiary, trackRegistrationData.trackRegistrationHash
-        );
+        catalog.registerTrack(artist, trackBeneficiary, trackRegistrationHash);
         vm.stopPrank();
     }
 
     function test_registerTrack_emits_event() public {
         vm.expectEmit(true, true, true, true);
-        emit TrackRegistered("trackHash", "ACME.CATALOG-31337-0", artist);
+        emit TrackRegistered(trackRegistrationHash, "ACME-31337-0", artist);
+
         vm.startPrank(artist);
-        catalog.registerTrack(
-            artist, trackRegistrationData.trackBeneficiary, trackRegistrationData.trackRegistrationHash
-        );
+        catalog.registerTrack(artist, trackBeneficiary, trackRegistrationHash);
         vm.stopPrank();
     }
 
     // registerTrack as manager
-
-    TrackRegistrationData trackRegistrationDataManager = TrackRegistrationData({
-        trackBeneficiary: address(0x5),
-        trackRegistrationHash: "trackHashManager",
-        trackId: ""
-    });
 
     function test_registerTrack_as_manager_setUp() public {
         vm.startPrank(artist);
@@ -191,25 +169,22 @@ contract CatalogTest is Test {
         managers[0] = manager;
         management.addManagers(managers);
         vm.stopPrank();
+
         vm.startPrank(manager);
-        catalog.registerTrack(
-            artist,
-            trackRegistrationDataManager.trackBeneficiary,
-            trackRegistrationDataManager.trackRegistrationHash
-        );
+        catalog.registerTrack(artist, trackBeneficiary, trackRegistrationHash);
         vm.stopPrank();
-        trackRegistrationDataManager.trackId =
-            catalog.getTrackId(trackRegistrationDataManager.trackRegistrationHash);
+
+        trackId = catalog.getTrackId(trackRegistrationHash);
     }
 
     function test_registerTrack_as_manager() public {
         test_registerTrack_as_manager_setUp();
-        Catalog.RegisteredTrack memory track = catalog.getTrack(trackRegistrationDataManager.trackId);
+        Catalog.RegisteredTrack memory track = catalog.getTrack(trackId);
 
         assertEq(uint256(track.trackStatus), uint256(ITrackRegistration.TrackStatus.PENDING));
         assertEq(track.trackOwner, artist);
-        assertEq(track.trackBeneficiary, trackRegistrationDataManager.trackBeneficiary);
-        assertEq(track.trackRegistrationHash, trackRegistrationDataManager.trackRegistrationHash);
+        assertEq(track.trackBeneficiary, trackBeneficiary);
+        assertEq(track.trackRegistrationHash, trackRegistrationHash);
         assertEq(track.fingerprintHash, "");
         assertEq(track.validationHash, "");
     }
@@ -224,8 +199,8 @@ contract CatalogTest is Test {
         vm.startPrank(artist);
         catalog.registerTrack(artist, beneficiary, trackHash);
         vm.stopPrank();
-        string memory trackId = catalog.getTrackId(trackHash);
-        Catalog.RegisteredTrack memory track = catalog.getTrack(trackId);
+        string memory actualTrackId = catalog.getTrackId(trackHash);
+        Catalog.RegisteredTrack memory track = catalog.getTrack(actualTrackId);
 
         assertEq(uint256(track.trackStatus), uint256(ITrackRegistration.TrackStatus.VALIDATED));
         assertEq(track.trackOwner, artist);
@@ -240,13 +215,13 @@ contract CatalogTest is Test {
     function setTrackStatus_setUp() public {
         registerTrack_setUp();
         registry.grantRole(keccak256("VERIFIER_ROLE"), address(this));
-        catalog.setTrackStatus(trackRegistrationData.trackId, ITrackRegistration.TrackStatus.VALIDATED);
+        catalog.setTrackStatus(trackId, ITrackRegistration.TrackStatus.VALIDATED);
     }
 
     function test_setTrackStatus() public {
         setTrackStatus_setUp();
         assertEq(
-            uint256(catalog.getTrack(trackRegistrationData.trackId).trackStatus),
+            uint256(catalog.getTrack(trackId).trackStatus),
             uint256(ITrackRegistration.TrackStatus.VALIDATED)
         );
     }
@@ -256,7 +231,7 @@ contract CatalogTest is Test {
         address nonVerifier = address(0x9);
         vm.expectRevert(Catalog.VerifierRoleRequired.selector);
         vm.startPrank(nonVerifier);
-        catalog.setTrackStatus(trackRegistrationData.trackId, ITrackRegistration.TrackStatus.VALIDATED);
+        catalog.setTrackStatus(trackId, ITrackRegistration.TrackStatus.VALIDATED);
         vm.stopPrank();
     }
 
@@ -274,13 +249,13 @@ contract CatalogTest is Test {
         emit TrackUpdated(
             ITrackRegistration.TrackStatus.VALIDATED,
             artist,
-            trackRegistrationData.trackBeneficiary,
-            trackRegistrationData.trackRegistrationHash,
+            trackBeneficiary,
+            trackRegistrationHash,
             "",
             "",
             address(this)
         );
-        catalog.setTrackStatus(trackRegistrationData.trackId, ITrackRegistration.TrackStatus.VALIDATED);
+        catalog.setTrackStatus(trackId, ITrackRegistration.TrackStatus.VALIDATED);
     }
 
     struct UpdateTrackData {
@@ -302,12 +277,9 @@ contract CatalogTest is Test {
     function test_setTrackBeneficiary() public {
         registerTrack_setUp();
         vm.startPrank(artist);
-        catalog.setTrackBeneficiary(trackRegistrationData.trackId, updateTrackData.newTrackBeneficiary);
+        catalog.setTrackBeneficiary(trackId, updateTrackData.newTrackBeneficiary);
         vm.stopPrank();
-        assertEq(
-            catalog.getTrack(trackRegistrationData.trackId).trackBeneficiary,
-            updateTrackData.newTrackBeneficiary
-        );
+        assertEq(catalog.getTrack(trackId).trackBeneficiary, updateTrackData.newTrackBeneficiary);
     }
 
     function test_setTrackBeneficiary_RevertIf_track_not_registered() public {
@@ -323,7 +295,7 @@ contract CatalogTest is Test {
         address nonOwner = address(0x9);
         vm.expectRevert(Catalog.MustBeTrackOwnerOrManager.selector);
         vm.startPrank(nonOwner);
-        catalog.setTrackBeneficiary(trackRegistrationData.trackId, updateTrackData.newTrackBeneficiary);
+        catalog.setTrackBeneficiary(trackId, updateTrackData.newTrackBeneficiary);
         vm.stopPrank();
     }
 
@@ -334,13 +306,13 @@ contract CatalogTest is Test {
             ITrackRegistration.TrackStatus.PENDING,
             artist,
             updateTrackData.newTrackBeneficiary,
-            trackRegistrationData.trackRegistrationHash,
+            trackRegistrationHash,
             "",
             "",
             address(0x0)
         );
         vm.startPrank(artist);
-        catalog.setTrackBeneficiary(trackRegistrationData.trackId, updateTrackData.newTrackBeneficiary);
+        catalog.setTrackBeneficiary(trackId, updateTrackData.newTrackBeneficiary);
         vm.stopPrank();
     }
 
@@ -349,11 +321,10 @@ contract CatalogTest is Test {
     function test_setTrackMetadata() public {
         registerTrack_setUp();
         vm.startPrank(artist);
-        catalog.setTrackMetadata(trackRegistrationData.trackId, updateTrackData.newTrackRegistrationHash);
+        catalog.setTrackMetadata(trackId, updateTrackData.newTrackRegistrationHash);
         vm.stopPrank();
         assertEq(
-            catalog.getTrack(trackRegistrationData.trackId).trackRegistrationHash,
-            updateTrackData.newTrackRegistrationHash
+            catalog.getTrack(trackId).trackRegistrationHash, updateTrackData.newTrackRegistrationHash
         );
     }
 
@@ -370,7 +341,7 @@ contract CatalogTest is Test {
         address nonOwner = address(0x9);
         vm.expectRevert(Catalog.MustBeTrackOwnerOrManager.selector);
         vm.startPrank(nonOwner);
-        catalog.setTrackMetadata(trackRegistrationData.trackId, updateTrackData.newTrackRegistrationHash);
+        catalog.setTrackMetadata(trackId, updateTrackData.newTrackRegistrationHash);
         vm.stopPrank();
     }
 
@@ -380,14 +351,14 @@ contract CatalogTest is Test {
         emit TrackUpdated(
             ITrackRegistration.TrackStatus.PENDING,
             artist,
-            trackRegistrationData.trackBeneficiary,
+            trackBeneficiary,
             "newTrackHash",
             "",
             "",
             address(0x0)
         );
         vm.startPrank(artist);
-        catalog.setTrackMetadata(trackRegistrationData.trackId, "newTrackHash");
+        catalog.setTrackMetadata(trackId, "newTrackHash");
         vm.stopPrank();
     }
 
@@ -396,12 +367,9 @@ contract CatalogTest is Test {
     function test_setTrackFingerprintHash() public {
         registerTrack_setUp();
         vm.startPrank(artist);
-        catalog.setTrackFingerprintHash(trackRegistrationData.trackId, updateTrackData.fingerprintHash);
+        catalog.setTrackFingerprintHash(trackId, updateTrackData.fingerprintHash);
         vm.stopPrank();
-        assertEq(
-            catalog.getTrack(trackRegistrationData.trackId).fingerprintHash,
-            updateTrackData.fingerprintHash
-        );
+        assertEq(catalog.getTrack(trackId).fingerprintHash, updateTrackData.fingerprintHash);
     }
 
     function test_setTrackFingerprintHash_RevertIf_track_not_registered() public {
@@ -417,7 +385,7 @@ contract CatalogTest is Test {
         address nonOwner = address(0x9);
         vm.expectRevert(Catalog.MustBeTrackOwnerOrManager.selector);
         vm.startPrank(nonOwner);
-        catalog.setTrackFingerprintHash(trackRegistrationData.trackId, updateTrackData.fingerprintHash);
+        catalog.setTrackFingerprintHash(trackId, updateTrackData.fingerprintHash);
         vm.stopPrank();
     }
 
@@ -427,14 +395,14 @@ contract CatalogTest is Test {
         emit TrackUpdated(
             ITrackRegistration.TrackStatus.PENDING,
             artist,
-            trackRegistrationData.trackBeneficiary,
-            trackRegistrationData.trackRegistrationHash,
+            trackBeneficiary,
+            trackRegistrationHash,
             "fingerprintHash",
             "",
             address(0x0)
         );
         vm.startPrank(artist);
-        catalog.setTrackFingerprintHash(trackRegistrationData.trackId, "fingerprintHash");
+        catalog.setTrackFingerprintHash(trackId, "fingerprintHash");
         vm.stopPrank();
     }
 
@@ -443,12 +411,9 @@ contract CatalogTest is Test {
     function test_setTrackValidationHash() public {
         registerTrack_setUp();
         vm.startPrank(artist);
-        catalog.setTrackValidationHash(trackRegistrationData.trackId, updateTrackData.validationHash);
+        catalog.setTrackValidationHash(trackId, updateTrackData.validationHash);
         vm.stopPrank();
-        assertEq(
-            catalog.getTrack(trackRegistrationData.trackId).validationHash,
-            updateTrackData.validationHash
-        );
+        assertEq(catalog.getTrack(trackId).validationHash, updateTrackData.validationHash);
     }
 
     function test_setTrackValidationHash_RevertIf_track_not_registered() public {
@@ -464,7 +429,7 @@ contract CatalogTest is Test {
         address nonOwner = address(0x9);
         vm.expectRevert(Catalog.MustBeTrackOwnerOrManager.selector);
         vm.startPrank(nonOwner);
-        catalog.setTrackValidationHash(trackRegistrationData.trackId, updateTrackData.validationHash);
+        catalog.setTrackValidationHash(trackId, updateTrackData.validationHash);
         vm.stopPrank();
     }
 
@@ -474,170 +439,132 @@ contract CatalogTest is Test {
         emit TrackUpdated(
             ITrackRegistration.TrackStatus.PENDING,
             artist,
-            trackRegistrationData.trackBeneficiary,
-            trackRegistrationData.trackRegistrationHash,
+            trackBeneficiary,
+            trackRegistrationHash,
             "",
             "validationHash",
             address(0x0)
         );
         vm.startPrank(artist);
-        catalog.setTrackValidationHash(trackRegistrationData.trackId, "validationHash");
+        catalog.setTrackValidationHash(trackId, "validationHash");
         vm.stopPrank();
     }
 
     /// registerReleasesContract
 
-    struct RegisterReleasesContractData {
-        address releasesRegistrar;
-        address releases;
-        address releasesOwner;
-    }
-
-    RegisterReleasesContractData registerReleasesContractData = RegisterReleasesContractData({
-        releasesRegistrar: address(0x6),
-        releases: address(0x13),
-        releasesOwner: address(0x8)
-    });
-
-    function registerReleasesContract_setUp() public {
-        registry.grantRole(
-            keccak256("RELEASES_REGISTRAR_ROLE"), registerReleasesContractData.releasesRegistrar
-        );
-        vm.startPrank(registerReleasesContractData.releasesRegistrar);
-        catalog.registerReleasesContract(
-            registerReleasesContractData.releases, registerReleasesContractData.releasesOwner
-        );
-        vm.stopPrank();
-    }
-
     function test_registerReleasesContract() public {
-        registerReleasesContract_setUp();
-        assertEq(
-            catalog.getReleasesOwner(registerReleasesContractData.releases),
-            registerReleasesContractData.releasesOwner
-        );
+        assertEq(catalog.getReleasesOwner(address(releases)), artist);
     }
 
-    function test_registerReleasesContract_RevertIf_no_releases_registrar_role() public {
-        address nonReleasesRegistrar = address(0x9);
+    function test_registerReleasesContract_reverts_if_no_releases_registrar_role() public {
+        address maliciousAccount = address(0x9);
+        membership.addMember(maliciousAccount);
+
         vm.expectRevert(Catalog.ReleasesRegistrarRoleRequired.selector);
-        vm.startPrank(nonReleasesRegistrar);
-        catalog.registerReleasesContract(
-            registerReleasesContractData.releases, registerReleasesContractData.releasesOwner
-        );
+        vm.startPrank(maliciousAccount);
+        catalog.registerReleasesContract(address(0x69), maliciousAccount);
         vm.stopPrank();
     }
 
-    function test_registerReleasesContract_RevertIf_releases_contract_already_registered() public {
-        registerReleasesContract_setUp();
+    function test_registerReleasesContract_reverts_if_releases_contract_already_registered() public {
         vm.expectRevert(Catalog.ReleasesContractIsAlreadyRegistered.selector);
-        vm.startPrank(registerReleasesContractData.releasesRegistrar);
-        catalog.registerReleasesContract(
-            registerReleasesContractData.releases, registerReleasesContractData.releasesOwner
-        );
+        vm.startPrank(address(releasesFactory));
+        catalog.registerReleasesContract(address(releases), artist);
         vm.stopPrank();
     }
 
     function test_registerReleasesContract_emits_event() public {
-        registry.grantRole(
-            keccak256("RELEASES_REGISTRAR_ROLE"), registerReleasesContractData.releasesRegistrar
-        );
+        address registrar = address(0x999);
+        registry.grantRole(registry.RELEASES_REGISTRAR_ROLE(), registrar);
+        address newReleases = address(0x123);
+        address releasesOwner = address(0x444);
+        membership.addMember(releasesOwner);
+
+        vm.startPrank(registrar);
         vm.expectEmit(true, true, true, true);
-        emit ReleasesRegistered(
-            registerReleasesContractData.releases, registerReleasesContractData.releasesOwner
-        );
-        vm.startPrank(registerReleasesContractData.releasesRegistrar);
-        catalog.registerReleasesContract(
-            registerReleasesContractData.releases, registerReleasesContractData.releasesOwner
-        );
+        emit ReleasesRegistered(newReleases, releasesOwner);
+        catalog.registerReleasesContract(newReleases, releasesOwner);
         vm.stopPrank();
     }
 
     // unregisterReleasesContract
 
     function test_unregisterReleasesContract() public {
-        registerReleasesContract_setUp();
         vm.startPrank(catalogAdmin);
-        catalog.unregisterReleasesContract(registerReleasesContractData.releases);
-        assertEq(catalog.getReleasesOwner(registerReleasesContractData.releases), address(0));
+        catalog.unregisterReleasesContract(address(releases));
+        assertEq(catalog.getReleasesOwner(address(releases)), address(0));
         vm.stopPrank();
     }
 
-    function test_RevertIf_unregistering_unregistered_releases_contract() public {
+    function test_revert_if_unregistering_unregistered_releases_contract() public {
         vm.expectRevert(Catalog.ReleasesContractIsNotRegistered.selector);
+
         vm.startPrank(catalogAdmin);
-        catalog.unregisterReleasesContract(registerReleasesContractData.releases);
+        catalog.unregisterReleasesContract(address(0x69));
         vm.stopPrank();
     }
 
     function test_unregisterReleasesContract_emits_event() public {
-        registerReleasesContract_setUp();
         vm.expectEmit(true, true, true, true);
-        emit ReleasesUnregistered(
-            registerReleasesContractData.releases, registerReleasesContractData.releasesOwner
-        );
+        emit ReleasesUnregistered(address(releases), address(artist));
+
         vm.startPrank(catalogAdmin);
-        catalog.unregisterReleasesContract(registerReleasesContractData.releases);
+        catalog.unregisterReleasesContract(address(releases));
         vm.stopPrank();
     }
 
     // setReleasesApproval
 
-    function releases_approval_setUp() public {
-        registerTrack_setUp();
-        registerReleasesContract_setUp();
-    }
-
     function test_setReleasesApproval() public {
-        releases_approval_setUp();
+        registerTrack_setUp();
         vm.startPrank(artist);
-        catalog.setReleasesApproval(trackRegistrationData.trackId, address(releases), true);
+        catalog.setReleasesApproval(trackId, address(releases), true);
         vm.stopPrank();
-        assertEq(catalog.getReleasesApproval(trackRegistrationData.trackId, address(releases)), true);
+        assertEq(catalog.getReleasesApproval(trackId, address(releases)), true);
     }
 
     function test_setReleasesApproval_RevertIf_setting_approval_not_artist() public {
-        releases_approval_setUp();
+        registerTrack_setUp();
         address nonArtist = address(0x9);
         vm.expectRevert(Catalog.MustBeTrackOwnerOrManager.selector);
         vm.startPrank(nonArtist);
-        catalog.setReleasesApproval(trackRegistrationData.trackId, address(releases), true);
+        catalog.setReleasesApproval(trackId, address(releases), true);
         vm.stopPrank();
     }
 
     function test_setReleasesApproval_RevertIf_setting_approval_with_unregistered_releases_contract()
         public
     {
-        releases_approval_setUp();
+        registerTrack_setUp();
         address nonRegisteredReleasesContract = address(0x9);
         vm.expectRevert(Catalog.ReleasesContractIsNotRegistered.selector);
         vm.startPrank(artist);
-        catalog.setReleasesApproval(trackRegistrationData.trackId, nonRegisteredReleasesContract, true);
+        catalog.setReleasesApproval(trackId, nonRegisteredReleasesContract, true);
         vm.stopPrank();
     }
 
     function test_setReleasesApproval_emits_event() public {
-        releases_approval_setUp();
+        registerTrack_setUp();
         vm.expectEmit(true, true, true, true);
-        emit TrackApprovalChanged(trackRegistrationData.trackId, address(releases), true);
+        emit TrackApprovalChanged(trackId, address(releases), true);
         vm.startPrank(artist);
-        catalog.setReleasesApproval(trackRegistrationData.trackId, address(releases), true);
+        catalog.setReleasesApproval(trackId, address(releases), true);
         vm.stopPrank();
     }
 
     function test_remove_releases_approval() public {
-        releases_approval_setUp();
+        registerTrack_setUp();
         vm.startPrank(artist);
-        catalog.setReleasesApproval(trackRegistrationData.trackId, address(releases), true);
-        catalog.setReleasesApproval(trackRegistrationData.trackId, address(releases), false);
+        catalog.setReleasesApproval(trackId, address(releases), true);
+        catalog.setReleasesApproval(trackId, address(releases), false);
         vm.stopPrank();
-        assertEq(catalog.getReleasesApproval(trackRegistrationData.trackId, address(releases)), false);
+        assertEq(catalog.getReleasesApproval(trackId, address(releases)), false);
     }
 
     // setReleasesApprovalForAll
 
     function test_setReleasesApprovalForAll() public {
-        releases_approval_setUp();
+        registerTrack_setUp();
         vm.startPrank(artist);
         catalog.setReleasesApprovalForAll(artist, address(releases), true);
         vm.stopPrank();
@@ -645,7 +572,7 @@ contract CatalogTest is Test {
     }
 
     function test_setReleasesApprovalForAll_RevertIf_setting_approval_not_artist() public {
-        releases_approval_setUp();
+        registerTrack_setUp();
         address nonArtist = address(0x9);
         vm.expectRevert(Catalog.MustBeTrackOwnerOrManager.selector);
         vm.startPrank(nonArtist);
@@ -655,7 +582,7 @@ contract CatalogTest is Test {
 
     function test_setReleasesApprovalForAll_RevertIf_setting_approval_with_unregistered_releases_contract(
     ) public {
-        releases_approval_setUp();
+        registerTrack_setUp();
         address nonRegisteredReleasesContract = address(0x9);
         vm.expectRevert(Catalog.ReleasesContractIsNotRegistered.selector);
         vm.startPrank(artist);
@@ -664,7 +591,7 @@ contract CatalogTest is Test {
     }
 
     function test_setReleasesApprovalForAll_emits_event() public {
-        releases_approval_setUp();
+        registerTrack_setUp();
         vm.expectEmit(true, true, true, true);
         emit AllTracksApprovalChanged(artist, address(releases), true);
         vm.startPrank(artist);
@@ -683,13 +610,12 @@ contract CatalogTest is Test {
     RegisteringReleaseData registeringReleaseData;
 
     function registeringRelease_setUp() public {
-        registerReleasesContract_setUp();
         string memory trackRegistrationHashOne = "trackHashOne";
         string memory trackRegistrationHashTwo = "trackHashTwo";
 
         vm.startPrank(artist);
-        catalog.registerTrack(artist, trackRegistrationData.trackBeneficiary, trackRegistrationHashOne);
-        catalog.registerTrack(artist, trackRegistrationData.trackBeneficiary, trackRegistrationHashTwo);
+        catalog.registerTrack(artist, trackBeneficiary, trackRegistrationHashOne);
+        catalog.registerTrack(artist, trackBeneficiary, trackRegistrationHashTwo);
         vm.stopPrank();
 
         string memory trackIdOne = catalog.getTrackId(trackRegistrationHashOne);
@@ -872,17 +798,16 @@ contract CatalogTest is Test {
 
     function test_getReleaseTracks() public {
         registeringRelease_setUp();
+
         vm.startPrank(artist);
         catalog.setReleasesApprovalForAll(artist, address(releases), true);
         vm.stopPrank();
-        vm.startPrank(address(releases));
-        catalog.registerRelease(
-            registeringReleaseData.trackIds, registeringReleaseData.uri, registeringReleaseData.tokenId
-        );
-        vm.stopPrank();
+
         string[] memory trackIds =
             catalog.getReleaseTracks(address(releases), registeringReleaseData.tokenId);
-        assertEq(trackIds[0], registeringReleaseData.trackIds[0]);
-        assertEq(trackIds[1], registeringReleaseData.trackIds[1]);
+
+        for (uint256 i = 0; i < trackIds.length; i++) {
+            assertEq(trackIds[i], registeringReleaseData.trackIds[i]);
+        }
     }
 }
