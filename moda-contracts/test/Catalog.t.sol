@@ -83,7 +83,8 @@ contract CatalogTest is Test {
 
     function setup_auto_verified(address account) public {
         membership.addMember(account);
-        registry.grantRole(keccak256("AUTO_VERIFIED_ROLE"), account);
+        vm.startPrank(catalogAdmin);
+        catalog.grantRole(catalog.AUTO_VERIFIED_ROLE(), account);
     }
 
     /// Initialization revert
@@ -235,7 +236,7 @@ contract CatalogTest is Test {
         assertEq(track.validationHash, "");
     }
 
-    /// setTrackStatus
+    // setTrackStatus
 
     function setTrackStatus_setUp() public {
         registerTrack_setUp();

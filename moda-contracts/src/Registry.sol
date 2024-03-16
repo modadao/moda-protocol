@@ -33,9 +33,6 @@ contract Registry is IRegistry, IOfficialContracts, AccessControlEnumerable {
     /// @notice only an address with a releases registrar role can register a releases contract
     bytes32 public constant RELEASES_REGISTRAR_ROLE = keccak256("RELEASES_REGISTRAR_ROLE");
 
-    /// @notice an address with AUTO_VERIFIED_ROLE will have their tracks verified on registration
-    bytes32 public constant AUTO_VERIFIED_ROLE = keccak256("AUTO_VERIFIED_ROLE");
-
     address payable _treasury;
     uint32 _treasuryFee;
     ISplitsFactory _splitsFactory;

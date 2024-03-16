@@ -20,3 +20,6 @@ slither_report.md
 
 # aderyn
 report.md
+
+# generated addresses to verify
+script/utils/add_verified_role/addresses.json

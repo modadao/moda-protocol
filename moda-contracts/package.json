@@ -14,7 +14,8 @@
     "deploy_Management": "forge script script/DeployManagement.s.sol:DeployManagement --rpc-url rpcUrl --broadcast --verify -vvvv",
     "deploy_SplitsFactory": "forge script script/DeploySplitsFactory.s.sol:DeploySplitsFactory --rpc-url rpcUrl --broadcast --verify -vvvv",
     "set_OfficialContracts": "forge script script/SetOfficialContracts.s.sol:SetOfficialContracts --rpc-url rpcUrl --broadcast -vvvv",
-    "deploy_CatalogFactory": "forge clean && forge build && forge script script/DeployCatalogFactory.s.sol:DeployCatalogFactory --rpc-url rpcUrl --broadcast --verify -vvvv --ffi"
+    "deploy_CatalogFactory": "forge clean && forge build && forge script script/DeployCatalogFactory.s.sol:DeployCatalogFactory --rpc-url rpcUrl --broadcast --verify -vvvv --ffi",
+    "add_verified_roles": "node script/utils/add_verified_role/addAddressesToVerify.js"
   },
   "keywords": [],
   "author": "",

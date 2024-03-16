@@ -18,7 +18,8 @@
     "lint:ci": "biome ci .",
     "update": "pnpm update --latest --recursive --interactive",
     "generate:profile": "pnpm --filter profile run build",
-    "evm-profile:dev": "pnpm --filter evm-profile run dev"
+    "evm-profile:dev": "pnpm --filter evm-profile run dev",
+    "add_verified_roles": "pnpm --filter moda-contracts add_verified_roles"
   },
   "devDependencies": {
     "@biomejs/biome": "1.3.3"

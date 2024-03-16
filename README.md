@@ -52,6 +52,12 @@ These contracts have already been deployed on Mumbai. It is recommended that you
 ### Register Contracts with Registry
 `pnpm c:set_OfficialContracts --chain mumbai --sender <public address of who deployed the Registry>`
 
+## Automatic track verification
+
+All registered tracks have a status that is used to represent their authenticity. Upon registration a track is given a status of PENDING, this status can be updated to VALIDATED or INVALIDATED by a privileged account. A track cannot be used to create a release without a status of VALIDATED. This step can by bypassed by a catalog owner granting the registering account with the AUTO_VERIFIED_ROLE. We have added a script that allows the catalog owner to do this from the command line. To grant the AUTO_VERIFIED_ROLE to one or more addresses you can run this command from the root: 
+
+`pnpm add_verified_roles <address1> <address2> ....`
+
 ## Generate Smart Contract Documentation
 
 1. `pnpm c:docs`
