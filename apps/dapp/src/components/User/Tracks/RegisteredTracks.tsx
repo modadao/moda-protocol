@@ -18,10 +18,8 @@ export default function RegisteredTracks() {
 
   const router = useRouter();
 
-  const result = useGetRegisteredTracks();
-  const registeredTracks = result.ok ? result.value.registeredTracks : [];
-  const isFetching = result.ok ? result.value.isFetching : false;
-  const refetch = result.ok && result.value.refetch;
+  const { registeredTracks, isFetching, error, refetch } =
+    useGetRegisteredTracks();
 
   const isSelectedTracks = selectedTracks.length > 0;
 
@@ -39,14 +37,14 @@ export default function RegisteredTracks() {
   }, [isFetching]);
 
   useEffect(() => {
-    if (!result.ok) {
+    if (error) {
       toast({
         title: 'Error',
-        description: 'Error fetching registered tracks',
+        description: error.message,
         variant: 'error',
       });
     }
-  }, [result.ok]);
+  }, [error]);
 
   if (isUploadTrack) {
     return (

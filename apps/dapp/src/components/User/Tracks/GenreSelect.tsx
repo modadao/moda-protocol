@@ -28,12 +28,12 @@ export default function GenreSelect() {
   const {
     setValue,
     formState: { errors },
-    reset,
+    clearErrors,
   } = useFormContext<CreateReleaseData>();
 
   const setGenre = (genre: string) => {
     setValue('releaseGenre', genre);
-    reset({ releaseGenre: '' });
+    clearErrors('releaseGenre');
   };
 
   return (

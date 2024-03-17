@@ -50,6 +50,8 @@ export default function NavDropdownProfile() {
                 isAccountProfileDataLoading
                   ? 'Loading name...'
                   : accountProfileData.name
+                  ? accountProfileData.name
+                  : ''
               }
               imageUrl={
                 isAccountProfileDataLoading ? '' : accountProfileData.image

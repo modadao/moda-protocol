@@ -1,6 +1,6 @@
-import { Config } from '@/config';
 import { getChainInfo } from '@/utils/getChainInfo';
 import { EvmAbiItem, EvmChain } from '@moralisweb3/common-evm-utils';
+import { Addresses } from 'drop-sdk';
 import Moralis from 'moralis';
 
 const apiKey = process.env.NEXT_PUBLIC_MORALIS_API_KEY || '';
@@ -32,6 +32,9 @@ export async function GET(_request: Request, { params }: Params) {
 
   const chain = chainInfo.isTestnet ? EvmChain.MUMBAI : EvmChain.POLYGON;
 
+  const profileAddress =
+    chain === EvmChain.MUMBAI ? Addresses.Profile.mumbai : '';
+
   const topic =
     '0x851e62abe600e90c07bdd93b1db315b32f32d4845f6cc42b28e6f1acb458eaee';
 
@@ -56,7 +59,7 @@ export async function GET(_request: Request, { params }: Params) {
   };
 
   const response = await Moralis.EvmApi.events.getContractEvents({
-    address: Config.profileAddress,
+    address: profileAddress,
     chain,
     topic,
     abi,

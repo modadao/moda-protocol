@@ -1,5 +1,6 @@
 'use client';
-import { Config } from '@/config';
+import { getChainInfo } from '@/utils';
+import { Addresses } from 'drop-sdk';
 import { useReadProfileBalanceOf } from 'profile';
 import { ReactNode, createContext, useEffect, useState } from 'react';
 import { useAccount } from 'wagmi';
@@ -19,9 +20,13 @@ export const ProfileContext = createContext<ProfileContextProps>({
 export function ProfileContextProvider({
   children,
 }: ProfileContextProviderProps) {
+  const { isTestnet } = getChainInfo();
+
+  const profileAddress = isTestnet ? Addresses.Profile.mumbai : '';
+
   const { address } = useAccount();
   const { data: userBalance } = useReadProfileBalanceOf({
-    address: Config.profileAddress,
+    address: profileAddress,
     args: [address],
   });
 

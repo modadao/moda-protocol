@@ -8,6 +8,7 @@ import * as _wagmi_core_dist_types_actions_codegen_createWriteContract from '@wa
 import * as _wagmi_core_dist_types_actions_codegen_createReadContract from '@wagmi/core/dist/types/actions/codegen/createReadContract';
 
 declare const profileAbi: readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -18,8 +19,8 @@ declare const profileAbi: readonly [{
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -32,8 +33,8 @@ declare const profileAbi: readonly [{
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -46,8 +47,8 @@ declare const profileAbi: readonly [{
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -60,8 +61,8 @@ declare const profileAbi: readonly [{
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -78,8 +79,8 @@ declare const profileAbi: readonly [{
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -92,8 +93,8 @@ declare const profileAbi: readonly [{
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -110,8 +111,8 @@ declare const profileAbi: readonly [{
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -120,8 +121,8 @@ declare const profileAbi: readonly [{
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -134,8 +135,8 @@ declare const profileAbi: readonly [{
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -144,8 +145,8 @@ declare const profileAbi: readonly [{
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -158,8 +159,8 @@ declare const profileAbi: readonly [{
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -176,8 +177,8 @@ declare const profileAbi: readonly [{
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -198,8 +199,8 @@ declare const profileAbi: readonly [{
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -212,8 +213,8 @@ declare const profileAbi: readonly [{
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -226,8 +227,8 @@ declare const profileAbi: readonly [{
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -236,8 +237,8 @@ declare const profileAbi: readonly [{
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -250,8 +251,8 @@ declare const profileAbi: readonly [{
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -260,8 +261,8 @@ declare const profileAbi: readonly [{
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -278,8 +279,8 @@ declare const profileAbi: readonly [{
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -288,8 +289,8 @@ declare const profileAbi: readonly [{
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -302,7 +303,6 @@ declare const profileAbi: readonly [{
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -424,6 +424,7 @@ declare const profileAbi: readonly [{
  * Wraps __{@link readContract}__ with `abi` set to __{@link profileAbi}__
  */
 declare const readProfile: _wagmi_core_dist_types_actions_codegen_createReadContract.CreateReadContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -434,8 +435,8 @@ declare const readProfile: _wagmi_core_dist_types_actions_codegen_createReadCont
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -448,8 +449,8 @@ declare const readProfile: _wagmi_core_dist_types_actions_codegen_createReadCont
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -462,8 +463,8 @@ declare const readProfile: _wagmi_core_dist_types_actions_codegen_createReadCont
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -476,8 +477,8 @@ declare const readProfile: _wagmi_core_dist_types_actions_codegen_createReadCont
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -494,8 +495,8 @@ declare const readProfile: _wagmi_core_dist_types_actions_codegen_createReadCont
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -508,8 +509,8 @@ declare const readProfile: _wagmi_core_dist_types_actions_codegen_createReadCont
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -526,8 +527,8 @@ declare const readProfile: _wagmi_core_dist_types_actions_codegen_createReadCont
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -536,8 +537,8 @@ declare const readProfile: _wagmi_core_dist_types_actions_codegen_createReadCont
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -550,8 +551,8 @@ declare const readProfile: _wagmi_core_dist_types_actions_codegen_createReadCont
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -560,8 +561,8 @@ declare const readProfile: _wagmi_core_dist_types_actions_codegen_createReadCont
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -574,8 +575,8 @@ declare const readProfile: _wagmi_core_dist_types_actions_codegen_createReadCont
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -592,8 +593,8 @@ declare const readProfile: _wagmi_core_dist_types_actions_codegen_createReadCont
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -614,8 +615,8 @@ declare const readProfile: _wagmi_core_dist_types_actions_codegen_createReadCont
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -628,8 +629,8 @@ declare const readProfile: _wagmi_core_dist_types_actions_codegen_createReadCont
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -642,8 +643,8 @@ declare const readProfile: _wagmi_core_dist_types_actions_codegen_createReadCont
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -652,8 +653,8 @@ declare const readProfile: _wagmi_core_dist_types_actions_codegen_createReadCont
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -666,8 +667,8 @@ declare const readProfile: _wagmi_core_dist_types_actions_codegen_createReadCont
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -676,8 +677,8 @@ declare const readProfile: _wagmi_core_dist_types_actions_codegen_createReadCont
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -694,8 +695,8 @@ declare const readProfile: _wagmi_core_dist_types_actions_codegen_createReadCont
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -704,8 +705,8 @@ declare const readProfile: _wagmi_core_dist_types_actions_codegen_createReadCont
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -718,7 +719,6 @@ declare const readProfile: _wagmi_core_dist_types_actions_codegen_createReadCont
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -840,6 +840,7 @@ declare const readProfile: _wagmi_core_dist_types_actions_codegen_createReadCont
  * Wraps __{@link readContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"accountUri"`
  */
 declare const readProfileAccountUri: _wagmi_core_dist_types_actions_codegen_createReadContract.CreateReadContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -850,8 +851,8 @@ declare const readProfileAccountUri: _wagmi_core_dist_types_actions_codegen_crea
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -864,8 +865,8 @@ declare const readProfileAccountUri: _wagmi_core_dist_types_actions_codegen_crea
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -878,8 +879,8 @@ declare const readProfileAccountUri: _wagmi_core_dist_types_actions_codegen_crea
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -892,8 +893,8 @@ declare const readProfileAccountUri: _wagmi_core_dist_types_actions_codegen_crea
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -910,8 +911,8 @@ declare const readProfileAccountUri: _wagmi_core_dist_types_actions_codegen_crea
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -924,8 +925,8 @@ declare const readProfileAccountUri: _wagmi_core_dist_types_actions_codegen_crea
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -942,8 +943,8 @@ declare const readProfileAccountUri: _wagmi_core_dist_types_actions_codegen_crea
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -952,8 +953,8 @@ declare const readProfileAccountUri: _wagmi_core_dist_types_actions_codegen_crea
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -966,8 +967,8 @@ declare const readProfileAccountUri: _wagmi_core_dist_types_actions_codegen_crea
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -976,8 +977,8 @@ declare const readProfileAccountUri: _wagmi_core_dist_types_actions_codegen_crea
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -990,8 +991,8 @@ declare const readProfileAccountUri: _wagmi_core_dist_types_actions_codegen_crea
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -1008,8 +1009,8 @@ declare const readProfileAccountUri: _wagmi_core_dist_types_actions_codegen_crea
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -1030,8 +1031,8 @@ declare const readProfileAccountUri: _wagmi_core_dist_types_actions_codegen_crea
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -1044,8 +1045,8 @@ declare const readProfileAccountUri: _wagmi_core_dist_types_actions_codegen_crea
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -1058,8 +1059,8 @@ declare const readProfileAccountUri: _wagmi_core_dist_types_actions_codegen_crea
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -1068,8 +1069,8 @@ declare const readProfileAccountUri: _wagmi_core_dist_types_actions_codegen_crea
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -1082,8 +1083,8 @@ declare const readProfileAccountUri: _wagmi_core_dist_types_actions_codegen_crea
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -1092,8 +1093,8 @@ declare const readProfileAccountUri: _wagmi_core_dist_types_actions_codegen_crea
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -1110,8 +1111,8 @@ declare const readProfileAccountUri: _wagmi_core_dist_types_actions_codegen_crea
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -1120,8 +1121,8 @@ declare const readProfileAccountUri: _wagmi_core_dist_types_actions_codegen_crea
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -1134,7 +1135,6 @@ declare const readProfileAccountUri: _wagmi_core_dist_types_actions_codegen_crea
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -1256,6 +1256,7 @@ declare const readProfileAccountUri: _wagmi_core_dist_types_actions_codegen_crea
  * Wraps __{@link readContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"balanceOf"`
  */
 declare const readProfileBalanceOf: _wagmi_core_dist_types_actions_codegen_createReadContract.CreateReadContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -1266,8 +1267,8 @@ declare const readProfileBalanceOf: _wagmi_core_dist_types_actions_codegen_creat
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -1280,8 +1281,8 @@ declare const readProfileBalanceOf: _wagmi_core_dist_types_actions_codegen_creat
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -1294,8 +1295,8 @@ declare const readProfileBalanceOf: _wagmi_core_dist_types_actions_codegen_creat
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -1308,8 +1309,8 @@ declare const readProfileBalanceOf: _wagmi_core_dist_types_actions_codegen_creat
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -1326,8 +1327,8 @@ declare const readProfileBalanceOf: _wagmi_core_dist_types_actions_codegen_creat
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -1340,8 +1341,8 @@ declare const readProfileBalanceOf: _wagmi_core_dist_types_actions_codegen_creat
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -1358,8 +1359,8 @@ declare const readProfileBalanceOf: _wagmi_core_dist_types_actions_codegen_creat
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -1368,8 +1369,8 @@ declare const readProfileBalanceOf: _wagmi_core_dist_types_actions_codegen_creat
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -1382,8 +1383,8 @@ declare const readProfileBalanceOf: _wagmi_core_dist_types_actions_codegen_creat
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -1392,8 +1393,8 @@ declare const readProfileBalanceOf: _wagmi_core_dist_types_actions_codegen_creat
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -1406,8 +1407,8 @@ declare const readProfileBalanceOf: _wagmi_core_dist_types_actions_codegen_creat
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -1424,8 +1425,8 @@ declare const readProfileBalanceOf: _wagmi_core_dist_types_actions_codegen_creat
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -1446,8 +1447,8 @@ declare const readProfileBalanceOf: _wagmi_core_dist_types_actions_codegen_creat
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -1460,8 +1461,8 @@ declare const readProfileBalanceOf: _wagmi_core_dist_types_actions_codegen_creat
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -1474,8 +1475,8 @@ declare const readProfileBalanceOf: _wagmi_core_dist_types_actions_codegen_creat
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -1484,8 +1485,8 @@ declare const readProfileBalanceOf: _wagmi_core_dist_types_actions_codegen_creat
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -1498,8 +1499,8 @@ declare const readProfileBalanceOf: _wagmi_core_dist_types_actions_codegen_creat
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -1508,8 +1509,8 @@ declare const readProfileBalanceOf: _wagmi_core_dist_types_actions_codegen_creat
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -1526,8 +1527,8 @@ declare const readProfileBalanceOf: _wagmi_core_dist_types_actions_codegen_creat
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -1536,8 +1537,8 @@ declare const readProfileBalanceOf: _wagmi_core_dist_types_actions_codegen_creat
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -1550,7 +1551,6 @@ declare const readProfileBalanceOf: _wagmi_core_dist_types_actions_codegen_creat
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -1672,6 +1672,7 @@ declare const readProfileBalanceOf: _wagmi_core_dist_types_actions_codegen_creat
  * Wraps __{@link readContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"canMintFor"`
  */
 declare const readProfileCanMintFor: _wagmi_core_dist_types_actions_codegen_createReadContract.CreateReadContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -1682,8 +1683,8 @@ declare const readProfileCanMintFor: _wagmi_core_dist_types_actions_codegen_crea
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -1696,8 +1697,8 @@ declare const readProfileCanMintFor: _wagmi_core_dist_types_actions_codegen_crea
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -1710,8 +1711,8 @@ declare const readProfileCanMintFor: _wagmi_core_dist_types_actions_codegen_crea
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -1724,8 +1725,8 @@ declare const readProfileCanMintFor: _wagmi_core_dist_types_actions_codegen_crea
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -1742,8 +1743,8 @@ declare const readProfileCanMintFor: _wagmi_core_dist_types_actions_codegen_crea
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -1756,8 +1757,8 @@ declare const readProfileCanMintFor: _wagmi_core_dist_types_actions_codegen_crea
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -1774,8 +1775,8 @@ declare const readProfileCanMintFor: _wagmi_core_dist_types_actions_codegen_crea
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -1784,8 +1785,8 @@ declare const readProfileCanMintFor: _wagmi_core_dist_types_actions_codegen_crea
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -1798,8 +1799,8 @@ declare const readProfileCanMintFor: _wagmi_core_dist_types_actions_codegen_crea
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -1808,8 +1809,8 @@ declare const readProfileCanMintFor: _wagmi_core_dist_types_actions_codegen_crea
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -1822,8 +1823,8 @@ declare const readProfileCanMintFor: _wagmi_core_dist_types_actions_codegen_crea
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -1840,8 +1841,8 @@ declare const readProfileCanMintFor: _wagmi_core_dist_types_actions_codegen_crea
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -1862,8 +1863,8 @@ declare const readProfileCanMintFor: _wagmi_core_dist_types_actions_codegen_crea
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -1876,8 +1877,8 @@ declare const readProfileCanMintFor: _wagmi_core_dist_types_actions_codegen_crea
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -1890,8 +1891,8 @@ declare const readProfileCanMintFor: _wagmi_core_dist_types_actions_codegen_crea
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -1900,8 +1901,8 @@ declare const readProfileCanMintFor: _wagmi_core_dist_types_actions_codegen_crea
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -1914,8 +1915,8 @@ declare const readProfileCanMintFor: _wagmi_core_dist_types_actions_codegen_crea
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -1924,8 +1925,8 @@ declare const readProfileCanMintFor: _wagmi_core_dist_types_actions_codegen_crea
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -1942,8 +1943,8 @@ declare const readProfileCanMintFor: _wagmi_core_dist_types_actions_codegen_crea
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -1952,8 +1953,8 @@ declare const readProfileCanMintFor: _wagmi_core_dist_types_actions_codegen_crea
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -1966,7 +1967,6 @@ declare const readProfileCanMintFor: _wagmi_core_dist_types_actions_codegen_crea
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -2088,6 +2088,7 @@ declare const readProfileCanMintFor: _wagmi_core_dist_types_actions_codegen_crea
  * Wraps __{@link readContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"getApproved"`
  */
 declare const readProfileGetApproved: _wagmi_core_dist_types_actions_codegen_createReadContract.CreateReadContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -2098,8 +2099,8 @@ declare const readProfileGetApproved: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -2112,8 +2113,8 @@ declare const readProfileGetApproved: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -2126,8 +2127,8 @@ declare const readProfileGetApproved: _wagmi_core_dist_types_actions_codegen_cre
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -2140,8 +2141,8 @@ declare const readProfileGetApproved: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -2158,8 +2159,8 @@ declare const readProfileGetApproved: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -2172,8 +2173,8 @@ declare const readProfileGetApproved: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -2190,8 +2191,8 @@ declare const readProfileGetApproved: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -2200,8 +2201,8 @@ declare const readProfileGetApproved: _wagmi_core_dist_types_actions_codegen_cre
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -2214,8 +2215,8 @@ declare const readProfileGetApproved: _wagmi_core_dist_types_actions_codegen_cre
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -2224,8 +2225,8 @@ declare const readProfileGetApproved: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -2238,8 +2239,8 @@ declare const readProfileGetApproved: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -2256,8 +2257,8 @@ declare const readProfileGetApproved: _wagmi_core_dist_types_actions_codegen_cre
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -2278,8 +2279,8 @@ declare const readProfileGetApproved: _wagmi_core_dist_types_actions_codegen_cre
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -2292,8 +2293,8 @@ declare const readProfileGetApproved: _wagmi_core_dist_types_actions_codegen_cre
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -2306,8 +2307,8 @@ declare const readProfileGetApproved: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -2316,8 +2317,8 @@ declare const readProfileGetApproved: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -2330,8 +2331,8 @@ declare const readProfileGetApproved: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -2340,8 +2341,8 @@ declare const readProfileGetApproved: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -2358,8 +2359,8 @@ declare const readProfileGetApproved: _wagmi_core_dist_types_actions_codegen_cre
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -2368,8 +2369,8 @@ declare const readProfileGetApproved: _wagmi_core_dist_types_actions_codegen_cre
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -2382,7 +2383,6 @@ declare const readProfileGetApproved: _wagmi_core_dist_types_actions_codegen_cre
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -2504,6 +2504,7 @@ declare const readProfileGetApproved: _wagmi_core_dist_types_actions_codegen_cre
  * Wraps __{@link readContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"isApprovedForAll"`
  */
 declare const readProfileIsApprovedForAll: _wagmi_core_dist_types_actions_codegen_createReadContract.CreateReadContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -2514,8 +2515,8 @@ declare const readProfileIsApprovedForAll: _wagmi_core_dist_types_actions_codege
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -2528,8 +2529,8 @@ declare const readProfileIsApprovedForAll: _wagmi_core_dist_types_actions_codege
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -2542,8 +2543,8 @@ declare const readProfileIsApprovedForAll: _wagmi_core_dist_types_actions_codege
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -2556,8 +2557,8 @@ declare const readProfileIsApprovedForAll: _wagmi_core_dist_types_actions_codege
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -2574,8 +2575,8 @@ declare const readProfileIsApprovedForAll: _wagmi_core_dist_types_actions_codege
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -2588,8 +2589,8 @@ declare const readProfileIsApprovedForAll: _wagmi_core_dist_types_actions_codege
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -2606,8 +2607,8 @@ declare const readProfileIsApprovedForAll: _wagmi_core_dist_types_actions_codege
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -2616,8 +2617,8 @@ declare const readProfileIsApprovedForAll: _wagmi_core_dist_types_actions_codege
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -2630,8 +2631,8 @@ declare const readProfileIsApprovedForAll: _wagmi_core_dist_types_actions_codege
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -2640,8 +2641,8 @@ declare const readProfileIsApprovedForAll: _wagmi_core_dist_types_actions_codege
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -2654,8 +2655,8 @@ declare const readProfileIsApprovedForAll: _wagmi_core_dist_types_actions_codege
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -2672,8 +2673,8 @@ declare const readProfileIsApprovedForAll: _wagmi_core_dist_types_actions_codege
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -2694,8 +2695,8 @@ declare const readProfileIsApprovedForAll: _wagmi_core_dist_types_actions_codege
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -2708,8 +2709,8 @@ declare const readProfileIsApprovedForAll: _wagmi_core_dist_types_actions_codege
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -2722,8 +2723,8 @@ declare const readProfileIsApprovedForAll: _wagmi_core_dist_types_actions_codege
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -2732,8 +2733,8 @@ declare const readProfileIsApprovedForAll: _wagmi_core_dist_types_actions_codege
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -2746,8 +2747,8 @@ declare const readProfileIsApprovedForAll: _wagmi_core_dist_types_actions_codege
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -2756,8 +2757,8 @@ declare const readProfileIsApprovedForAll: _wagmi_core_dist_types_actions_codege
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -2774,8 +2775,8 @@ declare const readProfileIsApprovedForAll: _wagmi_core_dist_types_actions_codege
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -2784,8 +2785,8 @@ declare const readProfileIsApprovedForAll: _wagmi_core_dist_types_actions_codege
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -2798,7 +2799,6 @@ declare const readProfileIsApprovedForAll: _wagmi_core_dist_types_actions_codege
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -2920,6 +2920,7 @@ declare const readProfileIsApprovedForAll: _wagmi_core_dist_types_actions_codege
  * Wraps __{@link readContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"name"`
  */
 declare const readProfileName: _wagmi_core_dist_types_actions_codegen_createReadContract.CreateReadContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -2930,8 +2931,8 @@ declare const readProfileName: _wagmi_core_dist_types_actions_codegen_createRead
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -2944,8 +2945,8 @@ declare const readProfileName: _wagmi_core_dist_types_actions_codegen_createRead
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -2958,8 +2959,8 @@ declare const readProfileName: _wagmi_core_dist_types_actions_codegen_createRead
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -2972,8 +2973,8 @@ declare const readProfileName: _wagmi_core_dist_types_actions_codegen_createRead
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -2990,8 +2991,8 @@ declare const readProfileName: _wagmi_core_dist_types_actions_codegen_createRead
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -3004,8 +3005,8 @@ declare const readProfileName: _wagmi_core_dist_types_actions_codegen_createRead
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -3022,8 +3023,8 @@ declare const readProfileName: _wagmi_core_dist_types_actions_codegen_createRead
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -3032,8 +3033,8 @@ declare const readProfileName: _wagmi_core_dist_types_actions_codegen_createRead
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -3046,8 +3047,8 @@ declare const readProfileName: _wagmi_core_dist_types_actions_codegen_createRead
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -3056,8 +3057,8 @@ declare const readProfileName: _wagmi_core_dist_types_actions_codegen_createRead
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -3070,8 +3071,8 @@ declare const readProfileName: _wagmi_core_dist_types_actions_codegen_createRead
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -3088,8 +3089,8 @@ declare const readProfileName: _wagmi_core_dist_types_actions_codegen_createRead
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -3110,8 +3111,8 @@ declare const readProfileName: _wagmi_core_dist_types_actions_codegen_createRead
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -3124,8 +3125,8 @@ declare const readProfileName: _wagmi_core_dist_types_actions_codegen_createRead
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -3138,8 +3139,8 @@ declare const readProfileName: _wagmi_core_dist_types_actions_codegen_createRead
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -3148,8 +3149,8 @@ declare const readProfileName: _wagmi_core_dist_types_actions_codegen_createRead
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -3162,8 +3163,8 @@ declare const readProfileName: _wagmi_core_dist_types_actions_codegen_createRead
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -3172,8 +3173,8 @@ declare const readProfileName: _wagmi_core_dist_types_actions_codegen_createRead
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -3190,8 +3191,8 @@ declare const readProfileName: _wagmi_core_dist_types_actions_codegen_createRead
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -3200,8 +3201,8 @@ declare const readProfileName: _wagmi_core_dist_types_actions_codegen_createRead
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -3214,7 +3215,6 @@ declare const readProfileName: _wagmi_core_dist_types_actions_codegen_createRead
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -3336,6 +3336,7 @@ declare const readProfileName: _wagmi_core_dist_types_actions_codegen_createRead
  * Wraps __{@link readContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"ownerOf"`
  */
 declare const readProfileOwnerOf: _wagmi_core_dist_types_actions_codegen_createReadContract.CreateReadContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -3346,8 +3347,8 @@ declare const readProfileOwnerOf: _wagmi_core_dist_types_actions_codegen_createR
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -3360,8 +3361,8 @@ declare const readProfileOwnerOf: _wagmi_core_dist_types_actions_codegen_createR
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -3374,8 +3375,8 @@ declare const readProfileOwnerOf: _wagmi_core_dist_types_actions_codegen_createR
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -3388,8 +3389,8 @@ declare const readProfileOwnerOf: _wagmi_core_dist_types_actions_codegen_createR
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -3406,8 +3407,8 @@ declare const readProfileOwnerOf: _wagmi_core_dist_types_actions_codegen_createR
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -3420,8 +3421,8 @@ declare const readProfileOwnerOf: _wagmi_core_dist_types_actions_codegen_createR
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -3438,8 +3439,8 @@ declare const readProfileOwnerOf: _wagmi_core_dist_types_actions_codegen_createR
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -3448,8 +3449,8 @@ declare const readProfileOwnerOf: _wagmi_core_dist_types_actions_codegen_createR
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -3462,8 +3463,8 @@ declare const readProfileOwnerOf: _wagmi_core_dist_types_actions_codegen_createR
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -3472,8 +3473,8 @@ declare const readProfileOwnerOf: _wagmi_core_dist_types_actions_codegen_createR
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -3486,8 +3487,8 @@ declare const readProfileOwnerOf: _wagmi_core_dist_types_actions_codegen_createR
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -3504,8 +3505,8 @@ declare const readProfileOwnerOf: _wagmi_core_dist_types_actions_codegen_createR
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -3526,8 +3527,8 @@ declare const readProfileOwnerOf: _wagmi_core_dist_types_actions_codegen_createR
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -3540,8 +3541,8 @@ declare const readProfileOwnerOf: _wagmi_core_dist_types_actions_codegen_createR
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -3554,8 +3555,8 @@ declare const readProfileOwnerOf: _wagmi_core_dist_types_actions_codegen_createR
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -3564,8 +3565,8 @@ declare const readProfileOwnerOf: _wagmi_core_dist_types_actions_codegen_createR
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -3578,8 +3579,8 @@ declare const readProfileOwnerOf: _wagmi_core_dist_types_actions_codegen_createR
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -3588,8 +3589,8 @@ declare const readProfileOwnerOf: _wagmi_core_dist_types_actions_codegen_createR
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -3606,8 +3607,8 @@ declare const readProfileOwnerOf: _wagmi_core_dist_types_actions_codegen_createR
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -3616,8 +3617,8 @@ declare const readProfileOwnerOf: _wagmi_core_dist_types_actions_codegen_createR
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -3630,7 +3631,6 @@ declare const readProfileOwnerOf: _wagmi_core_dist_types_actions_codegen_createR
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -3752,6 +3752,7 @@ declare const readProfileOwnerOf: _wagmi_core_dist_types_actions_codegen_createR
  * Wraps __{@link readContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"safeTransferFrom"`
  */
 declare const readProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codegen_createReadContract.CreateReadContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -3762,8 +3763,8 @@ declare const readProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codege
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -3776,8 +3777,8 @@ declare const readProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codege
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -3790,8 +3791,8 @@ declare const readProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codege
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -3804,8 +3805,8 @@ declare const readProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codege
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -3822,8 +3823,8 @@ declare const readProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codege
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -3836,8 +3837,8 @@ declare const readProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codege
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -3854,8 +3855,8 @@ declare const readProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codege
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -3864,8 +3865,8 @@ declare const readProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codege
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -3878,8 +3879,8 @@ declare const readProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codege
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -3888,8 +3889,8 @@ declare const readProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codege
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -3902,8 +3903,8 @@ declare const readProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codege
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -3920,8 +3921,8 @@ declare const readProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codege
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -3942,8 +3943,8 @@ declare const readProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codege
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -3956,8 +3957,8 @@ declare const readProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codege
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -3970,8 +3971,8 @@ declare const readProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codege
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -3980,8 +3981,8 @@ declare const readProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codege
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -3994,8 +3995,8 @@ declare const readProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codege
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -4004,8 +4005,8 @@ declare const readProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codege
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -4022,8 +4023,8 @@ declare const readProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codege
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -4032,8 +4033,8 @@ declare const readProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codege
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -4046,7 +4047,6 @@ declare const readProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codege
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -4168,6 +4168,7 @@ declare const readProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codege
  * Wraps __{@link readContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"supportsInterface"`
  */
 declare const readProfileSupportsInterface: _wagmi_core_dist_types_actions_codegen_createReadContract.CreateReadContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -4178,8 +4179,8 @@ declare const readProfileSupportsInterface: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -4192,8 +4193,8 @@ declare const readProfileSupportsInterface: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -4206,8 +4207,8 @@ declare const readProfileSupportsInterface: _wagmi_core_dist_types_actions_codeg
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -4220,8 +4221,8 @@ declare const readProfileSupportsInterface: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -4238,8 +4239,8 @@ declare const readProfileSupportsInterface: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -4252,8 +4253,8 @@ declare const readProfileSupportsInterface: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -4270,8 +4271,8 @@ declare const readProfileSupportsInterface: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -4280,8 +4281,8 @@ declare const readProfileSupportsInterface: _wagmi_core_dist_types_actions_codeg
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -4294,8 +4295,8 @@ declare const readProfileSupportsInterface: _wagmi_core_dist_types_actions_codeg
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -4304,8 +4305,8 @@ declare const readProfileSupportsInterface: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -4318,8 +4319,8 @@ declare const readProfileSupportsInterface: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -4336,8 +4337,8 @@ declare const readProfileSupportsInterface: _wagmi_core_dist_types_actions_codeg
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -4358,8 +4359,8 @@ declare const readProfileSupportsInterface: _wagmi_core_dist_types_actions_codeg
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -4372,8 +4373,8 @@ declare const readProfileSupportsInterface: _wagmi_core_dist_types_actions_codeg
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -4386,8 +4387,8 @@ declare const readProfileSupportsInterface: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -4396,8 +4397,8 @@ declare const readProfileSupportsInterface: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -4410,8 +4411,8 @@ declare const readProfileSupportsInterface: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -4420,8 +4421,8 @@ declare const readProfileSupportsInterface: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -4438,8 +4439,8 @@ declare const readProfileSupportsInterface: _wagmi_core_dist_types_actions_codeg
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -4448,8 +4449,8 @@ declare const readProfileSupportsInterface: _wagmi_core_dist_types_actions_codeg
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -4462,7 +4463,6 @@ declare const readProfileSupportsInterface: _wagmi_core_dist_types_actions_codeg
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -4584,6 +4584,7 @@ declare const readProfileSupportsInterface: _wagmi_core_dist_types_actions_codeg
  * Wraps __{@link readContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"symbol"`
  */
 declare const readProfileSymbol: _wagmi_core_dist_types_actions_codegen_createReadContract.CreateReadContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -4594,8 +4595,8 @@ declare const readProfileSymbol: _wagmi_core_dist_types_actions_codegen_createRe
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -4608,8 +4609,8 @@ declare const readProfileSymbol: _wagmi_core_dist_types_actions_codegen_createRe
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -4622,8 +4623,8 @@ declare const readProfileSymbol: _wagmi_core_dist_types_actions_codegen_createRe
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -4636,8 +4637,8 @@ declare const readProfileSymbol: _wagmi_core_dist_types_actions_codegen_createRe
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -4654,8 +4655,8 @@ declare const readProfileSymbol: _wagmi_core_dist_types_actions_codegen_createRe
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -4668,8 +4669,8 @@ declare const readProfileSymbol: _wagmi_core_dist_types_actions_codegen_createRe
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -4686,8 +4687,8 @@ declare const readProfileSymbol: _wagmi_core_dist_types_actions_codegen_createRe
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -4696,8 +4697,8 @@ declare const readProfileSymbol: _wagmi_core_dist_types_actions_codegen_createRe
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -4710,8 +4711,8 @@ declare const readProfileSymbol: _wagmi_core_dist_types_actions_codegen_createRe
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -4720,8 +4721,8 @@ declare const readProfileSymbol: _wagmi_core_dist_types_actions_codegen_createRe
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -4734,8 +4735,8 @@ declare const readProfileSymbol: _wagmi_core_dist_types_actions_codegen_createRe
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -4752,8 +4753,8 @@ declare const readProfileSymbol: _wagmi_core_dist_types_actions_codegen_createRe
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -4774,8 +4775,8 @@ declare const readProfileSymbol: _wagmi_core_dist_types_actions_codegen_createRe
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -4788,8 +4789,8 @@ declare const readProfileSymbol: _wagmi_core_dist_types_actions_codegen_createRe
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -4802,8 +4803,8 @@ declare const readProfileSymbol: _wagmi_core_dist_types_actions_codegen_createRe
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -4812,8 +4813,8 @@ declare const readProfileSymbol: _wagmi_core_dist_types_actions_codegen_createRe
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -4826,8 +4827,8 @@ declare const readProfileSymbol: _wagmi_core_dist_types_actions_codegen_createRe
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -4836,8 +4837,8 @@ declare const readProfileSymbol: _wagmi_core_dist_types_actions_codegen_createRe
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -4854,8 +4855,8 @@ declare const readProfileSymbol: _wagmi_core_dist_types_actions_codegen_createRe
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -4864,8 +4865,8 @@ declare const readProfileSymbol: _wagmi_core_dist_types_actions_codegen_createRe
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -4878,7 +4879,6 @@ declare const readProfileSymbol: _wagmi_core_dist_types_actions_codegen_createRe
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -5000,6 +5000,7 @@ declare const readProfileSymbol: _wagmi_core_dist_types_actions_codegen_createRe
  * Wraps __{@link readContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"tokenURI"`
  */
 declare const readProfileTokenUri: _wagmi_core_dist_types_actions_codegen_createReadContract.CreateReadContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -5010,8 +5011,8 @@ declare const readProfileTokenUri: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -5024,8 +5025,8 @@ declare const readProfileTokenUri: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -5038,8 +5039,8 @@ declare const readProfileTokenUri: _wagmi_core_dist_types_actions_codegen_create
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -5052,8 +5053,8 @@ declare const readProfileTokenUri: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -5070,8 +5071,8 @@ declare const readProfileTokenUri: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -5084,8 +5085,8 @@ declare const readProfileTokenUri: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -5102,8 +5103,8 @@ declare const readProfileTokenUri: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -5112,8 +5113,8 @@ declare const readProfileTokenUri: _wagmi_core_dist_types_actions_codegen_create
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -5126,8 +5127,8 @@ declare const readProfileTokenUri: _wagmi_core_dist_types_actions_codegen_create
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -5136,8 +5137,8 @@ declare const readProfileTokenUri: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -5150,8 +5151,8 @@ declare const readProfileTokenUri: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -5168,8 +5169,8 @@ declare const readProfileTokenUri: _wagmi_core_dist_types_actions_codegen_create
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -5190,8 +5191,8 @@ declare const readProfileTokenUri: _wagmi_core_dist_types_actions_codegen_create
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -5204,8 +5205,8 @@ declare const readProfileTokenUri: _wagmi_core_dist_types_actions_codegen_create
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -5218,8 +5219,8 @@ declare const readProfileTokenUri: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -5228,8 +5229,8 @@ declare const readProfileTokenUri: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -5242,8 +5243,8 @@ declare const readProfileTokenUri: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -5252,8 +5253,8 @@ declare const readProfileTokenUri: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -5270,8 +5271,8 @@ declare const readProfileTokenUri: _wagmi_core_dist_types_actions_codegen_create
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -5280,8 +5281,8 @@ declare const readProfileTokenUri: _wagmi_core_dist_types_actions_codegen_create
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -5294,7 +5295,6 @@ declare const readProfileTokenUri: _wagmi_core_dist_types_actions_codegen_create
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -5416,6 +5416,7 @@ declare const readProfileTokenUri: _wagmi_core_dist_types_actions_codegen_create
  * Wraps __{@link readContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"totalSupply"`
  */
 declare const readProfileTotalSupply: _wagmi_core_dist_types_actions_codegen_createReadContract.CreateReadContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -5426,8 +5427,8 @@ declare const readProfileTotalSupply: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -5440,8 +5441,8 @@ declare const readProfileTotalSupply: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -5454,8 +5455,8 @@ declare const readProfileTotalSupply: _wagmi_core_dist_types_actions_codegen_cre
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -5468,8 +5469,8 @@ declare const readProfileTotalSupply: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -5486,8 +5487,8 @@ declare const readProfileTotalSupply: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -5500,8 +5501,8 @@ declare const readProfileTotalSupply: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -5518,8 +5519,8 @@ declare const readProfileTotalSupply: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -5528,8 +5529,8 @@ declare const readProfileTotalSupply: _wagmi_core_dist_types_actions_codegen_cre
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -5542,8 +5543,8 @@ declare const readProfileTotalSupply: _wagmi_core_dist_types_actions_codegen_cre
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -5552,8 +5553,8 @@ declare const readProfileTotalSupply: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -5566,8 +5567,8 @@ declare const readProfileTotalSupply: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -5584,8 +5585,8 @@ declare const readProfileTotalSupply: _wagmi_core_dist_types_actions_codegen_cre
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -5606,8 +5607,8 @@ declare const readProfileTotalSupply: _wagmi_core_dist_types_actions_codegen_cre
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -5620,8 +5621,8 @@ declare const readProfileTotalSupply: _wagmi_core_dist_types_actions_codegen_cre
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -5634,8 +5635,8 @@ declare const readProfileTotalSupply: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -5644,8 +5645,8 @@ declare const readProfileTotalSupply: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -5658,8 +5659,8 @@ declare const readProfileTotalSupply: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -5668,8 +5669,8 @@ declare const readProfileTotalSupply: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -5686,8 +5687,8 @@ declare const readProfileTotalSupply: _wagmi_core_dist_types_actions_codegen_cre
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -5696,8 +5697,8 @@ declare const readProfileTotalSupply: _wagmi_core_dist_types_actions_codegen_cre
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -5710,7 +5711,6 @@ declare const readProfileTotalSupply: _wagmi_core_dist_types_actions_codegen_cre
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -5832,6 +5832,7 @@ declare const readProfileTotalSupply: _wagmi_core_dist_types_actions_codegen_cre
  * Wraps __{@link writeContract}__ with `abi` set to __{@link profileAbi}__
  */
 declare const writeProfile: _wagmi_core_dist_types_actions_codegen_createWriteContract.CreateWriteContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -5842,8 +5843,8 @@ declare const writeProfile: _wagmi_core_dist_types_actions_codegen_createWriteCo
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -5856,8 +5857,8 @@ declare const writeProfile: _wagmi_core_dist_types_actions_codegen_createWriteCo
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -5870,8 +5871,8 @@ declare const writeProfile: _wagmi_core_dist_types_actions_codegen_createWriteCo
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -5884,8 +5885,8 @@ declare const writeProfile: _wagmi_core_dist_types_actions_codegen_createWriteCo
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -5902,8 +5903,8 @@ declare const writeProfile: _wagmi_core_dist_types_actions_codegen_createWriteCo
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -5916,8 +5917,8 @@ declare const writeProfile: _wagmi_core_dist_types_actions_codegen_createWriteCo
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -5934,8 +5935,8 @@ declare const writeProfile: _wagmi_core_dist_types_actions_codegen_createWriteCo
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -5944,8 +5945,8 @@ declare const writeProfile: _wagmi_core_dist_types_actions_codegen_createWriteCo
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -5958,8 +5959,8 @@ declare const writeProfile: _wagmi_core_dist_types_actions_codegen_createWriteCo
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -5968,8 +5969,8 @@ declare const writeProfile: _wagmi_core_dist_types_actions_codegen_createWriteCo
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -5982,8 +5983,8 @@ declare const writeProfile: _wagmi_core_dist_types_actions_codegen_createWriteCo
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -6000,8 +6001,8 @@ declare const writeProfile: _wagmi_core_dist_types_actions_codegen_createWriteCo
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -6022,8 +6023,8 @@ declare const writeProfile: _wagmi_core_dist_types_actions_codegen_createWriteCo
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -6036,8 +6037,8 @@ declare const writeProfile: _wagmi_core_dist_types_actions_codegen_createWriteCo
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -6050,8 +6051,8 @@ declare const writeProfile: _wagmi_core_dist_types_actions_codegen_createWriteCo
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -6060,8 +6061,8 @@ declare const writeProfile: _wagmi_core_dist_types_actions_codegen_createWriteCo
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -6074,8 +6075,8 @@ declare const writeProfile: _wagmi_core_dist_types_actions_codegen_createWriteCo
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -6084,8 +6085,8 @@ declare const writeProfile: _wagmi_core_dist_types_actions_codegen_createWriteCo
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -6102,8 +6103,8 @@ declare const writeProfile: _wagmi_core_dist_types_actions_codegen_createWriteCo
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -6112,8 +6113,8 @@ declare const writeProfile: _wagmi_core_dist_types_actions_codegen_createWriteCo
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -6126,7 +6127,6 @@ declare const writeProfile: _wagmi_core_dist_types_actions_codegen_createWriteCo
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -6248,6 +6248,7 @@ declare const writeProfile: _wagmi_core_dist_types_actions_codegen_createWriteCo
  * Wraps __{@link writeContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"approve"`
  */
 declare const writeProfileApprove: _wagmi_core_dist_types_actions_codegen_createWriteContract.CreateWriteContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -6258,8 +6259,8 @@ declare const writeProfileApprove: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -6272,8 +6273,8 @@ declare const writeProfileApprove: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -6286,8 +6287,8 @@ declare const writeProfileApprove: _wagmi_core_dist_types_actions_codegen_create
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -6300,8 +6301,8 @@ declare const writeProfileApprove: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -6318,8 +6319,8 @@ declare const writeProfileApprove: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -6332,8 +6333,8 @@ declare const writeProfileApprove: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -6350,8 +6351,8 @@ declare const writeProfileApprove: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -6360,8 +6361,8 @@ declare const writeProfileApprove: _wagmi_core_dist_types_actions_codegen_create
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -6374,8 +6375,8 @@ declare const writeProfileApprove: _wagmi_core_dist_types_actions_codegen_create
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -6384,8 +6385,8 @@ declare const writeProfileApprove: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -6398,8 +6399,8 @@ declare const writeProfileApprove: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -6416,8 +6417,8 @@ declare const writeProfileApprove: _wagmi_core_dist_types_actions_codegen_create
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -6438,8 +6439,8 @@ declare const writeProfileApprove: _wagmi_core_dist_types_actions_codegen_create
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -6452,8 +6453,8 @@ declare const writeProfileApprove: _wagmi_core_dist_types_actions_codegen_create
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -6466,8 +6467,8 @@ declare const writeProfileApprove: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -6476,8 +6477,8 @@ declare const writeProfileApprove: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -6490,8 +6491,8 @@ declare const writeProfileApprove: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -6500,8 +6501,8 @@ declare const writeProfileApprove: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -6518,8 +6519,8 @@ declare const writeProfileApprove: _wagmi_core_dist_types_actions_codegen_create
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -6528,8 +6529,8 @@ declare const writeProfileApprove: _wagmi_core_dist_types_actions_codegen_create
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -6542,7 +6543,6 @@ declare const writeProfileApprove: _wagmi_core_dist_types_actions_codegen_create
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -6664,6 +6664,7 @@ declare const writeProfileApprove: _wagmi_core_dist_types_actions_codegen_create
  * Wraps __{@link writeContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"mint"`
  */
 declare const writeProfileMint: _wagmi_core_dist_types_actions_codegen_createWriteContract.CreateWriteContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -6674,8 +6675,8 @@ declare const writeProfileMint: _wagmi_core_dist_types_actions_codegen_createWri
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -6688,8 +6689,8 @@ declare const writeProfileMint: _wagmi_core_dist_types_actions_codegen_createWri
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -6702,8 +6703,8 @@ declare const writeProfileMint: _wagmi_core_dist_types_actions_codegen_createWri
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -6716,8 +6717,8 @@ declare const writeProfileMint: _wagmi_core_dist_types_actions_codegen_createWri
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -6734,8 +6735,8 @@ declare const writeProfileMint: _wagmi_core_dist_types_actions_codegen_createWri
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -6748,8 +6749,8 @@ declare const writeProfileMint: _wagmi_core_dist_types_actions_codegen_createWri
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -6766,8 +6767,8 @@ declare const writeProfileMint: _wagmi_core_dist_types_actions_codegen_createWri
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -6776,8 +6777,8 @@ declare const writeProfileMint: _wagmi_core_dist_types_actions_codegen_createWri
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -6790,8 +6791,8 @@ declare const writeProfileMint: _wagmi_core_dist_types_actions_codegen_createWri
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -6800,8 +6801,8 @@ declare const writeProfileMint: _wagmi_core_dist_types_actions_codegen_createWri
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -6814,8 +6815,8 @@ declare const writeProfileMint: _wagmi_core_dist_types_actions_codegen_createWri
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -6832,8 +6833,8 @@ declare const writeProfileMint: _wagmi_core_dist_types_actions_codegen_createWri
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -6854,8 +6855,8 @@ declare const writeProfileMint: _wagmi_core_dist_types_actions_codegen_createWri
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -6868,8 +6869,8 @@ declare const writeProfileMint: _wagmi_core_dist_types_actions_codegen_createWri
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -6882,8 +6883,8 @@ declare const writeProfileMint: _wagmi_core_dist_types_actions_codegen_createWri
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -6892,8 +6893,8 @@ declare const writeProfileMint: _wagmi_core_dist_types_actions_codegen_createWri
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -6906,8 +6907,8 @@ declare const writeProfileMint: _wagmi_core_dist_types_actions_codegen_createWri
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -6916,8 +6917,8 @@ declare const writeProfileMint: _wagmi_core_dist_types_actions_codegen_createWri
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -6934,8 +6935,8 @@ declare const writeProfileMint: _wagmi_core_dist_types_actions_codegen_createWri
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -6944,8 +6945,8 @@ declare const writeProfileMint: _wagmi_core_dist_types_actions_codegen_createWri
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -6958,7 +6959,6 @@ declare const writeProfileMint: _wagmi_core_dist_types_actions_codegen_createWri
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -7080,6 +7080,7 @@ declare const writeProfileMint: _wagmi_core_dist_types_actions_codegen_createWri
  * Wraps __{@link writeContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"mintFor"`
  */
 declare const writeProfileMintFor: _wagmi_core_dist_types_actions_codegen_createWriteContract.CreateWriteContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -7090,8 +7091,8 @@ declare const writeProfileMintFor: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -7104,8 +7105,8 @@ declare const writeProfileMintFor: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -7118,8 +7119,8 @@ declare const writeProfileMintFor: _wagmi_core_dist_types_actions_codegen_create
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -7132,8 +7133,8 @@ declare const writeProfileMintFor: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -7150,8 +7151,8 @@ declare const writeProfileMintFor: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -7164,8 +7165,8 @@ declare const writeProfileMintFor: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -7182,8 +7183,8 @@ declare const writeProfileMintFor: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -7192,8 +7193,8 @@ declare const writeProfileMintFor: _wagmi_core_dist_types_actions_codegen_create
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -7206,8 +7207,8 @@ declare const writeProfileMintFor: _wagmi_core_dist_types_actions_codegen_create
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -7216,8 +7217,8 @@ declare const writeProfileMintFor: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -7230,8 +7231,8 @@ declare const writeProfileMintFor: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -7248,8 +7249,8 @@ declare const writeProfileMintFor: _wagmi_core_dist_types_actions_codegen_create
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -7270,8 +7271,8 @@ declare const writeProfileMintFor: _wagmi_core_dist_types_actions_codegen_create
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -7284,8 +7285,8 @@ declare const writeProfileMintFor: _wagmi_core_dist_types_actions_codegen_create
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -7298,8 +7299,8 @@ declare const writeProfileMintFor: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -7308,8 +7309,8 @@ declare const writeProfileMintFor: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -7322,8 +7323,8 @@ declare const writeProfileMintFor: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -7332,8 +7333,8 @@ declare const writeProfileMintFor: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -7350,8 +7351,8 @@ declare const writeProfileMintFor: _wagmi_core_dist_types_actions_codegen_create
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -7360,8 +7361,8 @@ declare const writeProfileMintFor: _wagmi_core_dist_types_actions_codegen_create
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -7374,7 +7375,6 @@ declare const writeProfileMintFor: _wagmi_core_dist_types_actions_codegen_create
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -7496,6 +7496,7 @@ declare const writeProfileMintFor: _wagmi_core_dist_types_actions_codegen_create
  * Wraps __{@link writeContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"safeTransferFrom"`
  */
 declare const writeProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codegen_createWriteContract.CreateWriteContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -7506,8 +7507,8 @@ declare const writeProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -7520,8 +7521,8 @@ declare const writeProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -7534,8 +7535,8 @@ declare const writeProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codeg
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -7548,8 +7549,8 @@ declare const writeProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -7566,8 +7567,8 @@ declare const writeProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -7580,8 +7581,8 @@ declare const writeProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -7598,8 +7599,8 @@ declare const writeProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -7608,8 +7609,8 @@ declare const writeProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codeg
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -7622,8 +7623,8 @@ declare const writeProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codeg
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -7632,8 +7633,8 @@ declare const writeProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -7646,8 +7647,8 @@ declare const writeProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -7664,8 +7665,8 @@ declare const writeProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codeg
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -7686,8 +7687,8 @@ declare const writeProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codeg
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -7700,8 +7701,8 @@ declare const writeProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codeg
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -7714,8 +7715,8 @@ declare const writeProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -7724,8 +7725,8 @@ declare const writeProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -7738,8 +7739,8 @@ declare const writeProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -7748,8 +7749,8 @@ declare const writeProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -7766,8 +7767,8 @@ declare const writeProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codeg
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -7776,8 +7777,8 @@ declare const writeProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codeg
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -7790,7 +7791,6 @@ declare const writeProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codeg
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -7912,6 +7912,7 @@ declare const writeProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codeg
  * Wraps __{@link writeContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"setApprovalForAll"`
  */
 declare const writeProfileSetApprovalForAll: _wagmi_core_dist_types_actions_codegen_createWriteContract.CreateWriteContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -7922,8 +7923,8 @@ declare const writeProfileSetApprovalForAll: _wagmi_core_dist_types_actions_code
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -7936,8 +7937,8 @@ declare const writeProfileSetApprovalForAll: _wagmi_core_dist_types_actions_code
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -7950,8 +7951,8 @@ declare const writeProfileSetApprovalForAll: _wagmi_core_dist_types_actions_code
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -7964,8 +7965,8 @@ declare const writeProfileSetApprovalForAll: _wagmi_core_dist_types_actions_code
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -7982,8 +7983,8 @@ declare const writeProfileSetApprovalForAll: _wagmi_core_dist_types_actions_code
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -7996,8 +7997,8 @@ declare const writeProfileSetApprovalForAll: _wagmi_core_dist_types_actions_code
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -8014,8 +8015,8 @@ declare const writeProfileSetApprovalForAll: _wagmi_core_dist_types_actions_code
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -8024,8 +8025,8 @@ declare const writeProfileSetApprovalForAll: _wagmi_core_dist_types_actions_code
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -8038,8 +8039,8 @@ declare const writeProfileSetApprovalForAll: _wagmi_core_dist_types_actions_code
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -8048,8 +8049,8 @@ declare const writeProfileSetApprovalForAll: _wagmi_core_dist_types_actions_code
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -8062,8 +8063,8 @@ declare const writeProfileSetApprovalForAll: _wagmi_core_dist_types_actions_code
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -8080,8 +8081,8 @@ declare const writeProfileSetApprovalForAll: _wagmi_core_dist_types_actions_code
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -8102,8 +8103,8 @@ declare const writeProfileSetApprovalForAll: _wagmi_core_dist_types_actions_code
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -8116,8 +8117,8 @@ declare const writeProfileSetApprovalForAll: _wagmi_core_dist_types_actions_code
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -8130,8 +8131,8 @@ declare const writeProfileSetApprovalForAll: _wagmi_core_dist_types_actions_code
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -8140,8 +8141,8 @@ declare const writeProfileSetApprovalForAll: _wagmi_core_dist_types_actions_code
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -8154,8 +8155,8 @@ declare const writeProfileSetApprovalForAll: _wagmi_core_dist_types_actions_code
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -8164,8 +8165,8 @@ declare const writeProfileSetApprovalForAll: _wagmi_core_dist_types_actions_code
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -8182,8 +8183,8 @@ declare const writeProfileSetApprovalForAll: _wagmi_core_dist_types_actions_code
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -8192,8 +8193,8 @@ declare const writeProfileSetApprovalForAll: _wagmi_core_dist_types_actions_code
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -8206,7 +8207,6 @@ declare const writeProfileSetApprovalForAll: _wagmi_core_dist_types_actions_code
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -8328,6 +8328,7 @@ declare const writeProfileSetApprovalForAll: _wagmi_core_dist_types_actions_code
  * Wraps __{@link writeContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"transferFrom"`
  */
 declare const writeProfileTransferFrom: _wagmi_core_dist_types_actions_codegen_createWriteContract.CreateWriteContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -8338,8 +8339,8 @@ declare const writeProfileTransferFrom: _wagmi_core_dist_types_actions_codegen_c
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -8352,8 +8353,8 @@ declare const writeProfileTransferFrom: _wagmi_core_dist_types_actions_codegen_c
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -8366,8 +8367,8 @@ declare const writeProfileTransferFrom: _wagmi_core_dist_types_actions_codegen_c
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -8380,8 +8381,8 @@ declare const writeProfileTransferFrom: _wagmi_core_dist_types_actions_codegen_c
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -8398,8 +8399,8 @@ declare const writeProfileTransferFrom: _wagmi_core_dist_types_actions_codegen_c
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -8412,8 +8413,8 @@ declare const writeProfileTransferFrom: _wagmi_core_dist_types_actions_codegen_c
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -8430,8 +8431,8 @@ declare const writeProfileTransferFrom: _wagmi_core_dist_types_actions_codegen_c
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -8440,8 +8441,8 @@ declare const writeProfileTransferFrom: _wagmi_core_dist_types_actions_codegen_c
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -8454,8 +8455,8 @@ declare const writeProfileTransferFrom: _wagmi_core_dist_types_actions_codegen_c
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -8464,8 +8465,8 @@ declare const writeProfileTransferFrom: _wagmi_core_dist_types_actions_codegen_c
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -8478,8 +8479,8 @@ declare const writeProfileTransferFrom: _wagmi_core_dist_types_actions_codegen_c
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -8496,8 +8497,8 @@ declare const writeProfileTransferFrom: _wagmi_core_dist_types_actions_codegen_c
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -8518,8 +8519,8 @@ declare const writeProfileTransferFrom: _wagmi_core_dist_types_actions_codegen_c
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -8532,8 +8533,8 @@ declare const writeProfileTransferFrom: _wagmi_core_dist_types_actions_codegen_c
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -8546,8 +8547,8 @@ declare const writeProfileTransferFrom: _wagmi_core_dist_types_actions_codegen_c
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -8556,8 +8557,8 @@ declare const writeProfileTransferFrom: _wagmi_core_dist_types_actions_codegen_c
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -8570,8 +8571,8 @@ declare const writeProfileTransferFrom: _wagmi_core_dist_types_actions_codegen_c
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -8580,8 +8581,8 @@ declare const writeProfileTransferFrom: _wagmi_core_dist_types_actions_codegen_c
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -8598,8 +8599,8 @@ declare const writeProfileTransferFrom: _wagmi_core_dist_types_actions_codegen_c
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -8608,8 +8609,8 @@ declare const writeProfileTransferFrom: _wagmi_core_dist_types_actions_codegen_c
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -8622,7 +8623,6 @@ declare const writeProfileTransferFrom: _wagmi_core_dist_types_actions_codegen_c
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -8744,6 +8744,7 @@ declare const writeProfileTransferFrom: _wagmi_core_dist_types_actions_codegen_c
  * Wraps __{@link writeContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"updateProfile"`
  */
 declare const writeProfileUpdateProfile: _wagmi_core_dist_types_actions_codegen_createWriteContract.CreateWriteContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -8754,8 +8755,8 @@ declare const writeProfileUpdateProfile: _wagmi_core_dist_types_actions_codegen_
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -8768,8 +8769,8 @@ declare const writeProfileUpdateProfile: _wagmi_core_dist_types_actions_codegen_
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -8782,8 +8783,8 @@ declare const writeProfileUpdateProfile: _wagmi_core_dist_types_actions_codegen_
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -8796,8 +8797,8 @@ declare const writeProfileUpdateProfile: _wagmi_core_dist_types_actions_codegen_
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -8814,8 +8815,8 @@ declare const writeProfileUpdateProfile: _wagmi_core_dist_types_actions_codegen_
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -8828,8 +8829,8 @@ declare const writeProfileUpdateProfile: _wagmi_core_dist_types_actions_codegen_
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -8846,8 +8847,8 @@ declare const writeProfileUpdateProfile: _wagmi_core_dist_types_actions_codegen_
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -8856,8 +8857,8 @@ declare const writeProfileUpdateProfile: _wagmi_core_dist_types_actions_codegen_
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -8870,8 +8871,8 @@ declare const writeProfileUpdateProfile: _wagmi_core_dist_types_actions_codegen_
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -8880,8 +8881,8 @@ declare const writeProfileUpdateProfile: _wagmi_core_dist_types_actions_codegen_
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -8894,8 +8895,8 @@ declare const writeProfileUpdateProfile: _wagmi_core_dist_types_actions_codegen_
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -8912,8 +8913,8 @@ declare const writeProfileUpdateProfile: _wagmi_core_dist_types_actions_codegen_
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -8934,8 +8935,8 @@ declare const writeProfileUpdateProfile: _wagmi_core_dist_types_actions_codegen_
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -8948,8 +8949,8 @@ declare const writeProfileUpdateProfile: _wagmi_core_dist_types_actions_codegen_
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -8962,8 +8963,8 @@ declare const writeProfileUpdateProfile: _wagmi_core_dist_types_actions_codegen_
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -8972,8 +8973,8 @@ declare const writeProfileUpdateProfile: _wagmi_core_dist_types_actions_codegen_
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -8986,8 +8987,8 @@ declare const writeProfileUpdateProfile: _wagmi_core_dist_types_actions_codegen_
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -8996,8 +8997,8 @@ declare const writeProfileUpdateProfile: _wagmi_core_dist_types_actions_codegen_
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -9014,8 +9015,8 @@ declare const writeProfileUpdateProfile: _wagmi_core_dist_types_actions_codegen_
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -9024,8 +9025,8 @@ declare const writeProfileUpdateProfile: _wagmi_core_dist_types_actions_codegen_
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -9038,7 +9039,6 @@ declare const writeProfileUpdateProfile: _wagmi_core_dist_types_actions_codegen_
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -9160,6 +9160,7 @@ declare const writeProfileUpdateProfile: _wagmi_core_dist_types_actions_codegen_
  * Wraps __{@link writeContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"updateProfileFor"`
  */
 declare const writeProfileUpdateProfileFor: _wagmi_core_dist_types_actions_codegen_createWriteContract.CreateWriteContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -9170,8 +9171,8 @@ declare const writeProfileUpdateProfileFor: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -9184,8 +9185,8 @@ declare const writeProfileUpdateProfileFor: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -9198,8 +9199,8 @@ declare const writeProfileUpdateProfileFor: _wagmi_core_dist_types_actions_codeg
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -9212,8 +9213,8 @@ declare const writeProfileUpdateProfileFor: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -9230,8 +9231,8 @@ declare const writeProfileUpdateProfileFor: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -9244,8 +9245,8 @@ declare const writeProfileUpdateProfileFor: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -9262,8 +9263,8 @@ declare const writeProfileUpdateProfileFor: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -9272,8 +9273,8 @@ declare const writeProfileUpdateProfileFor: _wagmi_core_dist_types_actions_codeg
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -9286,8 +9287,8 @@ declare const writeProfileUpdateProfileFor: _wagmi_core_dist_types_actions_codeg
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -9296,8 +9297,8 @@ declare const writeProfileUpdateProfileFor: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -9310,8 +9311,8 @@ declare const writeProfileUpdateProfileFor: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -9328,8 +9329,8 @@ declare const writeProfileUpdateProfileFor: _wagmi_core_dist_types_actions_codeg
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -9350,8 +9351,8 @@ declare const writeProfileUpdateProfileFor: _wagmi_core_dist_types_actions_codeg
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -9364,8 +9365,8 @@ declare const writeProfileUpdateProfileFor: _wagmi_core_dist_types_actions_codeg
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -9378,8 +9379,8 @@ declare const writeProfileUpdateProfileFor: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -9388,8 +9389,8 @@ declare const writeProfileUpdateProfileFor: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -9402,8 +9403,8 @@ declare const writeProfileUpdateProfileFor: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -9412,8 +9413,8 @@ declare const writeProfileUpdateProfileFor: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -9430,8 +9431,8 @@ declare const writeProfileUpdateProfileFor: _wagmi_core_dist_types_actions_codeg
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -9440,8 +9441,8 @@ declare const writeProfileUpdateProfileFor: _wagmi_core_dist_types_actions_codeg
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -9454,7 +9455,6 @@ declare const writeProfileUpdateProfileFor: _wagmi_core_dist_types_actions_codeg
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -9576,6 +9576,7 @@ declare const writeProfileUpdateProfileFor: _wagmi_core_dist_types_actions_codeg
  * Wraps __{@link simulateContract}__ with `abi` set to __{@link profileAbi}__
  */
 declare const simulateProfile: _wagmi_core_dist_types_actions_codegen_createSimulateContract.CreateSimulateContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -9586,8 +9587,8 @@ declare const simulateProfile: _wagmi_core_dist_types_actions_codegen_createSimu
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -9600,8 +9601,8 @@ declare const simulateProfile: _wagmi_core_dist_types_actions_codegen_createSimu
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -9614,8 +9615,8 @@ declare const simulateProfile: _wagmi_core_dist_types_actions_codegen_createSimu
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -9628,8 +9629,8 @@ declare const simulateProfile: _wagmi_core_dist_types_actions_codegen_createSimu
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -9646,8 +9647,8 @@ declare const simulateProfile: _wagmi_core_dist_types_actions_codegen_createSimu
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -9660,8 +9661,8 @@ declare const simulateProfile: _wagmi_core_dist_types_actions_codegen_createSimu
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -9678,8 +9679,8 @@ declare const simulateProfile: _wagmi_core_dist_types_actions_codegen_createSimu
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -9688,8 +9689,8 @@ declare const simulateProfile: _wagmi_core_dist_types_actions_codegen_createSimu
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -9702,8 +9703,8 @@ declare const simulateProfile: _wagmi_core_dist_types_actions_codegen_createSimu
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -9712,8 +9713,8 @@ declare const simulateProfile: _wagmi_core_dist_types_actions_codegen_createSimu
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -9726,8 +9727,8 @@ declare const simulateProfile: _wagmi_core_dist_types_actions_codegen_createSimu
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -9744,8 +9745,8 @@ declare const simulateProfile: _wagmi_core_dist_types_actions_codegen_createSimu
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -9766,8 +9767,8 @@ declare const simulateProfile: _wagmi_core_dist_types_actions_codegen_createSimu
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -9780,8 +9781,8 @@ declare const simulateProfile: _wagmi_core_dist_types_actions_codegen_createSimu
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -9794,8 +9795,8 @@ declare const simulateProfile: _wagmi_core_dist_types_actions_codegen_createSimu
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -9804,8 +9805,8 @@ declare const simulateProfile: _wagmi_core_dist_types_actions_codegen_createSimu
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -9818,8 +9819,8 @@ declare const simulateProfile: _wagmi_core_dist_types_actions_codegen_createSimu
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -9828,8 +9829,8 @@ declare const simulateProfile: _wagmi_core_dist_types_actions_codegen_createSimu
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -9846,8 +9847,8 @@ declare const simulateProfile: _wagmi_core_dist_types_actions_codegen_createSimu
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -9856,8 +9857,8 @@ declare const simulateProfile: _wagmi_core_dist_types_actions_codegen_createSimu
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -9870,7 +9871,6 @@ declare const simulateProfile: _wagmi_core_dist_types_actions_codegen_createSimu
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -9992,6 +9992,7 @@ declare const simulateProfile: _wagmi_core_dist_types_actions_codegen_createSimu
  * Wraps __{@link simulateContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"approve"`
  */
 declare const simulateProfileApprove: _wagmi_core_dist_types_actions_codegen_createSimulateContract.CreateSimulateContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -10002,8 +10003,8 @@ declare const simulateProfileApprove: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -10016,8 +10017,8 @@ declare const simulateProfileApprove: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -10030,8 +10031,8 @@ declare const simulateProfileApprove: _wagmi_core_dist_types_actions_codegen_cre
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -10044,8 +10045,8 @@ declare const simulateProfileApprove: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -10062,8 +10063,8 @@ declare const simulateProfileApprove: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -10076,8 +10077,8 @@ declare const simulateProfileApprove: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -10094,8 +10095,8 @@ declare const simulateProfileApprove: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -10104,8 +10105,8 @@ declare const simulateProfileApprove: _wagmi_core_dist_types_actions_codegen_cre
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -10118,8 +10119,8 @@ declare const simulateProfileApprove: _wagmi_core_dist_types_actions_codegen_cre
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -10128,8 +10129,8 @@ declare const simulateProfileApprove: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -10142,8 +10143,8 @@ declare const simulateProfileApprove: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -10160,8 +10161,8 @@ declare const simulateProfileApprove: _wagmi_core_dist_types_actions_codegen_cre
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -10182,8 +10183,8 @@ declare const simulateProfileApprove: _wagmi_core_dist_types_actions_codegen_cre
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -10196,8 +10197,8 @@ declare const simulateProfileApprove: _wagmi_core_dist_types_actions_codegen_cre
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -10210,8 +10211,8 @@ declare const simulateProfileApprove: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -10220,8 +10221,8 @@ declare const simulateProfileApprove: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -10234,8 +10235,8 @@ declare const simulateProfileApprove: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -10244,8 +10245,8 @@ declare const simulateProfileApprove: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -10262,8 +10263,8 @@ declare const simulateProfileApprove: _wagmi_core_dist_types_actions_codegen_cre
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -10272,8 +10273,8 @@ declare const simulateProfileApprove: _wagmi_core_dist_types_actions_codegen_cre
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -10286,7 +10287,6 @@ declare const simulateProfileApprove: _wagmi_core_dist_types_actions_codegen_cre
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -10408,6 +10408,7 @@ declare const simulateProfileApprove: _wagmi_core_dist_types_actions_codegen_cre
  * Wraps __{@link simulateContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"mint"`
  */
 declare const simulateProfileMint: _wagmi_core_dist_types_actions_codegen_createSimulateContract.CreateSimulateContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -10418,8 +10419,8 @@ declare const simulateProfileMint: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -10432,8 +10433,8 @@ declare const simulateProfileMint: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -10446,8 +10447,8 @@ declare const simulateProfileMint: _wagmi_core_dist_types_actions_codegen_create
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -10460,8 +10461,8 @@ declare const simulateProfileMint: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -10478,8 +10479,8 @@ declare const simulateProfileMint: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -10492,8 +10493,8 @@ declare const simulateProfileMint: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -10510,8 +10511,8 @@ declare const simulateProfileMint: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -10520,8 +10521,8 @@ declare const simulateProfileMint: _wagmi_core_dist_types_actions_codegen_create
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -10534,8 +10535,8 @@ declare const simulateProfileMint: _wagmi_core_dist_types_actions_codegen_create
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -10544,8 +10545,8 @@ declare const simulateProfileMint: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -10558,8 +10559,8 @@ declare const simulateProfileMint: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -10576,8 +10577,8 @@ declare const simulateProfileMint: _wagmi_core_dist_types_actions_codegen_create
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -10598,8 +10599,8 @@ declare const simulateProfileMint: _wagmi_core_dist_types_actions_codegen_create
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -10612,8 +10613,8 @@ declare const simulateProfileMint: _wagmi_core_dist_types_actions_codegen_create
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -10626,8 +10627,8 @@ declare const simulateProfileMint: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -10636,8 +10637,8 @@ declare const simulateProfileMint: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -10650,8 +10651,8 @@ declare const simulateProfileMint: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -10660,8 +10661,8 @@ declare const simulateProfileMint: _wagmi_core_dist_types_actions_codegen_create
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -10678,8 +10679,8 @@ declare const simulateProfileMint: _wagmi_core_dist_types_actions_codegen_create
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -10688,8 +10689,8 @@ declare const simulateProfileMint: _wagmi_core_dist_types_actions_codegen_create
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -10702,7 +10703,6 @@ declare const simulateProfileMint: _wagmi_core_dist_types_actions_codegen_create
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -10824,6 +10824,7 @@ declare const simulateProfileMint: _wagmi_core_dist_types_actions_codegen_create
  * Wraps __{@link simulateContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"mintFor"`
  */
 declare const simulateProfileMintFor: _wagmi_core_dist_types_actions_codegen_createSimulateContract.CreateSimulateContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -10834,8 +10835,8 @@ declare const simulateProfileMintFor: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -10848,8 +10849,8 @@ declare const simulateProfileMintFor: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -10862,8 +10863,8 @@ declare const simulateProfileMintFor: _wagmi_core_dist_types_actions_codegen_cre
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -10876,8 +10877,8 @@ declare const simulateProfileMintFor: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -10894,8 +10895,8 @@ declare const simulateProfileMintFor: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -10908,8 +10909,8 @@ declare const simulateProfileMintFor: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -10926,8 +10927,8 @@ declare const simulateProfileMintFor: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -10936,8 +10937,8 @@ declare const simulateProfileMintFor: _wagmi_core_dist_types_actions_codegen_cre
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -10950,8 +10951,8 @@ declare const simulateProfileMintFor: _wagmi_core_dist_types_actions_codegen_cre
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -10960,8 +10961,8 @@ declare const simulateProfileMintFor: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -10974,8 +10975,8 @@ declare const simulateProfileMintFor: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -10992,8 +10993,8 @@ declare const simulateProfileMintFor: _wagmi_core_dist_types_actions_codegen_cre
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -11014,8 +11015,8 @@ declare const simulateProfileMintFor: _wagmi_core_dist_types_actions_codegen_cre
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -11028,8 +11029,8 @@ declare const simulateProfileMintFor: _wagmi_core_dist_types_actions_codegen_cre
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -11042,8 +11043,8 @@ declare const simulateProfileMintFor: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -11052,8 +11053,8 @@ declare const simulateProfileMintFor: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -11066,8 +11067,8 @@ declare const simulateProfileMintFor: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -11076,8 +11077,8 @@ declare const simulateProfileMintFor: _wagmi_core_dist_types_actions_codegen_cre
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -11094,8 +11095,8 @@ declare const simulateProfileMintFor: _wagmi_core_dist_types_actions_codegen_cre
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -11104,8 +11105,8 @@ declare const simulateProfileMintFor: _wagmi_core_dist_types_actions_codegen_cre
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -11118,7 +11119,6 @@ declare const simulateProfileMintFor: _wagmi_core_dist_types_actions_codegen_cre
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -11240,6 +11240,7 @@ declare const simulateProfileMintFor: _wagmi_core_dist_types_actions_codegen_cre
  * Wraps __{@link simulateContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"safeTransferFrom"`
  */
 declare const simulateProfileSafeTransferFrom: _wagmi_core_dist_types_actions_codegen_createSimulateContract.CreateSimulateContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -11250,8 +11251,8 @@ declare const simulateProfileSafeTransferFrom: _wagmi_core_dist_types_actions_co
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -11264,8 +11265,8 @@ declare const simulateProfileSafeTransferFrom: _wagmi_core_dist_types_actions_co
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -11278,8 +11279,8 @@ declare const simulateProfileSafeTransferFrom: _wagmi_core_dist_types_actions_co
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -11292,8 +11293,8 @@ declare const simulateProfileSafeTransferFrom: _wagmi_core_dist_types_actions_co
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -11310,8 +11311,8 @@ declare const simulateProfileSafeTransferFrom: _wagmi_core_dist_types_actions_co
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -11324,8 +11325,8 @@ declare const simulateProfileSafeTransferFrom: _wagmi_core_dist_types_actions_co
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -11342,8 +11343,8 @@ declare const simulateProfileSafeTransferFrom: _wagmi_core_dist_types_actions_co
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -11352,8 +11353,8 @@ declare const simulateProfileSafeTransferFrom: _wagmi_core_dist_types_actions_co
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -11366,8 +11367,8 @@ declare const simulateProfileSafeTransferFrom: _wagmi_core_dist_types_actions_co
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -11376,8 +11377,8 @@ declare const simulateProfileSafeTransferFrom: _wagmi_core_dist_types_actions_co
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -11390,8 +11391,8 @@ declare const simulateProfileSafeTransferFrom: _wagmi_core_dist_types_actions_co
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -11408,8 +11409,8 @@ declare const simulateProfileSafeTransferFrom: _wagmi_core_dist_types_actions_co
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -11430,8 +11431,8 @@ declare const simulateProfileSafeTransferFrom: _wagmi_core_dist_types_actions_co
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -11444,8 +11445,8 @@ declare const simulateProfileSafeTransferFrom: _wagmi_core_dist_types_actions_co
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -11458,8 +11459,8 @@ declare const simulateProfileSafeTransferFrom: _wagmi_core_dist_types_actions_co
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -11468,8 +11469,8 @@ declare const simulateProfileSafeTransferFrom: _wagmi_core_dist_types_actions_co
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -11482,8 +11483,8 @@ declare const simulateProfileSafeTransferFrom: _wagmi_core_dist_types_actions_co
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -11492,8 +11493,8 @@ declare const simulateProfileSafeTransferFrom: _wagmi_core_dist_types_actions_co
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -11510,8 +11511,8 @@ declare const simulateProfileSafeTransferFrom: _wagmi_core_dist_types_actions_co
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -11520,8 +11521,8 @@ declare const simulateProfileSafeTransferFrom: _wagmi_core_dist_types_actions_co
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -11534,7 +11535,6 @@ declare const simulateProfileSafeTransferFrom: _wagmi_core_dist_types_actions_co
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -11656,6 +11656,7 @@ declare const simulateProfileSafeTransferFrom: _wagmi_core_dist_types_actions_co
  * Wraps __{@link simulateContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"setApprovalForAll"`
  */
 declare const simulateProfileSetApprovalForAll: _wagmi_core_dist_types_actions_codegen_createSimulateContract.CreateSimulateContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -11666,8 +11667,8 @@ declare const simulateProfileSetApprovalForAll: _wagmi_core_dist_types_actions_c
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -11680,8 +11681,8 @@ declare const simulateProfileSetApprovalForAll: _wagmi_core_dist_types_actions_c
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -11694,8 +11695,8 @@ declare const simulateProfileSetApprovalForAll: _wagmi_core_dist_types_actions_c
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -11708,8 +11709,8 @@ declare const simulateProfileSetApprovalForAll: _wagmi_core_dist_types_actions_c
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -11726,8 +11727,8 @@ declare const simulateProfileSetApprovalForAll: _wagmi_core_dist_types_actions_c
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -11740,8 +11741,8 @@ declare const simulateProfileSetApprovalForAll: _wagmi_core_dist_types_actions_c
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -11758,8 +11759,8 @@ declare const simulateProfileSetApprovalForAll: _wagmi_core_dist_types_actions_c
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -11768,8 +11769,8 @@ declare const simulateProfileSetApprovalForAll: _wagmi_core_dist_types_actions_c
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -11782,8 +11783,8 @@ declare const simulateProfileSetApprovalForAll: _wagmi_core_dist_types_actions_c
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -11792,8 +11793,8 @@ declare const simulateProfileSetApprovalForAll: _wagmi_core_dist_types_actions_c
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -11806,8 +11807,8 @@ declare const simulateProfileSetApprovalForAll: _wagmi_core_dist_types_actions_c
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -11824,8 +11825,8 @@ declare const simulateProfileSetApprovalForAll: _wagmi_core_dist_types_actions_c
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -11846,8 +11847,8 @@ declare const simulateProfileSetApprovalForAll: _wagmi_core_dist_types_actions_c
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -11860,8 +11861,8 @@ declare const simulateProfileSetApprovalForAll: _wagmi_core_dist_types_actions_c
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -11874,8 +11875,8 @@ declare const simulateProfileSetApprovalForAll: _wagmi_core_dist_types_actions_c
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -11884,8 +11885,8 @@ declare const simulateProfileSetApprovalForAll: _wagmi_core_dist_types_actions_c
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -11898,8 +11899,8 @@ declare const simulateProfileSetApprovalForAll: _wagmi_core_dist_types_actions_c
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -11908,8 +11909,8 @@ declare const simulateProfileSetApprovalForAll: _wagmi_core_dist_types_actions_c
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -11926,8 +11927,8 @@ declare const simulateProfileSetApprovalForAll: _wagmi_core_dist_types_actions_c
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -11936,8 +11937,8 @@ declare const simulateProfileSetApprovalForAll: _wagmi_core_dist_types_actions_c
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -11950,7 +11951,6 @@ declare const simulateProfileSetApprovalForAll: _wagmi_core_dist_types_actions_c
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -12072,6 +12072,7 @@ declare const simulateProfileSetApprovalForAll: _wagmi_core_dist_types_actions_c
  * Wraps __{@link simulateContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"transferFrom"`
  */
 declare const simulateProfileTransferFrom: _wagmi_core_dist_types_actions_codegen_createSimulateContract.CreateSimulateContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -12082,8 +12083,8 @@ declare const simulateProfileTransferFrom: _wagmi_core_dist_types_actions_codege
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -12096,8 +12097,8 @@ declare const simulateProfileTransferFrom: _wagmi_core_dist_types_actions_codege
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -12110,8 +12111,8 @@ declare const simulateProfileTransferFrom: _wagmi_core_dist_types_actions_codege
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -12124,8 +12125,8 @@ declare const simulateProfileTransferFrom: _wagmi_core_dist_types_actions_codege
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -12142,8 +12143,8 @@ declare const simulateProfileTransferFrom: _wagmi_core_dist_types_actions_codege
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -12156,8 +12157,8 @@ declare const simulateProfileTransferFrom: _wagmi_core_dist_types_actions_codege
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -12174,8 +12175,8 @@ declare const simulateProfileTransferFrom: _wagmi_core_dist_types_actions_codege
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -12184,8 +12185,8 @@ declare const simulateProfileTransferFrom: _wagmi_core_dist_types_actions_codege
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -12198,8 +12199,8 @@ declare const simulateProfileTransferFrom: _wagmi_core_dist_types_actions_codege
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -12208,8 +12209,8 @@ declare const simulateProfileTransferFrom: _wagmi_core_dist_types_actions_codege
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -12222,8 +12223,8 @@ declare const simulateProfileTransferFrom: _wagmi_core_dist_types_actions_codege
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -12240,8 +12241,8 @@ declare const simulateProfileTransferFrom: _wagmi_core_dist_types_actions_codege
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -12262,8 +12263,8 @@ declare const simulateProfileTransferFrom: _wagmi_core_dist_types_actions_codege
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -12276,8 +12277,8 @@ declare const simulateProfileTransferFrom: _wagmi_core_dist_types_actions_codege
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -12290,8 +12291,8 @@ declare const simulateProfileTransferFrom: _wagmi_core_dist_types_actions_codege
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -12300,8 +12301,8 @@ declare const simulateProfileTransferFrom: _wagmi_core_dist_types_actions_codege
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -12314,8 +12315,8 @@ declare const simulateProfileTransferFrom: _wagmi_core_dist_types_actions_codege
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -12324,8 +12325,8 @@ declare const simulateProfileTransferFrom: _wagmi_core_dist_types_actions_codege
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -12342,8 +12343,8 @@ declare const simulateProfileTransferFrom: _wagmi_core_dist_types_actions_codege
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -12352,8 +12353,8 @@ declare const simulateProfileTransferFrom: _wagmi_core_dist_types_actions_codege
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -12366,7 +12367,6 @@ declare const simulateProfileTransferFrom: _wagmi_core_dist_types_actions_codege
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -12488,6 +12488,7 @@ declare const simulateProfileTransferFrom: _wagmi_core_dist_types_actions_codege
  * Wraps __{@link simulateContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"updateProfile"`
  */
 declare const simulateProfileUpdateProfile: _wagmi_core_dist_types_actions_codegen_createSimulateContract.CreateSimulateContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -12498,8 +12499,8 @@ declare const simulateProfileUpdateProfile: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -12512,8 +12513,8 @@ declare const simulateProfileUpdateProfile: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -12526,8 +12527,8 @@ declare const simulateProfileUpdateProfile: _wagmi_core_dist_types_actions_codeg
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -12540,8 +12541,8 @@ declare const simulateProfileUpdateProfile: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -12558,8 +12559,8 @@ declare const simulateProfileUpdateProfile: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -12572,8 +12573,8 @@ declare const simulateProfileUpdateProfile: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -12590,8 +12591,8 @@ declare const simulateProfileUpdateProfile: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -12600,8 +12601,8 @@ declare const simulateProfileUpdateProfile: _wagmi_core_dist_types_actions_codeg
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -12614,8 +12615,8 @@ declare const simulateProfileUpdateProfile: _wagmi_core_dist_types_actions_codeg
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -12624,8 +12625,8 @@ declare const simulateProfileUpdateProfile: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -12638,8 +12639,8 @@ declare const simulateProfileUpdateProfile: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -12656,8 +12657,8 @@ declare const simulateProfileUpdateProfile: _wagmi_core_dist_types_actions_codeg
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -12678,8 +12679,8 @@ declare const simulateProfileUpdateProfile: _wagmi_core_dist_types_actions_codeg
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -12692,8 +12693,8 @@ declare const simulateProfileUpdateProfile: _wagmi_core_dist_types_actions_codeg
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -12706,8 +12707,8 @@ declare const simulateProfileUpdateProfile: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -12716,8 +12717,8 @@ declare const simulateProfileUpdateProfile: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -12730,8 +12731,8 @@ declare const simulateProfileUpdateProfile: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -12740,8 +12741,8 @@ declare const simulateProfileUpdateProfile: _wagmi_core_dist_types_actions_codeg
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -12758,8 +12759,8 @@ declare const simulateProfileUpdateProfile: _wagmi_core_dist_types_actions_codeg
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -12768,8 +12769,8 @@ declare const simulateProfileUpdateProfile: _wagmi_core_dist_types_actions_codeg
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -12782,7 +12783,6 @@ declare const simulateProfileUpdateProfile: _wagmi_core_dist_types_actions_codeg
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -12904,6 +12904,7 @@ declare const simulateProfileUpdateProfile: _wagmi_core_dist_types_actions_codeg
  * Wraps __{@link simulateContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"updateProfileFor"`
  */
 declare const simulateProfileUpdateProfileFor: _wagmi_core_dist_types_actions_codegen_createSimulateContract.CreateSimulateContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -12914,8 +12915,8 @@ declare const simulateProfileUpdateProfileFor: _wagmi_core_dist_types_actions_co
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -12928,8 +12929,8 @@ declare const simulateProfileUpdateProfileFor: _wagmi_core_dist_types_actions_co
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -12942,8 +12943,8 @@ declare const simulateProfileUpdateProfileFor: _wagmi_core_dist_types_actions_co
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -12956,8 +12957,8 @@ declare const simulateProfileUpdateProfileFor: _wagmi_core_dist_types_actions_co
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -12974,8 +12975,8 @@ declare const simulateProfileUpdateProfileFor: _wagmi_core_dist_types_actions_co
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -12988,8 +12989,8 @@ declare const simulateProfileUpdateProfileFor: _wagmi_core_dist_types_actions_co
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -13006,8 +13007,8 @@ declare const simulateProfileUpdateProfileFor: _wagmi_core_dist_types_actions_co
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -13016,8 +13017,8 @@ declare const simulateProfileUpdateProfileFor: _wagmi_core_dist_types_actions_co
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -13030,8 +13031,8 @@ declare const simulateProfileUpdateProfileFor: _wagmi_core_dist_types_actions_co
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -13040,8 +13041,8 @@ declare const simulateProfileUpdateProfileFor: _wagmi_core_dist_types_actions_co
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -13054,8 +13055,8 @@ declare const simulateProfileUpdateProfileFor: _wagmi_core_dist_types_actions_co
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -13072,8 +13073,8 @@ declare const simulateProfileUpdateProfileFor: _wagmi_core_dist_types_actions_co
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -13094,8 +13095,8 @@ declare const simulateProfileUpdateProfileFor: _wagmi_core_dist_types_actions_co
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -13108,8 +13109,8 @@ declare const simulateProfileUpdateProfileFor: _wagmi_core_dist_types_actions_co
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -13122,8 +13123,8 @@ declare const simulateProfileUpdateProfileFor: _wagmi_core_dist_types_actions_co
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -13132,8 +13133,8 @@ declare const simulateProfileUpdateProfileFor: _wagmi_core_dist_types_actions_co
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -13146,8 +13147,8 @@ declare const simulateProfileUpdateProfileFor: _wagmi_core_dist_types_actions_co
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -13156,8 +13157,8 @@ declare const simulateProfileUpdateProfileFor: _wagmi_core_dist_types_actions_co
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -13174,8 +13175,8 @@ declare const simulateProfileUpdateProfileFor: _wagmi_core_dist_types_actions_co
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -13184,8 +13185,8 @@ declare const simulateProfileUpdateProfileFor: _wagmi_core_dist_types_actions_co
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -13198,7 +13199,6 @@ declare const simulateProfileUpdateProfileFor: _wagmi_core_dist_types_actions_co
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -13320,6 +13320,7 @@ declare const simulateProfileUpdateProfileFor: _wagmi_core_dist_types_actions_co
  * Wraps __{@link watchContractEvent}__ with `abi` set to __{@link profileAbi}__
  */
 declare const watchProfileEvent: _wagmi_core_dist_types_actions_codegen_createWatchContractEvent.CreateWatchContractEventReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -13330,8 +13331,8 @@ declare const watchProfileEvent: _wagmi_core_dist_types_actions_codegen_createWa
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -13344,8 +13345,8 @@ declare const watchProfileEvent: _wagmi_core_dist_types_actions_codegen_createWa
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -13358,8 +13359,8 @@ declare const watchProfileEvent: _wagmi_core_dist_types_actions_codegen_createWa
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -13372,8 +13373,8 @@ declare const watchProfileEvent: _wagmi_core_dist_types_actions_codegen_createWa
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -13390,8 +13391,8 @@ declare const watchProfileEvent: _wagmi_core_dist_types_actions_codegen_createWa
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -13404,8 +13405,8 @@ declare const watchProfileEvent: _wagmi_core_dist_types_actions_codegen_createWa
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -13422,8 +13423,8 @@ declare const watchProfileEvent: _wagmi_core_dist_types_actions_codegen_createWa
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -13432,8 +13433,8 @@ declare const watchProfileEvent: _wagmi_core_dist_types_actions_codegen_createWa
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -13446,8 +13447,8 @@ declare const watchProfileEvent: _wagmi_core_dist_types_actions_codegen_createWa
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -13456,8 +13457,8 @@ declare const watchProfileEvent: _wagmi_core_dist_types_actions_codegen_createWa
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -13470,8 +13471,8 @@ declare const watchProfileEvent: _wagmi_core_dist_types_actions_codegen_createWa
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -13488,8 +13489,8 @@ declare const watchProfileEvent: _wagmi_core_dist_types_actions_codegen_createWa
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -13510,8 +13511,8 @@ declare const watchProfileEvent: _wagmi_core_dist_types_actions_codegen_createWa
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -13524,8 +13525,8 @@ declare const watchProfileEvent: _wagmi_core_dist_types_actions_codegen_createWa
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -13538,8 +13539,8 @@ declare const watchProfileEvent: _wagmi_core_dist_types_actions_codegen_createWa
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -13548,8 +13549,8 @@ declare const watchProfileEvent: _wagmi_core_dist_types_actions_codegen_createWa
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -13562,8 +13563,8 @@ declare const watchProfileEvent: _wagmi_core_dist_types_actions_codegen_createWa
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -13572,8 +13573,8 @@ declare const watchProfileEvent: _wagmi_core_dist_types_actions_codegen_createWa
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -13590,8 +13591,8 @@ declare const watchProfileEvent: _wagmi_core_dist_types_actions_codegen_createWa
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -13600,8 +13601,8 @@ declare const watchProfileEvent: _wagmi_core_dist_types_actions_codegen_createWa
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -13614,7 +13615,6 @@ declare const watchProfileEvent: _wagmi_core_dist_types_actions_codegen_createWa
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -13736,6 +13736,7 @@ declare const watchProfileEvent: _wagmi_core_dist_types_actions_codegen_createWa
  * Wraps __{@link watchContractEvent}__ with `abi` set to __{@link profileAbi}__ and `eventName` set to `"Approval"`
  */
 declare const watchProfileApprovalEvent: _wagmi_core_dist_types_actions_codegen_createWatchContractEvent.CreateWatchContractEventReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -13746,8 +13747,8 @@ declare const watchProfileApprovalEvent: _wagmi_core_dist_types_actions_codegen_
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -13760,8 +13761,8 @@ declare const watchProfileApprovalEvent: _wagmi_core_dist_types_actions_codegen_
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -13774,8 +13775,8 @@ declare const watchProfileApprovalEvent: _wagmi_core_dist_types_actions_codegen_
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -13788,8 +13789,8 @@ declare const watchProfileApprovalEvent: _wagmi_core_dist_types_actions_codegen_
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -13806,8 +13807,8 @@ declare const watchProfileApprovalEvent: _wagmi_core_dist_types_actions_codegen_
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -13820,8 +13821,8 @@ declare const watchProfileApprovalEvent: _wagmi_core_dist_types_actions_codegen_
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -13838,8 +13839,8 @@ declare const watchProfileApprovalEvent: _wagmi_core_dist_types_actions_codegen_
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -13848,8 +13849,8 @@ declare const watchProfileApprovalEvent: _wagmi_core_dist_types_actions_codegen_
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -13862,8 +13863,8 @@ declare const watchProfileApprovalEvent: _wagmi_core_dist_types_actions_codegen_
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -13872,8 +13873,8 @@ declare const watchProfileApprovalEvent: _wagmi_core_dist_types_actions_codegen_
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -13886,8 +13887,8 @@ declare const watchProfileApprovalEvent: _wagmi_core_dist_types_actions_codegen_
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -13904,8 +13905,8 @@ declare const watchProfileApprovalEvent: _wagmi_core_dist_types_actions_codegen_
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -13926,8 +13927,8 @@ declare const watchProfileApprovalEvent: _wagmi_core_dist_types_actions_codegen_
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -13940,8 +13941,8 @@ declare const watchProfileApprovalEvent: _wagmi_core_dist_types_actions_codegen_
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -13954,8 +13955,8 @@ declare const watchProfileApprovalEvent: _wagmi_core_dist_types_actions_codegen_
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -13964,8 +13965,8 @@ declare const watchProfileApprovalEvent: _wagmi_core_dist_types_actions_codegen_
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -13978,8 +13979,8 @@ declare const watchProfileApprovalEvent: _wagmi_core_dist_types_actions_codegen_
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -13988,8 +13989,8 @@ declare const watchProfileApprovalEvent: _wagmi_core_dist_types_actions_codegen_
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -14006,8 +14007,8 @@ declare const watchProfileApprovalEvent: _wagmi_core_dist_types_actions_codegen_
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -14016,8 +14017,8 @@ declare const watchProfileApprovalEvent: _wagmi_core_dist_types_actions_codegen_
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -14030,7 +14031,6 @@ declare const watchProfileApprovalEvent: _wagmi_core_dist_types_actions_codegen_
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -14152,6 +14152,7 @@ declare const watchProfileApprovalEvent: _wagmi_core_dist_types_actions_codegen_
  * Wraps __{@link watchContractEvent}__ with `abi` set to __{@link profileAbi}__ and `eventName` set to `"ApprovalForAll"`
  */
 declare const watchProfileApprovalForAllEvent: _wagmi_core_dist_types_actions_codegen_createWatchContractEvent.CreateWatchContractEventReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -14162,8 +14163,8 @@ declare const watchProfileApprovalForAllEvent: _wagmi_core_dist_types_actions_co
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -14176,8 +14177,8 @@ declare const watchProfileApprovalForAllEvent: _wagmi_core_dist_types_actions_co
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -14190,8 +14191,8 @@ declare const watchProfileApprovalForAllEvent: _wagmi_core_dist_types_actions_co
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -14204,8 +14205,8 @@ declare const watchProfileApprovalForAllEvent: _wagmi_core_dist_types_actions_co
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -14222,8 +14223,8 @@ declare const watchProfileApprovalForAllEvent: _wagmi_core_dist_types_actions_co
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -14236,8 +14237,8 @@ declare const watchProfileApprovalForAllEvent: _wagmi_core_dist_types_actions_co
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -14254,8 +14255,8 @@ declare const watchProfileApprovalForAllEvent: _wagmi_core_dist_types_actions_co
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -14264,8 +14265,8 @@ declare const watchProfileApprovalForAllEvent: _wagmi_core_dist_types_actions_co
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -14278,8 +14279,8 @@ declare const watchProfileApprovalForAllEvent: _wagmi_core_dist_types_actions_co
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -14288,8 +14289,8 @@ declare const watchProfileApprovalForAllEvent: _wagmi_core_dist_types_actions_co
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -14302,8 +14303,8 @@ declare const watchProfileApprovalForAllEvent: _wagmi_core_dist_types_actions_co
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -14320,8 +14321,8 @@ declare const watchProfileApprovalForAllEvent: _wagmi_core_dist_types_actions_co
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -14342,8 +14343,8 @@ declare const watchProfileApprovalForAllEvent: _wagmi_core_dist_types_actions_co
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -14356,8 +14357,8 @@ declare const watchProfileApprovalForAllEvent: _wagmi_core_dist_types_actions_co
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -14370,8 +14371,8 @@ declare const watchProfileApprovalForAllEvent: _wagmi_core_dist_types_actions_co
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -14380,8 +14381,8 @@ declare const watchProfileApprovalForAllEvent: _wagmi_core_dist_types_actions_co
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -14394,8 +14395,8 @@ declare const watchProfileApprovalForAllEvent: _wagmi_core_dist_types_actions_co
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -14404,8 +14405,8 @@ declare const watchProfileApprovalForAllEvent: _wagmi_core_dist_types_actions_co
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -14422,8 +14423,8 @@ declare const watchProfileApprovalForAllEvent: _wagmi_core_dist_types_actions_co
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -14432,8 +14433,8 @@ declare const watchProfileApprovalForAllEvent: _wagmi_core_dist_types_actions_co
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -14446,7 +14447,6 @@ declare const watchProfileApprovalForAllEvent: _wagmi_core_dist_types_actions_co
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -14568,6 +14568,7 @@ declare const watchProfileApprovalForAllEvent: _wagmi_core_dist_types_actions_co
  * Wraps __{@link watchContractEvent}__ with `abi` set to __{@link profileAbi}__ and `eventName` set to `"BatchMetadataUpdate"`
  */
 declare const watchProfileBatchMetadataUpdateEvent: _wagmi_core_dist_types_actions_codegen_createWatchContractEvent.CreateWatchContractEventReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -14578,8 +14579,8 @@ declare const watchProfileBatchMetadataUpdateEvent: _wagmi_core_dist_types_actio
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -14592,8 +14593,8 @@ declare const watchProfileBatchMetadataUpdateEvent: _wagmi_core_dist_types_actio
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -14606,8 +14607,8 @@ declare const watchProfileBatchMetadataUpdateEvent: _wagmi_core_dist_types_actio
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -14620,8 +14621,8 @@ declare const watchProfileBatchMetadataUpdateEvent: _wagmi_core_dist_types_actio
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -14638,8 +14639,8 @@ declare const watchProfileBatchMetadataUpdateEvent: _wagmi_core_dist_types_actio
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -14652,8 +14653,8 @@ declare const watchProfileBatchMetadataUpdateEvent: _wagmi_core_dist_types_actio
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -14670,8 +14671,8 @@ declare const watchProfileBatchMetadataUpdateEvent: _wagmi_core_dist_types_actio
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -14680,8 +14681,8 @@ declare const watchProfileBatchMetadataUpdateEvent: _wagmi_core_dist_types_actio
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -14694,8 +14695,8 @@ declare const watchProfileBatchMetadataUpdateEvent: _wagmi_core_dist_types_actio
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -14704,8 +14705,8 @@ declare const watchProfileBatchMetadataUpdateEvent: _wagmi_core_dist_types_actio
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -14718,8 +14719,8 @@ declare const watchProfileBatchMetadataUpdateEvent: _wagmi_core_dist_types_actio
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -14736,8 +14737,8 @@ declare const watchProfileBatchMetadataUpdateEvent: _wagmi_core_dist_types_actio
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -14758,8 +14759,8 @@ declare const watchProfileBatchMetadataUpdateEvent: _wagmi_core_dist_types_actio
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -14772,8 +14773,8 @@ declare const watchProfileBatchMetadataUpdateEvent: _wagmi_core_dist_types_actio
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -14786,8 +14787,8 @@ declare const watchProfileBatchMetadataUpdateEvent: _wagmi_core_dist_types_actio
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -14796,8 +14797,8 @@ declare const watchProfileBatchMetadataUpdateEvent: _wagmi_core_dist_types_actio
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -14810,8 +14811,8 @@ declare const watchProfileBatchMetadataUpdateEvent: _wagmi_core_dist_types_actio
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -14820,8 +14821,8 @@ declare const watchProfileBatchMetadataUpdateEvent: _wagmi_core_dist_types_actio
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -14838,8 +14839,8 @@ declare const watchProfileBatchMetadataUpdateEvent: _wagmi_core_dist_types_actio
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -14848,8 +14849,8 @@ declare const watchProfileBatchMetadataUpdateEvent: _wagmi_core_dist_types_actio
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -14862,7 +14863,6 @@ declare const watchProfileBatchMetadataUpdateEvent: _wagmi_core_dist_types_actio
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -14984,6 +14984,7 @@ declare const watchProfileBatchMetadataUpdateEvent: _wagmi_core_dist_types_actio
  * Wraps __{@link watchContractEvent}__ with `abi` set to __{@link profileAbi}__ and `eventName` set to `"MetadataUpdate"`
  */
 declare const watchProfileMetadataUpdateEvent: _wagmi_core_dist_types_actions_codegen_createWatchContractEvent.CreateWatchContractEventReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -14994,8 +14995,8 @@ declare const watchProfileMetadataUpdateEvent: _wagmi_core_dist_types_actions_co
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -15008,8 +15009,8 @@ declare const watchProfileMetadataUpdateEvent: _wagmi_core_dist_types_actions_co
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -15022,8 +15023,8 @@ declare const watchProfileMetadataUpdateEvent: _wagmi_core_dist_types_actions_co
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -15036,8 +15037,8 @@ declare const watchProfileMetadataUpdateEvent: _wagmi_core_dist_types_actions_co
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -15054,8 +15055,8 @@ declare const watchProfileMetadataUpdateEvent: _wagmi_core_dist_types_actions_co
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -15068,8 +15069,8 @@ declare const watchProfileMetadataUpdateEvent: _wagmi_core_dist_types_actions_co
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -15086,8 +15087,8 @@ declare const watchProfileMetadataUpdateEvent: _wagmi_core_dist_types_actions_co
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -15096,8 +15097,8 @@ declare const watchProfileMetadataUpdateEvent: _wagmi_core_dist_types_actions_co
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -15110,8 +15111,8 @@ declare const watchProfileMetadataUpdateEvent: _wagmi_core_dist_types_actions_co
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -15120,8 +15121,8 @@ declare const watchProfileMetadataUpdateEvent: _wagmi_core_dist_types_actions_co
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -15134,8 +15135,8 @@ declare const watchProfileMetadataUpdateEvent: _wagmi_core_dist_types_actions_co
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -15152,8 +15153,8 @@ declare const watchProfileMetadataUpdateEvent: _wagmi_core_dist_types_actions_co
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -15174,8 +15175,8 @@ declare const watchProfileMetadataUpdateEvent: _wagmi_core_dist_types_actions_co
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -15188,8 +15189,8 @@ declare const watchProfileMetadataUpdateEvent: _wagmi_core_dist_types_actions_co
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -15202,8 +15203,8 @@ declare const watchProfileMetadataUpdateEvent: _wagmi_core_dist_types_actions_co
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -15212,8 +15213,8 @@ declare const watchProfileMetadataUpdateEvent: _wagmi_core_dist_types_actions_co
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -15226,8 +15227,8 @@ declare const watchProfileMetadataUpdateEvent: _wagmi_core_dist_types_actions_co
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -15236,8 +15237,8 @@ declare const watchProfileMetadataUpdateEvent: _wagmi_core_dist_types_actions_co
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -15254,8 +15255,8 @@ declare const watchProfileMetadataUpdateEvent: _wagmi_core_dist_types_actions_co
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -15264,8 +15265,8 @@ declare const watchProfileMetadataUpdateEvent: _wagmi_core_dist_types_actions_co
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -15278,7 +15279,6 @@ declare const watchProfileMetadataUpdateEvent: _wagmi_core_dist_types_actions_co
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -15400,6 +15400,7 @@ declare const watchProfileMetadataUpdateEvent: _wagmi_core_dist_types_actions_co
  * Wraps __{@link watchContractEvent}__ with `abi` set to __{@link profileAbi}__ and `eventName` set to `"ProfileChangedFor"`
  */
 declare const watchProfileProfileChangedForEvent: _wagmi_core_dist_types_actions_codegen_createWatchContractEvent.CreateWatchContractEventReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -15410,8 +15411,8 @@ declare const watchProfileProfileChangedForEvent: _wagmi_core_dist_types_actions
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -15424,8 +15425,8 @@ declare const watchProfileProfileChangedForEvent: _wagmi_core_dist_types_actions
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -15438,8 +15439,8 @@ declare const watchProfileProfileChangedForEvent: _wagmi_core_dist_types_actions
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -15452,8 +15453,8 @@ declare const watchProfileProfileChangedForEvent: _wagmi_core_dist_types_actions
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -15470,8 +15471,8 @@ declare const watchProfileProfileChangedForEvent: _wagmi_core_dist_types_actions
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -15484,8 +15485,8 @@ declare const watchProfileProfileChangedForEvent: _wagmi_core_dist_types_actions
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -15502,8 +15503,8 @@ declare const watchProfileProfileChangedForEvent: _wagmi_core_dist_types_actions
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -15512,8 +15513,8 @@ declare const watchProfileProfileChangedForEvent: _wagmi_core_dist_types_actions
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -15526,8 +15527,8 @@ declare const watchProfileProfileChangedForEvent: _wagmi_core_dist_types_actions
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -15536,8 +15537,8 @@ declare const watchProfileProfileChangedForEvent: _wagmi_core_dist_types_actions
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -15550,8 +15551,8 @@ declare const watchProfileProfileChangedForEvent: _wagmi_core_dist_types_actions
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -15568,8 +15569,8 @@ declare const watchProfileProfileChangedForEvent: _wagmi_core_dist_types_actions
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -15590,8 +15591,8 @@ declare const watchProfileProfileChangedForEvent: _wagmi_core_dist_types_actions
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -15604,8 +15605,8 @@ declare const watchProfileProfileChangedForEvent: _wagmi_core_dist_types_actions
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -15618,8 +15619,8 @@ declare const watchProfileProfileChangedForEvent: _wagmi_core_dist_types_actions
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -15628,8 +15629,8 @@ declare const watchProfileProfileChangedForEvent: _wagmi_core_dist_types_actions
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -15642,8 +15643,8 @@ declare const watchProfileProfileChangedForEvent: _wagmi_core_dist_types_actions
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -15652,8 +15653,8 @@ declare const watchProfileProfileChangedForEvent: _wagmi_core_dist_types_actions
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -15670,8 +15671,8 @@ declare const watchProfileProfileChangedForEvent: _wagmi_core_dist_types_actions
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -15680,8 +15681,8 @@ declare const watchProfileProfileChangedForEvent: _wagmi_core_dist_types_actions
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -15694,7 +15695,6 @@ declare const watchProfileProfileChangedForEvent: _wagmi_core_dist_types_actions
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -15816,6 +15816,7 @@ declare const watchProfileProfileChangedForEvent: _wagmi_core_dist_types_actions
  * Wraps __{@link watchContractEvent}__ with `abi` set to __{@link profileAbi}__ and `eventName` set to `"Transfer"`
  */
 declare const watchProfileTransferEvent: _wagmi_core_dist_types_actions_codegen_createWatchContractEvent.CreateWatchContractEventReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -15826,8 +15827,8 @@ declare const watchProfileTransferEvent: _wagmi_core_dist_types_actions_codegen_
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -15840,8 +15841,8 @@ declare const watchProfileTransferEvent: _wagmi_core_dist_types_actions_codegen_
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -15854,8 +15855,8 @@ declare const watchProfileTransferEvent: _wagmi_core_dist_types_actions_codegen_
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -15868,8 +15869,8 @@ declare const watchProfileTransferEvent: _wagmi_core_dist_types_actions_codegen_
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -15886,8 +15887,8 @@ declare const watchProfileTransferEvent: _wagmi_core_dist_types_actions_codegen_
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -15900,8 +15901,8 @@ declare const watchProfileTransferEvent: _wagmi_core_dist_types_actions_codegen_
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -15918,8 +15919,8 @@ declare const watchProfileTransferEvent: _wagmi_core_dist_types_actions_codegen_
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -15928,8 +15929,8 @@ declare const watchProfileTransferEvent: _wagmi_core_dist_types_actions_codegen_
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -15942,8 +15943,8 @@ declare const watchProfileTransferEvent: _wagmi_core_dist_types_actions_codegen_
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -15952,8 +15953,8 @@ declare const watchProfileTransferEvent: _wagmi_core_dist_types_actions_codegen_
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -15966,8 +15967,8 @@ declare const watchProfileTransferEvent: _wagmi_core_dist_types_actions_codegen_
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -15984,8 +15985,8 @@ declare const watchProfileTransferEvent: _wagmi_core_dist_types_actions_codegen_
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -16006,8 +16007,8 @@ declare const watchProfileTransferEvent: _wagmi_core_dist_types_actions_codegen_
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -16020,8 +16021,8 @@ declare const watchProfileTransferEvent: _wagmi_core_dist_types_actions_codegen_
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -16034,8 +16035,8 @@ declare const watchProfileTransferEvent: _wagmi_core_dist_types_actions_codegen_
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -16044,8 +16045,8 @@ declare const watchProfileTransferEvent: _wagmi_core_dist_types_actions_codegen_
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -16058,8 +16059,8 @@ declare const watchProfileTransferEvent: _wagmi_core_dist_types_actions_codegen_
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -16068,8 +16069,8 @@ declare const watchProfileTransferEvent: _wagmi_core_dist_types_actions_codegen_
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -16086,8 +16087,8 @@ declare const watchProfileTransferEvent: _wagmi_core_dist_types_actions_codegen_
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -16096,8 +16097,8 @@ declare const watchProfileTransferEvent: _wagmi_core_dist_types_actions_codegen_
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -16110,7 +16111,6 @@ declare const watchProfileTransferEvent: _wagmi_core_dist_types_actions_codegen_
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -16232,6 +16232,7 @@ declare const watchProfileTransferEvent: _wagmi_core_dist_types_actions_codegen_
  * Wraps __{@link useReadContract}__ with `abi` set to __{@link profileAbi}__
  */
 declare const useReadProfile: wagmi_dist_types_hooks_codegen_createUseReadContract.CreateUseReadContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -16242,8 +16243,8 @@ declare const useReadProfile: wagmi_dist_types_hooks_codegen_createUseReadContra
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -16256,8 +16257,8 @@ declare const useReadProfile: wagmi_dist_types_hooks_codegen_createUseReadContra
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -16270,8 +16271,8 @@ declare const useReadProfile: wagmi_dist_types_hooks_codegen_createUseReadContra
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -16284,8 +16285,8 @@ declare const useReadProfile: wagmi_dist_types_hooks_codegen_createUseReadContra
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -16302,8 +16303,8 @@ declare const useReadProfile: wagmi_dist_types_hooks_codegen_createUseReadContra
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -16316,8 +16317,8 @@ declare const useReadProfile: wagmi_dist_types_hooks_codegen_createUseReadContra
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -16334,8 +16335,8 @@ declare const useReadProfile: wagmi_dist_types_hooks_codegen_createUseReadContra
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -16344,8 +16345,8 @@ declare const useReadProfile: wagmi_dist_types_hooks_codegen_createUseReadContra
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -16358,8 +16359,8 @@ declare const useReadProfile: wagmi_dist_types_hooks_codegen_createUseReadContra
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -16368,8 +16369,8 @@ declare const useReadProfile: wagmi_dist_types_hooks_codegen_createUseReadContra
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -16382,8 +16383,8 @@ declare const useReadProfile: wagmi_dist_types_hooks_codegen_createUseReadContra
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -16400,8 +16401,8 @@ declare const useReadProfile: wagmi_dist_types_hooks_codegen_createUseReadContra
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -16422,8 +16423,8 @@ declare const useReadProfile: wagmi_dist_types_hooks_codegen_createUseReadContra
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -16436,8 +16437,8 @@ declare const useReadProfile: wagmi_dist_types_hooks_codegen_createUseReadContra
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -16450,8 +16451,8 @@ declare const useReadProfile: wagmi_dist_types_hooks_codegen_createUseReadContra
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -16460,8 +16461,8 @@ declare const useReadProfile: wagmi_dist_types_hooks_codegen_createUseReadContra
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -16474,8 +16475,8 @@ declare const useReadProfile: wagmi_dist_types_hooks_codegen_createUseReadContra
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -16484,8 +16485,8 @@ declare const useReadProfile: wagmi_dist_types_hooks_codegen_createUseReadContra
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -16502,8 +16503,8 @@ declare const useReadProfile: wagmi_dist_types_hooks_codegen_createUseReadContra
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -16512,8 +16513,8 @@ declare const useReadProfile: wagmi_dist_types_hooks_codegen_createUseReadContra
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -16526,7 +16527,6 @@ declare const useReadProfile: wagmi_dist_types_hooks_codegen_createUseReadContra
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -16648,6 +16648,7 @@ declare const useReadProfile: wagmi_dist_types_hooks_codegen_createUseReadContra
  * Wraps __{@link useReadContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"accountUri"`
  */
 declare const useReadProfileAccountUri: wagmi_dist_types_hooks_codegen_createUseReadContract.CreateUseReadContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -16658,8 +16659,8 @@ declare const useReadProfileAccountUri: wagmi_dist_types_hooks_codegen_createUse
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -16672,8 +16673,8 @@ declare const useReadProfileAccountUri: wagmi_dist_types_hooks_codegen_createUse
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -16686,8 +16687,8 @@ declare const useReadProfileAccountUri: wagmi_dist_types_hooks_codegen_createUse
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -16700,8 +16701,8 @@ declare const useReadProfileAccountUri: wagmi_dist_types_hooks_codegen_createUse
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -16718,8 +16719,8 @@ declare const useReadProfileAccountUri: wagmi_dist_types_hooks_codegen_createUse
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -16732,8 +16733,8 @@ declare const useReadProfileAccountUri: wagmi_dist_types_hooks_codegen_createUse
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -16750,8 +16751,8 @@ declare const useReadProfileAccountUri: wagmi_dist_types_hooks_codegen_createUse
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -16760,8 +16761,8 @@ declare const useReadProfileAccountUri: wagmi_dist_types_hooks_codegen_createUse
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -16774,8 +16775,8 @@ declare const useReadProfileAccountUri: wagmi_dist_types_hooks_codegen_createUse
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -16784,8 +16785,8 @@ declare const useReadProfileAccountUri: wagmi_dist_types_hooks_codegen_createUse
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -16798,8 +16799,8 @@ declare const useReadProfileAccountUri: wagmi_dist_types_hooks_codegen_createUse
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -16816,8 +16817,8 @@ declare const useReadProfileAccountUri: wagmi_dist_types_hooks_codegen_createUse
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -16838,8 +16839,8 @@ declare const useReadProfileAccountUri: wagmi_dist_types_hooks_codegen_createUse
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -16852,8 +16853,8 @@ declare const useReadProfileAccountUri: wagmi_dist_types_hooks_codegen_createUse
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -16866,8 +16867,8 @@ declare const useReadProfileAccountUri: wagmi_dist_types_hooks_codegen_createUse
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -16876,8 +16877,8 @@ declare const useReadProfileAccountUri: wagmi_dist_types_hooks_codegen_createUse
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -16890,8 +16891,8 @@ declare const useReadProfileAccountUri: wagmi_dist_types_hooks_codegen_createUse
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -16900,8 +16901,8 @@ declare const useReadProfileAccountUri: wagmi_dist_types_hooks_codegen_createUse
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -16918,8 +16919,8 @@ declare const useReadProfileAccountUri: wagmi_dist_types_hooks_codegen_createUse
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -16928,8 +16929,8 @@ declare const useReadProfileAccountUri: wagmi_dist_types_hooks_codegen_createUse
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -16942,7 +16943,6 @@ declare const useReadProfileAccountUri: wagmi_dist_types_hooks_codegen_createUse
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -17064,6 +17064,7 @@ declare const useReadProfileAccountUri: wagmi_dist_types_hooks_codegen_createUse
  * Wraps __{@link useReadContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"balanceOf"`
  */
 declare const useReadProfileBalanceOf: wagmi_dist_types_hooks_codegen_createUseReadContract.CreateUseReadContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -17074,8 +17075,8 @@ declare const useReadProfileBalanceOf: wagmi_dist_types_hooks_codegen_createUseR
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -17088,8 +17089,8 @@ declare const useReadProfileBalanceOf: wagmi_dist_types_hooks_codegen_createUseR
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -17102,8 +17103,8 @@ declare const useReadProfileBalanceOf: wagmi_dist_types_hooks_codegen_createUseR
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -17116,8 +17117,8 @@ declare const useReadProfileBalanceOf: wagmi_dist_types_hooks_codegen_createUseR
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -17134,8 +17135,8 @@ declare const useReadProfileBalanceOf: wagmi_dist_types_hooks_codegen_createUseR
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -17148,8 +17149,8 @@ declare const useReadProfileBalanceOf: wagmi_dist_types_hooks_codegen_createUseR
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -17166,8 +17167,8 @@ declare const useReadProfileBalanceOf: wagmi_dist_types_hooks_codegen_createUseR
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -17176,8 +17177,8 @@ declare const useReadProfileBalanceOf: wagmi_dist_types_hooks_codegen_createUseR
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -17190,8 +17191,8 @@ declare const useReadProfileBalanceOf: wagmi_dist_types_hooks_codegen_createUseR
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -17200,8 +17201,8 @@ declare const useReadProfileBalanceOf: wagmi_dist_types_hooks_codegen_createUseR
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -17214,8 +17215,8 @@ declare const useReadProfileBalanceOf: wagmi_dist_types_hooks_codegen_createUseR
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -17232,8 +17233,8 @@ declare const useReadProfileBalanceOf: wagmi_dist_types_hooks_codegen_createUseR
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -17254,8 +17255,8 @@ declare const useReadProfileBalanceOf: wagmi_dist_types_hooks_codegen_createUseR
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -17268,8 +17269,8 @@ declare const useReadProfileBalanceOf: wagmi_dist_types_hooks_codegen_createUseR
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -17282,8 +17283,8 @@ declare const useReadProfileBalanceOf: wagmi_dist_types_hooks_codegen_createUseR
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -17292,8 +17293,8 @@ declare const useReadProfileBalanceOf: wagmi_dist_types_hooks_codegen_createUseR
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -17306,8 +17307,8 @@ declare const useReadProfileBalanceOf: wagmi_dist_types_hooks_codegen_createUseR
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -17316,8 +17317,8 @@ declare const useReadProfileBalanceOf: wagmi_dist_types_hooks_codegen_createUseR
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -17334,8 +17335,8 @@ declare const useReadProfileBalanceOf: wagmi_dist_types_hooks_codegen_createUseR
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -17344,8 +17345,8 @@ declare const useReadProfileBalanceOf: wagmi_dist_types_hooks_codegen_createUseR
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -17358,7 +17359,6 @@ declare const useReadProfileBalanceOf: wagmi_dist_types_hooks_codegen_createUseR
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -17480,6 +17480,7 @@ declare const useReadProfileBalanceOf: wagmi_dist_types_hooks_codegen_createUseR
  * Wraps __{@link useReadContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"canMintFor"`
  */
 declare const useReadProfileCanMintFor: wagmi_dist_types_hooks_codegen_createUseReadContract.CreateUseReadContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -17490,8 +17491,8 @@ declare const useReadProfileCanMintFor: wagmi_dist_types_hooks_codegen_createUse
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -17504,8 +17505,8 @@ declare const useReadProfileCanMintFor: wagmi_dist_types_hooks_codegen_createUse
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -17518,8 +17519,8 @@ declare const useReadProfileCanMintFor: wagmi_dist_types_hooks_codegen_createUse
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -17532,8 +17533,8 @@ declare const useReadProfileCanMintFor: wagmi_dist_types_hooks_codegen_createUse
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -17550,8 +17551,8 @@ declare const useReadProfileCanMintFor: wagmi_dist_types_hooks_codegen_createUse
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -17564,8 +17565,8 @@ declare const useReadProfileCanMintFor: wagmi_dist_types_hooks_codegen_createUse
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -17582,8 +17583,8 @@ declare const useReadProfileCanMintFor: wagmi_dist_types_hooks_codegen_createUse
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -17592,8 +17593,8 @@ declare const useReadProfileCanMintFor: wagmi_dist_types_hooks_codegen_createUse
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -17606,8 +17607,8 @@ declare const useReadProfileCanMintFor: wagmi_dist_types_hooks_codegen_createUse
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -17616,8 +17617,8 @@ declare const useReadProfileCanMintFor: wagmi_dist_types_hooks_codegen_createUse
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -17630,8 +17631,8 @@ declare const useReadProfileCanMintFor: wagmi_dist_types_hooks_codegen_createUse
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -17648,8 +17649,8 @@ declare const useReadProfileCanMintFor: wagmi_dist_types_hooks_codegen_createUse
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -17670,8 +17671,8 @@ declare const useReadProfileCanMintFor: wagmi_dist_types_hooks_codegen_createUse
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -17684,8 +17685,8 @@ declare const useReadProfileCanMintFor: wagmi_dist_types_hooks_codegen_createUse
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -17698,8 +17699,8 @@ declare const useReadProfileCanMintFor: wagmi_dist_types_hooks_codegen_createUse
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -17708,8 +17709,8 @@ declare const useReadProfileCanMintFor: wagmi_dist_types_hooks_codegen_createUse
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -17722,8 +17723,8 @@ declare const useReadProfileCanMintFor: wagmi_dist_types_hooks_codegen_createUse
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -17732,8 +17733,8 @@ declare const useReadProfileCanMintFor: wagmi_dist_types_hooks_codegen_createUse
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -17750,8 +17751,8 @@ declare const useReadProfileCanMintFor: wagmi_dist_types_hooks_codegen_createUse
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -17760,8 +17761,8 @@ declare const useReadProfileCanMintFor: wagmi_dist_types_hooks_codegen_createUse
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -17774,7 +17775,6 @@ declare const useReadProfileCanMintFor: wagmi_dist_types_hooks_codegen_createUse
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -17896,6 +17896,7 @@ declare const useReadProfileCanMintFor: wagmi_dist_types_hooks_codegen_createUse
  * Wraps __{@link useReadContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"getApproved"`
  */
 declare const useReadProfileGetApproved: wagmi_dist_types_hooks_codegen_createUseReadContract.CreateUseReadContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -17906,8 +17907,8 @@ declare const useReadProfileGetApproved: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -17920,8 +17921,8 @@ declare const useReadProfileGetApproved: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -17934,8 +17935,8 @@ declare const useReadProfileGetApproved: wagmi_dist_types_hooks_codegen_createUs
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -17948,8 +17949,8 @@ declare const useReadProfileGetApproved: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -17966,8 +17967,8 @@ declare const useReadProfileGetApproved: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -17980,8 +17981,8 @@ declare const useReadProfileGetApproved: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -17998,8 +17999,8 @@ declare const useReadProfileGetApproved: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -18008,8 +18009,8 @@ declare const useReadProfileGetApproved: wagmi_dist_types_hooks_codegen_createUs
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -18022,8 +18023,8 @@ declare const useReadProfileGetApproved: wagmi_dist_types_hooks_codegen_createUs
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -18032,8 +18033,8 @@ declare const useReadProfileGetApproved: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -18046,8 +18047,8 @@ declare const useReadProfileGetApproved: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -18064,8 +18065,8 @@ declare const useReadProfileGetApproved: wagmi_dist_types_hooks_codegen_createUs
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -18086,8 +18087,8 @@ declare const useReadProfileGetApproved: wagmi_dist_types_hooks_codegen_createUs
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -18100,8 +18101,8 @@ declare const useReadProfileGetApproved: wagmi_dist_types_hooks_codegen_createUs
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -18114,8 +18115,8 @@ declare const useReadProfileGetApproved: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -18124,8 +18125,8 @@ declare const useReadProfileGetApproved: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -18138,8 +18139,8 @@ declare const useReadProfileGetApproved: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -18148,8 +18149,8 @@ declare const useReadProfileGetApproved: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -18166,8 +18167,8 @@ declare const useReadProfileGetApproved: wagmi_dist_types_hooks_codegen_createUs
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -18176,8 +18177,8 @@ declare const useReadProfileGetApproved: wagmi_dist_types_hooks_codegen_createUs
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -18190,7 +18191,6 @@ declare const useReadProfileGetApproved: wagmi_dist_types_hooks_codegen_createUs
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -18312,6 +18312,7 @@ declare const useReadProfileGetApproved: wagmi_dist_types_hooks_codegen_createUs
  * Wraps __{@link useReadContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"isApprovedForAll"`
  */
 declare const useReadProfileIsApprovedForAll: wagmi_dist_types_hooks_codegen_createUseReadContract.CreateUseReadContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -18322,8 +18323,8 @@ declare const useReadProfileIsApprovedForAll: wagmi_dist_types_hooks_codegen_cre
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -18336,8 +18337,8 @@ declare const useReadProfileIsApprovedForAll: wagmi_dist_types_hooks_codegen_cre
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -18350,8 +18351,8 @@ declare const useReadProfileIsApprovedForAll: wagmi_dist_types_hooks_codegen_cre
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -18364,8 +18365,8 @@ declare const useReadProfileIsApprovedForAll: wagmi_dist_types_hooks_codegen_cre
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -18382,8 +18383,8 @@ declare const useReadProfileIsApprovedForAll: wagmi_dist_types_hooks_codegen_cre
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -18396,8 +18397,8 @@ declare const useReadProfileIsApprovedForAll: wagmi_dist_types_hooks_codegen_cre
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -18414,8 +18415,8 @@ declare const useReadProfileIsApprovedForAll: wagmi_dist_types_hooks_codegen_cre
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -18424,8 +18425,8 @@ declare const useReadProfileIsApprovedForAll: wagmi_dist_types_hooks_codegen_cre
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -18438,8 +18439,8 @@ declare const useReadProfileIsApprovedForAll: wagmi_dist_types_hooks_codegen_cre
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -18448,8 +18449,8 @@ declare const useReadProfileIsApprovedForAll: wagmi_dist_types_hooks_codegen_cre
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -18462,8 +18463,8 @@ declare const useReadProfileIsApprovedForAll: wagmi_dist_types_hooks_codegen_cre
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -18480,8 +18481,8 @@ declare const useReadProfileIsApprovedForAll: wagmi_dist_types_hooks_codegen_cre
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -18502,8 +18503,8 @@ declare const useReadProfileIsApprovedForAll: wagmi_dist_types_hooks_codegen_cre
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -18516,8 +18517,8 @@ declare const useReadProfileIsApprovedForAll: wagmi_dist_types_hooks_codegen_cre
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -18530,8 +18531,8 @@ declare const useReadProfileIsApprovedForAll: wagmi_dist_types_hooks_codegen_cre
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -18540,8 +18541,8 @@ declare const useReadProfileIsApprovedForAll: wagmi_dist_types_hooks_codegen_cre
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -18554,8 +18555,8 @@ declare const useReadProfileIsApprovedForAll: wagmi_dist_types_hooks_codegen_cre
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -18564,8 +18565,8 @@ declare const useReadProfileIsApprovedForAll: wagmi_dist_types_hooks_codegen_cre
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -18582,8 +18583,8 @@ declare const useReadProfileIsApprovedForAll: wagmi_dist_types_hooks_codegen_cre
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -18592,8 +18593,8 @@ declare const useReadProfileIsApprovedForAll: wagmi_dist_types_hooks_codegen_cre
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -18606,7 +18607,6 @@ declare const useReadProfileIsApprovedForAll: wagmi_dist_types_hooks_codegen_cre
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -18728,6 +18728,7 @@ declare const useReadProfileIsApprovedForAll: wagmi_dist_types_hooks_codegen_cre
  * Wraps __{@link useReadContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"name"`
  */
 declare const useReadProfileName: wagmi_dist_types_hooks_codegen_createUseReadContract.CreateUseReadContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -18738,8 +18739,8 @@ declare const useReadProfileName: wagmi_dist_types_hooks_codegen_createUseReadCo
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -18752,8 +18753,8 @@ declare const useReadProfileName: wagmi_dist_types_hooks_codegen_createUseReadCo
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -18766,8 +18767,8 @@ declare const useReadProfileName: wagmi_dist_types_hooks_codegen_createUseReadCo
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -18780,8 +18781,8 @@ declare const useReadProfileName: wagmi_dist_types_hooks_codegen_createUseReadCo
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -18798,8 +18799,8 @@ declare const useReadProfileName: wagmi_dist_types_hooks_codegen_createUseReadCo
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -18812,8 +18813,8 @@ declare const useReadProfileName: wagmi_dist_types_hooks_codegen_createUseReadCo
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -18830,8 +18831,8 @@ declare const useReadProfileName: wagmi_dist_types_hooks_codegen_createUseReadCo
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -18840,8 +18841,8 @@ declare const useReadProfileName: wagmi_dist_types_hooks_codegen_createUseReadCo
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -18854,8 +18855,8 @@ declare const useReadProfileName: wagmi_dist_types_hooks_codegen_createUseReadCo
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -18864,8 +18865,8 @@ declare const useReadProfileName: wagmi_dist_types_hooks_codegen_createUseReadCo
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -18878,8 +18879,8 @@ declare const useReadProfileName: wagmi_dist_types_hooks_codegen_createUseReadCo
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -18896,8 +18897,8 @@ declare const useReadProfileName: wagmi_dist_types_hooks_codegen_createUseReadCo
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -18918,8 +18919,8 @@ declare const useReadProfileName: wagmi_dist_types_hooks_codegen_createUseReadCo
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -18932,8 +18933,8 @@ declare const useReadProfileName: wagmi_dist_types_hooks_codegen_createUseReadCo
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -18946,8 +18947,8 @@ declare const useReadProfileName: wagmi_dist_types_hooks_codegen_createUseReadCo
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -18956,8 +18957,8 @@ declare const useReadProfileName: wagmi_dist_types_hooks_codegen_createUseReadCo
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -18970,8 +18971,8 @@ declare const useReadProfileName: wagmi_dist_types_hooks_codegen_createUseReadCo
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -18980,8 +18981,8 @@ declare const useReadProfileName: wagmi_dist_types_hooks_codegen_createUseReadCo
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -18998,8 +18999,8 @@ declare const useReadProfileName: wagmi_dist_types_hooks_codegen_createUseReadCo
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -19008,8 +19009,8 @@ declare const useReadProfileName: wagmi_dist_types_hooks_codegen_createUseReadCo
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -19022,7 +19023,6 @@ declare const useReadProfileName: wagmi_dist_types_hooks_codegen_createUseReadCo
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -19144,6 +19144,7 @@ declare const useReadProfileName: wagmi_dist_types_hooks_codegen_createUseReadCo
  * Wraps __{@link useReadContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"ownerOf"`
  */
 declare const useReadProfileOwnerOf: wagmi_dist_types_hooks_codegen_createUseReadContract.CreateUseReadContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -19154,8 +19155,8 @@ declare const useReadProfileOwnerOf: wagmi_dist_types_hooks_codegen_createUseRea
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -19168,8 +19169,8 @@ declare const useReadProfileOwnerOf: wagmi_dist_types_hooks_codegen_createUseRea
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -19182,8 +19183,8 @@ declare const useReadProfileOwnerOf: wagmi_dist_types_hooks_codegen_createUseRea
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -19196,8 +19197,8 @@ declare const useReadProfileOwnerOf: wagmi_dist_types_hooks_codegen_createUseRea
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -19214,8 +19215,8 @@ declare const useReadProfileOwnerOf: wagmi_dist_types_hooks_codegen_createUseRea
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -19228,8 +19229,8 @@ declare const useReadProfileOwnerOf: wagmi_dist_types_hooks_codegen_createUseRea
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -19246,8 +19247,8 @@ declare const useReadProfileOwnerOf: wagmi_dist_types_hooks_codegen_createUseRea
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -19256,8 +19257,8 @@ declare const useReadProfileOwnerOf: wagmi_dist_types_hooks_codegen_createUseRea
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -19270,8 +19271,8 @@ declare const useReadProfileOwnerOf: wagmi_dist_types_hooks_codegen_createUseRea
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -19280,8 +19281,8 @@ declare const useReadProfileOwnerOf: wagmi_dist_types_hooks_codegen_createUseRea
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -19294,8 +19295,8 @@ declare const useReadProfileOwnerOf: wagmi_dist_types_hooks_codegen_createUseRea
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -19312,8 +19313,8 @@ declare const useReadProfileOwnerOf: wagmi_dist_types_hooks_codegen_createUseRea
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -19334,8 +19335,8 @@ declare const useReadProfileOwnerOf: wagmi_dist_types_hooks_codegen_createUseRea
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -19348,8 +19349,8 @@ declare const useReadProfileOwnerOf: wagmi_dist_types_hooks_codegen_createUseRea
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -19362,8 +19363,8 @@ declare const useReadProfileOwnerOf: wagmi_dist_types_hooks_codegen_createUseRea
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -19372,8 +19373,8 @@ declare const useReadProfileOwnerOf: wagmi_dist_types_hooks_codegen_createUseRea
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -19386,8 +19387,8 @@ declare const useReadProfileOwnerOf: wagmi_dist_types_hooks_codegen_createUseRea
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -19396,8 +19397,8 @@ declare const useReadProfileOwnerOf: wagmi_dist_types_hooks_codegen_createUseRea
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -19414,8 +19415,8 @@ declare const useReadProfileOwnerOf: wagmi_dist_types_hooks_codegen_createUseRea
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -19424,8 +19425,8 @@ declare const useReadProfileOwnerOf: wagmi_dist_types_hooks_codegen_createUseRea
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -19438,7 +19439,6 @@ declare const useReadProfileOwnerOf: wagmi_dist_types_hooks_codegen_createUseRea
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -19560,6 +19560,7 @@ declare const useReadProfileOwnerOf: wagmi_dist_types_hooks_codegen_createUseRea
  * Wraps __{@link useReadContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"safeTransferFrom"`
  */
 declare const useReadProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_createUseReadContract.CreateUseReadContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -19570,8 +19571,8 @@ declare const useReadProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_cre
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -19584,8 +19585,8 @@ declare const useReadProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_cre
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -19598,8 +19599,8 @@ declare const useReadProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_cre
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -19612,8 +19613,8 @@ declare const useReadProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_cre
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -19630,8 +19631,8 @@ declare const useReadProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_cre
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -19644,8 +19645,8 @@ declare const useReadProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_cre
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -19662,8 +19663,8 @@ declare const useReadProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_cre
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -19672,8 +19673,8 @@ declare const useReadProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_cre
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -19686,8 +19687,8 @@ declare const useReadProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_cre
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -19696,8 +19697,8 @@ declare const useReadProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_cre
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -19710,8 +19711,8 @@ declare const useReadProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_cre
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -19728,8 +19729,8 @@ declare const useReadProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_cre
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -19750,8 +19751,8 @@ declare const useReadProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_cre
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -19764,8 +19765,8 @@ declare const useReadProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_cre
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -19778,8 +19779,8 @@ declare const useReadProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_cre
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -19788,8 +19789,8 @@ declare const useReadProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_cre
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -19802,8 +19803,8 @@ declare const useReadProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_cre
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -19812,8 +19813,8 @@ declare const useReadProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_cre
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -19830,8 +19831,8 @@ declare const useReadProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_cre
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -19840,8 +19841,8 @@ declare const useReadProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_cre
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -19854,7 +19855,6 @@ declare const useReadProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_cre
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -19976,6 +19976,7 @@ declare const useReadProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_cre
  * Wraps __{@link useReadContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"supportsInterface"`
  */
 declare const useReadProfileSupportsInterface: wagmi_dist_types_hooks_codegen_createUseReadContract.CreateUseReadContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -19986,8 +19987,8 @@ declare const useReadProfileSupportsInterface: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -20000,8 +20001,8 @@ declare const useReadProfileSupportsInterface: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -20014,8 +20015,8 @@ declare const useReadProfileSupportsInterface: wagmi_dist_types_hooks_codegen_cr
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -20028,8 +20029,8 @@ declare const useReadProfileSupportsInterface: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -20046,8 +20047,8 @@ declare const useReadProfileSupportsInterface: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -20060,8 +20061,8 @@ declare const useReadProfileSupportsInterface: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -20078,8 +20079,8 @@ declare const useReadProfileSupportsInterface: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -20088,8 +20089,8 @@ declare const useReadProfileSupportsInterface: wagmi_dist_types_hooks_codegen_cr
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -20102,8 +20103,8 @@ declare const useReadProfileSupportsInterface: wagmi_dist_types_hooks_codegen_cr
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -20112,8 +20113,8 @@ declare const useReadProfileSupportsInterface: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -20126,8 +20127,8 @@ declare const useReadProfileSupportsInterface: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -20144,8 +20145,8 @@ declare const useReadProfileSupportsInterface: wagmi_dist_types_hooks_codegen_cr
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -20166,8 +20167,8 @@ declare const useReadProfileSupportsInterface: wagmi_dist_types_hooks_codegen_cr
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -20180,8 +20181,8 @@ declare const useReadProfileSupportsInterface: wagmi_dist_types_hooks_codegen_cr
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -20194,8 +20195,8 @@ declare const useReadProfileSupportsInterface: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -20204,8 +20205,8 @@ declare const useReadProfileSupportsInterface: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -20218,8 +20219,8 @@ declare const useReadProfileSupportsInterface: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -20228,8 +20229,8 @@ declare const useReadProfileSupportsInterface: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -20246,8 +20247,8 @@ declare const useReadProfileSupportsInterface: wagmi_dist_types_hooks_codegen_cr
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -20256,8 +20257,8 @@ declare const useReadProfileSupportsInterface: wagmi_dist_types_hooks_codegen_cr
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -20270,7 +20271,6 @@ declare const useReadProfileSupportsInterface: wagmi_dist_types_hooks_codegen_cr
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -20392,6 +20392,7 @@ declare const useReadProfileSupportsInterface: wagmi_dist_types_hooks_codegen_cr
  * Wraps __{@link useReadContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"symbol"`
  */
 declare const useReadProfileSymbol: wagmi_dist_types_hooks_codegen_createUseReadContract.CreateUseReadContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -20402,8 +20403,8 @@ declare const useReadProfileSymbol: wagmi_dist_types_hooks_codegen_createUseRead
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -20416,8 +20417,8 @@ declare const useReadProfileSymbol: wagmi_dist_types_hooks_codegen_createUseRead
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -20430,8 +20431,8 @@ declare const useReadProfileSymbol: wagmi_dist_types_hooks_codegen_createUseRead
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -20444,8 +20445,8 @@ declare const useReadProfileSymbol: wagmi_dist_types_hooks_codegen_createUseRead
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -20462,8 +20463,8 @@ declare const useReadProfileSymbol: wagmi_dist_types_hooks_codegen_createUseRead
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -20476,8 +20477,8 @@ declare const useReadProfileSymbol: wagmi_dist_types_hooks_codegen_createUseRead
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -20494,8 +20495,8 @@ declare const useReadProfileSymbol: wagmi_dist_types_hooks_codegen_createUseRead
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -20504,8 +20505,8 @@ declare const useReadProfileSymbol: wagmi_dist_types_hooks_codegen_createUseRead
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -20518,8 +20519,8 @@ declare const useReadProfileSymbol: wagmi_dist_types_hooks_codegen_createUseRead
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -20528,8 +20529,8 @@ declare const useReadProfileSymbol: wagmi_dist_types_hooks_codegen_createUseRead
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -20542,8 +20543,8 @@ declare const useReadProfileSymbol: wagmi_dist_types_hooks_codegen_createUseRead
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -20560,8 +20561,8 @@ declare const useReadProfileSymbol: wagmi_dist_types_hooks_codegen_createUseRead
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -20582,8 +20583,8 @@ declare const useReadProfileSymbol: wagmi_dist_types_hooks_codegen_createUseRead
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -20596,8 +20597,8 @@ declare const useReadProfileSymbol: wagmi_dist_types_hooks_codegen_createUseRead
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -20610,8 +20611,8 @@ declare const useReadProfileSymbol: wagmi_dist_types_hooks_codegen_createUseRead
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -20620,8 +20621,8 @@ declare const useReadProfileSymbol: wagmi_dist_types_hooks_codegen_createUseRead
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -20634,8 +20635,8 @@ declare const useReadProfileSymbol: wagmi_dist_types_hooks_codegen_createUseRead
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -20644,8 +20645,8 @@ declare const useReadProfileSymbol: wagmi_dist_types_hooks_codegen_createUseRead
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -20662,8 +20663,8 @@ declare const useReadProfileSymbol: wagmi_dist_types_hooks_codegen_createUseRead
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -20672,8 +20673,8 @@ declare const useReadProfileSymbol: wagmi_dist_types_hooks_codegen_createUseRead
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -20686,7 +20687,6 @@ declare const useReadProfileSymbol: wagmi_dist_types_hooks_codegen_createUseRead
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -20808,6 +20808,7 @@ declare const useReadProfileSymbol: wagmi_dist_types_hooks_codegen_createUseRead
  * Wraps __{@link useReadContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"tokenURI"`
  */
 declare const useReadProfileTokenUri: wagmi_dist_types_hooks_codegen_createUseReadContract.CreateUseReadContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -20818,8 +20819,8 @@ declare const useReadProfileTokenUri: wagmi_dist_types_hooks_codegen_createUseRe
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -20832,8 +20833,8 @@ declare const useReadProfileTokenUri: wagmi_dist_types_hooks_codegen_createUseRe
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -20846,8 +20847,8 @@ declare const useReadProfileTokenUri: wagmi_dist_types_hooks_codegen_createUseRe
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -20860,8 +20861,8 @@ declare const useReadProfileTokenUri: wagmi_dist_types_hooks_codegen_createUseRe
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -20878,8 +20879,8 @@ declare const useReadProfileTokenUri: wagmi_dist_types_hooks_codegen_createUseRe
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -20892,8 +20893,8 @@ declare const useReadProfileTokenUri: wagmi_dist_types_hooks_codegen_createUseRe
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -20910,8 +20911,8 @@ declare const useReadProfileTokenUri: wagmi_dist_types_hooks_codegen_createUseRe
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -20920,8 +20921,8 @@ declare const useReadProfileTokenUri: wagmi_dist_types_hooks_codegen_createUseRe
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -20934,8 +20935,8 @@ declare const useReadProfileTokenUri: wagmi_dist_types_hooks_codegen_createUseRe
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -20944,8 +20945,8 @@ declare const useReadProfileTokenUri: wagmi_dist_types_hooks_codegen_createUseRe
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -20958,8 +20959,8 @@ declare const useReadProfileTokenUri: wagmi_dist_types_hooks_codegen_createUseRe
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -20976,8 +20977,8 @@ declare const useReadProfileTokenUri: wagmi_dist_types_hooks_codegen_createUseRe
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -20998,8 +20999,8 @@ declare const useReadProfileTokenUri: wagmi_dist_types_hooks_codegen_createUseRe
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -21012,8 +21013,8 @@ declare const useReadProfileTokenUri: wagmi_dist_types_hooks_codegen_createUseRe
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -21026,8 +21027,8 @@ declare const useReadProfileTokenUri: wagmi_dist_types_hooks_codegen_createUseRe
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -21036,8 +21037,8 @@ declare const useReadProfileTokenUri: wagmi_dist_types_hooks_codegen_createUseRe
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -21050,8 +21051,8 @@ declare const useReadProfileTokenUri: wagmi_dist_types_hooks_codegen_createUseRe
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -21060,8 +21061,8 @@ declare const useReadProfileTokenUri: wagmi_dist_types_hooks_codegen_createUseRe
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -21078,8 +21079,8 @@ declare const useReadProfileTokenUri: wagmi_dist_types_hooks_codegen_createUseRe
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -21088,8 +21089,8 @@ declare const useReadProfileTokenUri: wagmi_dist_types_hooks_codegen_createUseRe
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -21102,7 +21103,6 @@ declare const useReadProfileTokenUri: wagmi_dist_types_hooks_codegen_createUseRe
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -21224,6 +21224,7 @@ declare const useReadProfileTokenUri: wagmi_dist_types_hooks_codegen_createUseRe
  * Wraps __{@link useReadContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"totalSupply"`
  */
 declare const useReadProfileTotalSupply: wagmi_dist_types_hooks_codegen_createUseReadContract.CreateUseReadContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -21234,8 +21235,8 @@ declare const useReadProfileTotalSupply: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -21248,8 +21249,8 @@ declare const useReadProfileTotalSupply: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -21262,8 +21263,8 @@ declare const useReadProfileTotalSupply: wagmi_dist_types_hooks_codegen_createUs
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -21276,8 +21277,8 @@ declare const useReadProfileTotalSupply: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -21294,8 +21295,8 @@ declare const useReadProfileTotalSupply: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -21308,8 +21309,8 @@ declare const useReadProfileTotalSupply: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -21326,8 +21327,8 @@ declare const useReadProfileTotalSupply: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -21336,8 +21337,8 @@ declare const useReadProfileTotalSupply: wagmi_dist_types_hooks_codegen_createUs
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -21350,8 +21351,8 @@ declare const useReadProfileTotalSupply: wagmi_dist_types_hooks_codegen_createUs
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -21360,8 +21361,8 @@ declare const useReadProfileTotalSupply: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -21374,8 +21375,8 @@ declare const useReadProfileTotalSupply: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -21392,8 +21393,8 @@ declare const useReadProfileTotalSupply: wagmi_dist_types_hooks_codegen_createUs
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -21414,8 +21415,8 @@ declare const useReadProfileTotalSupply: wagmi_dist_types_hooks_codegen_createUs
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -21428,8 +21429,8 @@ declare const useReadProfileTotalSupply: wagmi_dist_types_hooks_codegen_createUs
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -21442,8 +21443,8 @@ declare const useReadProfileTotalSupply: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -21452,8 +21453,8 @@ declare const useReadProfileTotalSupply: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -21466,8 +21467,8 @@ declare const useReadProfileTotalSupply: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -21476,8 +21477,8 @@ declare const useReadProfileTotalSupply: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -21494,8 +21495,8 @@ declare const useReadProfileTotalSupply: wagmi_dist_types_hooks_codegen_createUs
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -21504,8 +21505,8 @@ declare const useReadProfileTotalSupply: wagmi_dist_types_hooks_codegen_createUs
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -21518,7 +21519,6 @@ declare const useReadProfileTotalSupply: wagmi_dist_types_hooks_codegen_createUs
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -21640,6 +21640,7 @@ declare const useReadProfileTotalSupply: wagmi_dist_types_hooks_codegen_createUs
  * Wraps __{@link useWriteContract}__ with `abi` set to __{@link profileAbi}__
  */
 declare const useWriteProfile: wagmi_dist_types_hooks_codegen_createUseWriteContract.CreateUseWriteContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -21650,8 +21651,8 @@ declare const useWriteProfile: wagmi_dist_types_hooks_codegen_createUseWriteCont
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -21664,8 +21665,8 @@ declare const useWriteProfile: wagmi_dist_types_hooks_codegen_createUseWriteCont
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -21678,8 +21679,8 @@ declare const useWriteProfile: wagmi_dist_types_hooks_codegen_createUseWriteCont
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -21692,8 +21693,8 @@ declare const useWriteProfile: wagmi_dist_types_hooks_codegen_createUseWriteCont
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -21710,8 +21711,8 @@ declare const useWriteProfile: wagmi_dist_types_hooks_codegen_createUseWriteCont
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -21724,8 +21725,8 @@ declare const useWriteProfile: wagmi_dist_types_hooks_codegen_createUseWriteCont
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -21742,8 +21743,8 @@ declare const useWriteProfile: wagmi_dist_types_hooks_codegen_createUseWriteCont
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -21752,8 +21753,8 @@ declare const useWriteProfile: wagmi_dist_types_hooks_codegen_createUseWriteCont
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -21766,8 +21767,8 @@ declare const useWriteProfile: wagmi_dist_types_hooks_codegen_createUseWriteCont
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -21776,8 +21777,8 @@ declare const useWriteProfile: wagmi_dist_types_hooks_codegen_createUseWriteCont
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -21790,8 +21791,8 @@ declare const useWriteProfile: wagmi_dist_types_hooks_codegen_createUseWriteCont
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -21808,8 +21809,8 @@ declare const useWriteProfile: wagmi_dist_types_hooks_codegen_createUseWriteCont
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -21830,8 +21831,8 @@ declare const useWriteProfile: wagmi_dist_types_hooks_codegen_createUseWriteCont
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -21844,8 +21845,8 @@ declare const useWriteProfile: wagmi_dist_types_hooks_codegen_createUseWriteCont
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -21858,8 +21859,8 @@ declare const useWriteProfile: wagmi_dist_types_hooks_codegen_createUseWriteCont
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -21868,8 +21869,8 @@ declare const useWriteProfile: wagmi_dist_types_hooks_codegen_createUseWriteCont
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -21882,8 +21883,8 @@ declare const useWriteProfile: wagmi_dist_types_hooks_codegen_createUseWriteCont
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -21892,8 +21893,8 @@ declare const useWriteProfile: wagmi_dist_types_hooks_codegen_createUseWriteCont
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -21910,8 +21911,8 @@ declare const useWriteProfile: wagmi_dist_types_hooks_codegen_createUseWriteCont
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -21920,8 +21921,8 @@ declare const useWriteProfile: wagmi_dist_types_hooks_codegen_createUseWriteCont
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -21934,7 +21935,6 @@ declare const useWriteProfile: wagmi_dist_types_hooks_codegen_createUseWriteCont
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -22056,6 +22056,7 @@ declare const useWriteProfile: wagmi_dist_types_hooks_codegen_createUseWriteCont
  * Wraps __{@link useWriteContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"approve"`
  */
 declare const useWriteProfileApprove: wagmi_dist_types_hooks_codegen_createUseWriteContract.CreateUseWriteContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -22066,8 +22067,8 @@ declare const useWriteProfileApprove: wagmi_dist_types_hooks_codegen_createUseWr
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -22080,8 +22081,8 @@ declare const useWriteProfileApprove: wagmi_dist_types_hooks_codegen_createUseWr
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -22094,8 +22095,8 @@ declare const useWriteProfileApprove: wagmi_dist_types_hooks_codegen_createUseWr
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -22108,8 +22109,8 @@ declare const useWriteProfileApprove: wagmi_dist_types_hooks_codegen_createUseWr
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -22126,8 +22127,8 @@ declare const useWriteProfileApprove: wagmi_dist_types_hooks_codegen_createUseWr
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -22140,8 +22141,8 @@ declare const useWriteProfileApprove: wagmi_dist_types_hooks_codegen_createUseWr
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -22158,8 +22159,8 @@ declare const useWriteProfileApprove: wagmi_dist_types_hooks_codegen_createUseWr
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -22168,8 +22169,8 @@ declare const useWriteProfileApprove: wagmi_dist_types_hooks_codegen_createUseWr
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -22182,8 +22183,8 @@ declare const useWriteProfileApprove: wagmi_dist_types_hooks_codegen_createUseWr
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -22192,8 +22193,8 @@ declare const useWriteProfileApprove: wagmi_dist_types_hooks_codegen_createUseWr
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -22206,8 +22207,8 @@ declare const useWriteProfileApprove: wagmi_dist_types_hooks_codegen_createUseWr
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -22224,8 +22225,8 @@ declare const useWriteProfileApprove: wagmi_dist_types_hooks_codegen_createUseWr
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -22246,8 +22247,8 @@ declare const useWriteProfileApprove: wagmi_dist_types_hooks_codegen_createUseWr
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -22260,8 +22261,8 @@ declare const useWriteProfileApprove: wagmi_dist_types_hooks_codegen_createUseWr
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -22274,8 +22275,8 @@ declare const useWriteProfileApprove: wagmi_dist_types_hooks_codegen_createUseWr
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -22284,8 +22285,8 @@ declare const useWriteProfileApprove: wagmi_dist_types_hooks_codegen_createUseWr
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -22298,8 +22299,8 @@ declare const useWriteProfileApprove: wagmi_dist_types_hooks_codegen_createUseWr
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -22308,8 +22309,8 @@ declare const useWriteProfileApprove: wagmi_dist_types_hooks_codegen_createUseWr
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -22326,8 +22327,8 @@ declare const useWriteProfileApprove: wagmi_dist_types_hooks_codegen_createUseWr
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -22336,8 +22337,8 @@ declare const useWriteProfileApprove: wagmi_dist_types_hooks_codegen_createUseWr
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -22350,7 +22351,6 @@ declare const useWriteProfileApprove: wagmi_dist_types_hooks_codegen_createUseWr
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -22472,6 +22472,7 @@ declare const useWriteProfileApprove: wagmi_dist_types_hooks_codegen_createUseWr
  * Wraps __{@link useWriteContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"mint"`
  */
 declare const useWriteProfileMint: wagmi_dist_types_hooks_codegen_createUseWriteContract.CreateUseWriteContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -22482,8 +22483,8 @@ declare const useWriteProfileMint: wagmi_dist_types_hooks_codegen_createUseWrite
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -22496,8 +22497,8 @@ declare const useWriteProfileMint: wagmi_dist_types_hooks_codegen_createUseWrite
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -22510,8 +22511,8 @@ declare const useWriteProfileMint: wagmi_dist_types_hooks_codegen_createUseWrite
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -22524,8 +22525,8 @@ declare const useWriteProfileMint: wagmi_dist_types_hooks_codegen_createUseWrite
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -22542,8 +22543,8 @@ declare const useWriteProfileMint: wagmi_dist_types_hooks_codegen_createUseWrite
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -22556,8 +22557,8 @@ declare const useWriteProfileMint: wagmi_dist_types_hooks_codegen_createUseWrite
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -22574,8 +22575,8 @@ declare const useWriteProfileMint: wagmi_dist_types_hooks_codegen_createUseWrite
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -22584,8 +22585,8 @@ declare const useWriteProfileMint: wagmi_dist_types_hooks_codegen_createUseWrite
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -22598,8 +22599,8 @@ declare const useWriteProfileMint: wagmi_dist_types_hooks_codegen_createUseWrite
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -22608,8 +22609,8 @@ declare const useWriteProfileMint: wagmi_dist_types_hooks_codegen_createUseWrite
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -22622,8 +22623,8 @@ declare const useWriteProfileMint: wagmi_dist_types_hooks_codegen_createUseWrite
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -22640,8 +22641,8 @@ declare const useWriteProfileMint: wagmi_dist_types_hooks_codegen_createUseWrite
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -22662,8 +22663,8 @@ declare const useWriteProfileMint: wagmi_dist_types_hooks_codegen_createUseWrite
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -22676,8 +22677,8 @@ declare const useWriteProfileMint: wagmi_dist_types_hooks_codegen_createUseWrite
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -22690,8 +22691,8 @@ declare const useWriteProfileMint: wagmi_dist_types_hooks_codegen_createUseWrite
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -22700,8 +22701,8 @@ declare const useWriteProfileMint: wagmi_dist_types_hooks_codegen_createUseWrite
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -22714,8 +22715,8 @@ declare const useWriteProfileMint: wagmi_dist_types_hooks_codegen_createUseWrite
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -22724,8 +22725,8 @@ declare const useWriteProfileMint: wagmi_dist_types_hooks_codegen_createUseWrite
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -22742,8 +22743,8 @@ declare const useWriteProfileMint: wagmi_dist_types_hooks_codegen_createUseWrite
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -22752,8 +22753,8 @@ declare const useWriteProfileMint: wagmi_dist_types_hooks_codegen_createUseWrite
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -22766,7 +22767,6 @@ declare const useWriteProfileMint: wagmi_dist_types_hooks_codegen_createUseWrite
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -22888,6 +22888,7 @@ declare const useWriteProfileMint: wagmi_dist_types_hooks_codegen_createUseWrite
  * Wraps __{@link useWriteContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"mintFor"`
  */
 declare const useWriteProfileMintFor: wagmi_dist_types_hooks_codegen_createUseWriteContract.CreateUseWriteContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -22898,8 +22899,8 @@ declare const useWriteProfileMintFor: wagmi_dist_types_hooks_codegen_createUseWr
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -22912,8 +22913,8 @@ declare const useWriteProfileMintFor: wagmi_dist_types_hooks_codegen_createUseWr
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -22926,8 +22927,8 @@ declare const useWriteProfileMintFor: wagmi_dist_types_hooks_codegen_createUseWr
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -22940,8 +22941,8 @@ declare const useWriteProfileMintFor: wagmi_dist_types_hooks_codegen_createUseWr
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -22958,8 +22959,8 @@ declare const useWriteProfileMintFor: wagmi_dist_types_hooks_codegen_createUseWr
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -22972,8 +22973,8 @@ declare const useWriteProfileMintFor: wagmi_dist_types_hooks_codegen_createUseWr
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -22990,8 +22991,8 @@ declare const useWriteProfileMintFor: wagmi_dist_types_hooks_codegen_createUseWr
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -23000,8 +23001,8 @@ declare const useWriteProfileMintFor: wagmi_dist_types_hooks_codegen_createUseWr
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -23014,8 +23015,8 @@ declare const useWriteProfileMintFor: wagmi_dist_types_hooks_codegen_createUseWr
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -23024,8 +23025,8 @@ declare const useWriteProfileMintFor: wagmi_dist_types_hooks_codegen_createUseWr
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -23038,8 +23039,8 @@ declare const useWriteProfileMintFor: wagmi_dist_types_hooks_codegen_createUseWr
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -23056,8 +23057,8 @@ declare const useWriteProfileMintFor: wagmi_dist_types_hooks_codegen_createUseWr
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -23078,8 +23079,8 @@ declare const useWriteProfileMintFor: wagmi_dist_types_hooks_codegen_createUseWr
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -23092,8 +23093,8 @@ declare const useWriteProfileMintFor: wagmi_dist_types_hooks_codegen_createUseWr
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -23106,8 +23107,8 @@ declare const useWriteProfileMintFor: wagmi_dist_types_hooks_codegen_createUseWr
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -23116,8 +23117,8 @@ declare const useWriteProfileMintFor: wagmi_dist_types_hooks_codegen_createUseWr
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -23130,8 +23131,8 @@ declare const useWriteProfileMintFor: wagmi_dist_types_hooks_codegen_createUseWr
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -23140,8 +23141,8 @@ declare const useWriteProfileMintFor: wagmi_dist_types_hooks_codegen_createUseWr
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -23158,8 +23159,8 @@ declare const useWriteProfileMintFor: wagmi_dist_types_hooks_codegen_createUseWr
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -23168,8 +23169,8 @@ declare const useWriteProfileMintFor: wagmi_dist_types_hooks_codegen_createUseWr
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -23182,7 +23183,6 @@ declare const useWriteProfileMintFor: wagmi_dist_types_hooks_codegen_createUseWr
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -23304,6 +23304,7 @@ declare const useWriteProfileMintFor: wagmi_dist_types_hooks_codegen_createUseWr
  * Wraps __{@link useWriteContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"safeTransferFrom"`
  */
 declare const useWriteProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_createUseWriteContract.CreateUseWriteContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -23314,8 +23315,8 @@ declare const useWriteProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -23328,8 +23329,8 @@ declare const useWriteProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -23342,8 +23343,8 @@ declare const useWriteProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_cr
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -23356,8 +23357,8 @@ declare const useWriteProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -23374,8 +23375,8 @@ declare const useWriteProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -23388,8 +23389,8 @@ declare const useWriteProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -23406,8 +23407,8 @@ declare const useWriteProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -23416,8 +23417,8 @@ declare const useWriteProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_cr
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -23430,8 +23431,8 @@ declare const useWriteProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_cr
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -23440,8 +23441,8 @@ declare const useWriteProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -23454,8 +23455,8 @@ declare const useWriteProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -23472,8 +23473,8 @@ declare const useWriteProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_cr
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -23494,8 +23495,8 @@ declare const useWriteProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_cr
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -23508,8 +23509,8 @@ declare const useWriteProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_cr
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -23522,8 +23523,8 @@ declare const useWriteProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -23532,8 +23533,8 @@ declare const useWriteProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -23546,8 +23547,8 @@ declare const useWriteProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -23556,8 +23557,8 @@ declare const useWriteProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -23574,8 +23575,8 @@ declare const useWriteProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_cr
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -23584,8 +23585,8 @@ declare const useWriteProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_cr
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -23598,7 +23599,6 @@ declare const useWriteProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_cr
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -23720,6 +23720,7 @@ declare const useWriteProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_cr
  * Wraps __{@link useWriteContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"setApprovalForAll"`
  */
 declare const useWriteProfileSetApprovalForAll: wagmi_dist_types_hooks_codegen_createUseWriteContract.CreateUseWriteContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -23730,8 +23731,8 @@ declare const useWriteProfileSetApprovalForAll: wagmi_dist_types_hooks_codegen_c
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -23744,8 +23745,8 @@ declare const useWriteProfileSetApprovalForAll: wagmi_dist_types_hooks_codegen_c
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -23758,8 +23759,8 @@ declare const useWriteProfileSetApprovalForAll: wagmi_dist_types_hooks_codegen_c
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -23772,8 +23773,8 @@ declare const useWriteProfileSetApprovalForAll: wagmi_dist_types_hooks_codegen_c
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -23790,8 +23791,8 @@ declare const useWriteProfileSetApprovalForAll: wagmi_dist_types_hooks_codegen_c
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -23804,8 +23805,8 @@ declare const useWriteProfileSetApprovalForAll: wagmi_dist_types_hooks_codegen_c
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -23822,8 +23823,8 @@ declare const useWriteProfileSetApprovalForAll: wagmi_dist_types_hooks_codegen_c
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -23832,8 +23833,8 @@ declare const useWriteProfileSetApprovalForAll: wagmi_dist_types_hooks_codegen_c
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -23846,8 +23847,8 @@ declare const useWriteProfileSetApprovalForAll: wagmi_dist_types_hooks_codegen_c
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -23856,8 +23857,8 @@ declare const useWriteProfileSetApprovalForAll: wagmi_dist_types_hooks_codegen_c
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -23870,8 +23871,8 @@ declare const useWriteProfileSetApprovalForAll: wagmi_dist_types_hooks_codegen_c
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -23888,8 +23889,8 @@ declare const useWriteProfileSetApprovalForAll: wagmi_dist_types_hooks_codegen_c
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -23910,8 +23911,8 @@ declare const useWriteProfileSetApprovalForAll: wagmi_dist_types_hooks_codegen_c
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -23924,8 +23925,8 @@ declare const useWriteProfileSetApprovalForAll: wagmi_dist_types_hooks_codegen_c
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -23938,8 +23939,8 @@ declare const useWriteProfileSetApprovalForAll: wagmi_dist_types_hooks_codegen_c
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -23948,8 +23949,8 @@ declare const useWriteProfileSetApprovalForAll: wagmi_dist_types_hooks_codegen_c
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -23962,8 +23963,8 @@ declare const useWriteProfileSetApprovalForAll: wagmi_dist_types_hooks_codegen_c
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -23972,8 +23973,8 @@ declare const useWriteProfileSetApprovalForAll: wagmi_dist_types_hooks_codegen_c
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -23990,8 +23991,8 @@ declare const useWriteProfileSetApprovalForAll: wagmi_dist_types_hooks_codegen_c
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -24000,8 +24001,8 @@ declare const useWriteProfileSetApprovalForAll: wagmi_dist_types_hooks_codegen_c
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -24014,7 +24015,6 @@ declare const useWriteProfileSetApprovalForAll: wagmi_dist_types_hooks_codegen_c
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -24136,6 +24136,7 @@ declare const useWriteProfileSetApprovalForAll: wagmi_dist_types_hooks_codegen_c
  * Wraps __{@link useWriteContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"transferFrom"`
  */
 declare const useWriteProfileTransferFrom: wagmi_dist_types_hooks_codegen_createUseWriteContract.CreateUseWriteContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -24146,8 +24147,8 @@ declare const useWriteProfileTransferFrom: wagmi_dist_types_hooks_codegen_create
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -24160,8 +24161,8 @@ declare const useWriteProfileTransferFrom: wagmi_dist_types_hooks_codegen_create
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -24174,8 +24175,8 @@ declare const useWriteProfileTransferFrom: wagmi_dist_types_hooks_codegen_create
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -24188,8 +24189,8 @@ declare const useWriteProfileTransferFrom: wagmi_dist_types_hooks_codegen_create
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -24206,8 +24207,8 @@ declare const useWriteProfileTransferFrom: wagmi_dist_types_hooks_codegen_create
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -24220,8 +24221,8 @@ declare const useWriteProfileTransferFrom: wagmi_dist_types_hooks_codegen_create
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -24238,8 +24239,8 @@ declare const useWriteProfileTransferFrom: wagmi_dist_types_hooks_codegen_create
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -24248,8 +24249,8 @@ declare const useWriteProfileTransferFrom: wagmi_dist_types_hooks_codegen_create
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -24262,8 +24263,8 @@ declare const useWriteProfileTransferFrom: wagmi_dist_types_hooks_codegen_create
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -24272,8 +24273,8 @@ declare const useWriteProfileTransferFrom: wagmi_dist_types_hooks_codegen_create
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -24286,8 +24287,8 @@ declare const useWriteProfileTransferFrom: wagmi_dist_types_hooks_codegen_create
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -24304,8 +24305,8 @@ declare const useWriteProfileTransferFrom: wagmi_dist_types_hooks_codegen_create
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -24326,8 +24327,8 @@ declare const useWriteProfileTransferFrom: wagmi_dist_types_hooks_codegen_create
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -24340,8 +24341,8 @@ declare const useWriteProfileTransferFrom: wagmi_dist_types_hooks_codegen_create
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -24354,8 +24355,8 @@ declare const useWriteProfileTransferFrom: wagmi_dist_types_hooks_codegen_create
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -24364,8 +24365,8 @@ declare const useWriteProfileTransferFrom: wagmi_dist_types_hooks_codegen_create
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -24378,8 +24379,8 @@ declare const useWriteProfileTransferFrom: wagmi_dist_types_hooks_codegen_create
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -24388,8 +24389,8 @@ declare const useWriteProfileTransferFrom: wagmi_dist_types_hooks_codegen_create
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -24406,8 +24407,8 @@ declare const useWriteProfileTransferFrom: wagmi_dist_types_hooks_codegen_create
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -24416,8 +24417,8 @@ declare const useWriteProfileTransferFrom: wagmi_dist_types_hooks_codegen_create
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -24430,7 +24431,6 @@ declare const useWriteProfileTransferFrom: wagmi_dist_types_hooks_codegen_create
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -24552,6 +24552,7 @@ declare const useWriteProfileTransferFrom: wagmi_dist_types_hooks_codegen_create
  * Wraps __{@link useWriteContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"updateProfile"`
  */
 declare const useWriteProfileUpdateProfile: wagmi_dist_types_hooks_codegen_createUseWriteContract.CreateUseWriteContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -24562,8 +24563,8 @@ declare const useWriteProfileUpdateProfile: wagmi_dist_types_hooks_codegen_creat
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -24576,8 +24577,8 @@ declare const useWriteProfileUpdateProfile: wagmi_dist_types_hooks_codegen_creat
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -24590,8 +24591,8 @@ declare const useWriteProfileUpdateProfile: wagmi_dist_types_hooks_codegen_creat
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -24604,8 +24605,8 @@ declare const useWriteProfileUpdateProfile: wagmi_dist_types_hooks_codegen_creat
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -24622,8 +24623,8 @@ declare const useWriteProfileUpdateProfile: wagmi_dist_types_hooks_codegen_creat
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -24636,8 +24637,8 @@ declare const useWriteProfileUpdateProfile: wagmi_dist_types_hooks_codegen_creat
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -24654,8 +24655,8 @@ declare const useWriteProfileUpdateProfile: wagmi_dist_types_hooks_codegen_creat
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -24664,8 +24665,8 @@ declare const useWriteProfileUpdateProfile: wagmi_dist_types_hooks_codegen_creat
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -24678,8 +24679,8 @@ declare const useWriteProfileUpdateProfile: wagmi_dist_types_hooks_codegen_creat
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -24688,8 +24689,8 @@ declare const useWriteProfileUpdateProfile: wagmi_dist_types_hooks_codegen_creat
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -24702,8 +24703,8 @@ declare const useWriteProfileUpdateProfile: wagmi_dist_types_hooks_codegen_creat
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -24720,8 +24721,8 @@ declare const useWriteProfileUpdateProfile: wagmi_dist_types_hooks_codegen_creat
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -24742,8 +24743,8 @@ declare const useWriteProfileUpdateProfile: wagmi_dist_types_hooks_codegen_creat
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -24756,8 +24757,8 @@ declare const useWriteProfileUpdateProfile: wagmi_dist_types_hooks_codegen_creat
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -24770,8 +24771,8 @@ declare const useWriteProfileUpdateProfile: wagmi_dist_types_hooks_codegen_creat
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -24780,8 +24781,8 @@ declare const useWriteProfileUpdateProfile: wagmi_dist_types_hooks_codegen_creat
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -24794,8 +24795,8 @@ declare const useWriteProfileUpdateProfile: wagmi_dist_types_hooks_codegen_creat
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -24804,8 +24805,8 @@ declare const useWriteProfileUpdateProfile: wagmi_dist_types_hooks_codegen_creat
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -24822,8 +24823,8 @@ declare const useWriteProfileUpdateProfile: wagmi_dist_types_hooks_codegen_creat
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -24832,8 +24833,8 @@ declare const useWriteProfileUpdateProfile: wagmi_dist_types_hooks_codegen_creat
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -24846,7 +24847,6 @@ declare const useWriteProfileUpdateProfile: wagmi_dist_types_hooks_codegen_creat
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -24968,6 +24968,7 @@ declare const useWriteProfileUpdateProfile: wagmi_dist_types_hooks_codegen_creat
  * Wraps __{@link useWriteContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"updateProfileFor"`
  */
 declare const useWriteProfileUpdateProfileFor: wagmi_dist_types_hooks_codegen_createUseWriteContract.CreateUseWriteContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -24978,8 +24979,8 @@ declare const useWriteProfileUpdateProfileFor: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -24992,8 +24993,8 @@ declare const useWriteProfileUpdateProfileFor: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -25006,8 +25007,8 @@ declare const useWriteProfileUpdateProfileFor: wagmi_dist_types_hooks_codegen_cr
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -25020,8 +25021,8 @@ declare const useWriteProfileUpdateProfileFor: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -25038,8 +25039,8 @@ declare const useWriteProfileUpdateProfileFor: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -25052,8 +25053,8 @@ declare const useWriteProfileUpdateProfileFor: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -25070,8 +25071,8 @@ declare const useWriteProfileUpdateProfileFor: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -25080,8 +25081,8 @@ declare const useWriteProfileUpdateProfileFor: wagmi_dist_types_hooks_codegen_cr
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -25094,8 +25095,8 @@ declare const useWriteProfileUpdateProfileFor: wagmi_dist_types_hooks_codegen_cr
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -25104,8 +25105,8 @@ declare const useWriteProfileUpdateProfileFor: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -25118,8 +25119,8 @@ declare const useWriteProfileUpdateProfileFor: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -25136,8 +25137,8 @@ declare const useWriteProfileUpdateProfileFor: wagmi_dist_types_hooks_codegen_cr
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -25158,8 +25159,8 @@ declare const useWriteProfileUpdateProfileFor: wagmi_dist_types_hooks_codegen_cr
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -25172,8 +25173,8 @@ declare const useWriteProfileUpdateProfileFor: wagmi_dist_types_hooks_codegen_cr
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -25186,8 +25187,8 @@ declare const useWriteProfileUpdateProfileFor: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -25196,8 +25197,8 @@ declare const useWriteProfileUpdateProfileFor: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -25210,8 +25211,8 @@ declare const useWriteProfileUpdateProfileFor: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -25220,8 +25221,8 @@ declare const useWriteProfileUpdateProfileFor: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -25238,8 +25239,8 @@ declare const useWriteProfileUpdateProfileFor: wagmi_dist_types_hooks_codegen_cr
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -25248,8 +25249,8 @@ declare const useWriteProfileUpdateProfileFor: wagmi_dist_types_hooks_codegen_cr
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -25262,7 +25263,6 @@ declare const useWriteProfileUpdateProfileFor: wagmi_dist_types_hooks_codegen_cr
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -25384,6 +25384,7 @@ declare const useWriteProfileUpdateProfileFor: wagmi_dist_types_hooks_codegen_cr
  * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link profileAbi}__
  */
 declare const useSimulateProfile: wagmi_dist_types_hooks_codegen_createUseSimulateContract.CreateUseSimulateContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -25394,8 +25395,8 @@ declare const useSimulateProfile: wagmi_dist_types_hooks_codegen_createUseSimula
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -25408,8 +25409,8 @@ declare const useSimulateProfile: wagmi_dist_types_hooks_codegen_createUseSimula
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -25422,8 +25423,8 @@ declare const useSimulateProfile: wagmi_dist_types_hooks_codegen_createUseSimula
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -25436,8 +25437,8 @@ declare const useSimulateProfile: wagmi_dist_types_hooks_codegen_createUseSimula
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -25454,8 +25455,8 @@ declare const useSimulateProfile: wagmi_dist_types_hooks_codegen_createUseSimula
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -25468,8 +25469,8 @@ declare const useSimulateProfile: wagmi_dist_types_hooks_codegen_createUseSimula
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -25486,8 +25487,8 @@ declare const useSimulateProfile: wagmi_dist_types_hooks_codegen_createUseSimula
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -25496,8 +25497,8 @@ declare const useSimulateProfile: wagmi_dist_types_hooks_codegen_createUseSimula
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -25510,8 +25511,8 @@ declare const useSimulateProfile: wagmi_dist_types_hooks_codegen_createUseSimula
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -25520,8 +25521,8 @@ declare const useSimulateProfile: wagmi_dist_types_hooks_codegen_createUseSimula
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -25534,8 +25535,8 @@ declare const useSimulateProfile: wagmi_dist_types_hooks_codegen_createUseSimula
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -25552,8 +25553,8 @@ declare const useSimulateProfile: wagmi_dist_types_hooks_codegen_createUseSimula
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -25574,8 +25575,8 @@ declare const useSimulateProfile: wagmi_dist_types_hooks_codegen_createUseSimula
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -25588,8 +25589,8 @@ declare const useSimulateProfile: wagmi_dist_types_hooks_codegen_createUseSimula
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -25602,8 +25603,8 @@ declare const useSimulateProfile: wagmi_dist_types_hooks_codegen_createUseSimula
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -25612,8 +25613,8 @@ declare const useSimulateProfile: wagmi_dist_types_hooks_codegen_createUseSimula
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -25626,8 +25627,8 @@ declare const useSimulateProfile: wagmi_dist_types_hooks_codegen_createUseSimula
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -25636,8 +25637,8 @@ declare const useSimulateProfile: wagmi_dist_types_hooks_codegen_createUseSimula
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -25654,8 +25655,8 @@ declare const useSimulateProfile: wagmi_dist_types_hooks_codegen_createUseSimula
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -25664,8 +25665,8 @@ declare const useSimulateProfile: wagmi_dist_types_hooks_codegen_createUseSimula
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -25678,7 +25679,6 @@ declare const useSimulateProfile: wagmi_dist_types_hooks_codegen_createUseSimula
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -25800,6 +25800,7 @@ declare const useSimulateProfile: wagmi_dist_types_hooks_codegen_createUseSimula
  * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"approve"`
  */
 declare const useSimulateProfileApprove: wagmi_dist_types_hooks_codegen_createUseSimulateContract.CreateUseSimulateContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -25810,8 +25811,8 @@ declare const useSimulateProfileApprove: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -25824,8 +25825,8 @@ declare const useSimulateProfileApprove: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -25838,8 +25839,8 @@ declare const useSimulateProfileApprove: wagmi_dist_types_hooks_codegen_createUs
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -25852,8 +25853,8 @@ declare const useSimulateProfileApprove: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -25870,8 +25871,8 @@ declare const useSimulateProfileApprove: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -25884,8 +25885,8 @@ declare const useSimulateProfileApprove: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -25902,8 +25903,8 @@ declare const useSimulateProfileApprove: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -25912,8 +25913,8 @@ declare const useSimulateProfileApprove: wagmi_dist_types_hooks_codegen_createUs
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -25926,8 +25927,8 @@ declare const useSimulateProfileApprove: wagmi_dist_types_hooks_codegen_createUs
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -25936,8 +25937,8 @@ declare const useSimulateProfileApprove: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -25950,8 +25951,8 @@ declare const useSimulateProfileApprove: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -25968,8 +25969,8 @@ declare const useSimulateProfileApprove: wagmi_dist_types_hooks_codegen_createUs
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -25990,8 +25991,8 @@ declare const useSimulateProfileApprove: wagmi_dist_types_hooks_codegen_createUs
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -26004,8 +26005,8 @@ declare const useSimulateProfileApprove: wagmi_dist_types_hooks_codegen_createUs
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -26018,8 +26019,8 @@ declare const useSimulateProfileApprove: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -26028,8 +26029,8 @@ declare const useSimulateProfileApprove: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -26042,8 +26043,8 @@ declare const useSimulateProfileApprove: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -26052,8 +26053,8 @@ declare const useSimulateProfileApprove: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -26070,8 +26071,8 @@ declare const useSimulateProfileApprove: wagmi_dist_types_hooks_codegen_createUs
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -26080,8 +26081,8 @@ declare const useSimulateProfileApprove: wagmi_dist_types_hooks_codegen_createUs
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -26094,7 +26095,6 @@ declare const useSimulateProfileApprove: wagmi_dist_types_hooks_codegen_createUs
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -26216,6 +26216,7 @@ declare const useSimulateProfileApprove: wagmi_dist_types_hooks_codegen_createUs
  * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"mint"`
  */
 declare const useSimulateProfileMint: wagmi_dist_types_hooks_codegen_createUseSimulateContract.CreateUseSimulateContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -26226,8 +26227,8 @@ declare const useSimulateProfileMint: wagmi_dist_types_hooks_codegen_createUseSi
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -26240,8 +26241,8 @@ declare const useSimulateProfileMint: wagmi_dist_types_hooks_codegen_createUseSi
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -26254,8 +26255,8 @@ declare const useSimulateProfileMint: wagmi_dist_types_hooks_codegen_createUseSi
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -26268,8 +26269,8 @@ declare const useSimulateProfileMint: wagmi_dist_types_hooks_codegen_createUseSi
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -26286,8 +26287,8 @@ declare const useSimulateProfileMint: wagmi_dist_types_hooks_codegen_createUseSi
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -26300,8 +26301,8 @@ declare const useSimulateProfileMint: wagmi_dist_types_hooks_codegen_createUseSi
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -26318,8 +26319,8 @@ declare const useSimulateProfileMint: wagmi_dist_types_hooks_codegen_createUseSi
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -26328,8 +26329,8 @@ declare const useSimulateProfileMint: wagmi_dist_types_hooks_codegen_createUseSi
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -26342,8 +26343,8 @@ declare const useSimulateProfileMint: wagmi_dist_types_hooks_codegen_createUseSi
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -26352,8 +26353,8 @@ declare const useSimulateProfileMint: wagmi_dist_types_hooks_codegen_createUseSi
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -26366,8 +26367,8 @@ declare const useSimulateProfileMint: wagmi_dist_types_hooks_codegen_createUseSi
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -26384,8 +26385,8 @@ declare const useSimulateProfileMint: wagmi_dist_types_hooks_codegen_createUseSi
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -26406,8 +26407,8 @@ declare const useSimulateProfileMint: wagmi_dist_types_hooks_codegen_createUseSi
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -26420,8 +26421,8 @@ declare const useSimulateProfileMint: wagmi_dist_types_hooks_codegen_createUseSi
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -26434,8 +26435,8 @@ declare const useSimulateProfileMint: wagmi_dist_types_hooks_codegen_createUseSi
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -26444,8 +26445,8 @@ declare const useSimulateProfileMint: wagmi_dist_types_hooks_codegen_createUseSi
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -26458,8 +26459,8 @@ declare const useSimulateProfileMint: wagmi_dist_types_hooks_codegen_createUseSi
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -26468,8 +26469,8 @@ declare const useSimulateProfileMint: wagmi_dist_types_hooks_codegen_createUseSi
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -26486,8 +26487,8 @@ declare const useSimulateProfileMint: wagmi_dist_types_hooks_codegen_createUseSi
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -26496,8 +26497,8 @@ declare const useSimulateProfileMint: wagmi_dist_types_hooks_codegen_createUseSi
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -26510,7 +26511,6 @@ declare const useSimulateProfileMint: wagmi_dist_types_hooks_codegen_createUseSi
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -26632,6 +26632,7 @@ declare const useSimulateProfileMint: wagmi_dist_types_hooks_codegen_createUseSi
  * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"mintFor"`
  */
 declare const useSimulateProfileMintFor: wagmi_dist_types_hooks_codegen_createUseSimulateContract.CreateUseSimulateContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -26642,8 +26643,8 @@ declare const useSimulateProfileMintFor: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -26656,8 +26657,8 @@ declare const useSimulateProfileMintFor: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -26670,8 +26671,8 @@ declare const useSimulateProfileMintFor: wagmi_dist_types_hooks_codegen_createUs
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -26684,8 +26685,8 @@ declare const useSimulateProfileMintFor: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -26702,8 +26703,8 @@ declare const useSimulateProfileMintFor: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -26716,8 +26717,8 @@ declare const useSimulateProfileMintFor: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -26734,8 +26735,8 @@ declare const useSimulateProfileMintFor: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -26744,8 +26745,8 @@ declare const useSimulateProfileMintFor: wagmi_dist_types_hooks_codegen_createUs
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -26758,8 +26759,8 @@ declare const useSimulateProfileMintFor: wagmi_dist_types_hooks_codegen_createUs
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -26768,8 +26769,8 @@ declare const useSimulateProfileMintFor: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -26782,8 +26783,8 @@ declare const useSimulateProfileMintFor: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -26800,8 +26801,8 @@ declare const useSimulateProfileMintFor: wagmi_dist_types_hooks_codegen_createUs
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -26822,8 +26823,8 @@ declare const useSimulateProfileMintFor: wagmi_dist_types_hooks_codegen_createUs
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -26836,8 +26837,8 @@ declare const useSimulateProfileMintFor: wagmi_dist_types_hooks_codegen_createUs
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -26850,8 +26851,8 @@ declare const useSimulateProfileMintFor: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -26860,8 +26861,8 @@ declare const useSimulateProfileMintFor: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -26874,8 +26875,8 @@ declare const useSimulateProfileMintFor: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -26884,8 +26885,8 @@ declare const useSimulateProfileMintFor: wagmi_dist_types_hooks_codegen_createUs
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -26902,8 +26903,8 @@ declare const useSimulateProfileMintFor: wagmi_dist_types_hooks_codegen_createUs
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -26912,8 +26913,8 @@ declare const useSimulateProfileMintFor: wagmi_dist_types_hooks_codegen_createUs
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -26926,7 +26927,6 @@ declare const useSimulateProfileMintFor: wagmi_dist_types_hooks_codegen_createUs
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -27048,6 +27048,7 @@ declare const useSimulateProfileMintFor: wagmi_dist_types_hooks_codegen_createUs
  * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"safeTransferFrom"`
  */
 declare const useSimulateProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen_createUseSimulateContract.CreateUseSimulateContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -27058,8 +27059,8 @@ declare const useSimulateProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -27072,8 +27073,8 @@ declare const useSimulateProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -27086,8 +27087,8 @@ declare const useSimulateProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -27100,8 +27101,8 @@ declare const useSimulateProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -27118,8 +27119,8 @@ declare const useSimulateProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -27132,8 +27133,8 @@ declare const useSimulateProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -27150,8 +27151,8 @@ declare const useSimulateProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -27160,8 +27161,8 @@ declare const useSimulateProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -27174,8 +27175,8 @@ declare const useSimulateProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -27184,8 +27185,8 @@ declare const useSimulateProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -27198,8 +27199,8 @@ declare const useSimulateProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -27216,8 +27217,8 @@ declare const useSimulateProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -27238,8 +27239,8 @@ declare const useSimulateProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -27252,8 +27253,8 @@ declare const useSimulateProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -27266,8 +27267,8 @@ declare const useSimulateProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -27276,8 +27277,8 @@ declare const useSimulateProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -27290,8 +27291,8 @@ declare const useSimulateProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -27300,8 +27301,8 @@ declare const useSimulateProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -27318,8 +27319,8 @@ declare const useSimulateProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -27328,8 +27329,8 @@ declare const useSimulateProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -27342,7 +27343,6 @@ declare const useSimulateProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -27464,6 +27464,7 @@ declare const useSimulateProfileSafeTransferFrom: wagmi_dist_types_hooks_codegen
  * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"setApprovalForAll"`
  */
 declare const useSimulateProfileSetApprovalForAll: wagmi_dist_types_hooks_codegen_createUseSimulateContract.CreateUseSimulateContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -27474,8 +27475,8 @@ declare const useSimulateProfileSetApprovalForAll: wagmi_dist_types_hooks_codege
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -27488,8 +27489,8 @@ declare const useSimulateProfileSetApprovalForAll: wagmi_dist_types_hooks_codege
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -27502,8 +27503,8 @@ declare const useSimulateProfileSetApprovalForAll: wagmi_dist_types_hooks_codege
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -27516,8 +27517,8 @@ declare const useSimulateProfileSetApprovalForAll: wagmi_dist_types_hooks_codege
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -27534,8 +27535,8 @@ declare const useSimulateProfileSetApprovalForAll: wagmi_dist_types_hooks_codege
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -27548,8 +27549,8 @@ declare const useSimulateProfileSetApprovalForAll: wagmi_dist_types_hooks_codege
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -27566,8 +27567,8 @@ declare const useSimulateProfileSetApprovalForAll: wagmi_dist_types_hooks_codege
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -27576,8 +27577,8 @@ declare const useSimulateProfileSetApprovalForAll: wagmi_dist_types_hooks_codege
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -27590,8 +27591,8 @@ declare const useSimulateProfileSetApprovalForAll: wagmi_dist_types_hooks_codege
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -27600,8 +27601,8 @@ declare const useSimulateProfileSetApprovalForAll: wagmi_dist_types_hooks_codege
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -27614,8 +27615,8 @@ declare const useSimulateProfileSetApprovalForAll: wagmi_dist_types_hooks_codege
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -27632,8 +27633,8 @@ declare const useSimulateProfileSetApprovalForAll: wagmi_dist_types_hooks_codege
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -27654,8 +27655,8 @@ declare const useSimulateProfileSetApprovalForAll: wagmi_dist_types_hooks_codege
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -27668,8 +27669,8 @@ declare const useSimulateProfileSetApprovalForAll: wagmi_dist_types_hooks_codege
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -27682,8 +27683,8 @@ declare const useSimulateProfileSetApprovalForAll: wagmi_dist_types_hooks_codege
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -27692,8 +27693,8 @@ declare const useSimulateProfileSetApprovalForAll: wagmi_dist_types_hooks_codege
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -27706,8 +27707,8 @@ declare const useSimulateProfileSetApprovalForAll: wagmi_dist_types_hooks_codege
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -27716,8 +27717,8 @@ declare const useSimulateProfileSetApprovalForAll: wagmi_dist_types_hooks_codege
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -27734,8 +27735,8 @@ declare const useSimulateProfileSetApprovalForAll: wagmi_dist_types_hooks_codege
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -27744,8 +27745,8 @@ declare const useSimulateProfileSetApprovalForAll: wagmi_dist_types_hooks_codege
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -27758,7 +27759,6 @@ declare const useSimulateProfileSetApprovalForAll: wagmi_dist_types_hooks_codege
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -27880,6 +27880,7 @@ declare const useSimulateProfileSetApprovalForAll: wagmi_dist_types_hooks_codege
  * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"transferFrom"`
  */
 declare const useSimulateProfileTransferFrom: wagmi_dist_types_hooks_codegen_createUseSimulateContract.CreateUseSimulateContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -27890,8 +27891,8 @@ declare const useSimulateProfileTransferFrom: wagmi_dist_types_hooks_codegen_cre
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -27904,8 +27905,8 @@ declare const useSimulateProfileTransferFrom: wagmi_dist_types_hooks_codegen_cre
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -27918,8 +27919,8 @@ declare const useSimulateProfileTransferFrom: wagmi_dist_types_hooks_codegen_cre
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -27932,8 +27933,8 @@ declare const useSimulateProfileTransferFrom: wagmi_dist_types_hooks_codegen_cre
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -27950,8 +27951,8 @@ declare const useSimulateProfileTransferFrom: wagmi_dist_types_hooks_codegen_cre
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -27964,8 +27965,8 @@ declare const useSimulateProfileTransferFrom: wagmi_dist_types_hooks_codegen_cre
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -27982,8 +27983,8 @@ declare const useSimulateProfileTransferFrom: wagmi_dist_types_hooks_codegen_cre
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -27992,8 +27993,8 @@ declare const useSimulateProfileTransferFrom: wagmi_dist_types_hooks_codegen_cre
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -28006,8 +28007,8 @@ declare const useSimulateProfileTransferFrom: wagmi_dist_types_hooks_codegen_cre
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -28016,8 +28017,8 @@ declare const useSimulateProfileTransferFrom: wagmi_dist_types_hooks_codegen_cre
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -28030,8 +28031,8 @@ declare const useSimulateProfileTransferFrom: wagmi_dist_types_hooks_codegen_cre
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -28048,8 +28049,8 @@ declare const useSimulateProfileTransferFrom: wagmi_dist_types_hooks_codegen_cre
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -28070,8 +28071,8 @@ declare const useSimulateProfileTransferFrom: wagmi_dist_types_hooks_codegen_cre
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -28084,8 +28085,8 @@ declare const useSimulateProfileTransferFrom: wagmi_dist_types_hooks_codegen_cre
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -28098,8 +28099,8 @@ declare const useSimulateProfileTransferFrom: wagmi_dist_types_hooks_codegen_cre
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -28108,8 +28109,8 @@ declare const useSimulateProfileTransferFrom: wagmi_dist_types_hooks_codegen_cre
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -28122,8 +28123,8 @@ declare const useSimulateProfileTransferFrom: wagmi_dist_types_hooks_codegen_cre
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -28132,8 +28133,8 @@ declare const useSimulateProfileTransferFrom: wagmi_dist_types_hooks_codegen_cre
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -28150,8 +28151,8 @@ declare const useSimulateProfileTransferFrom: wagmi_dist_types_hooks_codegen_cre
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -28160,8 +28161,8 @@ declare const useSimulateProfileTransferFrom: wagmi_dist_types_hooks_codegen_cre
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -28174,7 +28175,6 @@ declare const useSimulateProfileTransferFrom: wagmi_dist_types_hooks_codegen_cre
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -28296,6 +28296,7 @@ declare const useSimulateProfileTransferFrom: wagmi_dist_types_hooks_codegen_cre
  * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"updateProfile"`
  */
 declare const useSimulateProfileUpdateProfile: wagmi_dist_types_hooks_codegen_createUseSimulateContract.CreateUseSimulateContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -28306,8 +28307,8 @@ declare const useSimulateProfileUpdateProfile: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -28320,8 +28321,8 @@ declare const useSimulateProfileUpdateProfile: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -28334,8 +28335,8 @@ declare const useSimulateProfileUpdateProfile: wagmi_dist_types_hooks_codegen_cr
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -28348,8 +28349,8 @@ declare const useSimulateProfileUpdateProfile: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -28366,8 +28367,8 @@ declare const useSimulateProfileUpdateProfile: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -28380,8 +28381,8 @@ declare const useSimulateProfileUpdateProfile: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -28398,8 +28399,8 @@ declare const useSimulateProfileUpdateProfile: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -28408,8 +28409,8 @@ declare const useSimulateProfileUpdateProfile: wagmi_dist_types_hooks_codegen_cr
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -28422,8 +28423,8 @@ declare const useSimulateProfileUpdateProfile: wagmi_dist_types_hooks_codegen_cr
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -28432,8 +28433,8 @@ declare const useSimulateProfileUpdateProfile: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -28446,8 +28447,8 @@ declare const useSimulateProfileUpdateProfile: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -28464,8 +28465,8 @@ declare const useSimulateProfileUpdateProfile: wagmi_dist_types_hooks_codegen_cr
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -28486,8 +28487,8 @@ declare const useSimulateProfileUpdateProfile: wagmi_dist_types_hooks_codegen_cr
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -28500,8 +28501,8 @@ declare const useSimulateProfileUpdateProfile: wagmi_dist_types_hooks_codegen_cr
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -28514,8 +28515,8 @@ declare const useSimulateProfileUpdateProfile: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -28524,8 +28525,8 @@ declare const useSimulateProfileUpdateProfile: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -28538,8 +28539,8 @@ declare const useSimulateProfileUpdateProfile: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -28548,8 +28549,8 @@ declare const useSimulateProfileUpdateProfile: wagmi_dist_types_hooks_codegen_cr
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -28566,8 +28567,8 @@ declare const useSimulateProfileUpdateProfile: wagmi_dist_types_hooks_codegen_cr
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -28576,8 +28577,8 @@ declare const useSimulateProfileUpdateProfile: wagmi_dist_types_hooks_codegen_cr
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -28590,7 +28591,6 @@ declare const useSimulateProfileUpdateProfile: wagmi_dist_types_hooks_codegen_cr
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -28712,6 +28712,7 @@ declare const useSimulateProfileUpdateProfile: wagmi_dist_types_hooks_codegen_cr
  * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link profileAbi}__ and `functionName` set to `"updateProfileFor"`
  */
 declare const useSimulateProfileUpdateProfileFor: wagmi_dist_types_hooks_codegen_createUseSimulateContract.CreateUseSimulateContractReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -28722,8 +28723,8 @@ declare const useSimulateProfileUpdateProfileFor: wagmi_dist_types_hooks_codegen
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -28736,8 +28737,8 @@ declare const useSimulateProfileUpdateProfileFor: wagmi_dist_types_hooks_codegen
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -28750,8 +28751,8 @@ declare const useSimulateProfileUpdateProfileFor: wagmi_dist_types_hooks_codegen
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -28764,8 +28765,8 @@ declare const useSimulateProfileUpdateProfileFor: wagmi_dist_types_hooks_codegen
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -28782,8 +28783,8 @@ declare const useSimulateProfileUpdateProfileFor: wagmi_dist_types_hooks_codegen
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -28796,8 +28797,8 @@ declare const useSimulateProfileUpdateProfileFor: wagmi_dist_types_hooks_codegen
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -28814,8 +28815,8 @@ declare const useSimulateProfileUpdateProfileFor: wagmi_dist_types_hooks_codegen
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -28824,8 +28825,8 @@ declare const useSimulateProfileUpdateProfileFor: wagmi_dist_types_hooks_codegen
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -28838,8 +28839,8 @@ declare const useSimulateProfileUpdateProfileFor: wagmi_dist_types_hooks_codegen
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -28848,8 +28849,8 @@ declare const useSimulateProfileUpdateProfileFor: wagmi_dist_types_hooks_codegen
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -28862,8 +28863,8 @@ declare const useSimulateProfileUpdateProfileFor: wagmi_dist_types_hooks_codegen
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -28880,8 +28881,8 @@ declare const useSimulateProfileUpdateProfileFor: wagmi_dist_types_hooks_codegen
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -28902,8 +28903,8 @@ declare const useSimulateProfileUpdateProfileFor: wagmi_dist_types_hooks_codegen
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -28916,8 +28917,8 @@ declare const useSimulateProfileUpdateProfileFor: wagmi_dist_types_hooks_codegen
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -28930,8 +28931,8 @@ declare const useSimulateProfileUpdateProfileFor: wagmi_dist_types_hooks_codegen
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -28940,8 +28941,8 @@ declare const useSimulateProfileUpdateProfileFor: wagmi_dist_types_hooks_codegen
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -28954,8 +28955,8 @@ declare const useSimulateProfileUpdateProfileFor: wagmi_dist_types_hooks_codegen
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -28964,8 +28965,8 @@ declare const useSimulateProfileUpdateProfileFor: wagmi_dist_types_hooks_codegen
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -28982,8 +28983,8 @@ declare const useSimulateProfileUpdateProfileFor: wagmi_dist_types_hooks_codegen
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -28992,8 +28993,8 @@ declare const useSimulateProfileUpdateProfileFor: wagmi_dist_types_hooks_codegen
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -29006,7 +29007,6 @@ declare const useSimulateProfileUpdateProfileFor: wagmi_dist_types_hooks_codegen
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -29128,6 +29128,7 @@ declare const useSimulateProfileUpdateProfileFor: wagmi_dist_types_hooks_codegen
  * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link profileAbi}__
  */
 declare const useWatchProfileEvent: wagmi_dist_types_hooks_codegen_createUseWatchContractEvent.CreateUseWatchContractEventReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -29138,8 +29139,8 @@ declare const useWatchProfileEvent: wagmi_dist_types_hooks_codegen_createUseWatc
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -29152,8 +29153,8 @@ declare const useWatchProfileEvent: wagmi_dist_types_hooks_codegen_createUseWatc
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -29166,8 +29167,8 @@ declare const useWatchProfileEvent: wagmi_dist_types_hooks_codegen_createUseWatc
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -29180,8 +29181,8 @@ declare const useWatchProfileEvent: wagmi_dist_types_hooks_codegen_createUseWatc
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -29198,8 +29199,8 @@ declare const useWatchProfileEvent: wagmi_dist_types_hooks_codegen_createUseWatc
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -29212,8 +29213,8 @@ declare const useWatchProfileEvent: wagmi_dist_types_hooks_codegen_createUseWatc
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -29230,8 +29231,8 @@ declare const useWatchProfileEvent: wagmi_dist_types_hooks_codegen_createUseWatc
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -29240,8 +29241,8 @@ declare const useWatchProfileEvent: wagmi_dist_types_hooks_codegen_createUseWatc
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -29254,8 +29255,8 @@ declare const useWatchProfileEvent: wagmi_dist_types_hooks_codegen_createUseWatc
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -29264,8 +29265,8 @@ declare const useWatchProfileEvent: wagmi_dist_types_hooks_codegen_createUseWatc
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -29278,8 +29279,8 @@ declare const useWatchProfileEvent: wagmi_dist_types_hooks_codegen_createUseWatc
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -29296,8 +29297,8 @@ declare const useWatchProfileEvent: wagmi_dist_types_hooks_codegen_createUseWatc
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -29318,8 +29319,8 @@ declare const useWatchProfileEvent: wagmi_dist_types_hooks_codegen_createUseWatc
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -29332,8 +29333,8 @@ declare const useWatchProfileEvent: wagmi_dist_types_hooks_codegen_createUseWatc
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -29346,8 +29347,8 @@ declare const useWatchProfileEvent: wagmi_dist_types_hooks_codegen_createUseWatc
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -29356,8 +29357,8 @@ declare const useWatchProfileEvent: wagmi_dist_types_hooks_codegen_createUseWatc
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -29370,8 +29371,8 @@ declare const useWatchProfileEvent: wagmi_dist_types_hooks_codegen_createUseWatc
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -29380,8 +29381,8 @@ declare const useWatchProfileEvent: wagmi_dist_types_hooks_codegen_createUseWatc
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -29398,8 +29399,8 @@ declare const useWatchProfileEvent: wagmi_dist_types_hooks_codegen_createUseWatc
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -29408,8 +29409,8 @@ declare const useWatchProfileEvent: wagmi_dist_types_hooks_codegen_createUseWatc
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -29422,7 +29423,6 @@ declare const useWatchProfileEvent: wagmi_dist_types_hooks_codegen_createUseWatc
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -29544,6 +29544,7 @@ declare const useWatchProfileEvent: wagmi_dist_types_hooks_codegen_createUseWatc
  * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link profileAbi}__ and `eventName` set to `"Approval"`
  */
 declare const useWatchProfileApprovalEvent: wagmi_dist_types_hooks_codegen_createUseWatchContractEvent.CreateUseWatchContractEventReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -29554,8 +29555,8 @@ declare const useWatchProfileApprovalEvent: wagmi_dist_types_hooks_codegen_creat
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -29568,8 +29569,8 @@ declare const useWatchProfileApprovalEvent: wagmi_dist_types_hooks_codegen_creat
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -29582,8 +29583,8 @@ declare const useWatchProfileApprovalEvent: wagmi_dist_types_hooks_codegen_creat
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -29596,8 +29597,8 @@ declare const useWatchProfileApprovalEvent: wagmi_dist_types_hooks_codegen_creat
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -29614,8 +29615,8 @@ declare const useWatchProfileApprovalEvent: wagmi_dist_types_hooks_codegen_creat
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -29628,8 +29629,8 @@ declare const useWatchProfileApprovalEvent: wagmi_dist_types_hooks_codegen_creat
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -29646,8 +29647,8 @@ declare const useWatchProfileApprovalEvent: wagmi_dist_types_hooks_codegen_creat
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -29656,8 +29657,8 @@ declare const useWatchProfileApprovalEvent: wagmi_dist_types_hooks_codegen_creat
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -29670,8 +29671,8 @@ declare const useWatchProfileApprovalEvent: wagmi_dist_types_hooks_codegen_creat
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -29680,8 +29681,8 @@ declare const useWatchProfileApprovalEvent: wagmi_dist_types_hooks_codegen_creat
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -29694,8 +29695,8 @@ declare const useWatchProfileApprovalEvent: wagmi_dist_types_hooks_codegen_creat
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -29712,8 +29713,8 @@ declare const useWatchProfileApprovalEvent: wagmi_dist_types_hooks_codegen_creat
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -29734,8 +29735,8 @@ declare const useWatchProfileApprovalEvent: wagmi_dist_types_hooks_codegen_creat
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -29748,8 +29749,8 @@ declare const useWatchProfileApprovalEvent: wagmi_dist_types_hooks_codegen_creat
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -29762,8 +29763,8 @@ declare const useWatchProfileApprovalEvent: wagmi_dist_types_hooks_codegen_creat
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -29772,8 +29773,8 @@ declare const useWatchProfileApprovalEvent: wagmi_dist_types_hooks_codegen_creat
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -29786,8 +29787,8 @@ declare const useWatchProfileApprovalEvent: wagmi_dist_types_hooks_codegen_creat
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -29796,8 +29797,8 @@ declare const useWatchProfileApprovalEvent: wagmi_dist_types_hooks_codegen_creat
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -29814,8 +29815,8 @@ declare const useWatchProfileApprovalEvent: wagmi_dist_types_hooks_codegen_creat
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -29824,8 +29825,8 @@ declare const useWatchProfileApprovalEvent: wagmi_dist_types_hooks_codegen_creat
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -29838,7 +29839,6 @@ declare const useWatchProfileApprovalEvent: wagmi_dist_types_hooks_codegen_creat
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -29960,6 +29960,7 @@ declare const useWatchProfileApprovalEvent: wagmi_dist_types_hooks_codegen_creat
  * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link profileAbi}__ and `eventName` set to `"ApprovalForAll"`
  */
 declare const useWatchProfileApprovalForAllEvent: wagmi_dist_types_hooks_codegen_createUseWatchContractEvent.CreateUseWatchContractEventReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -29970,8 +29971,8 @@ declare const useWatchProfileApprovalForAllEvent: wagmi_dist_types_hooks_codegen
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -29984,8 +29985,8 @@ declare const useWatchProfileApprovalForAllEvent: wagmi_dist_types_hooks_codegen
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -29998,8 +29999,8 @@ declare const useWatchProfileApprovalForAllEvent: wagmi_dist_types_hooks_codegen
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -30012,8 +30013,8 @@ declare const useWatchProfileApprovalForAllEvent: wagmi_dist_types_hooks_codegen
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -30030,8 +30031,8 @@ declare const useWatchProfileApprovalForAllEvent: wagmi_dist_types_hooks_codegen
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -30044,8 +30045,8 @@ declare const useWatchProfileApprovalForAllEvent: wagmi_dist_types_hooks_codegen
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -30062,8 +30063,8 @@ declare const useWatchProfileApprovalForAllEvent: wagmi_dist_types_hooks_codegen
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -30072,8 +30073,8 @@ declare const useWatchProfileApprovalForAllEvent: wagmi_dist_types_hooks_codegen
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -30086,8 +30087,8 @@ declare const useWatchProfileApprovalForAllEvent: wagmi_dist_types_hooks_codegen
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -30096,8 +30097,8 @@ declare const useWatchProfileApprovalForAllEvent: wagmi_dist_types_hooks_codegen
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -30110,8 +30111,8 @@ declare const useWatchProfileApprovalForAllEvent: wagmi_dist_types_hooks_codegen
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -30128,8 +30129,8 @@ declare const useWatchProfileApprovalForAllEvent: wagmi_dist_types_hooks_codegen
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -30150,8 +30151,8 @@ declare const useWatchProfileApprovalForAllEvent: wagmi_dist_types_hooks_codegen
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -30164,8 +30165,8 @@ declare const useWatchProfileApprovalForAllEvent: wagmi_dist_types_hooks_codegen
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -30178,8 +30179,8 @@ declare const useWatchProfileApprovalForAllEvent: wagmi_dist_types_hooks_codegen
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -30188,8 +30189,8 @@ declare const useWatchProfileApprovalForAllEvent: wagmi_dist_types_hooks_codegen
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -30202,8 +30203,8 @@ declare const useWatchProfileApprovalForAllEvent: wagmi_dist_types_hooks_codegen
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -30212,8 +30213,8 @@ declare const useWatchProfileApprovalForAllEvent: wagmi_dist_types_hooks_codegen
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -30230,8 +30231,8 @@ declare const useWatchProfileApprovalForAllEvent: wagmi_dist_types_hooks_codegen
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -30240,8 +30241,8 @@ declare const useWatchProfileApprovalForAllEvent: wagmi_dist_types_hooks_codegen
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -30254,7 +30255,6 @@ declare const useWatchProfileApprovalForAllEvent: wagmi_dist_types_hooks_codegen
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -30376,6 +30376,7 @@ declare const useWatchProfileApprovalForAllEvent: wagmi_dist_types_hooks_codegen
  * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link profileAbi}__ and `eventName` set to `"BatchMetadataUpdate"`
  */
 declare const useWatchProfileBatchMetadataUpdateEvent: wagmi_dist_types_hooks_codegen_createUseWatchContractEvent.CreateUseWatchContractEventReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -30386,8 +30387,8 @@ declare const useWatchProfileBatchMetadataUpdateEvent: wagmi_dist_types_hooks_co
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -30400,8 +30401,8 @@ declare const useWatchProfileBatchMetadataUpdateEvent: wagmi_dist_types_hooks_co
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -30414,8 +30415,8 @@ declare const useWatchProfileBatchMetadataUpdateEvent: wagmi_dist_types_hooks_co
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -30428,8 +30429,8 @@ declare const useWatchProfileBatchMetadataUpdateEvent: wagmi_dist_types_hooks_co
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -30446,8 +30447,8 @@ declare const useWatchProfileBatchMetadataUpdateEvent: wagmi_dist_types_hooks_co
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -30460,8 +30461,8 @@ declare const useWatchProfileBatchMetadataUpdateEvent: wagmi_dist_types_hooks_co
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -30478,8 +30479,8 @@ declare const useWatchProfileBatchMetadataUpdateEvent: wagmi_dist_types_hooks_co
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -30488,8 +30489,8 @@ declare const useWatchProfileBatchMetadataUpdateEvent: wagmi_dist_types_hooks_co
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -30502,8 +30503,8 @@ declare const useWatchProfileBatchMetadataUpdateEvent: wagmi_dist_types_hooks_co
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -30512,8 +30513,8 @@ declare const useWatchProfileBatchMetadataUpdateEvent: wagmi_dist_types_hooks_co
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -30526,8 +30527,8 @@ declare const useWatchProfileBatchMetadataUpdateEvent: wagmi_dist_types_hooks_co
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -30544,8 +30545,8 @@ declare const useWatchProfileBatchMetadataUpdateEvent: wagmi_dist_types_hooks_co
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -30566,8 +30567,8 @@ declare const useWatchProfileBatchMetadataUpdateEvent: wagmi_dist_types_hooks_co
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -30580,8 +30581,8 @@ declare const useWatchProfileBatchMetadataUpdateEvent: wagmi_dist_types_hooks_co
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -30594,8 +30595,8 @@ declare const useWatchProfileBatchMetadataUpdateEvent: wagmi_dist_types_hooks_co
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -30604,8 +30605,8 @@ declare const useWatchProfileBatchMetadataUpdateEvent: wagmi_dist_types_hooks_co
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -30618,8 +30619,8 @@ declare const useWatchProfileBatchMetadataUpdateEvent: wagmi_dist_types_hooks_co
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -30628,8 +30629,8 @@ declare const useWatchProfileBatchMetadataUpdateEvent: wagmi_dist_types_hooks_co
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -30646,8 +30647,8 @@ declare const useWatchProfileBatchMetadataUpdateEvent: wagmi_dist_types_hooks_co
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -30656,8 +30657,8 @@ declare const useWatchProfileBatchMetadataUpdateEvent: wagmi_dist_types_hooks_co
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -30670,7 +30671,6 @@ declare const useWatchProfileBatchMetadataUpdateEvent: wagmi_dist_types_hooks_co
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -30792,6 +30792,7 @@ declare const useWatchProfileBatchMetadataUpdateEvent: wagmi_dist_types_hooks_co
  * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link profileAbi}__ and `eventName` set to `"MetadataUpdate"`
  */
 declare const useWatchProfileMetadataUpdateEvent: wagmi_dist_types_hooks_codegen_createUseWatchContractEvent.CreateUseWatchContractEventReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -30802,8 +30803,8 @@ declare const useWatchProfileMetadataUpdateEvent: wagmi_dist_types_hooks_codegen
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -30816,8 +30817,8 @@ declare const useWatchProfileMetadataUpdateEvent: wagmi_dist_types_hooks_codegen
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -30830,8 +30831,8 @@ declare const useWatchProfileMetadataUpdateEvent: wagmi_dist_types_hooks_codegen
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -30844,8 +30845,8 @@ declare const useWatchProfileMetadataUpdateEvent: wagmi_dist_types_hooks_codegen
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -30862,8 +30863,8 @@ declare const useWatchProfileMetadataUpdateEvent: wagmi_dist_types_hooks_codegen
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -30876,8 +30877,8 @@ declare const useWatchProfileMetadataUpdateEvent: wagmi_dist_types_hooks_codegen
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -30894,8 +30895,8 @@ declare const useWatchProfileMetadataUpdateEvent: wagmi_dist_types_hooks_codegen
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -30904,8 +30905,8 @@ declare const useWatchProfileMetadataUpdateEvent: wagmi_dist_types_hooks_codegen
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -30918,8 +30919,8 @@ declare const useWatchProfileMetadataUpdateEvent: wagmi_dist_types_hooks_codegen
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -30928,8 +30929,8 @@ declare const useWatchProfileMetadataUpdateEvent: wagmi_dist_types_hooks_codegen
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -30942,8 +30943,8 @@ declare const useWatchProfileMetadataUpdateEvent: wagmi_dist_types_hooks_codegen
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -30960,8 +30961,8 @@ declare const useWatchProfileMetadataUpdateEvent: wagmi_dist_types_hooks_codegen
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -30982,8 +30983,8 @@ declare const useWatchProfileMetadataUpdateEvent: wagmi_dist_types_hooks_codegen
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -30996,8 +30997,8 @@ declare const useWatchProfileMetadataUpdateEvent: wagmi_dist_types_hooks_codegen
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -31010,8 +31011,8 @@ declare const useWatchProfileMetadataUpdateEvent: wagmi_dist_types_hooks_codegen
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -31020,8 +31021,8 @@ declare const useWatchProfileMetadataUpdateEvent: wagmi_dist_types_hooks_codegen
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -31034,8 +31035,8 @@ declare const useWatchProfileMetadataUpdateEvent: wagmi_dist_types_hooks_codegen
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -31044,8 +31045,8 @@ declare const useWatchProfileMetadataUpdateEvent: wagmi_dist_types_hooks_codegen
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -31062,8 +31063,8 @@ declare const useWatchProfileMetadataUpdateEvent: wagmi_dist_types_hooks_codegen
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -31072,8 +31073,8 @@ declare const useWatchProfileMetadataUpdateEvent: wagmi_dist_types_hooks_codegen
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -31086,7 +31087,6 @@ declare const useWatchProfileMetadataUpdateEvent: wagmi_dist_types_hooks_codegen
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -31208,6 +31208,7 @@ declare const useWatchProfileMetadataUpdateEvent: wagmi_dist_types_hooks_codegen
  * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link profileAbi}__ and `eventName` set to `"ProfileChangedFor"`
  */
 declare const useWatchProfileProfileChangedForEvent: wagmi_dist_types_hooks_codegen_createUseWatchContractEvent.CreateUseWatchContractEventReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -31218,8 +31219,8 @@ declare const useWatchProfileProfileChangedForEvent: wagmi_dist_types_hooks_code
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -31232,8 +31233,8 @@ declare const useWatchProfileProfileChangedForEvent: wagmi_dist_types_hooks_code
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -31246,8 +31247,8 @@ declare const useWatchProfileProfileChangedForEvent: wagmi_dist_types_hooks_code
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -31260,8 +31261,8 @@ declare const useWatchProfileProfileChangedForEvent: wagmi_dist_types_hooks_code
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -31278,8 +31279,8 @@ declare const useWatchProfileProfileChangedForEvent: wagmi_dist_types_hooks_code
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -31292,8 +31293,8 @@ declare const useWatchProfileProfileChangedForEvent: wagmi_dist_types_hooks_code
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -31310,8 +31311,8 @@ declare const useWatchProfileProfileChangedForEvent: wagmi_dist_types_hooks_code
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -31320,8 +31321,8 @@ declare const useWatchProfileProfileChangedForEvent: wagmi_dist_types_hooks_code
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -31334,8 +31335,8 @@ declare const useWatchProfileProfileChangedForEvent: wagmi_dist_types_hooks_code
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -31344,8 +31345,8 @@ declare const useWatchProfileProfileChangedForEvent: wagmi_dist_types_hooks_code
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -31358,8 +31359,8 @@ declare const useWatchProfileProfileChangedForEvent: wagmi_dist_types_hooks_code
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -31376,8 +31377,8 @@ declare const useWatchProfileProfileChangedForEvent: wagmi_dist_types_hooks_code
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -31398,8 +31399,8 @@ declare const useWatchProfileProfileChangedForEvent: wagmi_dist_types_hooks_code
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -31412,8 +31413,8 @@ declare const useWatchProfileProfileChangedForEvent: wagmi_dist_types_hooks_code
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -31426,8 +31427,8 @@ declare const useWatchProfileProfileChangedForEvent: wagmi_dist_types_hooks_code
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -31436,8 +31437,8 @@ declare const useWatchProfileProfileChangedForEvent: wagmi_dist_types_hooks_code
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -31450,8 +31451,8 @@ declare const useWatchProfileProfileChangedForEvent: wagmi_dist_types_hooks_code
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -31460,8 +31461,8 @@ declare const useWatchProfileProfileChangedForEvent: wagmi_dist_types_hooks_code
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -31478,8 +31479,8 @@ declare const useWatchProfileProfileChangedForEvent: wagmi_dist_types_hooks_code
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -31488,8 +31489,8 @@ declare const useWatchProfileProfileChangedForEvent: wagmi_dist_types_hooks_code
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -31502,7 +31503,6 @@ declare const useWatchProfileProfileChangedForEvent: wagmi_dist_types_hooks_code
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;
@@ -31624,6 +31624,7 @@ declare const useWatchProfileProfileChangedForEvent: wagmi_dist_types_hooks_code
  * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link profileAbi}__ and `eventName` set to `"Transfer"`
  */
 declare const useWatchProfileTransferEvent: wagmi_dist_types_hooks_codegen_createUseWatchContractEvent.CreateUseWatchContractEventReturnType<readonly [{
+    readonly stateMutability: "nonpayable";
     readonly type: "constructor";
     readonly inputs: readonly [{
         readonly name: "name_";
@@ -31634,8 +31635,8 @@ declare const useWatchProfileTransferEvent: wagmi_dist_types_hooks_codegen_creat
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -31648,8 +31649,8 @@ declare const useWatchProfileTransferEvent: wagmi_dist_types_hooks_codegen_creat
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -31662,8 +31663,8 @@ declare const useWatchProfileTransferEvent: wagmi_dist_types_hooks_codegen_creat
     }];
     readonly name: "approve";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "account";
@@ -31676,8 +31677,8 @@ declare const useWatchProfileTransferEvent: wagmi_dist_types_hooks_codegen_creat
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -31694,8 +31695,8 @@ declare const useWatchProfileTransferEvent: wagmi_dist_types_hooks_codegen_creat
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -31708,8 +31709,8 @@ declare const useWatchProfileTransferEvent: wagmi_dist_types_hooks_codegen_creat
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -31726,8 +31727,8 @@ declare const useWatchProfileTransferEvent: wagmi_dist_types_hooks_codegen_creat
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -31736,8 +31737,8 @@ declare const useWatchProfileTransferEvent: wagmi_dist_types_hooks_codegen_creat
     }];
     readonly name: "mint";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -31750,8 +31751,8 @@ declare const useWatchProfileTransferEvent: wagmi_dist_types_hooks_codegen_creat
     }];
     readonly name: "mintFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "name";
@@ -31760,8 +31761,8 @@ declare const useWatchProfileTransferEvent: wagmi_dist_types_hooks_codegen_creat
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -31774,8 +31775,8 @@ declare const useWatchProfileTransferEvent: wagmi_dist_types_hooks_codegen_creat
         readonly internalType: "address";
         readonly type: "address";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "pure";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -31792,8 +31793,8 @@ declare const useWatchProfileTransferEvent: wagmi_dist_types_hooks_codegen_creat
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "pure";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -31814,8 +31815,8 @@ declare const useWatchProfileTransferEvent: wagmi_dist_types_hooks_codegen_creat
     }];
     readonly name: "safeTransferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -31828,8 +31829,8 @@ declare const useWatchProfileTransferEvent: wagmi_dist_types_hooks_codegen_creat
     }];
     readonly name: "setApprovalForAll";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "interfaceId";
@@ -31842,8 +31843,8 @@ declare const useWatchProfileTransferEvent: wagmi_dist_types_hooks_codegen_creat
         readonly internalType: "bool";
         readonly type: "bool";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "symbol";
@@ -31852,8 +31853,8 @@ declare const useWatchProfileTransferEvent: wagmi_dist_types_hooks_codegen_creat
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "tokenId";
@@ -31866,8 +31867,8 @@ declare const useWatchProfileTransferEvent: wagmi_dist_types_hooks_codegen_creat
         readonly internalType: "string";
         readonly type: "string";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "view";
     readonly type: "function";
     readonly inputs: readonly [];
     readonly name: "totalSupply";
@@ -31876,8 +31877,8 @@ declare const useWatchProfileTransferEvent: wagmi_dist_types_hooks_codegen_creat
         readonly internalType: "uint256";
         readonly type: "uint256";
     }];
-    readonly stateMutability: "view";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "";
@@ -31894,8 +31895,8 @@ declare const useWatchProfileTransferEvent: wagmi_dist_types_hooks_codegen_creat
     }];
     readonly name: "transferFrom";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "uri";
@@ -31904,8 +31905,8 @@ declare const useWatchProfileTransferEvent: wagmi_dist_types_hooks_codegen_creat
     }];
     readonly name: "updateProfile";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
+    readonly stateMutability: "nonpayable";
     readonly type: "function";
     readonly inputs: readonly [{
         readonly name: "kontract";
@@ -31918,7 +31919,6 @@ declare const useWatchProfileTransferEvent: wagmi_dist_types_hooks_codegen_creat
     }];
     readonly name: "updateProfileFor";
     readonly outputs: readonly [];
-    readonly stateMutability: "nonpayable";
 }, {
     readonly type: "event";
     readonly anonymous: false;

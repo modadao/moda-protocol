@@ -1376,6 +1376,83 @@ export const openReleasesAbi = [
 ] as const;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// OpenReleasesFactory
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+export const openReleasesFactoryAbi = [
+  {
+    stateMutability: 'nonpayable',
+    type: 'constructor',
+    inputs: [
+      {
+        name: 'registry_',
+        internalType: 'contract IOfficialContracts',
+        type: 'address',
+      },
+      { name: 'releasesMaster_', internalType: 'address', type: 'address' },
+    ],
+  },
+  {
+    stateMutability: 'nonpayable',
+    type: 'function',
+    inputs: [
+      { name: 'name', internalType: 'string', type: 'string' },
+      { name: 'symbol', internalType: 'string', type: 'string' },
+      { name: 'catalog', internalType: 'contract ICatalog', type: 'address' },
+    ],
+    name: 'create',
+    outputs: [],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [],
+    name: 'registry',
+    outputs: [
+      {
+        name: '',
+        internalType: 'contract IOfficialContracts',
+        type: 'address',
+      },
+    ],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [],
+    name: 'releasesMaster',
+    outputs: [{ name: '', internalType: 'address', type: 'address' }],
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'releasesOwner',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
+      },
+      {
+        name: 'releases',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
+      },
+      { name: 'name', internalType: 'string', type: 'string', indexed: false },
+      {
+        name: 'symbol',
+        internalType: 'string',
+        type: 'string',
+        indexed: false,
+      },
+    ],
+    name: 'OpenReleasesCreated',
+  },
+  { type: 'error', inputs: [], name: 'ERC1167FailedCreateClone' },
+] as const;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Registry
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -3520,6 +3597,74 @@ export const watchOpenReleasesUriEvent = /*#__PURE__*/ createWatchContractEvent(
 );
 
 /**
+ * Wraps __{@link readContract}__ with `abi` set to __{@link openReleasesFactoryAbi}__
+ */
+export const readOpenReleasesFactory = /*#__PURE__*/ createReadContract({
+  abi: openReleasesFactoryAbi,
+});
+
+/**
+ * Wraps __{@link readContract}__ with `abi` set to __{@link openReleasesFactoryAbi}__ and `functionName` set to `"registry"`
+ */
+export const readOpenReleasesFactoryRegistry = /*#__PURE__*/ createReadContract(
+  { abi: openReleasesFactoryAbi, functionName: 'registry' },
+);
+
+/**
+ * Wraps __{@link readContract}__ with `abi` set to __{@link openReleasesFactoryAbi}__ and `functionName` set to `"releasesMaster"`
+ */
+export const readOpenReleasesFactoryReleasesMaster =
+  /*#__PURE__*/ createReadContract({
+    abi: openReleasesFactoryAbi,
+    functionName: 'releasesMaster',
+  });
+
+/**
+ * Wraps __{@link writeContract}__ with `abi` set to __{@link openReleasesFactoryAbi}__
+ */
+export const writeOpenReleasesFactory = /*#__PURE__*/ createWriteContract({
+  abi: openReleasesFactoryAbi,
+});
+
+/**
+ * Wraps __{@link writeContract}__ with `abi` set to __{@link openReleasesFactoryAbi}__ and `functionName` set to `"create"`
+ */
+export const writeOpenReleasesFactoryCreate = /*#__PURE__*/ createWriteContract(
+  { abi: openReleasesFactoryAbi, functionName: 'create' },
+);
+
+/**
+ * Wraps __{@link simulateContract}__ with `abi` set to __{@link openReleasesFactoryAbi}__
+ */
+export const simulateOpenReleasesFactory = /*#__PURE__*/ createSimulateContract(
+  { abi: openReleasesFactoryAbi },
+);
+
+/**
+ * Wraps __{@link simulateContract}__ with `abi` set to __{@link openReleasesFactoryAbi}__ and `functionName` set to `"create"`
+ */
+export const simulateOpenReleasesFactoryCreate =
+  /*#__PURE__*/ createSimulateContract({
+    abi: openReleasesFactoryAbi,
+    functionName: 'create',
+  });
+
+/**
+ * Wraps __{@link watchContractEvent}__ with `abi` set to __{@link openReleasesFactoryAbi}__
+ */
+export const watchOpenReleasesFactoryEvent =
+  /*#__PURE__*/ createWatchContractEvent({ abi: openReleasesFactoryAbi });
+
+/**
+ * Wraps __{@link watchContractEvent}__ with `abi` set to __{@link openReleasesFactoryAbi}__ and `eventName` set to `"OpenReleasesCreated"`
+ */
+export const watchOpenReleasesFactoryOpenReleasesCreatedEvent =
+  /*#__PURE__*/ createWatchContractEvent({
+    abi: openReleasesFactoryAbi,
+    eventName: 'OpenReleasesCreated',
+  });
+
+/**
  * Wraps __{@link readContract}__ with `abi` set to __{@link registryAbi}__
  */
 export const readRegistry = /*#__PURE__*/ createReadContract({
@@ -5540,6 +5685,77 @@ export const useWatchOpenReleasesUriEvent =
   /*#__PURE__*/ createUseWatchContractEvent({
     abi: openReleasesAbi,
     eventName: 'URI',
+  });
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link openReleasesFactoryAbi}__
+ */
+export const useReadOpenReleasesFactory = /*#__PURE__*/ createUseReadContract({
+  abi: openReleasesFactoryAbi,
+});
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link openReleasesFactoryAbi}__ and `functionName` set to `"registry"`
+ */
+export const useReadOpenReleasesFactoryRegistry =
+  /*#__PURE__*/ createUseReadContract({
+    abi: openReleasesFactoryAbi,
+    functionName: 'registry',
+  });
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link openReleasesFactoryAbi}__ and `functionName` set to `"releasesMaster"`
+ */
+export const useReadOpenReleasesFactoryReleasesMaster =
+  /*#__PURE__*/ createUseReadContract({
+    abi: openReleasesFactoryAbi,
+    functionName: 'releasesMaster',
+  });
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link openReleasesFactoryAbi}__
+ */
+export const useWriteOpenReleasesFactory = /*#__PURE__*/ createUseWriteContract(
+  { abi: openReleasesFactoryAbi },
+);
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link openReleasesFactoryAbi}__ and `functionName` set to `"create"`
+ */
+export const useWriteOpenReleasesFactoryCreate =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: openReleasesFactoryAbi,
+    functionName: 'create',
+  });
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link openReleasesFactoryAbi}__
+ */
+export const useSimulateOpenReleasesFactory =
+  /*#__PURE__*/ createUseSimulateContract({ abi: openReleasesFactoryAbi });
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link openReleasesFactoryAbi}__ and `functionName` set to `"create"`
+ */
+export const useSimulateOpenReleasesFactoryCreate =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: openReleasesFactoryAbi,
+    functionName: 'create',
+  });
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link openReleasesFactoryAbi}__
+ */
+export const useWatchOpenReleasesFactoryEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({ abi: openReleasesFactoryAbi });
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link openReleasesFactoryAbi}__ and `eventName` set to `"OpenReleasesCreated"`
+ */
+export const useWatchOpenReleasesFactoryOpenReleasesCreatedEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: openReleasesFactoryAbi,
+    eventName: 'OpenReleasesCreated',
   });
 
 /**

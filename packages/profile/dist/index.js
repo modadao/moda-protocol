@@ -106,96 +106,97 @@ var import_codegen = require("wagmi/codegen");
 var import_codegen2 = require("wagmi/codegen");
 var profileAbi = [
   {
+    stateMutability: "nonpayable",
     type: "constructor",
     inputs: [
       { name: "name_", internalType: "string", type: "string" },
       { name: "symbol_", internalType: "string", type: "string" }
-    ],
-    stateMutability: "nonpayable"
+    ]
   },
   {
+    stateMutability: "view",
     type: "function",
     inputs: [{ name: "account", internalType: "address", type: "address" }],
     name: "accountUri",
-    outputs: [{ name: "", internalType: "string", type: "string" }],
-    stateMutability: "view"
+    outputs: [{ name: "", internalType: "string", type: "string" }]
   },
   {
+    stateMutability: "nonpayable",
     type: "function",
     inputs: [
       { name: "", internalType: "address", type: "address" },
       { name: "", internalType: "uint256", type: "uint256" }
     ],
     name: "approve",
-    outputs: [],
-    stateMutability: "nonpayable"
+    outputs: []
   },
   {
+    stateMutability: "view",
     type: "function",
     inputs: [{ name: "account", internalType: "address", type: "address" }],
     name: "balanceOf",
-    outputs: [{ name: "balance", internalType: "uint256", type: "uint256" }],
-    stateMutability: "view"
+    outputs: [{ name: "balance", internalType: "uint256", type: "uint256" }]
   },
   {
+    stateMutability: "view",
     type: "function",
     inputs: [
       { name: "kontract", internalType: "address", type: "address" },
       { name: "account", internalType: "address", type: "address" }
     ],
     name: "canMintFor",
-    outputs: [{ name: "", internalType: "bool", type: "bool" }],
-    stateMutability: "view"
+    outputs: [{ name: "", internalType: "bool", type: "bool" }]
   },
   {
+    stateMutability: "view",
     type: "function",
     inputs: [{ name: "", internalType: "uint256", type: "uint256" }],
     name: "getApproved",
-    outputs: [{ name: "", internalType: "address", type: "address" }],
-    stateMutability: "view"
+    outputs: [{ name: "", internalType: "address", type: "address" }]
   },
   {
+    stateMutability: "view",
     type: "function",
     inputs: [
       { name: "", internalType: "address", type: "address" },
       { name: "", internalType: "address", type: "address" }
     ],
     name: "isApprovedForAll",
-    outputs: [{ name: "", internalType: "bool", type: "bool" }],
-    stateMutability: "view"
+    outputs: [{ name: "", internalType: "bool", type: "bool" }]
   },
   {
+    stateMutability: "nonpayable",
     type: "function",
     inputs: [{ name: "uri", internalType: "string", type: "string" }],
     name: "mint",
-    outputs: [],
-    stateMutability: "nonpayable"
+    outputs: []
   },
   {
+    stateMutability: "nonpayable",
     type: "function",
     inputs: [
       { name: "kontract", internalType: "address", type: "address" },
       { name: "uri", internalType: "string", type: "string" }
     ],
     name: "mintFor",
-    outputs: [],
-    stateMutability: "nonpayable"
+    outputs: []
   },
   {
+    stateMutability: "view",
     type: "function",
     inputs: [],
     name: "name",
-    outputs: [{ name: "", internalType: "string", type: "string" }],
-    stateMutability: "view"
+    outputs: [{ name: "", internalType: "string", type: "string" }]
   },
   {
+    stateMutability: "view",
     type: "function",
     inputs: [{ name: "tokenId", internalType: "uint256", type: "uint256" }],
     name: "ownerOf",
-    outputs: [{ name: "", internalType: "address", type: "address" }],
-    stateMutability: "view"
+    outputs: [{ name: "", internalType: "address", type: "address" }]
   },
   {
+    stateMutability: "pure",
     type: "function",
     inputs: [
       { name: "", internalType: "address", type: "address" },
@@ -203,10 +204,10 @@ var profileAbi = [
       { name: "", internalType: "uint256", type: "uint256" }
     ],
     name: "safeTransferFrom",
-    outputs: [],
-    stateMutability: "pure"
+    outputs: []
   },
   {
+    stateMutability: "nonpayable",
     type: "function",
     inputs: [
       { name: "", internalType: "address", type: "address" },
@@ -215,48 +216,48 @@ var profileAbi = [
       { name: "", internalType: "bytes", type: "bytes" }
     ],
     name: "safeTransferFrom",
-    outputs: [],
-    stateMutability: "nonpayable"
+    outputs: []
   },
   {
+    stateMutability: "nonpayable",
     type: "function",
     inputs: [
       { name: "", internalType: "address", type: "address" },
       { name: "", internalType: "bool", type: "bool" }
     ],
     name: "setApprovalForAll",
-    outputs: [],
-    stateMutability: "nonpayable"
+    outputs: []
   },
   {
+    stateMutability: "view",
     type: "function",
     inputs: [{ name: "interfaceId", internalType: "bytes4", type: "bytes4" }],
     name: "supportsInterface",
-    outputs: [{ name: "", internalType: "bool", type: "bool" }],
-    stateMutability: "view"
+    outputs: [{ name: "", internalType: "bool", type: "bool" }]
   },
   {
+    stateMutability: "view",
     type: "function",
     inputs: [],
     name: "symbol",
-    outputs: [{ name: "", internalType: "string", type: "string" }],
-    stateMutability: "view"
+    outputs: [{ name: "", internalType: "string", type: "string" }]
   },
   {
+    stateMutability: "view",
     type: "function",
     inputs: [{ name: "tokenId", internalType: "uint256", type: "uint256" }],
     name: "tokenURI",
-    outputs: [{ name: "", internalType: "string", type: "string" }],
-    stateMutability: "view"
+    outputs: [{ name: "", internalType: "string", type: "string" }]
   },
   {
+    stateMutability: "view",
     type: "function",
     inputs: [],
     name: "totalSupply",
-    outputs: [{ name: "", internalType: "uint256", type: "uint256" }],
-    stateMutability: "view"
+    outputs: [{ name: "", internalType: "uint256", type: "uint256" }]
   },
   {
+    stateMutability: "nonpayable",
     type: "function",
     inputs: [
       { name: "", internalType: "address", type: "address" },
@@ -264,25 +265,24 @@ var profileAbi = [
       { name: "", internalType: "uint256", type: "uint256" }
     ],
     name: "transferFrom",
-    outputs: [],
-    stateMutability: "nonpayable"
+    outputs: []
   },
   {
+    stateMutability: "nonpayable",
     type: "function",
     inputs: [{ name: "uri", internalType: "string", type: "string" }],
     name: "updateProfile",
-    outputs: [],
-    stateMutability: "nonpayable"
+    outputs: []
   },
   {
+    stateMutability: "nonpayable",
     type: "function",
     inputs: [
       { name: "kontract", internalType: "address", type: "address" },
       { name: "uri", internalType: "string", type: "string" }
     ],
     name: "updateProfileFor",
-    outputs: [],
-    stateMutability: "nonpayable"
+    outputs: []
   },
   {
     type: "event",
@@ -693,7 +693,7 @@ var useWatchProfileTransferEvent = /* @__PURE__ */ (0, import_codegen2.createUse
 
 // src/constants.ts
 var ProfileAddresses = {
-  mumbai: "0xAFc5A45d643fb0ff142233Fb23C3991934E0045e"
+  mumbai: "0x9e4f7B90F9a96523ea5FAeDf94B4d9a36E3D8aa0"
 };
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {

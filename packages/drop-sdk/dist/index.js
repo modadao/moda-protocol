@@ -25,6 +25,7 @@ __export(src_exports, {
   catalogFactoryAbi: () => catalogFactoryAbi,
   managementAbi: () => managementAbi,
   openReleasesAbi: () => openReleasesAbi,
+  openReleasesFactoryAbi: () => openReleasesFactoryAbi,
   readCatalog: () => readCatalog,
   readCatalogDefaultAdminRole: () => readCatalogDefaultAdminRole,
   readCatalogFactory: () => readCatalogFactory,
@@ -53,6 +54,9 @@ __export(src_exports, {
   readOpenReleasesBalanceOfBatch: () => readOpenReleasesBalanceOfBatch,
   readOpenReleasesDefaultAdminRole: () => readOpenReleasesDefaultAdminRole,
   readOpenReleasesExists: () => readOpenReleasesExists,
+  readOpenReleasesFactory: () => readOpenReleasesFactory,
+  readOpenReleasesFactoryRegistry: () => readOpenReleasesFactoryRegistry,
+  readOpenReleasesFactoryReleasesMaster: () => readOpenReleasesFactoryReleasesMaster,
   readOpenReleasesGetRoleAdmin: () => readOpenReleasesGetRoleAdmin,
   readOpenReleasesHasRole: () => readOpenReleasesHasRole,
   readOpenReleasesIsApprovedForAll: () => readOpenReleasesIsApprovedForAll,
@@ -126,6 +130,8 @@ __export(src_exports, {
   simulateOpenReleases: () => simulateOpenReleases,
   simulateOpenReleasesBurn: () => simulateOpenReleasesBurn,
   simulateOpenReleasesCreate: () => simulateOpenReleasesCreate,
+  simulateOpenReleasesFactory: () => simulateOpenReleasesFactory,
+  simulateOpenReleasesFactoryCreate: () => simulateOpenReleasesFactoryCreate,
   simulateOpenReleasesGrantRole: () => simulateOpenReleasesGrantRole,
   simulateOpenReleasesOnErc1155BatchReceived: () => simulateOpenReleasesOnErc1155BatchReceived,
   simulateOpenReleasesOnErc1155Received: () => simulateOpenReleasesOnErc1155Received,
@@ -188,6 +194,9 @@ __export(src_exports, {
   useReadOpenReleasesBalanceOfBatch: () => useReadOpenReleasesBalanceOfBatch,
   useReadOpenReleasesDefaultAdminRole: () => useReadOpenReleasesDefaultAdminRole,
   useReadOpenReleasesExists: () => useReadOpenReleasesExists,
+  useReadOpenReleasesFactory: () => useReadOpenReleasesFactory,
+  useReadOpenReleasesFactoryRegistry: () => useReadOpenReleasesFactoryRegistry,
+  useReadOpenReleasesFactoryReleasesMaster: () => useReadOpenReleasesFactoryReleasesMaster,
   useReadOpenReleasesGetRoleAdmin: () => useReadOpenReleasesGetRoleAdmin,
   useReadOpenReleasesHasRole: () => useReadOpenReleasesHasRole,
   useReadOpenReleasesIsApprovedForAll: () => useReadOpenReleasesIsApprovedForAll,
@@ -258,6 +267,8 @@ __export(src_exports, {
   useSimulateOpenReleases: () => useSimulateOpenReleases,
   useSimulateOpenReleasesBurn: () => useSimulateOpenReleasesBurn,
   useSimulateOpenReleasesCreate: () => useSimulateOpenReleasesCreate,
+  useSimulateOpenReleasesFactory: () => useSimulateOpenReleasesFactory,
+  useSimulateOpenReleasesFactoryCreate: () => useSimulateOpenReleasesFactoryCreate,
   useSimulateOpenReleasesGrantRole: () => useSimulateOpenReleasesGrantRole,
   useSimulateOpenReleasesOnErc1155BatchReceived: () => useSimulateOpenReleasesOnErc1155BatchReceived,
   useSimulateOpenReleasesOnErc1155Received: () => useSimulateOpenReleasesOnErc1155Received,
@@ -313,6 +324,8 @@ __export(src_exports, {
   useWatchOpenReleasesApprovalForAllEvent: () => useWatchOpenReleasesApprovalForAllEvent,
   useWatchOpenReleasesBurnedEvent: () => useWatchOpenReleasesBurnedEvent,
   useWatchOpenReleasesEvent: () => useWatchOpenReleasesEvent,
+  useWatchOpenReleasesFactoryEvent: () => useWatchOpenReleasesFactoryEvent,
+  useWatchOpenReleasesFactoryOpenReleasesCreatedEvent: () => useWatchOpenReleasesFactoryOpenReleasesCreatedEvent,
   useWatchOpenReleasesReleaseCreatedEvent: () => useWatchOpenReleasesReleaseCreatedEvent,
   useWatchOpenReleasesReleaseWithdrawnEvent: () => useWatchOpenReleasesReleaseWithdrawnEvent,
   useWatchOpenReleasesRoleAdminChangedEvent: () => useWatchOpenReleasesRoleAdminChangedEvent,
@@ -367,6 +380,8 @@ __export(src_exports, {
   useWriteOpenReleases: () => useWriteOpenReleases,
   useWriteOpenReleasesBurn: () => useWriteOpenReleasesBurn,
   useWriteOpenReleasesCreate: () => useWriteOpenReleasesCreate,
+  useWriteOpenReleasesFactory: () => useWriteOpenReleasesFactory,
+  useWriteOpenReleasesFactoryCreate: () => useWriteOpenReleasesFactoryCreate,
   useWriteOpenReleasesGrantRole: () => useWriteOpenReleasesGrantRole,
   useWriteOpenReleasesOnErc1155BatchReceived: () => useWriteOpenReleasesOnErc1155BatchReceived,
   useWriteOpenReleasesOnErc1155Received: () => useWriteOpenReleasesOnErc1155Received,
@@ -422,6 +437,8 @@ __export(src_exports, {
   watchOpenReleasesApprovalForAllEvent: () => watchOpenReleasesApprovalForAllEvent,
   watchOpenReleasesBurnedEvent: () => watchOpenReleasesBurnedEvent,
   watchOpenReleasesEvent: () => watchOpenReleasesEvent,
+  watchOpenReleasesFactoryEvent: () => watchOpenReleasesFactoryEvent,
+  watchOpenReleasesFactoryOpenReleasesCreatedEvent: () => watchOpenReleasesFactoryOpenReleasesCreatedEvent,
   watchOpenReleasesReleaseCreatedEvent: () => watchOpenReleasesReleaseCreatedEvent,
   watchOpenReleasesReleaseWithdrawnEvent: () => watchOpenReleasesReleaseWithdrawnEvent,
   watchOpenReleasesRoleAdminChangedEvent: () => watchOpenReleasesRoleAdminChangedEvent,
@@ -476,6 +493,8 @@ __export(src_exports, {
   writeOpenReleases: () => writeOpenReleases,
   writeOpenReleasesBurn: () => writeOpenReleasesBurn,
   writeOpenReleasesCreate: () => writeOpenReleasesCreate,
+  writeOpenReleasesFactory: () => writeOpenReleasesFactory,
+  writeOpenReleasesFactoryCreate: () => writeOpenReleasesFactoryCreate,
   writeOpenReleasesGrantRole: () => writeOpenReleasesGrantRole,
   writeOpenReleasesOnErc1155BatchReceived: () => writeOpenReleasesOnErc1155BatchReceived,
   writeOpenReleasesOnErc1155Received: () => writeOpenReleasesOnErc1155Received,
@@ -1858,6 +1877,78 @@ var openReleasesAbi = [
   },
   { type: "error", inputs: [], name: "InvalidRoyaltyAmount" },
   { type: "error", inputs: [], name: "InvalidTokenId" }
+];
+var openReleasesFactoryAbi = [
+  {
+    stateMutability: "nonpayable",
+    type: "constructor",
+    inputs: [
+      {
+        name: "registry_",
+        internalType: "contract IOfficialContracts",
+        type: "address"
+      },
+      { name: "releasesMaster_", internalType: "address", type: "address" }
+    ]
+  },
+  {
+    stateMutability: "nonpayable",
+    type: "function",
+    inputs: [
+      { name: "name", internalType: "string", type: "string" },
+      { name: "symbol", internalType: "string", type: "string" },
+      { name: "catalog", internalType: "contract ICatalog", type: "address" }
+    ],
+    name: "create",
+    outputs: []
+  },
+  {
+    stateMutability: "view",
+    type: "function",
+    inputs: [],
+    name: "registry",
+    outputs: [
+      {
+        name: "",
+        internalType: "contract IOfficialContracts",
+        type: "address"
+      }
+    ]
+  },
+  {
+    stateMutability: "view",
+    type: "function",
+    inputs: [],
+    name: "releasesMaster",
+    outputs: [{ name: "", internalType: "address", type: "address" }]
+  },
+  {
+    type: "event",
+    anonymous: false,
+    inputs: [
+      {
+        name: "releasesOwner",
+        internalType: "address",
+        type: "address",
+        indexed: true
+      },
+      {
+        name: "releases",
+        internalType: "address",
+        type: "address",
+        indexed: true
+      },
+      { name: "name", internalType: "string", type: "string", indexed: false },
+      {
+        name: "symbol",
+        internalType: "string",
+        type: "string",
+        indexed: false
+      }
+    ],
+    name: "OpenReleasesCreated"
+  },
+  { type: "error", inputs: [], name: "ERC1167FailedCreateClone" }
 ];
 var registryAbi = [
   {
@@ -3378,6 +3469,34 @@ var watchOpenReleasesTransferSingleEvent = /* @__PURE__ */ (0, import_codegen.cr
 var watchOpenReleasesUriEvent = /* @__PURE__ */ (0, import_codegen.createWatchContractEvent)(
   { abi: openReleasesAbi, eventName: "URI" }
 );
+var readOpenReleasesFactory = /* @__PURE__ */ (0, import_codegen.createReadContract)({
+  abi: openReleasesFactoryAbi
+});
+var readOpenReleasesFactoryRegistry = /* @__PURE__ */ (0, import_codegen.createReadContract)(
+  { abi: openReleasesFactoryAbi, functionName: "registry" }
+);
+var readOpenReleasesFactoryReleasesMaster = /* @__PURE__ */ (0, import_codegen.createReadContract)({
+  abi: openReleasesFactoryAbi,
+  functionName: "releasesMaster"
+});
+var writeOpenReleasesFactory = /* @__PURE__ */ (0, import_codegen.createWriteContract)({
+  abi: openReleasesFactoryAbi
+});
+var writeOpenReleasesFactoryCreate = /* @__PURE__ */ (0, import_codegen.createWriteContract)(
+  { abi: openReleasesFactoryAbi, functionName: "create" }
+);
+var simulateOpenReleasesFactory = /* @__PURE__ */ (0, import_codegen.createSimulateContract)(
+  { abi: openReleasesFactoryAbi }
+);
+var simulateOpenReleasesFactoryCreate = /* @__PURE__ */ (0, import_codegen.createSimulateContract)({
+  abi: openReleasesFactoryAbi,
+  functionName: "create"
+});
+var watchOpenReleasesFactoryEvent = /* @__PURE__ */ (0, import_codegen.createWatchContractEvent)({ abi: openReleasesFactoryAbi });
+var watchOpenReleasesFactoryOpenReleasesCreatedEvent = /* @__PURE__ */ (0, import_codegen.createWatchContractEvent)({
+  abi: openReleasesFactoryAbi,
+  eventName: "OpenReleasesCreated"
+});
 var readRegistry = /* @__PURE__ */ (0, import_codegen.createReadContract)({
   abi: registryAbi
 });
@@ -4296,6 +4415,34 @@ var useWatchOpenReleasesUriEvent = /* @__PURE__ */ (0, import_codegen2.createUse
   abi: openReleasesAbi,
   eventName: "URI"
 });
+var useReadOpenReleasesFactory = /* @__PURE__ */ (0, import_codegen2.createUseReadContract)({
+  abi: openReleasesFactoryAbi
+});
+var useReadOpenReleasesFactoryRegistry = /* @__PURE__ */ (0, import_codegen2.createUseReadContract)({
+  abi: openReleasesFactoryAbi,
+  functionName: "registry"
+});
+var useReadOpenReleasesFactoryReleasesMaster = /* @__PURE__ */ (0, import_codegen2.createUseReadContract)({
+  abi: openReleasesFactoryAbi,
+  functionName: "releasesMaster"
+});
+var useWriteOpenReleasesFactory = /* @__PURE__ */ (0, import_codegen2.createUseWriteContract)(
+  { abi: openReleasesFactoryAbi }
+);
+var useWriteOpenReleasesFactoryCreate = /* @__PURE__ */ (0, import_codegen2.createUseWriteContract)({
+  abi: openReleasesFactoryAbi,
+  functionName: "create"
+});
+var useSimulateOpenReleasesFactory = /* @__PURE__ */ (0, import_codegen2.createUseSimulateContract)({ abi: openReleasesFactoryAbi });
+var useSimulateOpenReleasesFactoryCreate = /* @__PURE__ */ (0, import_codegen2.createUseSimulateContract)({
+  abi: openReleasesFactoryAbi,
+  functionName: "create"
+});
+var useWatchOpenReleasesFactoryEvent = /* @__PURE__ */ (0, import_codegen2.createUseWatchContractEvent)({ abi: openReleasesFactoryAbi });
+var useWatchOpenReleasesFactoryOpenReleasesCreatedEvent = /* @__PURE__ */ (0, import_codegen2.createUseWatchContractEvent)({
+  abi: openReleasesFactoryAbi,
+  eventName: "OpenReleasesCreated"
+});
 var useReadRegistry = /* @__PURE__ */ (0, import_codegen2.createUseReadContract)({
   abi: registryAbi
 });
@@ -4707,17 +4854,17 @@ var Addresses = {
   CatalogFactory: { mumbai: "0x773b75ea781711D9eE86565130c7f92a00c9dD25" },
   Management: { mumbai: "0x918c31d56315cDe3a5bc70138adc78262F5Bb207" },
   OpenReleasesFactory: { mumbai: "0x0Bc8315AdBB08BbDe69B9899f3C9c16817928Aad" },
-  Profile: { mumbai: "0x9e4f7B90F9a96523ea5FAeDf94B4d9a36E3D8aa0" },
+  Profile: { mumbai: "0x92a9b48de486394E05d0d19B46A3702e2e3FB6c1" },
   Registry: { mumbai: "0x2C10f700F5F1cB47B4E32b397C94E7C087E21d3a" },
   ReleasesFactory: { mumbai: "0x1Acbf22cc12359b2Bff49a5f11FaCcE0c529BC22" },
   SplitsFactory: { mumbai: "0xEB3aD6f0F08ed523FfAbe6CD3E766A19122a04Aa" },
   // Examples of the contracts an organization would deploy
   Examples: {
     Catalog: {
-      mumbai: "0xa4A0d899544Ff5eFd6f2abC8f73a7286Da92F27a"
+      mumbai: "0x62073151dAA8973fe3D7f7DdEAe31ED815EaCCd3"
     },
     OpenReleases: {
-      mumbai: "0x53dC205E39563E3D6303F69F2f5C1b5708aA5A85"
+      mumbai: "0xE72619a7D3035c42e57808Edd1DC2DF6A1f0Cc29"
     }
   }
 };
@@ -4728,6 +4875,7 @@ var Addresses = {
   catalogFactoryAbi,
   managementAbi,
   openReleasesAbi,
+  openReleasesFactoryAbi,
   readCatalog,
   readCatalogDefaultAdminRole,
   readCatalogFactory,
@@ -4756,6 +4904,9 @@ var Addresses = {
   readOpenReleasesBalanceOfBatch,
   readOpenReleasesDefaultAdminRole,
   readOpenReleasesExists,
+  readOpenReleasesFactory,
+  readOpenReleasesFactoryRegistry,
+  readOpenReleasesFactoryReleasesMaster,
   readOpenReleasesGetRoleAdmin,
   readOpenReleasesHasRole,
   readOpenReleasesIsApprovedForAll,
@@ -4829,6 +4980,8 @@ var Addresses = {
   simulateOpenReleases,
   simulateOpenReleasesBurn,
   simulateOpenReleasesCreate,
+  simulateOpenReleasesFactory,
+  simulateOpenReleasesFactoryCreate,
   simulateOpenReleasesGrantRole,
   simulateOpenReleasesOnErc1155BatchReceived,
   simulateOpenReleasesOnErc1155Received,
@@ -4891,6 +5044,9 @@ var Addresses = {
   useReadOpenReleasesBalanceOfBatch,
   useReadOpenReleasesDefaultAdminRole,
   useReadOpenReleasesExists,
+  useReadOpenReleasesFactory,
+  useReadOpenReleasesFactoryRegistry,
+  useReadOpenReleasesFactoryReleasesMaster,
   useReadOpenReleasesGetRoleAdmin,
   useReadOpenReleasesHasRole,
   useReadOpenReleasesIsApprovedForAll,
@@ -4961,6 +5117,8 @@ var Addresses = {
   useSimulateOpenReleases,
   useSimulateOpenReleasesBurn,
   useSimulateOpenReleasesCreate,
+  useSimulateOpenReleasesFactory,
+  useSimulateOpenReleasesFactoryCreate,
   useSimulateOpenReleasesGrantRole,
   useSimulateOpenReleasesOnErc1155BatchReceived,
   useSimulateOpenReleasesOnErc1155Received,
@@ -5016,6 +5174,8 @@ var Addresses = {
   useWatchOpenReleasesApprovalForAllEvent,
   useWatchOpenReleasesBurnedEvent,
   useWatchOpenReleasesEvent,
+  useWatchOpenReleasesFactoryEvent,
+  useWatchOpenReleasesFactoryOpenReleasesCreatedEvent,
   useWatchOpenReleasesReleaseCreatedEvent,
   useWatchOpenReleasesReleaseWithdrawnEvent,
   useWatchOpenReleasesRoleAdminChangedEvent,
@@ -5070,6 +5230,8 @@ var Addresses = {
   useWriteOpenReleases,
   useWriteOpenReleasesBurn,
   useWriteOpenReleasesCreate,
+  useWriteOpenReleasesFactory,
+  useWriteOpenReleasesFactoryCreate,
   useWriteOpenReleasesGrantRole,
   useWriteOpenReleasesOnErc1155BatchReceived,
   useWriteOpenReleasesOnErc1155Received,
@@ -5125,6 +5287,8 @@ var Addresses = {
   watchOpenReleasesApprovalForAllEvent,
   watchOpenReleasesBurnedEvent,
   watchOpenReleasesEvent,
+  watchOpenReleasesFactoryEvent,
+  watchOpenReleasesFactoryOpenReleasesCreatedEvent,
   watchOpenReleasesReleaseCreatedEvent,
   watchOpenReleasesReleaseWithdrawnEvent,
   watchOpenReleasesRoleAdminChangedEvent,
@@ -5179,6 +5343,8 @@ var Addresses = {
   writeOpenReleases,
   writeOpenReleasesBurn,
   writeOpenReleasesCreate,
+  writeOpenReleasesFactory,
+  writeOpenReleasesFactoryCreate,
   writeOpenReleasesGrantRole,
   writeOpenReleasesOnErc1155BatchReceived,
   writeOpenReleasesOnErc1155Received,

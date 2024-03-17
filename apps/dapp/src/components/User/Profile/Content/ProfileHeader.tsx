@@ -15,14 +15,14 @@ export default function ProfileHeader({ address }: ProfileHeaderProps) {
           className="object-cover"
           src={profileData.profile.banner}
           alt="Banner"
-          fill={true}
+          fill
         />
       </div>
       <div className="flex justify-center items-center w-[200px] h-[200px] absolute">
         <Image
           className="rounded-full object-cover"
           src={profileData.image}
-          alt="Profile"
+          alt="Profile Avatar"
           fill
         />
       </div>

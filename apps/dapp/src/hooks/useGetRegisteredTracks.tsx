@@ -1,16 +1,13 @@
-import { Result } from '@/types';
 import { RegisteredTrack } from '@/types';
 import { useQuery } from '@tanstack/react-query';
 import { useAccount } from 'wagmi';
 
-export const useGetRegisteredTracks = (): Result<
-  {
-    registeredTracks: RegisteredTrack[];
-    isFetching: boolean;
-    refetch: () => void;
-  },
-  string | undefined
-> => {
+export const useGetRegisteredTracks = (): {
+  registeredTracks: RegisteredTrack[];
+  isFetching: boolean;
+  error: Error | null;
+  refetch: () => void;
+} => {
   const { address } = useAccount();
 
   const {
@@ -28,8 +25,5 @@ export const useGetRegisteredTracks = (): Result<
     enabled: !!address,
   });
 
-  if (registeredTracks === undefined) {
-    return { ok: false, error: error?.message };
-  }
-  return { ok: true, value: { registeredTracks, isFetching, refetch } };
+  return { registeredTracks, isFetching, error, refetch };
 };

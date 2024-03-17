@@ -73,8 +73,7 @@ export default function CreateRelease({
   } = formMethods;
   const release = getValues();
   const releaseImage = watch('releaseImage');
-
-  console.log('errors', errors);
+  console.log(release);
 
   const { address } = useAccount();
   const { uploadJson, uploadJsonError } = useUploadJson();
@@ -210,11 +209,7 @@ export default function CreateRelease({
             setReleaseTrackUris={setReleaseTrackUris}
           />
         </div>
-        <UiButton
-          className="h-[39px] w-[350px] mt-12"
-          onClick={() => createRelease()}
-          type="submit"
-        >
+        <UiButton className="h-[39px] w-[350px] mt-12" type="submit">
           {isLoading ? <UiSpinner /> : 'Create Release'}
         </UiButton>
       </form>

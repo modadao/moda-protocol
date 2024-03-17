@@ -1,14 +1,14 @@
 'use client';
 
 import { config } from '@/components/WagmiWrapper';
-import { Config } from '@/config';
 import { useGetProfileData } from '@/hooks/useGetProfileData';
 import { useToast } from '@/hooks/useToast';
 import { useToastError } from '@/hooks/useToastError';
 import { useUploadJson } from '@/hooks/useUploadJson';
 import { ProfileMetadataSchema } from '@/types';
-import { defaultProfileMetadata } from '@/utils';
+import { defaultProfileMetadata, getChainInfo } from '@/utils';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { Addresses } from 'drop-sdk';
 import { useRouter } from 'next/navigation';
 import {
   simulateProfileUpdateProfileFor,
@@ -28,6 +28,10 @@ export default function EditProfileForContract({
   contractAddress,
   isContract,
 }: EditProfileForContractProps) {
+  const { isTestnet } = getChainInfo();
+
+  const profileAddress = isTestnet ? Addresses.Profile.mumbai : '';
+
   const router = useRouter();
   const { toast } = useToast();
 
@@ -56,7 +60,7 @@ export default function EditProfileForContract({
   } = useWriteProfileUpdateProfileFor();
 
   useWatchProfileMetadataUpdateEvent({
-    address: Config.profileAddress,
+    address: profileAddress,
     onLogs() {
       setIsUpdatingData(false);
     },
@@ -80,7 +84,7 @@ export default function EditProfileForContract({
     const url = `${storageUrl}${uri}`;
 
     const { request } = await simulateProfileUpdateProfileFor(config, {
-      address: Config.profileAddress,
+      address: profileAddress,
       args: [contractAddress, url],
     });
     updateProfileFor(request);

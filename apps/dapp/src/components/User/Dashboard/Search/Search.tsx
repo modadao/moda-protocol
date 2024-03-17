@@ -1,9 +1,10 @@
 'use client';
 
-import { Config } from '@/config';
 import { EVMAddressSchema } from '@/types';
 import { UiButton } from '@/ui/UiButton';
+import { getChainInfo } from '@/utils';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { Addresses } from 'drop-sdk';
 import Link from 'next/link';
 import { useReadProfileBalanceOf } from 'profile';
 import { useEffect, useState } from 'react';
@@ -12,7 +13,7 @@ import { z } from 'zod';
 import { UiSearchInput } from '../../../../ui/UiSearchInput';
 
 interface SearchData {
-  searchedAddress: '' | undefined;
+  searchedAddress: string | undefined;
 }
 
 const SearchDataSchema = z.object({
@@ -24,6 +25,10 @@ const defaultSearchData: SearchData = {
 };
 
 export default function Search() {
+  const { isTestnet } = getChainInfo();
+
+  const profileAddress = isTestnet ? Addresses.Profile.mumbai : '';
+
   const formMethods = useForm({
     defaultValues: defaultSearchData,
     resolver: zodResolver(SearchDataSchema),
@@ -45,7 +50,7 @@ export default function Search() {
   const searchedAddress = watch('searchedAddress');
 
   const { data: userBalance, isFetched } = useReadProfileBalanceOf({
-    address: Config.profileAddress,
+    address: profileAddress,
     args: [searchedAddress],
     enabled: !!searchedAddress,
   });

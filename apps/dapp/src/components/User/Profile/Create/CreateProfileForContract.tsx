@@ -3,16 +3,16 @@
 import { useToast } from '@/hooks/useToast';
 import { useUploadJson } from '@/hooks/useUploadJson';
 import { ProfileMetadataSchema } from '@/types';
+import { getChainInfo } from '@/utils';
 import { defaultProfileMetadata } from '@/utils/defaultProfileMetadata';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { Addresses } from 'drop-sdk';
 import { useRouter } from 'next/navigation';
 import {
   simulateProfileMintFor,
   useWatchProfileTransferEvent,
   useWriteProfileMintFor,
 } from 'profile';
-
-import { Config } from '@/config';
 import { useEffect, useMemo, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { config } from '../../../WagmiWrapper';
@@ -25,6 +25,10 @@ interface CreateProfileForContractProps {
 export default function CreateProfileForContract({
   isContract,
 }: CreateProfileForContractProps) {
+  const { isTestnet } = getChainInfo();
+
+  const profileAddress = isTestnet ? Addresses.Profile.mumbai : '';
+
   const router = useRouter();
   const { toast } = useToast();
   const formMethods = useForm({
@@ -42,7 +46,7 @@ export default function CreateProfileForContract({
   const profileData = getValues();
 
   useWatchProfileTransferEvent({
-    address: Config.profileAddress,
+    address: profileAddress,
     onLogs() {
       setIsCreatingProfile(false);
     },
@@ -74,7 +78,7 @@ export default function CreateProfileForContract({
     const url = `${storageUrl}${uri}`;
 
     const { request } = await simulateProfileMintFor(config, {
-      address: Config,
+      address: profileAddress,
       args: [profileData.profile.address, url],
     });
     profileMintFor(request);

@@ -58,6 +58,8 @@ function Track({ trackData, trackId, selectedTracks }: TrackProps) {
     trackData.trackUri,
   );
 
+  console.log('trackMetadata', trackMetadata);
+
   const storageUrl = process.env.NEXT_PUBLIC_STORAGE_URL;
 
   const [isPlaying, setIsPlaying] = useState(false);
@@ -107,8 +109,8 @@ function Track({ trackData, trackId, selectedTracks }: TrackProps) {
               <Image
                 className="rounded-md"
                 src={`${storageUrl}${trackMetadata.image}`}
-                alt=""
-                fill={true}
+                alt={trackMetadata.name}
+                fill
               />
             </div>
             <div className="flex flex-col items-start justify-start">

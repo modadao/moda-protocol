@@ -1,11 +1,12 @@
 'use client';
 
-import { Config } from '@/config';
 import { useToast } from '@/hooks/useToast';
 import { useUploadJson } from '@/hooks/useUploadJson';
 import { ProfileMetadataSchema } from '@/types';
+import { getChainInfo } from '@/utils';
 import { defaultProfileMetadata } from '@/utils/defaultProfileMetadata';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { Addresses } from 'drop-sdk';
 import { useRouter } from 'next/navigation';
 import {
   simulateProfileMint,
@@ -25,6 +26,10 @@ interface CreateProfileForAccountProps {
 export default function CreateProfileForAccount({
   isContract,
 }: CreateProfileForAccountProps) {
+  const { isTestnet } = getChainInfo();
+
+  const profileAddress = isTestnet ? Addresses.Profile.mumbai : '';
+
   const router = useRouter();
   const { address } = useAccount();
   const { toast } = useToast();
@@ -52,7 +57,7 @@ export default function CreateProfileForAccount({
   } = useWriteProfileMint();
 
   useWatchProfileTransferEvent({
-    address: Config.profileAddress,
+    address: profileAddress,
     onLogs() {
       setIsCreatingProfile(false);
     },
@@ -75,7 +80,7 @@ export default function CreateProfileForAccount({
     const url = `${storageUrl}${uri}`;
 
     const profileMintResult = await simulateProfileMint(config, {
-      address: Config.profileAddress,
+      address: profileAddress,
       args: [url],
     });
     profileMint(profileMintResult.request);

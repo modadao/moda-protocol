@@ -105,7 +105,7 @@ export default function UploadTrack({
   return (
     <div className="relative bg-whiteBackground h-full">
       <UiButton
-        className="absolute top-0 right-12 hover:underline pt-0"
+        className="absolute top-0 left-4 hover:underline pt-0"
         intent="text"
         size="lg"
         onClick={() => setIsUploadTrack(!isUploadTrack)}

@@ -1,16 +1,20 @@
-import { Config } from '@/config';
+import { getChainInfo } from '@/utils';
 import { useQuery } from '@tanstack/react-query';
+import { Addresses } from 'drop-sdk';
 import { useReadProfileAccountUri } from 'profile';
 import { useMemo } from 'react';
 import { useAccount } from 'wagmi';
 
-export const useGetProfileData = (profileAddress?: string) => {
+export const useGetProfileData = (contractProfileAddress?: string) => {
   const { address: connectedAddress } = useAccount();
+  const { isTestnet } = getChainInfo();
 
-  const address = profileAddress || connectedAddress;
+  const profileAddress = isTestnet ? Addresses.Profile.mumbai : '';
+
+  const address = contractProfileAddress || connectedAddress;
 
   const { data: accountUri, isPending } = useReadProfileAccountUri({
-    address: Config.profileAddress,
+    address: profileAddress,
     args: [address],
     enabled: !!address,
   });

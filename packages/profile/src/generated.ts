@@ -18,21 +18,22 @@ import {
 
 export const profileAbi = [
   {
+    stateMutability: 'nonpayable',
     type: 'constructor',
     inputs: [
       { name: 'name_', internalType: 'string', type: 'string' },
       { name: 'symbol_', internalType: 'string', type: 'string' },
     ],
-    stateMutability: 'nonpayable',
   },
   {
+    stateMutability: 'view',
     type: 'function',
     inputs: [{ name: 'account', internalType: 'address', type: 'address' }],
     name: 'accountUri',
     outputs: [{ name: '', internalType: 'string', type: 'string' }],
-    stateMutability: 'view',
   },
   {
+    stateMutability: 'nonpayable',
     type: 'function',
     inputs: [
       { name: '', internalType: 'address', type: 'address' },
@@ -40,16 +41,16 @@ export const profileAbi = [
     ],
     name: 'approve',
     outputs: [],
-    stateMutability: 'nonpayable',
   },
   {
+    stateMutability: 'view',
     type: 'function',
     inputs: [{ name: 'account', internalType: 'address', type: 'address' }],
     name: 'balanceOf',
     outputs: [{ name: 'balance', internalType: 'uint256', type: 'uint256' }],
-    stateMutability: 'view',
   },
   {
+    stateMutability: 'view',
     type: 'function',
     inputs: [
       { name: 'kontract', internalType: 'address', type: 'address' },
@@ -57,16 +58,16 @@ export const profileAbi = [
     ],
     name: 'canMintFor',
     outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
-    stateMutability: 'view',
   },
   {
+    stateMutability: 'view',
     type: 'function',
     inputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
     name: 'getApproved',
     outputs: [{ name: '', internalType: 'address', type: 'address' }],
-    stateMutability: 'view',
   },
   {
+    stateMutability: 'view',
     type: 'function',
     inputs: [
       { name: '', internalType: 'address', type: 'address' },
@@ -74,16 +75,16 @@ export const profileAbi = [
     ],
     name: 'isApprovedForAll',
     outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
-    stateMutability: 'view',
   },
   {
+    stateMutability: 'nonpayable',
     type: 'function',
     inputs: [{ name: 'uri', internalType: 'string', type: 'string' }],
     name: 'mint',
     outputs: [],
-    stateMutability: 'nonpayable',
   },
   {
+    stateMutability: 'nonpayable',
     type: 'function',
     inputs: [
       { name: 'kontract', internalType: 'address', type: 'address' },
@@ -91,23 +92,23 @@ export const profileAbi = [
     ],
     name: 'mintFor',
     outputs: [],
-    stateMutability: 'nonpayable',
   },
   {
+    stateMutability: 'view',
     type: 'function',
     inputs: [],
     name: 'name',
     outputs: [{ name: '', internalType: 'string', type: 'string' }],
-    stateMutability: 'view',
   },
   {
+    stateMutability: 'view',
     type: 'function',
     inputs: [{ name: 'tokenId', internalType: 'uint256', type: 'uint256' }],
     name: 'ownerOf',
     outputs: [{ name: '', internalType: 'address', type: 'address' }],
-    stateMutability: 'view',
   },
   {
+    stateMutability: 'pure',
     type: 'function',
     inputs: [
       { name: '', internalType: 'address', type: 'address' },
@@ -116,9 +117,9 @@ export const profileAbi = [
     ],
     name: 'safeTransferFrom',
     outputs: [],
-    stateMutability: 'pure',
   },
   {
+    stateMutability: 'nonpayable',
     type: 'function',
     inputs: [
       { name: '', internalType: 'address', type: 'address' },
@@ -128,9 +129,9 @@ export const profileAbi = [
     ],
     name: 'safeTransferFrom',
     outputs: [],
-    stateMutability: 'nonpayable',
   },
   {
+    stateMutability: 'nonpayable',
     type: 'function',
     inputs: [
       { name: '', internalType: 'address', type: 'address' },
@@ -138,37 +139,37 @@ export const profileAbi = [
     ],
     name: 'setApprovalForAll',
     outputs: [],
-    stateMutability: 'nonpayable',
   },
   {
+    stateMutability: 'view',
     type: 'function',
     inputs: [{ name: 'interfaceId', internalType: 'bytes4', type: 'bytes4' }],
     name: 'supportsInterface',
     outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
-    stateMutability: 'view',
   },
   {
+    stateMutability: 'view',
     type: 'function',
     inputs: [],
     name: 'symbol',
     outputs: [{ name: '', internalType: 'string', type: 'string' }],
-    stateMutability: 'view',
   },
   {
+    stateMutability: 'view',
     type: 'function',
     inputs: [{ name: 'tokenId', internalType: 'uint256', type: 'uint256' }],
     name: 'tokenURI',
     outputs: [{ name: '', internalType: 'string', type: 'string' }],
-    stateMutability: 'view',
   },
   {
+    stateMutability: 'view',
     type: 'function',
     inputs: [],
     name: 'totalSupply',
     outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
-    stateMutability: 'view',
   },
   {
+    stateMutability: 'nonpayable',
     type: 'function',
     inputs: [
       { name: '', internalType: 'address', type: 'address' },
@@ -177,16 +178,16 @@ export const profileAbi = [
     ],
     name: 'transferFrom',
     outputs: [],
-    stateMutability: 'nonpayable',
   },
   {
+    stateMutability: 'nonpayable',
     type: 'function',
     inputs: [{ name: 'uri', internalType: 'string', type: 'string' }],
     name: 'updateProfile',
     outputs: [],
-    stateMutability: 'nonpayable',
   },
   {
+    stateMutability: 'nonpayable',
     type: 'function',
     inputs: [
       { name: 'kontract', internalType: 'address', type: 'address' },
@@ -194,7 +195,6 @@ export const profileAbi = [
     ],
     name: 'updateProfileFor',
     outputs: [],
-    stateMutability: 'nonpayable',
   },
   {
     type: 'event',

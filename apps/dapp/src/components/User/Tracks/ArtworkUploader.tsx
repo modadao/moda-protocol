@@ -48,7 +48,7 @@ export default function ArtworkUploader({
     <UiFileUploader uploadFunction={uploadArtwork}>
       {imageUri ? (
         <div className="border border-black h-[350px] w-[350px]">
-          <Image src={`${storageUrl}${imageUri}`} alt="" fill={true} />
+          <Image src={`${storageUrl}${imageUri}`} alt={value} fill />
         </div>
       ) : (
         <div className="flex flex-col items-center justify-center border border-dotted border-black w-[350px] h-[350px] bg-white rounded-md gap-4">
