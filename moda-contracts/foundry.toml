@@ -13,7 +13,7 @@ remappings = [
 fs_permissions = [{ access = "read-write", path = "./"}]
 
 [rpc_endpoints]
-rpcUrl = "${MUMBAI_RPC_URL}"
+rpcUrl = "${EVM_RPC_URL}"
 
 [etherscan]
 mumbai = { key = "${ETHERSCAN_API_KEY}" }

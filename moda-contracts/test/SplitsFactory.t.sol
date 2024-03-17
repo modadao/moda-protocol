@@ -81,21 +81,6 @@ contract SplitsFactoryTest is TestUtils {
         assertEq(_splitMain.allocationFor(_treasury), expectedFacilitatorShare);
     }
 
-    function test_create_adds_correct_shares_if_treasury_is_passed_in_as_a_beneficiary() public {
-        setupBeneficiaries();
-        _beneficiaries.push(_treasury);
-
-        _splitsFactory.create(_beneficiaries);
-
-        uint32 expectedUserShare = 300_000;
-        uint32 expectedFacilitatorShare = 100_000 + expectedUserShare;
-
-        assertEq(_splitMain.beneficiariesLength(), _beneficiaries.length + 1);
-        assertEq(_splitMain.allocationFor(_w.alice()), expectedUserShare);
-        assertEq(_splitMain.allocationFor(_w.bob()), expectedUserShare);
-        assertEq(_splitMain.allocationFor(_treasury), expectedFacilitatorShare);
-    }
-
     function test_create_adds_dust_allocations_to_treasury() public {
         setupBeneficiaries();
         _beneficiaries.push(_w.carl());

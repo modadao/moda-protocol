@@ -33,34 +33,32 @@ contract SplitsFactory is ISplitsFactory, Ownable {
     /// @inheritdoc ISplitsFactory
     /// @notice This factory will create a new 0xSplit contract and add the  Treasury as a benefactor.
     function create(address[] calldata beneficiaries) external override returns (address) {
-        address[] memory accounts = new address[](beneficiaries.length + 1);
+        address[] memory accountsUnfiltered = new address[](beneficiaries.length + 1);
 
         for (uint256 i = 0; i < beneficiaries.length; i++) {
-            accounts[i] = beneficiaries[i];
+            accountsUnfiltered[i] = beneficiaries[i];
         }
 
         (address treasury, uint32 treasuryFee, uint32 treasuryFeeScale) = _registry.getTreasuryInfo();
 
-        accounts[accounts.length - 1] = treasury;
-        accounts = _sortAddresses(accounts);
+        accountsUnfiltered[accountsUnfiltered.length - 1] = treasury;
+        accountsUnfiltered = _sortAddresses(accountsUnfiltered);
+        (address[] memory accounts, uint256[] memory occurrences) = _filterDuplicates(accountsUnfiltered);
 
         // Allocate Shares
         uint32 treasuryAllocation = PERCENTAGE_SCALE * uint32(treasuryFee) / uint32(treasuryFeeScale);
         uint32 shareHolderAllocation =
             uint32((PERCENTAGE_SCALE - treasuryAllocation) / beneficiaries.length);
 
-        // If  treasury was passed in as an argument in the beneficiaries list then we do not want
-        // to give out the treasury fee more than once.
-        bool feeAllocated;
         uint32[] memory shares = new uint32[](accounts.length);
         for (uint256 i = 0; i < accounts.length; i++) {
-            if (accounts[i] == treasury && !feeAllocated) {
+            if (accounts[i] == treasury) {
                 shares[i] = treasuryAllocation;
-                feeAllocated = true;
+
                 continue;
             }
 
-            shares[i] = shareHolderAllocation;
+            shares[i] = shareHolderAllocation * uint32(occurrences[i]);
         }
 
         uint32 totalPercentage;
@@ -86,6 +84,47 @@ contract SplitsFactory is ISplitsFactory, Ownable {
     }
 
     // Internal
+
+    function _filterDuplicates(address[] memory beneficiaries)
+        internal
+        pure
+        returns (address[] memory, uint256[] memory)
+    {
+        if (beneficiaries.length <= 1) {
+            uint256[] memory oneOccurrence = new uint256[](1);
+            oneOccurrence[0] = 1;
+            return (beneficiaries, oneOccurrence);
+        }
+        address[] memory uniqueBeneficiariesTemp = new address[](beneficiaries.length);
+        uint256[] memory occurrencesTemp = new uint256[](beneficiaries.length);
+        uint256 uniqueCount;
+
+        for (uint256 i = 0; i < beneficiaries.length; i++) {
+            bool isUnique = true;
+            for (uint256 j = 0; j < uniqueCount; j++) {
+                if (beneficiaries[i] == uniqueBeneficiariesTemp[j]) {
+                    isUnique = false;
+                    occurrencesTemp[j]++;
+                    break;
+                }
+            }
+            if (isUnique) {
+                uniqueBeneficiariesTemp[uniqueCount] = beneficiaries[i];
+                occurrencesTemp[uniqueCount] = 1;
+                uniqueCount++;
+            }
+        }
+
+        address[] memory uniqueBeneficiaries = new address[](uniqueCount);
+        uint256[] memory occurrences = new uint256[](uniqueCount);
+
+        for (uint256 i = 0; i < uniqueCount; i++) {
+            uniqueBeneficiaries[i] = uniqueBeneficiariesTemp[i];
+            occurrences[i] = occurrencesTemp[i];
+        }
+
+        return (uniqueBeneficiaries, occurrences);
+    }
 
     function _sortAddresses(address[] memory addresses) internal pure returns (address[] memory) {
         uint256 length = addresses.length;
