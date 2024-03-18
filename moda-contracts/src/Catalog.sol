@@ -36,7 +36,7 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
         /// @dev releasesOwner => releases
         mapping(address => address) _registeredReleasesContracts;
         /// @dev release => releaseOwner
-        mapping(address => address) _registeredReleasesOwners;
+        mapping(address => address) _registeredReleasesOwner;
         /// @dev releaseHash => RegisteredRelease
         mapping(bytes32 => RegisteredRelease) _registeredReleases;
         /// @dev releases => tokenId => tracks on release
@@ -255,7 +255,7 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
         _requireReleasesContractNotRegistered(releases);
 
         $._registeredReleasesContracts[releasesOwner] = releases;
-        $._registeredReleasesOwners[releases] = releasesOwner;
+        $._registeredReleasesOwner[releases] = releasesOwner;
         emit ReleasesRegistered(releases, releasesOwner);
     }
 
@@ -264,9 +264,9 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
         CatalogStorage storage $ = _getCatalogStorage();
 
         _requireReleasesContractIsRegistered(releases);
-        address releasesOwner = $._registeredReleasesOwners[releases];
+        address releasesOwner = $._registeredReleasesOwner[releases];
         delete $._registeredReleasesContracts[releasesOwner];
-        delete $._registeredReleasesOwners[releases];
+        delete $._registeredReleasesOwner[releases];
         emit ReleasesUnregistered(releases, releasesOwner);
     }
 
@@ -274,7 +274,7 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
     function getReleasesOwner(address releases) external view returns (address owner) {
         CatalogStorage storage $ = _getCatalogStorage();
 
-        return $._registeredReleasesOwners[releases];
+        return $._registeredReleasesOwner[releases];
     }
 
     /// @inheritdoc IReleasesRegistration
@@ -486,7 +486,7 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
     function _requireReleasesContractIsRegistered(address releases) internal view {
         CatalogStorage storage $ = _getCatalogStorage();
 
-        if ($._registeredReleasesOwners[releases] == address(0)) {
+        if ($._registeredReleasesOwner[releases] == address(0)) {
             revert ReleasesContractIsNotRegistered();
         }
     }
@@ -494,7 +494,7 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
     function _requireReleasesContractNotRegistered(address releases) internal view {
         CatalogStorage storage $ = _getCatalogStorage();
 
-        if ($._registeredReleasesOwners[releases] != address(0)) {
+        if ($._registeredReleasesOwner[releases] != address(0)) {
             revert ReleasesContractIsAlreadyRegistered();
         }
     }
