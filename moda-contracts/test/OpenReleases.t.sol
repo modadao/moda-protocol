@@ -2,13 +2,16 @@
 pragma solidity ^0.8.13;
 
 import {Test, console2} from "forge-std/Test.sol";
-import "../src/Registry.sol";
-import "../src/Catalog.sol";
-import "../src/OpenReleases.sol";
-import "../src/Management.sol";
-import "../test/mocks/MembershipMock.sol";
-import "../test/mocks/SplitsFactoryMock.sol";
-import "../src/CatalogFactory.sol";
+import {Registry} from "../src/Registry.sol";
+import {Catalog} from "../src/Catalog.sol";
+import {OpenReleases} from "../src/OpenReleases.sol";
+import {IOpenReleases} from "../src/interfaces/Releases/IOpenReleases.sol";
+import {OpenReleasesFactory} from "../src/OpenReleasesFactory.sol";
+import {Management} from "../src/Management.sol";
+import {Membership} from "../test/mocks/MembershipMock.sol";
+import {IMembership} from "../src/interfaces/IMembership.sol";
+import {SplitsFactoryMock} from "../test/mocks/SplitsFactoryMock.sol";
+import {CatalogFactory} from "../src/CatalogFactory.sol";
 import {Upgrades} from "openzeppelin-foundry-upgrades/Upgrades.sol";
 
 contract OpenReleasesTest is Test {
@@ -19,14 +22,16 @@ contract OpenReleasesTest is Test {
     CatalogFactory public catalogFactory;
     Catalog public catalog;
     OpenReleases public openReleases;
+    OpenReleases public releasesMaster;
+    OpenReleasesFactory public releasesFactory;
 
     address public catalogBeacon;
     address public admin = address(0xa);
-    string public catalogName = "TestCatalog";
+    string public catalogName = "DRIP Catalog";
     string public catalogVersion = "1";
 
-    string name = "TestOpenReleases";
-    string symbol = "OPEN";
+    string name = "DRIP";
+    string symbol = "DRIP";
     address organizationAdmin = address(0x6);
     address trackOwner = address(0x7);
 
@@ -79,11 +84,22 @@ contract OpenReleasesTest is Test {
 
         catalogBeacon = Upgrades.deployBeacon("Catalog.sol", admin);
         catalogFactory = new CatalogFactory(registry, catalogBeacon);
-        registry.grantRole(keccak256("CATALOG_REGISTRAR_ROLE"), address(catalogFactory));
+        registry.grantRole(registry.CATALOG_REGISTRAR_ROLE(), address(catalogFactory));
 
+        vm.startPrank(organizationAdmin);
         catalog = Catalog(catalogFactory.create(catalogName, IMembership(membership)));
+        vm.stopPrank();
         membership.addMember(trackOwner);
-        openReleases = new OpenReleases(organizationAdmin, name, symbol, catalog, splitsFactory);
+
+        releasesMaster = new OpenReleases();
+        releasesFactory = new OpenReleasesFactory(registry, address(releasesMaster));
+        registry.grantRole(registry.RELEASES_REGISTRAR_ROLE(), address(releasesFactory));
+
+        vm.startPrank(organizationAdmin);
+        releasesFactory.create(name, symbol, catalog);
+        vm.stopPrank();
+
+        openReleases = OpenReleases(catalog.getReleasesContract(organizationAdmin));
     }
 
     // Initialization
@@ -131,16 +147,8 @@ contract OpenReleasesTest is Test {
         vm.stopPrank();
     }
 
-    function registerReleasesContract_open_setUp() public {
-        registry.grantRole(keccak256("RELEASES_REGISTRAR_ROLE"), organizationAdmin);
-        vm.startPrank(organizationAdmin);
-        catalog.registerReleasesContract(address(openReleases), organizationAdmin);
-        vm.stopPrank();
-    }
-
     function createRelease_setUp() public {
         registerTrack_setUp();
-        registerReleasesContract_open_setUp();
         vm.startPrank(trackOwner);
         openReleases.create(
             trackOwner,
@@ -196,7 +204,6 @@ contract OpenReleasesTest is Test {
 
     function test_create_emits_event() public {
         registerTrack_setUp();
-        registerReleasesContract_open_setUp();
 
         vm.expectEmit(true, true, true, true);
         emit ReleaseCreated(1);

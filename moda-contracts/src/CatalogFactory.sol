@@ -14,7 +14,6 @@ import {IMembership} from "./interfaces/IMembership.sol";
 contract CatalogFactory is ICatalogFactory {
     IRegistry public registry;
     address public catalogBeacon;
-    string public version;
 
     /**
      * @notice Constructor

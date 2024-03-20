@@ -28,7 +28,7 @@ contract ReleasesTest is Test {
 
     string name = "TestReleases";
     string symbol = "TEST";
-    address admin = address(0x6);
+    address organizationAdmin = address(0x6);
     address releaseAdmin = address(0x1);
 
     address[] releaseAdmins = [releaseAdmin];
@@ -81,22 +81,24 @@ contract ReleasesTest is Test {
         registry.setManagement(management);
         registry.setSplitsFactory(splitsFactory);
 
-        catalogBeacon = Upgrades.deployBeacon("Catalog.sol", admin);
+        catalogBeacon = Upgrades.deployBeacon("Catalog.sol", organizationAdmin);
         catalogFactory = new CatalogFactory(registry, catalogBeacon);
-        registry.grantRole(keccak256("CATALOG_REGISTRAR_ROLE"), address(catalogFactory));
+        registry.grantRole(registry.CATALOG_REGISTRAR_ROLE(), address(catalogFactory));
 
+        vm.startPrank(releaseAdmin);
         catalog = Catalog(catalogFactory.create(catalogName, IMembership(membership)));
-
+        vm.stopPrank();
         membership.addMember(releaseAdmin);
+
         releasesMaster = new Releases();
         releasesFactory = new ReleasesFactory(registry, address(releasesMaster));
-        registry.grantRole(keccak256("RELEASES_REGISTRAR_ROLE"), address(releasesFactory));
+        registry.grantRole(registry.RELEASES_REGISTRAR_ROLE(), address(releasesFactory));
 
-        vm.startPrank(admin);
+        vm.startPrank(releaseAdmin);
         releasesFactory.create(releaseAdmins, name, symbol, catalog);
         vm.stopPrank();
 
-        releases = Releases(catalog.getReleasesContract(admin));
+        releases = Releases(catalog.getReleasesContract(releaseAdmin));
     }
 
     // Initialization
@@ -112,7 +114,7 @@ contract ReleasesTest is Test {
     function test_initialize_RevertIf_already_initialized() public {
         vm.expectRevert(InvalidInitialization.selector);
 
-        releases.initialize(admin, releaseAdmins, name, symbol, catalog, splitsFactory);
+        releases.initialize(organizationAdmin, releaseAdmins, name, symbol, catalog, splitsFactory);
     }
 
     // create with a curated Releases contract
@@ -287,7 +289,7 @@ contract ReleasesTest is Test {
 
     function test_setUri() public {
         createRelease_setUp();
-        vm.startPrank(admin);
+        vm.startPrank(releaseAdmin);
         releases.setUri(1, "newURI");
         vm.stopPrank();
         string memory newURI = releases.uri(1);
@@ -298,7 +300,7 @@ contract ReleasesTest is Test {
     function test_setUri_RevertIf_tokenId_is_invalid() public {
         createRelease_setUp();
         vm.expectRevert(Releases.InvalidTokenId.selector);
-        vm.startPrank(admin);
+        vm.startPrank(releaseAdmin);
         releases.setUri(2, "newURI");
         vm.stopPrank();
     }
@@ -307,7 +309,7 @@ contract ReleasesTest is Test {
         createRelease_setUp();
         vm.expectEmit(true, true, true, true);
         emit URI("newURI", 1);
-        vm.startPrank(admin);
+        vm.startPrank(releaseAdmin);
         releases.setUri(1, "newURI");
         vm.stopPrank();
     }
