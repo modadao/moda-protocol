@@ -25,19 +25,24 @@
     "release": "pnpm run build && changeset publish",
     "test": "jest"
   },
+  "peerDependencies": {
+    "@tanstack/react-query": "^5.17.15",
+    "@wagmi/connectors": "^4.1.12",
+    "react": "^18.0.0",
+    "viem": "^2.7.1",
+    "wagmi": "^2.5.5"
+  },
   "devDependencies": {
-    "@changesets/cli": "^2.26.2",
-    "@types/node": "^20.11.4",
-    "@wagmi/cli": "^2.0.3",
+    "@changesets/cli": "^2.27.1",
+    "@types/node": "^20.11.14",
+    "@wagmi/cli": "^2.1.2",
+    "ts-node": "^10.9.2",
     "tsup": "^7.2.0",
-    "typescript": "^5.2.2"
+    "typescript": "^5.3.3"
   },
   "dependencies": {
     "@wagmi/core": "^2.2.1",
-    "codegen": "link:@wagmi/core/codegen",
-    "ts-node": "^10.9.2",
-    "viem": "^2.1.1",
-    "wagmi": "^2.2.1"
+    "codegen": "link:@wagmi/core/codegen"
   },
   "exports": {
     ".": {

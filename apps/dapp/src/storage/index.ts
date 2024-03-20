@@ -22,6 +22,7 @@ export default function pinningService(): PinningService<StorageResult> {
       const result: StorageResult = {
         uri: pinataResponse.IpfsHash,
       };
+
       return result;
     } catch (e) {
       throw new Error((e as Error).message);

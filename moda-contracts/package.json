@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "forge clean && forge build && forge test --ffi",
+    "test": "forge clean && forge build && forge test --ffi -vv",
     "coverage": "forge coverage --report lcov --ffi && genhtml lcov.info --branch-coverage --output-dir coverage ",
     "size": "forge build --sizes",
     "contracts:docs": "forge doc -s -p 8080",

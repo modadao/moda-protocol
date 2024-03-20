@@ -10,7 +10,7 @@ const UiSearchInput = React.forwardRef<HTMLInputElement, InputProps>(
     return (
       <div
         className={cn(
-          'flex items-center h-10 w-96 rounded-lg border border-gray-400',
+          'flex items-center h-10 w-96 rounded-lg border border-gray-400 bg-white',
           className,
         )}
       >

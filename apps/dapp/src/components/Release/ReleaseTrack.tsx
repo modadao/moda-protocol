@@ -93,7 +93,7 @@ export const ReleaseTrack = ({ track, album, index }: ReleaseTrackProps) => {
             className="absolute inset-0 block"
             src={track?.coverImage?.url}
             alt={''}
-            fill={true}
+            fill
           />
         )}
 
