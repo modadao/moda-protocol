@@ -1,6 +1,6 @@
 import { NavBar } from '@/components/Navbar/NavBar';
 
-export default function ProfileLayout({
+export default function LegalLayout({
   children,
 }: {
   children: React.ReactNode;

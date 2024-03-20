@@ -43,7 +43,7 @@ export const SectionAlbum = ({ release }: SectionAlbumProps) => {
         <div className="absolute inset-0 overflow-hidden">
           {album.coverImage && (
             <Image
-              fill={true}
+              fill
               src={album.coverImage?.url}
               alt={''}
               priority={true}
@@ -58,7 +58,7 @@ export const SectionAlbum = ({ release }: SectionAlbumProps) => {
               {album.coverImage && (
                 <Image
                   className="absolute inset-0 object-cover"
-                  fill={true}
+                  fill
                   src={album.coverImage?.url}
                   alt={''}
                   priority={true}
@@ -145,7 +145,7 @@ export const SectionAlbum = ({ release }: SectionAlbumProps) => {
             >
               <Image
                 className=""
-                fill={true}
+                fill
                 src={'/badges/badge_deluxe_edition.png'}
                 alt="Badge Deluxe Addition"
               />

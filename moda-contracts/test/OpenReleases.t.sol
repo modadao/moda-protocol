@@ -110,6 +110,7 @@ contract OpenReleasesTest is Test {
         assertEq(openReleases.name(), name);
         assertEq(openReleases.symbol(), symbol);
         assertEq(numberOfReleases, 0);
+        console2.logBytes4(type(IOpenReleases).interfaceId);
     }
 
     // create with a curated Releases contract
