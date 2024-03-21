@@ -18,7 +18,9 @@
     "_deploy_ReleasesFactory": "forge clean && forge build && forge script script/DeployReleasesFactory.s.sol:DeployReleasesFactory --rpc-url rpcUrl --broadcast --verify -vvvv --ffi",
     "_deploy_OpenReleasesFactory": "forge clean && forge build && forge script script/DeployOpenReleasesFactory.s.sol:DeployOpenReleasesFactory --rpc-url rpcUrl --broadcast --verify -vvvv --ffi",
     "1_deploy_Membership": "forge script script/DeployMembership.s.sol:DeployMembership --rpc-url rpcUrl --broadcast --verify -vvvv",
-    "2_deploy_Catalog": "forge script script/DeployCatalog.s.sol:DeployCatalog --rpc-url rpcUrl --broadcast -vvvv"
+    "2_deploy_Catalog": "forge script script/DeployCatalog.s.sol:DeployCatalog --rpc-url rpcUrl --broadcast -vvvv",
+    "add_verified_roles": "node script/utils/add_verified_role/addAddressesToVerify.js"
+
   },
   "keywords": [],
   "author": "",

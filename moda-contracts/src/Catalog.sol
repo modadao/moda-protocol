@@ -19,6 +19,9 @@ import {Strings} from "@openzeppelin/contracts/utils/Strings.sol";
 /// @notice A Catalog is a contract where artists and labels can register tracks.
 ///         Membership to the Catalog is controlled by `IMembership`.
 contract Catalog is ICatalog, AccessControlUpgradeable {
+    /// @notice an address with AUTO_VERIFIED_ROLE will have their tracks verified on registration
+    bytes32 public constant AUTO_VERIFIED_ROLE = keccak256("AUTO_VERIFIED_ROLE");
+
     /// @custom:storage-location erc7201:moda.storage.Catalog
     struct CatalogStorage {
         IRegistry _registry;
@@ -120,8 +123,7 @@ contract Catalog is ICatalog, AccessControlUpgradeable {
         );
         $._trackIds[trackRegistrationHash] = id;
 
-        bool hasAutoVerification =
-            IRegistry($._registry).hasRole(keccak256("AUTO_VERIFIED_ROLE"), msg.sender);
+        bool hasAutoVerification = hasRole(AUTO_VERIFIED_ROLE, msg.sender);
 
         TrackStatus status = hasAutoVerification ? TrackStatus.VALIDATED : TrackStatus.PENDING;
 
