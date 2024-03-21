@@ -20,6 +20,7 @@
     "1_deploy_Membership": "forge script script/DeployMembership.s.sol:DeployMembership --rpc-url rpcUrl --broadcast --verify -vvvv",
     "2_deploy_Catalog": "forge script script/DeployCatalog.s.sol:DeployCatalog --rpc-url rpcUrl --broadcast -vvvv",
     "add_verified_roles": "node script/utils/add_verified_role/addAddressesToVerify.js"
+
   },
   "keywords": [],
   "author": "",
