@@ -69,6 +69,12 @@ export interface RegisteredTrack {
   trackUri: string;
 }
 
+export interface ReleaseData {
+  amountOwned: number;
+  releaseId: number;
+  releaseUri: string;
+}
+
 export const EVMAddressSchema = z.string().refine(
   (val) => {
     return isValidAddress(val);

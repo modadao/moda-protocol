@@ -69,7 +69,7 @@ export default function UploadTrack({
     const trackUri = await uploadJson(trackMetadata);
     const registerTrackResult = await simulateCatalogRegisterTrack(config, {
       address: catalogAddress,
-      args: [address, address, trackUri],
+      args: [address, '0xE72619a7D3035c42e57808Edd1DC2DF6A1f0Cc29', trackUri],
     });
     register(registerTrackResult.request);
     setIsRegisterTrackLoading(false);

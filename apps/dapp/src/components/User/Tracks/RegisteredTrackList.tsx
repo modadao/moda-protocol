@@ -58,8 +58,6 @@ function Track({ trackData, trackId, selectedTracks }: TrackProps) {
     trackData.trackUri,
   );
 
-  console.log('trackMetadata', trackMetadata);
-
   const storageUrl = process.env.NEXT_PUBLIC_STORAGE_URL;
 
   const [isPlaying, setIsPlaying] = useState(false);

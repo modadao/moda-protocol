@@ -9,6 +9,7 @@ export default function DashboardLinks() {
       <div className=" flex flex-row justify-center gap-6 font-extrabold text-base italic">
         <Link href={'/dashboard'}>Dashboard</Link>
         <Link href={'/tracks'}>Tracks</Link>
+        <Link href={'/releases'}>Releases</Link>
       </div>
     </div>
   );

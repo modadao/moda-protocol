@@ -7,9 +7,9 @@ export default function ProfileLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
+    <div className="overflow-y-scroll h-[100vh]">
       <NavbarDashboard />
       <ProfileContextProvider>{children}</ProfileContextProvider>
-    </>
+    </div>
   );
 }
