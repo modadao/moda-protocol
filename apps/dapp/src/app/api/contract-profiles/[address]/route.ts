@@ -1,13 +1,11 @@
+import { getEvmApi } from '@/utils/evmApi';
 import { getChainInfo } from '@/utils/getChainInfo';
-import { EvmAbiItem, EvmChain } from '@moralisweb3/common-evm-utils';
+import {
+  EvmAbiItem,
+  EvmAddressInput,
+  EvmChain,
+} from '@moralisweb3/common-evm-utils';
 import { Addresses } from 'drop-sdk';
-import Moralis from 'moralis';
-
-const apiKey = process.env.NEXT_PUBLIC_MORALIS_API_KEY || '';
-
-Moralis.start({
-  apiKey,
-});
 
 interface Params {
   params: { address: string };
@@ -28,12 +26,14 @@ interface ProfileChangeForResponseJson {
 }
 
 export async function GET(_request: Request, { params }: Params) {
+  const evmApi = await getEvmApi();
   const chainInfo = getChainInfo();
 
   const chain = chainInfo.isTestnet ? EvmChain.MUMBAI : EvmChain.POLYGON;
 
-  const profileAddress =
-    chain === EvmChain.MUMBAI ? Addresses.Profile.mumbai : '';
+  const profileAddress = chainInfo.isTestnet
+    ? (Addresses.Profile.mumbai as EvmAddressInput)
+    : '';
 
   const topic =
     '0x851e62abe600e90c07bdd93b1db315b32f32d4845f6cc42b28e6f1acb458eaee';
@@ -58,30 +58,35 @@ export async function GET(_request: Request, { params }: Params) {
     anonymous: false,
   };
 
-  const response = await Moralis.EvmApi.events.getContractEvents({
-    address: profileAddress,
-    chain,
-    topic,
-    abi,
-  });
+  try {
+    const response = await evmApi.events.getContractEvents({
+      address: profileAddress,
+      chain,
+      topic,
+      abi,
+    });
 
-  const responses: ProfileChangeForResponseJson[] = response.toJSON()
-    .result as ProfileChangeForResponseJson[];
+    const responses: ProfileChangeForResponseJson[] = response.toJSON()
+      .result as ProfileChangeForResponseJson[];
 
-  const events = responses.map((event) => {
-    return event.data;
-  });
+    const events = responses.map((event) => {
+      return event.data;
+    });
 
-  const filteredEvents = events.filter((event) => {
-    return event.caller.toLowerCase() === params.address.toLowerCase();
-  });
+    const filteredEvents = events.filter((event) => {
+      return event.caller.toLowerCase() === params.address.toLowerCase();
+    });
 
-  const contractAddresses = filteredEvents.map((event) => {
-    return event.kontract;
-  });
+    const contractAddresses = filteredEvents.map((event) => {
+      return event.kontract;
+    });
 
-  const uniqueContractAddressesSet = new Set(contractAddresses);
-  const uniqueContractAddresses = Array.from(uniqueContractAddressesSet);
+    const uniqueContractAddressesSet = new Set(contractAddresses);
+    const uniqueContractAddresses = Array.from(uniqueContractAddressesSet);
 
-  return new Response(JSON.stringify(uniqueContractAddresses));
+    return new Response(JSON.stringify(uniqueContractAddresses));
+  } catch (e) {
+    console.error(e);
+    return new Response(JSON.stringify(e), { status: 400 });
+  }
 }
